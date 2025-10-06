@@ -1,0 +1,51 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{My First LaTeX Document}
+\author{Your Name}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+This is a simple LaTeX document. It demonstrates basic document structure and formatting.
+
+\section{Basic Formatting}
+Here are some examples of basic formatting:
+
+\textbf{Bold text} and \textit{italic text}.
+
+You can also use \emph{emphasis} for important text.
+
+\section{Lists}
+Here's a simple list:
+\begin{itemize}
+    \item First item
+    \item Second item
+    \item Third item
+\end{itemize}
+
+And a numbered list:
+\begin{enumerate}
+    \item First numbered item
+    \item Second numbered item
+    \item Third numbered item
+\end{enumerate}
+
+\section{Mathematics}
+Here's some inline math: $x^2 + y^2 = z^2$
+
+And a displayed equation:
+\[
+E = mc^2
+\]
+
+\section{Conclusion}
+This concludes our simple LaTeX document. You can now compile it with:
+\begin{verbatim}
+pdflatex simple-document.tex
+\end{verbatim}
+
+\end{document}

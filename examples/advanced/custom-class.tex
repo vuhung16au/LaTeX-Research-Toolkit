@@ -1,0 +1,132 @@
+% Custom document class example
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{geometry}
+\usepackage{tocloft}
+
+% Page setup
+\geometry{letterpaper, margin=1in}
+
+% Custom page headers and footers
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Your Name}
+\lhead{Custom Document Class}
+\cfoot{\thepage}
+
+% Custom section formatting
+\renewcommand{\section}{\@startsection{section}{1}{\z@}%
+    {-3.5ex \@plus -1ex \@minus -.2ex}%
+    {2.3ex \@plus.2ex}%
+    {\normalfont\Large\bfseries}}
+
+% Custom subsection formatting
+\renewcommand{\subsection}{\@startsection{subsection}{2}{\z@}%
+    {-3.25ex\@plus -1ex \@minus -.2ex}%
+    {1.5ex \@plus .2ex}%
+    {\normalfont\large\bfseries}}
+
+% Custom commands for this class
+\newcommand{\mytitle}[1]{\title{#1}}
+\newcommand{\myauthor}[1]{\author{#1}}
+\newcommand{\mydate}[1]{\date{#1}}
+
+% Custom environments
+\newenvironment{myabstract}
+{\begin{center}\begin{minipage}{0.8\textwidth}\textbf{Abstract:}}
+{\end{minipage}\end{center}}
+
+\newenvironment{mykeywords}
+{\begin{center}\begin{minipage}{0.8\textwidth}\textbf{Keywords:}}
+{\end{minipage}\end{center}}
+
+% Custom title page
+\renewcommand{\maketitle}{%
+\begin{titlepage}
+\centering
+\vspace*{2cm}
+
+{\LARGE \textbf{\@title}}
+
+\vspace{1.5cm}
+
+{\large by}
+
+\vspace{0.5cm}
+
+{\large \@author}
+
+\vspace{1.5cm}
+
+\@date
+
+\vspace{2cm}
+
+\begin{myabstract}
+This is a custom abstract environment that demonstrates how to create custom document classes in LaTeX.
+\end{myabstract}
+
+\vspace{1cm}
+
+\begin{mykeywords}
+LaTeX, document class, customization, academic writing
+\end{mykeywords}
+
+\end{titlepage}
+}
+
+% Custom section numbering
+\renewcommand{\thesection}{\Roman{section}}
+\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
+
+% Custom table of contents
+\renewcommand{\contentsname}{Table of Contents}
+\renewcommand{\cftsecfont}{\bfseries}
+\renewcommand{\cftsubsecfont}{\itshape}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+\newpage
+
+\section{Introduction}
+This document demonstrates a custom document class with:
+\begin{itemize}
+    \item Custom page headers and footers
+    \item Custom section formatting
+    \item Custom title page
+    \item Custom environments
+    \item Custom numbering
+\end{itemize}
+
+\subsection{Features}
+The custom class includes:
+\begin{itemize}
+    \item Roman numeral section numbering
+    \item Custom abstract and keywords environments
+    \item Fancy page headers
+    \item Custom title page layout
+\end{itemize}
+
+\section{Methodology}
+This section demonstrates the custom formatting in action.
+
+\subsection{Approach}
+The approach uses standard LaTeX commands with custom modifications.
+
+\subsection{Implementation}
+The implementation follows LaTeX best practices for document classes.
+
+\section{Results}
+The results show that custom document classes can significantly improve document consistency and appearance.
+
+\section{Conclusion}
+Custom document classes are a powerful way to maintain consistency across multiple documents while providing specialized formatting for specific document types.
+
+\end{document}

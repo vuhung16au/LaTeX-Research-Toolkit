@@ -1,0 +1,130 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{graphicx}
+\usepackage{xcolor}
+
+\title{Custom Commands in LaTeX}
+\author{Your Name}
+\date{\today}
+
+% Custom commands
+\newcommand{\mycommand}{This is a custom command}
+\newcommand{\greeting}[1]{Hello, #1!}
+\newcommand{\highlight}[1]{\textcolor{red}{\textbf{#1}}}
+\newcommand{\important}[1]{\textcolor{blue}{\textbf{#1}}}
+
+% Commands with optional parameters
+\newcommand{\person}[2][Dr.]{#1 #2}
+\newcommand{\email}[1]{\texttt{#1}}
+
+% Math commands
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+
+% Custom environments
+\newenvironment{mybox}
+{\begin{center}\begin{tabular}{|p{0.8\textwidth}|}\hline}
+{\\\hline\end{tabular}\end{center}}
+
+% Custom counters
+\newcounter{mycounter}
+\newcommand{\myitem}{\stepcounter{mycounter}\arabic{mycounter}. }
+
+\begin{document}
+
+\maketitle
+
+\section{Basic Custom Commands}
+Here are examples of basic custom commands:
+
+\mycommand
+
+\greeting{World}
+
+\greeting{LaTeX}
+
+\section{Commands with Parameters}
+Commands can take parameters:
+
+\person{Smith} % Uses default "Dr."
+\person[Prof.]{Jones} % Uses "Prof."
+
+\email{your.email@institution.edu}
+
+\section{Formatting Commands}
+Use custom commands for consistent formatting:
+
+This is \highlight{important text} that stands out.
+
+This is \important{another important point}.
+
+\section{Mathematical Commands}
+Custom math commands for common sets:
+
+The real numbers: $\R$
+
+The natural numbers: $\N$
+
+The integers: $\Z$
+
+The complex numbers: $\C$
+
+\section{Custom Environments}
+Here's a custom box environment:
+
+\begin{mybox}
+This is content inside a custom box environment.
+It can contain multiple lines of text.
+\end{mybox}
+
+\section{Custom Counters}
+Here's a custom numbered list:
+
+\myitem First item
+\myitem Second item
+\myitem Third item
+
+\section{Advanced Custom Commands}
+More complex commands:
+
+\newcommand{\citeauthor}[1]{\cite{#1}}
+\newcommand{\fullcite}[1]{\citeauthor{#1} (\citeyear{#1})}
+
+\newcommand{\todo}[1]{\textcolor{red}{\textbf{[TODO: #1]}}}
+
+\todo{Add more examples here}
+
+\section{Best Practices for Custom Commands}
+\begin{itemize}
+    \item Use descriptive names
+    \item Document your commands
+    \item Keep commands simple
+    \item Use parameters when appropriate
+    \item Test commands thoroughly
+    \item Consider using packages instead of complex custom commands
+\end{itemize}
+
+\section{Common Custom Commands}
+Here are some commonly useful custom commands:
+
+\begin{verbatim}
+% For consistent formatting
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\file}[1]{\texttt{#1}}
+\newcommand{\url}[1]{\texttt{#1}}
+
+% For mathematical notation
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\newcommand{\inner}[2]{\langle #1, #2 \rangle}
+
+% For consistent spacing
+\newcommand{\bigskip}{\vspace{1cm}}
+\newcommand{\medskip}{\vspace{0.5cm}}
+\newcommand{\smallskip}{\vspace{0.25cm}}
+\end{verbatim}
+
+\end{document}

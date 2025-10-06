@@ -1,0 +1,62 @@
+\documentclass[10pt,twocolumn]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{natbib}
+\usepackage{balance}
+
+% Page setup
+\geometry{letterpaper, margin=0.75in}
+\onehalfspacing
+
+% Title and author information
+\title{Your Conference Paper Title}
+\author{Your Name$^1$, Co-author Name$^2$ \\
+        $^1$Your Institution \\
+        $^2$Co-author Institution \\
+        \texttt{your.email@institution.edu}}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This is your abstract for a conference paper. It should be concise and highlight the key contributions. Conference abstracts are typically shorter than journal abstracts.
+\end{abstract}
+
+\section{Introduction}
+Your introduction for a conference paper should be more focused and direct than a journal paper. Get to the point quickly and clearly state your contribution.
+
+\section{Related Work}
+Briefly review the most relevant work. In conference papers, this section is often shorter than in journal papers.
+
+\section{Methodology}
+Describe your approach clearly and concisely. Conference papers have limited space, so focus on the most important aspects.
+
+\section{Results}
+Present your results with clear figures and tables. Make sure they are readable in the two-column format.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\columnwidth]{figure.png}
+\caption{Your figure caption here}
+\label{fig:example}
+\end{figure}
+
+\section{Discussion}
+Discuss the implications of your results and their significance.
+
+\section{Conclusion}
+Summarize your contributions and suggest future work.
+
+\section*{Acknowledgments}
+Thank your funding sources and collaborators.
+
+\bibliographystyle{abbrv}
+\bibliography{references}
+
+\balance
+\end{document}

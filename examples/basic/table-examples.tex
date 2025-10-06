@@ -1,0 +1,98 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+
+\title{Table Examples in LaTeX}
+\author{Your Name}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Basic Tables}
+Here's a simple table:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|c|r|}
+\hline
+Left & Center & Right \\
+\hline
+A & B & C \\
+1 & 2 & 3 \\
+\hline
+\end{tabular}
+\caption{A simple table}
+\label{tab:simple}
+\end{table}
+
+\section{Table with Different Column Types}
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|c|r|p{3cm}|}
+\hline
+Left & Center & Right & Paragraph \\
+\hline
+Short & Medium & Long & This is a longer text that will wrap within the specified width \\
+\hline
+\end{tabular}
+\caption{Table with different column types}
+\label{tab:types}
+\end{table}
+
+\section{Table without Borders}
+\begin{table}[h]
+\centering
+\begin{tabular}{l c r}
+Name & Age & City \\
+John & 25 & New York \\
+Jane & 30 & London \\
+Bob & 35 & Paris \\
+\end{tabular}
+\caption{Table without borders}
+\label{tab:noborders}
+\end{table}
+
+\section{Table with Partial Borders}
+\begin{table}[h]
+\centering
+\begin{tabular}{l|c|r}
+\hline
+Name & Age & City \\
+\cline{1-2}
+John & 25 & New York \\
+Jane & 30 & London \\
+\hline
+Bob & 35 & Paris \\
+\hline
+\end{tabular}
+\caption{Table with partial borders}
+\label{tab:partial}
+\end{table}
+
+\section{Table with Math}
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+$x$ & $x^2$ & $\sqrt{x}$ \\
+\hline
+1 & 1 & 1 \\
+2 & 4 & 1.414 \\
+3 & 9 & 1.732 \\
+4 & 16 & 2 \\
+\hline
+\end{tabular}
+\caption{Table with mathematical expressions}
+\label{tab:math}
+\end{table}
+
+\section{Table References}
+As shown in Table~\ref{tab:simple}, we can see the basic table structure.
+
+Table~\ref{tab:types} demonstrates different column types.
+
+The mathematical table (Table~\ref{tab:math}) shows the relationship between $x$, $x^2$, and $\sqrt{x}$.
+
+\end{document}

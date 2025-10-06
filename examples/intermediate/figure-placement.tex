@@ -1,0 +1,108 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+
+\title{Figure Placement Examples in LaTeX}
+\author{Your Name}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Basic Figure Placement}
+Here's a basic figure with automatic placement:
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.6\textwidth]{sample-figure.png}
+\caption{A sample figure with automatic placement}
+\label{fig:sample}
+\end{figure}
+
+\section{Figure Placement Options}
+LaTeX provides several placement options for figures:
+
+\begin{itemize}
+    \item \texttt{[h]} - here (if possible)
+    \item \texttt{[t]} - top of page
+    \item \texttt{[b]} - bottom of page
+    \item \texttt{[p]} - page of floats
+    \item \texttt{[H]} - HERE (requires float package)
+\end{itemize}
+
+\section{Figure with HERE Placement}
+This figure uses the [H] option to force placement exactly here:
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\textwidth]{sample-figure.png}
+\caption{A figure forced to appear here}
+\label{fig:here}
+\end{figure}
+
+\section{Multiple Figures}
+You can include multiple figures in a single figure environment:
+
+\begin{figure}[h]
+\centering
+\begin{subfigure}{0.45\textwidth}
+    \includegraphics[width=\textwidth]{figure1.png}
+    \caption{First subfigure}
+    \label{fig:sub1}
+\end{subfigure}
+\hfill
+\begin{subfigure}{0.45\textwidth}
+    \includegraphics[width=\textwidth]{figure2.png}
+    \caption{Second subfigure}
+    \label{fig:sub2}
+\end{subfigure}
+\caption{Two related figures}
+\label{fig:multiple}
+\end{figure}
+
+\section{Figure Sizing Options}
+Different ways to size figures:
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\textwidth]{sample-figure.png}
+\caption{Figure sized to 80\% of text width}
+\label{fig:width}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[height=3cm]{sample-figure.png}
+\caption{Figure with fixed height}
+\label{fig:height}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.5]{sample-figure.png}
+\caption{Figure scaled to 50\% of original size}
+\label{fig:scale}
+\end{figure}
+
+\section{Figure References}
+As shown in Figure~\ref{fig:sample}, the basic placement works well for most cases.
+
+Figure~\ref{fig:here} demonstrates the use of forced placement.
+
+The multiple figures in Figure~\ref{fig:multiple} show how to combine related images.
+
+\section{Figure Placement Best Practices}
+\begin{itemize}
+    \item Use \texttt{[h]} for most cases
+    \item Use \texttt{[H]} sparingly and only when necessary
+    \item Avoid \texttt{[p]} unless you have many figures
+    \item Consider using \texttt{[t]} or \texttt{[b]} for better page layout
+    \item Always include captions and labels
+    \item Reference figures in your text
+\end{itemize}
+
+\end{document}

@@ -1,0 +1,91 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{natbib}
+
+% Page setup
+\geometry{letterpaper, margin=1in}
+\onehalfspacing
+
+% Title and author information
+\title{Your Paper Title}
+\author{Your Name \\
+        Your Institution \\
+        \texttt{your.email@institution.edu}}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This is where you write your abstract. It should be a concise summary of your paper, typically 150-250 words. The abstract should include the problem, methodology, key findings, and conclusions.
+\end{abstract}
+
+\section{Introduction}
+Your introduction goes here. This section should:
+\begin{itemize}
+    \item Introduce the problem or research question
+    \item Provide background and context
+    \item State your objectives or hypotheses
+    \item Outline the structure of the paper
+\end{itemize}
+
+\section{Literature Review}
+Review relevant literature here. This section should:
+\begin{itemize}
+    \item Survey existing work in the field
+    \item Identify gaps in current knowledge
+    \item Position your work within the broader context
+\end{itemize}
+
+\section{Methodology}
+Describe your research methods here. This section should include:
+\begin{itemize}
+    \item Research design and approach
+    \item Data collection methods
+    \item Analysis techniques
+    \item Any limitations or assumptions
+\end{itemize}
+
+\section{Results}
+Present your findings here. Use tables and figures to support your results:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|c|r|}
+\hline
+Variable & Mean & Std Dev \\
+\hline
+X & 10.5 & 2.3 \\
+Y & 15.2 & 3.1 \\
+\hline
+\end{tabular}
+\caption{Descriptive statistics}
+\label{tab:stats}
+\end{table}
+
+As shown in Table~\ref{tab:stats}, the results indicate...
+
+\section{Discussion}
+Discuss the implications of your results here. This section should:
+\begin{itemize}
+    \item Interpret your findings
+    \item Compare with existing literature
+    \item Discuss limitations
+    \item Suggest future research directions
+\end{itemize}
+
+\section{Conclusion}
+Summarize your main findings and contributions here.
+
+\section*{Acknowledgments}
+Thank those who helped with your research.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

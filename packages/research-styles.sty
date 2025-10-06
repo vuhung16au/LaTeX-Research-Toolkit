@@ -1,0 +1,52 @@
+% Research styles package for LaTeX
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{research-styles}[2024/01/01 Research Styles Package]
+
+% Load required packages
+\RequirePackage{amsmath,amsfonts,amssymb}
+\RequirePackage{graphicx}
+\RequirePackage{hyperref}
+\RequirePackage{booktabs}
+\RequirePackage{float}
+
+% Custom section formatting
+\renewcommand{\section}{\@startsection{section}{1}{\z@}%
+    {-3.5ex \@plus -1ex \@minus -.2ex}%
+    {2.3ex \@plus.2ex}%
+    {\normalfont\Large\bfseries}}
+
+% Custom subsection formatting
+\renewcommand{\subsection}{\@startsection{subsection}{2}{\z@}%
+    {-3.25ex\@plus -1ex \@minus -.2ex}%
+    {1.5ex \@plus .2ex}%
+    {\normalfont\large\bfseries}}
+
+% Custom figure formatting
+\renewcommand{\figurename}{Fig.}
+\renewcommand{\tablename}{Table}
+
+% Custom table formatting
+\renewcommand{\arraystretch}{1.2}
+
+% Custom citation formatting
+\renewcommand{\cite}[1]{\textsuperscript{\cite{#1}}}
+
+% Custom page headers
+\RequirePackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Research Document}
+\lhead{\thepage}
+\cfoot{\thepage}
+
+% Custom environments
+\newenvironment{researchabstract}
+{\begin{center}\begin{minipage}{0.8\textwidth}\textbf{Abstract:}}
+{\end{minipage}\end{center}}
+
+\newenvironment{researchkeywords}
+{\begin{center}\begin{minipage}{0.8\textwidth}\textbf{Keywords:}}
+{\end{minipage}\end{center}}
+
+% End of package
+\endinput

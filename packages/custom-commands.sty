@@ -1,0 +1,39 @@
+% Custom commands package for LaTeX
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{custom-commands}[2024/01/01 Custom Commands Package]
+
+% Basic formatting commands
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\file}[1]{\texttt{#1}}
+\newcommand{\url}[1]{\texttt{#1}}
+
+% Mathematical commands
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+
+% Common mathematical operators
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\newcommand{\inner}[2]{\langle #1, #2 \rangle}
+\newcommand{\floor}[1]{\lfloor #1 \rfloor}
+\newcommand{\ceil}[1]{\lceil #1 \rceil}
+
+% Spacing commands
+\newcommand{\bigskip}{\vspace{1cm}}
+\newcommand{\medskip}{\vspace{0.5cm}}
+\newcommand{\smallskip}{\vspace{0.25cm}}
+
+% Custom environments
+\newenvironment{mybox}
+{\begin{center}\begin{tabular}{|p{0.8\textwidth}|}\hline}
+{\\\hline\end{tabular}\end{center}}
+
+% Custom counters
+\newcounter{mycounter}
+\newcommand{\myitem}{\stepcounter{mycounter}\arabic{mycounter}. }
+
+% End of package
+\endinput

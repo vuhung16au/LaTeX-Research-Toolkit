@@ -1,0 +1,126 @@
+\documentclass[12pt]{report}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{natbib}
+\usepackage{tocloft}
+\usepackage{setspace}
+
+% Page setup
+\geometry{letterpaper, margin=1in}
+\onehalfspacing
+
+% Title page information
+\title{Your Master's Thesis Title: A Comprehensive Study}
+\author{Your Name}
+\date{\today}
+
+\begin{document}
+
+% Title page
+\begin{titlepage}
+\centering
+\vspace*{2cm}
+
+{\LARGE \textbf{Your Master's Thesis Title: A Comprehensive Study}}
+
+\vspace{1.5cm}
+
+{\large by}
+
+\vspace{0.5cm}
+
+{\large Your Name}
+
+\vspace{1.5cm}
+
+A thesis submitted in partial fulfillment of the requirements for the degree of Master of Science in [Your Field]
+
+\vspace{1cm}
+
+Your Institution Name
+
+Your Department
+
+\vspace{1cm}
+
+\date{\today}
+\end{titlepage}
+
+% Abstract
+\chapter*{Abstract}
+Your abstract goes here. It should be a comprehensive summary of your thesis, typically 300-500 words. Include the problem, methodology, key findings, and conclusions.
+
+\chapter*{Acknowledgments}
+Thank your advisor, committee members, family, friends, and anyone else who helped with your thesis.
+
+% Table of contents
+\tableofcontents
+\listoffigures
+\listoftables
+
+% Main content
+\chapter{Introduction}
+Your introduction should provide:
+\begin{itemize}
+    \item Background and motivation
+    \item Problem statement
+    \item Research objectives
+    \item Thesis organization
+\end{itemize}
+
+\chapter{Literature Review}
+This chapter should:
+\begin{itemize}
+    \item Survey relevant literature
+    \item Identify research gaps
+    \item Position your work
+    \item Provide theoretical foundation
+\end{itemize}
+
+\chapter{Methodology}
+Describe your research methodology:
+\begin{itemize}
+    \item Research design
+    \item Data collection methods
+    \item Analysis techniques
+    \item Validation approaches
+\end{itemize}
+
+\chapter{Results}
+Present your findings with appropriate figures and tables:
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\textwidth]{figure.png}
+\caption{Your figure caption}
+\label{fig:example}
+\end{figure}
+
+\chapter{Discussion}
+Discuss the implications of your results:
+\begin{itemize}
+    \item Interpretation of findings
+    \item Comparison with literature
+    \item Limitations
+    \item Practical implications
+\end{itemize}
+
+\chapter{Conclusion and Future Work}
+Summarize your contributions and suggest future research directions.
+
+% Bibliography
+\bibliographystyle{plain}
+\bibliography{references}
+
+% Appendices
+\appendix
+\chapter{Appendix A: Additional Data}
+Any additional data or detailed results can go here.
+
+\chapter{Appendix B: Code}
+Include relevant code snippets or algorithms here.
+
+\end{document}

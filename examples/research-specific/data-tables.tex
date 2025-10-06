@@ -1,0 +1,177 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{rotating}
+\usepackage{graphicx}
+
+\title{Data Tables in LaTeX}
+\author{Your Name}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Basic Data Table}
+Here's a basic data table with experimental results:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|c|c|c|}
+\hline
+\textbf{Method} & \textbf{Accuracy} & \textbf{Precision} & \textbf{Recall} \\
+\hline
+Baseline & 85.2\% & 82.1\% & 88.3\% \\
+Method A & 89.5\% & 87.3\% & 91.7\% \\
+Method B & 92.1\% & 90.8\% & 93.4\% \\
+\hline
+\end{tabular}
+\caption{Performance comparison of different methods}
+\label{tab:performance}
+\end{table}
+
+\section{Professional Data Table}
+Here's a more professional table using booktabs:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lccc}
+\toprule
+Method & Accuracy & Precision & Recall \\
+\midrule
+Baseline & 85.2\% & 82.1\% & 88.3\% \\
+Method A & 89.5\% & 87.3\% & 91.7\% \\
+Method B & 92.1\% & 90.8\% & 93.4\% \\
+\bottomrule
+\end{tabular}
+\caption{Performance comparison using booktabs}
+\label{tab:booktabs}
+\end{table}
+
+\section{Statistical Results Table}
+Here's a table with statistical results including standard deviations:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lcc}
+\toprule
+\textbf{Variable} & \textbf{Mean ± SD} & \textbf{Range} \\
+\midrule
+Age & 35.2 ± 8.7 & 18-65 \\
+Height (cm) & 170.5 ± 9.2 & 150-190 \\
+Weight (kg) & 68.3 ± 12.1 & 45-95 \\
+BMI & 23.4 ± 3.2 & 18.5-30.0 \\
+\bottomrule
+\end{tabular}
+\caption{Descriptive statistics of study participants}
+\label{tab:stats}
+\end{table}
+
+\section{Multi-row Table}
+Here's a table with multi-row entries:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|c|c|}
+\hline
+\textbf{Category} & \textbf{Subcategory} & \textbf{Value} \\
+\hline
+\multirow{3}{*}{Group A} & Subcategory 1 & 10.5 \\
+& Subcategory 2 & 15.2 \\
+& Subcategory 3 & 8.7 \\
+\hline
+\multirow{2}{*}{Group B} & Subcategory 1 & 12.3 \\
+& Subcategory 2 & 18.9 \\
+\hline
+\end{tabular}
+\caption{Multi-row table example}
+\label{tab:multirow}
+\end{table}
+
+\section{Rotated Table}
+Here's a table with rotated text for better fit:
+
+\begin{table}[h]
+\centering
+\begin{sideways}
+\begin{tabular}{|l|c|c|c|c|}
+\hline
+\textbf{Method} & \textbf{Dataset 1} & \textbf{Dataset 2} & \textbf{Dataset 3} & \textbf{Average} \\
+\hline
+Method A & 85.2\% & 87.1\% & 83.5\% & 85.3\% \\
+Method B & 89.5\% & 91.2\% & 88.7\% & 89.8\% \\
+Method C & 92.1\% & 93.8\% & 90.4\% & 92.1\% \\
+\hline
+\end{tabular}
+\end{sideways}
+\caption{Rotated table for better space utilization}
+\label{tab:rotated}
+\end{table}
+
+\section{Long Table}
+Here's a long table that spans multiple pages:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|c|c|c|c|c|}
+\hline
+\textbf{ID} & \textbf{Name} & \textbf{Age} & \textbf{Score} & \textbf{Grade} & \textbf{Status} \\
+\hline
+001 & Alice Johnson & 25 & 95 & A & Pass \\
+002 & Bob Smith & 30 & 87 & B & Pass \\
+003 & Carol Davis & 28 & 92 & A & Pass \\
+004 & David Wilson & 35 & 78 & C & Pass \\
+005 & Eve Brown & 22 & 96 & A & Pass \\
+006 & Frank Miller & 40 & 85 & B & Pass \\
+007 & Grace Lee & 27 & 89 & B & Pass \\
+008 & Henry Taylor & 33 & 91 & A & Pass \\
+009 & Irene Clark & 29 & 83 & B & Pass \\
+010 & Jack Anderson & 31 & 88 & B & Pass \\
+\hline
+\end{tabular}
+\caption{Student performance data}
+\label{tab:long}
+\end{table}
+
+\section{Table with Mathematical Expressions}
+Here's a table with mathematical expressions:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|c|c|}
+\hline
+\textbf{Function} & \textbf{Formula} & \textbf{Value} \\
+\hline
+Linear & $f(x) = ax + b$ & $f(2) = 2a + b$ \\
+Quadratic & $f(x) = ax^2 + bx + c$ & $f(2) = 4a + 2b + c$ \\
+Exponential & $f(x) = ae^{bx}$ & $f(2) = ae^{2b}$ \\
+\hline
+\end{tabular}
+\caption{Mathematical functions and their values}
+\label{tab:math}
+\end{table}
+
+\section{Table References}
+As shown in Table~\ref{tab:performance}, Method B achieves the highest accuracy.
+
+The statistical results in Table~\ref{tab:stats} show the distribution of participant characteristics.
+
+Table~\ref{tab:booktabs} demonstrates the professional appearance achievable with the booktabs package.
+
+\section{Best Practices for Data Tables}
+\begin{itemize}
+    \item Use clear, descriptive column headers
+    \item Include units of measurement
+    \item Align numbers by decimal point
+    \item Use consistent formatting
+    \item Include appropriate captions
+    \item Reference tables in your text
+    \item Consider using booktabs for professional appearance
+    \item Use multi-row tables for grouped data
+    \item Rotate tables when necessary for space
+\end{itemize}
+
+\end{document}

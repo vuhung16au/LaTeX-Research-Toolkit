@@ -1,0 +1,32 @@
+% Main document file
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{graphicx}
+\usepackage{natbib}
+\usepackage{hyperref}
+
+% Custom packages
+\usepackage{../packages/custom-commands}
+\usepackage{../packages/research-styles}
+
+% Title information
+\title{Multi-File LaTeX Project Example}
+\author{Your Name}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+% Include sections from separate files
+\input{sections/introduction}
+\input{sections/methodology}
+\input{sections/results}
+\input{sections/conclusion}
+
+% Bibliography
+\bibliographystyle{plain}
+\bibliography{../resources/bibliography/references}
+
+\end{document}
