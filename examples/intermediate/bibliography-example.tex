@@ -1,7 +1,8 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath,amsfonts,amssymb}
-\usepackage{natbib}
+\usepackage[backend=biber,style=numeric-comp]{biblatex}
+\addbibresource{../../references/references.bib}
 \usepackage{hyperref}
 
 \title{Bibliography Example in LaTeX}
@@ -49,7 +50,6 @@ Our findings are consistent with the theoretical predictions of Smith~\cite{smit
 This work contributes to the growing body of research in this field, building upon the foundations established by Smith~\cite{smith2023}, Jones~\cite{jones2022}, and Doe~\cite{doe2023}.
 
 % Bibliography
-\bibliographystyle{plain}
-\bibliography{references}
+\printbibliography
 
 \end{document}

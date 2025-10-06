@@ -4,7 +4,8 @@
 \usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage{geometry}
-\usepackage{natbib}
+\usepackage[backend=biber,style=numeric-comp]{biblatex}
+\addbibresource{../../references/references.bib}
 \usepackage{setspace}
 
 % Page setup
@@ -86,7 +87,6 @@ Summarize your main findings and contributions here.
 \section*{Acknowledgments}
 Thank those who helped with your research.
 
-\bibliographystyle{plain}
-\bibliography{references}
+\printbibliography
 
 \end{document}

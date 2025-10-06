@@ -6,7 +6,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath,amsfonts,amssymb}
 \usepackage{graphicx}
-\usepackage{natbib}
+\usepackage[backend=biber,style=numeric]{biblatex}
+\addbibresource{../../references/references.bib}
 
 \title{Exercise 2: Multi-file Project}
 \author{Your Name}
@@ -36,8 +37,8 @@
 % TODO: Create a bibliography file:
 % - resources/bibliography/references.bib
 % - Include sample entries
-% - Use \bibliographystyle{plain}
-% - Use \bibliography{resources/bibliography/references}
+% Use \printbibliography to render references at the end
+\printbibliography
 
 % TODO: Organize your project structure:
 % - main.tex (this file)

@@ -3,7 +3,8 @@
 
 \documentclass{article}
 \usepackage[utf8]{inputenc}
-\usepackage{natbib}
+\usepackage[backend=biber,style=numeric]{biblatex}
+\addbibresource{../../references/references.bib}
 \usepackage{hyperref}
 
 \title{Exercise 2: Bibliography and Citations}
@@ -37,9 +38,7 @@
 % TODO: Discuss the implications
 % Include citations to support your arguments
 
-% TODO: Add bibliography
-% Create a references.bib file with sample entries
-% Use \bibliographystyle{plain}
-% Use \bibliography{references}
+% Bibliography
+\printbibliography
 
 \end{document}

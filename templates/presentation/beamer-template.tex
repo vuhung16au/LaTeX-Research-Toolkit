@@ -1,6 +1,8 @@
 \documentclass{beamer}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath,amsfonts,amssymb}
+\usepackage[backend=biber,style=numeric-comp]{biblatex}
+\addbibresource{../../references/references.bib}
 \usepackage{graphicx}
 \usepackage{hyperref}
 
@@ -129,6 +131,12 @@
 \vspace{1cm}
 Questions and Discussion
 \end{center}
+\end{frame}
+
+% References
+\begin{frame}[allowframebreaks]
+\frametitle{References}
+\printbibliography
 \end{frame}
 
 \end{document}

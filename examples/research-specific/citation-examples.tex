@@ -1,7 +1,8 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath,amsfonts,amssymb}
-\usepackage{natbib}
+\usepackage[backend=biber,style=numeric-comp]{biblatex}
+\addbibresource{../../references/references.bib}
 \usepackage{hyperref}
 
 \title{Citation Examples in LaTeX}
@@ -114,7 +115,6 @@ Here are tips for managing citations:
 Proper citation is essential for academic writing. It demonstrates your knowledge of the field, gives credit to other researchers, and allows readers to verify your claims.
 
 % Bibliography
-\bibliographystyle{plain}
-\bibliography{references}
+\printbibliography
 
 \end{document}

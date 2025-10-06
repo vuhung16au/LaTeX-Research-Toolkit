@@ -4,7 +4,8 @@
 \usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage{geometry}
-\usepackage{natbib}
+\usepackage[backend=biber,style=numeric-comp]{biblatex}
+\addbibresource{../../references/references.bib}
 \usepackage{balance}
 \usepackage{url}
 \usepackage{setspace}
@@ -92,8 +93,7 @@ Summarize your contributions and outline future research directions.
 \section*{Acknowledgments}
 Thank your funding sources, collaborators, and reviewers.
 
-\bibliographystyle{abbrv}
-\bibliography{references}
+\printbibliography
 
 \balance
 \end{document}

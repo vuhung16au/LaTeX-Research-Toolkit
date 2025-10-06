@@ -152,7 +152,24 @@ env/
 *.figlist
 *.auxlock
 
-
+# LaTeX build artifacts
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.run.xml
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.synctex.gz
+*.nav
+*.snm
+*.vrb
+*_minted*/
 
 # Cache files
 examples/advanced/_minted/

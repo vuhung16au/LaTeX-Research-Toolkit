@@ -3,7 +3,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath,amsfonts,amssymb}
 \usepackage{graphicx}
-\usepackage{natbib}
+\usepackage[backend=biber,style=numeric-comp]{biblatex}
+\addbibresource{../../references/references.bib}
 \usepackage{hyperref}
 
 % Custom packages (relative to repo root)
@@ -26,8 +27,6 @@
 \input{sections/conclusion}
 
 % Bibliography
-\bibliographystyle{plain}
-% Use the provided sample bibliography file (relative to repo root)
-\bibliography{../../resources/bibliography/sample-bib}
+\printbibliography
 
 \end{document}
