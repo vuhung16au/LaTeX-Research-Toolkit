@@ -1,4 +1,163 @@
+# LaTeX auxiliary files
+*.aux
+*.log
+*.out
+*.toc
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.synctex.gz
+*.nav
+*.snm
+*.vrb
+*.idx
+*.ind
+*.ilg
+*.lot
+*.lof
+*.lol
+*.acn
+*.acr
+*.alg
+*.glg
+*.glo
+*.gls
+*.ist
+*.makefile
+*.figlist
+*.fls
+*.fdb_latexmk
+*.auxlock
 
+# LaTeX build directories
+build/
+output/
+tmp/
+temp/
 
-#Ignore cursor AI rules
-.cursor/rules/codacy.mdc
+# LaTeX output files
+*.pdf
+*.dvi
+*.ps
+*.eps
+
+# Bibliography files (uncomment if you want to ignore .bib files)
+# *.bib
+
+# Image files (uncomment if you want to ignore image files)
+# *.png
+# *.jpg
+# *.jpeg
+# *.gif
+# *.pdf
+# *.eps
+# *.ps
+
+# Temporary files
+*~
+*.backup
+*.bak
+*.swp
+*.swo
+*.tmp
+
+# OS-specific files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# Editor-specific files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.vim/
+*.vim
+
+# LaTeX editor specific
+*.texstudio
+*.texworks
+
+# Package files
+*.sty.bak
+*.cls.bak
+
+# LaTeX package installation
+texmf/
+texlive/
+
+# Log files
+*.log
+
+# Archive files
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# Node modules (if using any JS tools)
+node_modules/
+
+# Python cache (if using any Python tools)
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Virtual environments
+venv/
+env/
+.venv/
+
+# IDE and editor files
+*.code-workspace
+*.sublime-*
+.vscode/
+.idea/
+
+# LaTeX specific ignores
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.toc
+*.nav
+*.snm
+*.vrb
+*.idx
+*.ind
+*.ilg
+*.lot
+*.lof
+*.lol
+*.acn
+*.acr
+*.alg
+*.glg
+*.glo
+*.gls
+*.ist
+*.makefile
+*.figlist
+*.auxlock
+
+# Keep important files
+!README.md
+!.gitignore
+!LICENSE
+!CONTRIBUTING.md
+!CHANGELOG.md
+
+Prompts.md
+

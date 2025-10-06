@@ -5,7 +5,10 @@
 % Basic formatting commands
 \newcommand{\code}[1]{\texttt{#1}}
 \newcommand{\file}[1]{\texttt{#1}}
-\newcommand{\url}[1]{\texttt{#1}}
+% Avoid conflict with hyperref's \url; define only if not already defined
+\providecommand{\url}[1]{\texttt{#1}}
+% Also provide a dedicated code URL macro
+\newcommand{\codeurl}[1]{\texttt{#1}}
 
 % Mathematical commands
 \newcommand{\R}{\mathbb{R}}
@@ -21,10 +24,10 @@
 \newcommand{\floor}[1]{\lfloor #1 \rfloor}
 \newcommand{\ceil}[1]{\lceil #1 \rceil}
 
-% Spacing commands
-\newcommand{\bigskip}{\vspace{1cm}}
-\newcommand{\medskip}{\vspace{0.5cm}}
-\newcommand{\smallskip}{\vspace{0.25cm}}
+% Spacing commands (avoid conflicting with LaTeX primitives like \bigskip)
+\newcommand{\BigSpace}{\vspace{1cm}}
+\newcommand{\MedSpace}{\vspace{0.5cm}}
+\newcommand{\SmallSpace}{\vspace{0.25cm}}
 
 % Custom environments
 \newenvironment{mybox}

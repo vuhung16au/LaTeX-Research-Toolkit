@@ -11,12 +11,20 @@
 % Page setup
 \geometry{letterpaper, margin=1in}
 
+% Provide default title/author/date so \maketitle succeeds
+\title{Custom Class Demonstration}
+\author{Your Name}
+\date{\today}
+
 % Custom page headers and footers
 \pagestyle{fancy}
 \fancyhf{}
 \rhead{Your Name}
 \lhead{Custom Document Class}
 \cfoot{\thepage}
+
+% Enable access to internal macros with @ in their names
+\makeatletter
 
 % Custom section formatting
 \renewcommand{\section}{\@startsection{section}{1}{\z@}%
@@ -87,6 +95,9 @@ LaTeX, document class, customization, academic writing
 \renewcommand{\contentsname}{Table of Contents}
 \renewcommand{\cftsecfont}{\bfseries}
 \renewcommand{\cftsubsecfont}{\itshape}
+
+% Disable access to internal macros
+\makeatother
 
 \begin{document}
 

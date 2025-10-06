@@ -9,6 +9,15 @@
 \author{Your Name}
 \date{\today}
 
+% Helper macro for placeholder figures without external image files
+\newcommand{\placeholder}[2][0.6\\textwidth]{% width optional, height in pt
+  \begin{minipage}{#1}
+    \centering
+    \fbox{\rule{0pt}{#2}\rule{#1}{0pt}}\\[0.5em]
+    \small Placeholder figure (no external image)
+  \end{minipage}
+}
+
 \begin{document}
 
 \maketitle
@@ -18,7 +27,7 @@ Here's a basic figure with automatic placement:
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.6\textwidth]{sample-figure.png}
+\placeholder[0.6\textwidth]{120pt}
 \caption{A sample figure with automatic placement}
 \label{fig:sample}
 \end{figure}
@@ -39,7 +48,7 @@ This figure uses the [H] option to force placement exactly here:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.5\textwidth]{sample-figure.png}
+\placeholder[0.5\textwidth]{100pt}
 \caption{A figure forced to appear here}
 \label{fig:here}
 \end{figure}
@@ -50,13 +59,15 @@ You can include multiple figures in a single figure environment:
 \begin{figure}[h]
 \centering
 \begin{subfigure}{0.45\textwidth}
-    \includegraphics[width=\textwidth]{figure1.png}
+    \centering
+    \placeholder[\textwidth]{90pt}
     \caption{First subfigure}
     \label{fig:sub1}
 \end{subfigure}
 \hfill
 \begin{subfigure}{0.45\textwidth}
-    \includegraphics[width=\textwidth]{figure2.png}
+    \centering
+    \placeholder[\textwidth]{90pt}
     \caption{Second subfigure}
     \label{fig:sub2}
 \end{subfigure}
@@ -69,21 +80,21 @@ Different ways to size figures:
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.8\textwidth]{sample-figure.png}
+\placeholder[0.8\textwidth]{120pt}
 \caption{Figure sized to 80\% of text width}
 \label{fig:width}
 \end{figure}
 
 \begin{figure}[h]
 \centering
-\includegraphics[height=3cm]{sample-figure.png}
+\placeholder[0.6\textwidth]{80pt}
 \caption{Figure with fixed height}
 \label{fig:height}
 \end{figure}
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.5]{sample-figure.png}
+\placeholder[0.6\textwidth]{100pt}
 \caption{Figure scaled to 50\% of original size}
 \label{fig:scale}
 \end{figure}

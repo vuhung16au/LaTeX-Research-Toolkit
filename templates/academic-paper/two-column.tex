@@ -6,6 +6,7 @@
 \usepackage{geometry}
 \usepackage{natbib}
 \usepackage{balance}
+\usepackage{setspace}
 
 % Page setup
 \geometry{letterpaper, margin=0.75in}
@@ -41,7 +42,12 @@ Present your results with clear figures and tables. Make sure they are readable 
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=\columnwidth]{figure.png}
+% Use placeholder if figure.png is not present
+\IfFileExists{figure.png}{%
+  \includegraphics[width=\columnwidth]{figure.png}%
+}{%
+  \fbox{\parbox{0.9\columnwidth}{Placeholder figure: add `figure.png` next to this .tex}}%
+}
 \caption{Your figure caption here}
 \label{fig:example}
 \end{figure}

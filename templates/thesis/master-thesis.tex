@@ -94,7 +94,12 @@ Present your findings with appropriate figures and tables:
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.8\textwidth]{figure.png}
+% Use placeholder if figure.png is not present
+\IfFileExists{figure.png}{%
+  \includegraphics[width=0.8\textwidth]{figure.png}%
+}{%
+  \fbox{\parbox{0.75\textwidth}{Placeholder figure: add `figure.png` next to this .tex}}%
+}
 \caption{Your figure caption}
 \label{fig:example}
 \end{figure}

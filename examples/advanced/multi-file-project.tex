@@ -6,9 +6,9 @@
 \usepackage{natbib}
 \usepackage{hyperref}
 
-% Custom packages
-\usepackage{../packages/custom-commands}
-\usepackage{../packages/research-styles}
+% Custom packages (relative to repo root)
+\usepackage{../../packages/custom-commands}
+\usepackage{../../packages/research-styles}
 
 % Title information
 \title{Multi-File LaTeX Project Example}
@@ -27,6 +27,7 @@
 
 % Bibliography
 \bibliographystyle{plain}
-\bibliography{../resources/bibliography/references}
+% Use the provided sample bibliography file (relative to repo root)
+\bibliography{../../resources/bibliography/sample-bib}
 
 \end{document}

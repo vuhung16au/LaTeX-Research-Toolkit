@@ -2,6 +2,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{tikz}
 \usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
 \usetikzlibrary{shapes,arrows,positioning,decorations.pathreplacing}
 
 \title{TikZ Diagrams in LaTeX}
@@ -124,8 +125,9 @@ Here are some advanced TikZ features:
 
 \subsection{Shadows and Effects}
 \begin{tikzpicture}
-\draw[drop shadow={shadow xshift=2pt, shadow yshift=-2pt, fill=black, opacity=0.3}] (0,0) rectangle (2,1);
-\draw[fill=blue!20, draw=blue, thick] (3,0) rectangle (5,1);
+% Simulated drop shadow using a filled, slightly offset rectangle
+\fill[black, opacity=0.3] (0.1,-0.1) rectangle (2.1,0.9);
+\draw[fill=blue!20, draw=blue, thick] (0,0) rectangle (2,1);
 \end{tikzpicture}
 
 \section{Best Practices for TikZ}

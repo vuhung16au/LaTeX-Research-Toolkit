@@ -2,7 +2,6 @@
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath,amsfonts,amssymb}
 \usepackage{algorithm}
-\usepackage{algorithmic}
 \usepackage{algpseudocode}
 
 \title{Algorithm Pseudocode in LaTeX}
@@ -20,13 +19,13 @@ Here's a basic algorithm example:
 \caption{Basic Algorithm}
 \label{alg:basic}
 \begin{algorithmic}[1]
-\REQUIRE Input data $x_1, x_2, \ldots, x_n$
-\ENSURE Output result $y$
-\STATE Initialize $y = 0$
-\FOR{$i = 1$ to $n$}
-    \STATE $y = y + x_i$
-\ENDFOR
-\RETURN $y$
+\Require Input data $x_1, x_2, \ldots, x_n$
+\Ensure Output result $y$
+\State Initialize $y = 0$
+\For{$i = 1$ to $n$}
+    \State $y = y + x_i$
+\EndFor
+\Return $y$
 \end{algorithmic}
 \end{algorithm}
 
@@ -37,17 +36,17 @@ Here's a more complex algorithm with multiple steps:
 \caption{Complex Algorithm}
 \label{alg:complex}
 \begin{algorithmic}[1]
-\REQUIRE Input matrix $A$, vector $b$, tolerance $\epsilon$
-\ENSURE Solution vector $x$
-\STATE Initialize $x^{(0)} = 0$
-\STATE $k = 0$
-\REPEAT
-    \STATE $k = k + 1$
-    \FOR{$i = 1$ to $n$}
-        \STATE $x_i^{(k)} = \frac{1}{a_{ii}}\left(b_i - \sum_{j=1}^{i-1} a_{ij}x_j^{(k)} - \sum_{j=i+1}^{n} a_{ij}x_j^{(k-1)}\right)$
-    \ENDFOR
-\UNTIL{$\|x^{(k)} - x^{(k-1)}\| < \epsilon$}
-\RETURN $x^{(k)}$
+\Require Input matrix $A$, vector $b$, tolerance $\epsilon$
+\Ensure Solution vector $x$
+\State Initialize $x^{(0)} = 0$
+\State $k = 0$
+\Repeat
+    \State $k = k + 1$
+    \For{$i = 1$ to $n$}
+        \State $x_i^{(k)} = \frac{1}{a_{ii}}\left(b_i - \sum_{j=1}^{i-1} a_{ij}x_j^{(k)} - \sum_{j=i+1}^{n} a_{ij}x_j^{(k-1)}\right)$
+    \EndFor
+\Until{$\|x^{(k)} - x^{(k-1)}\| < \epsilon$}
+\Return $x^{(k)}$
 \end{algorithmic}
 \end{algorithm}
 
@@ -58,23 +57,23 @@ Here's an algorithm with detailed comments:
 \caption{Algorithm with Comments}
 \label{alg:comments}
 \begin{algorithmic}[1]
-\REQUIRE Input data $D = \{d_1, d_2, \ldots, d_n\}$
-\ENSURE Clustered data $C = \{c_1, c_2, \ldots, c_k\}$
-\STATE \COMMENT{Initialize centroids randomly}
-\STATE $c_1, c_2, \ldots, c_k = \text{random\_centroids}()$
-\STATE \COMMENT{Main clustering loop}
-\REPEAT
-    \STATE \COMMENT{Assign each point to nearest centroid}
-    \FOR{$i = 1$ to $n$}
-        \STATE $j = \arg\min_{j} \|d_i - c_j\|^2$
-        \STATE Assign $d_i$ to cluster $j$
-    \ENDFOR
-    \STATE \COMMENT{Update centroids}
-    \FOR{$j = 1$ to $k$}
-        \STATE $c_j = \frac{1}{|C_j|} \sum_{d_i \in C_j} d_i$
-    \ENDFOR
-\UNTIL{convergence}
-\RETURN $C$
+\Require Input data $D = \{d_1, d_2, \ldots, d_n\}$
+\Ensure Clustered data $C = \{c_1, c_2, \ldots, c_k\}$
+\State \Comment{Initialize centroids randomly}
+\State $c_1, c_2, \ldots, c_k = \text{random\_centroids}()$
+\State \Comment{Main clustering loop}
+\Repeat
+    \State \Comment{Assign each point to nearest centroid}
+    \For{$i = 1$ to $n$}
+        \State $j = \arg\min_{j} \|d_i - c_j\|^2$
+        \State Assign $d_i$ to cluster $j$
+    \EndFor
+    \State \Comment{Update centroids}
+    \For{$j = 1$ to $k$}
+        \State $c_j = \frac{1}{|C_j|} \sum_{d_i \in C_j} d_i$
+    \EndFor
+\Until{convergence}
+\Return $C$
 \end{algorithmic}
 \end{algorithm}
 
@@ -85,19 +84,19 @@ Here's an algorithm with conditional statements:
 \caption{Conditional Algorithm}
 \label{alg:conditional}
 \begin{algorithmic}[1]
-\REQUIRE Input value $x$, threshold $t$
-\ENSURE Processed value $y$
-\IF{$x > t$}
-    \STATE $y = x^2$
-    \STATE \COMMENT{Apply square transformation}
-\ELSIF{$x > 0$}
-    \STATE $y = x$
-    \STATE \COMMENT{Keep original value}
-\ELSE
-    \STATE $y = 0$
-    \STATE \COMMENT{Set to zero for negative values}
-\ENDIF
-\RETURN $y$
+\Require Input value $x$, threshold $t$
+\Ensure Processed value $y$
+\If{$x > t$}
+    \State $y = x^2$
+    \State \Comment{Apply square transformation}
+\ElsIf{$x > 0$}
+    \State $y = x$
+    \State \Comment{Keep original value}
+\Else
+    \State $y = 0$
+    \State \Comment{Set to zero for negative values}
+\EndIf
+\Return $y$
 \end{algorithmic}
 \end{algorithm}
 
@@ -108,17 +107,17 @@ Here's an algorithm with nested loops:
 \caption{Nested Loop Algorithm}
 \label{alg:nested}
 \begin{algorithmic}[1]
-\REQUIRE Input matrix $A$ of size $n \times n$
-\ENSURE Result matrix $B$ of size $n \times n$
-\FOR{$i = 1$ to $n$}
-    \FOR{$j = 1$ to $n$}
-        \STATE $B_{ij} = 0$
-        \FOR{$k = 1$ to $n$}
-            \STATE $B_{ij} = B_{ij} + A_{ik} \cdot A_{kj}$
-        \ENDFOR
-    \ENDFOR
-\ENDFOR
-\RETURN $B$
+\Require Input matrix $A$ of size $n \times n$
+\Ensure Result matrix $B$ of size $n \times n$
+\For{$i = 1$ to $n$}
+    \For{$j = 1$ to $n$}
+        \State $B_{ij} = 0$
+        \For{$k = 1$ to $n$}
+            \State $B_{ij} = B_{ij} + A_{ik} \cdot A_{kj}$
+        \EndFor
+    \EndFor
+\EndFor
+\Return $B$
 \end{algorithmic}
 \end{algorithm}
 

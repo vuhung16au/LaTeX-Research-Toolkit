@@ -10,6 +10,7 @@
 \RequirePackage{float}
 
 % Custom section formatting
+\makeatletter
 \renewcommand{\section}{\@startsection{section}{1}{\z@}%
     {-3.5ex \@plus -1ex \@minus -.2ex}%
     {2.3ex \@plus.2ex}%
@@ -20,16 +21,17 @@
     {-3.25ex\@plus -1ex \@minus -.2ex}%
     {1.5ex \@plus .2ex}%
     {\normalfont\large\bfseries}}
+\makeatother
 
-% Custom figure formatting
+% Custom figure/table names
 \renewcommand{\figurename}{Fig.}
 \renewcommand{\tablename}{Table}
 
 % Custom table formatting
 \renewcommand{\arraystretch}{1.2}
 
-% Custom citation formatting
-\renewcommand{\cite}[1]{\textsuperscript{\cite{#1}}}
+% Avoid redefining \cite to prevent recursion; provide a superscript citation macro instead
+\newcommand{\supcite}[1]{\textsuperscript{\cite{#1}}}
 
 % Custom page headers
 \RequirePackage{fancyhdr}
