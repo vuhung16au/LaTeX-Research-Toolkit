@@ -19,3 +19,4 @@ pdf: $(PDFS)
 clean:
 	rm -f *.aux *.log *.out *.toc *.bbl *.blg *.synctex.gz *.nav *.snm *.vrb *.idx *.ind *.ilg *.lot *.lof *.lol *.fdb_latexmk *.fls *.auxlock
 	rm -f $(PDFS)
+	rm -rf _minted
