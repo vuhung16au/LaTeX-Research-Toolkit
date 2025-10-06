@@ -99,3 +99,53 @@ LaTeX-Research-Toolkit/
 
 
 
+
+## 🧰 Build with make
+
+You can compile examples and clean artifacts using `make` both at the repository root and within subfolders.
+
+### Root-level
+
+- Show help:
+  ```bash
+  make help
+  ```
+- Build all example PDFs:
+  ```bash
+  make pdf
+  ```
+- Clean build artifacts in all examples:
+  ```bash
+  make clean
+  ```
+
+### Subfolders
+
+Most directories include a `Makefile` with `help`, `pdf`, and `clean` targets.
+
+- Examples (build PDFs in all categories):
+  ```bash
+  cd examples
+  make pdf
+  # or build only one category
+  cd basic && make pdf
+  ```
+
+- Templates (e.g., academic paper templates):
+  ```bash
+  cd templates/academic-paper
+  make pdf
+  ```
+
+- Exercises (build PDFs for all levels or per level):
+  ```bash
+  cd exercises
+  make pdf
+  # or per level
+  cd beginner && make pdf
+  ```
+
+To see available targets in any folder, run:
+```bash
+make help
+```

@@ -1,0 +1,133 @@
+\documentclass[11pt]{article}
+
+% --- 0:47 Margins and geometry ---
+\usepackage[
+    top=1.5in,
+    bottom=1in,
+    left=1in,
+    right=2in % Demonstrating an oversized margin for margin notes
+]{geometry}
+
+% --- 0:46 Columns and minipages ---
+\usepackage{multicol} % For multi-column sections
+\usepackage{graphicx} % For including images
+\usepackage{lipsum} % For generating placeholder text
+\usepackage{parskip} % For adjusting paragraph spacing (Video: 9:31)
+\usepackage{tcolorbox} % For highlighting text (Video: 11:40)
+\usepackage{witharrows} % For annotating equations (Video: 11:40)
+\usepackage{amsmath} % For math environments like align
+\usepackage{minted} % For including syntax-highlighted code (Video: 13:48)
+\usepackage{xcolor}
+
+% Define a light background color used by minted example
+\definecolor{mintedbg}{RGB}{245,245,245}
+
+\setlength{\parindent}{0pt} % Set indent to 0pt as discussed in video
+
+\begin{document}
+
+\title{The Beautiful \LaTeX\ Document: A Style Refresher}
+\author{Vu's Academic Toolkit}
+\date{\today}
+\maketitle
+
+\section{Layout and Columns (0:46)}
+
+This section demonstrates how to manage columns and place content side-by-side using \texttt{multicol} and \texttt{minipage}.
+
+\subsection{Multicol Environment}
+
+% Example of using the multicol environment
+\begin{multicols}{2}
+    \section*{Two-Column Section} % Using section* to avoid numbering
+    \noindent\hrulefill % Horizontal line for separation
+    \lipsum[1-2]
+    \columnbreak % Force content split into the next column
+    \lipsum[3]
+\end{multicols}
+
+\subsection{Minipage Environment (2:29)}
+% Minipage example using widths and hspace
+
+\noindent
+\begin{minipage}[t]{0.6\linewidth} % 60% of the text width
+    \centering
+    \textbf{Minipage 1 (60\% Width)}
+    \hrulefill
+    \lipsum[4][1-5] % First 5 sentences of paragraph 4
+\end{minipage}%
+\hspace{10pt}% Small horizontal space (3:40)
+\begin{minipage}[t]{0.3\linewidth} % 30% of the text width
+    \centering
+    \textbf{Minipage 2 (30\% Width)}
+    \hrulefill
+    \lipsum[5][1-5]
+\end{minipage}
+
+\section{Margins and Margin Notes (4:47)}
+
+\lipsum[6] % Text to provide context for the margin note
+
+This paragraph is aligned with the margin note, demonstrating the \texttt{geometry} package's effect on margins, which can be useful for adding extra comments or short summaries. \marginpar{\textbf{Margin Par:} This text appears in the oversized margin, demonstrating the $\mathbf{2in}$ right margin set by the \texttt{geometry} package.}
+The document body remains readable while the note is placed aside.
+
+\section{Whitespace and Alignment (6:56)}
+
+\subsection{Math Mode Spacing (7:10)}
+% Demonstrate spaces in math mode
+Let the initial conditions be:
+\begin{align*}
+    y'(0) &= 1 \quad \text{and} \quad y(0) = 0 \\
+    z &= x \! + \! y % Negative space for testing
+\end{align*}
+Here, \texttt{\\quad} gives a large standardized space, and \texttt{\\!} gives negative space.
+
+\subsection{Horizontal Fill (8:21)}
+\noindent This text is pushed left\hfill and this text is pushed right using \texttt{\textbackslash hfill}.
+
+\section{Annotating Equations (11:40)}
+
+We can annotate the steps of a derivative using braces and arrows.
+
+\begin{align}
+    \label{eq:derivative}
+    \frac{dy}{dx} &= \underbrace{\left(\frac{\partial y}{\partial t}\right)}_{\text{Temporal Change}} \frac{dt}{dx} \! + \! \underbrace{\left(\frac{\partial y}{\partial z}\right)}_{\text{Spatial Gradient}} \frac{dz}{dx}
+\end{align}
+
+We take the Laplace transform of the equation $\mathbf{Y}$ to $\mathbf{Y}(\mathbf{s})$:
+\[
+\begin{WithArrows}
+    \frac{d^2y}{dt^2} + y = \mathbf{f}(t) & \Arrow{Take the Laplace Transform} \\
+    s^2\mathbf{Y}(s) + \mathbf{Y}(s) = \mathbf{F}(s) &
+\end{WithArrows}
+\]
+
+\section{Including Code with Minted (13:48)}
+
+The \texttt{minted} package allows for professional, syntax-highlighted inclusion of code, which is essential for your IT proposal.
+
+\begin{listing}[h]
+\begin{minted}[
+    linenos,       % Line numbers
+    frame=lines,   % Framed box
+    bgcolor=mintedbg % Light background color
+]{python}
+# Example Python for GNN initialization
+import torch_geometric.nn as tgnn
+
+class GNN_Transformer(tgnn.MessagePassing):
+    def __init__(self, in_channels, out_channels):
+        super(GNN_Transformer, self).__init__(aggr='add')
+        self.lin = torch.nn.Linear(in_channels, out_channels)
+
+    def forward(self, x, edge_index):
+        # 1. Message Passing
+        return self.propagate(edge_index, x=x)
+\end{minted}
+\caption{Python implementation using the \texttt{minted} package.}
+\label{lst:python_example}
+\end{listing}
+
+\end{document}
+
+

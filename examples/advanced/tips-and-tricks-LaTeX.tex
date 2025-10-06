@@ -1,0 +1,120 @@
+\documentclass[11pt]{article}
+
+% --- Packages used in the Preamble ---
+\usepackage{amsmath}    % For math environments like align
+\usepackage{amsthm}     % For theorem environments (10:22)
+\usepackage{minted}     % For including syntax-highlighted code (13:48)
+\usepackage{tcolorbox}  % For highlighting text (11:40)
+\usepackage{witharrows} % For annotating equations (11:40)
+\usepackage{cleveref}   % For smart referencing (12:31)
+\usepackage{xifthen}    % For extended conditionals (1:58)
+\usepackage{ifthen}     % For \ifthenelse and \equal
+\usepackage{xcolor}     % For colors and \colorbox
+
+% --- 0:28 New Commands ---
+% Define a custom command for a partial derivative (takes 2 arguments: top and bottom)
+\newcommand{\PD}[2]{\frac{\partial #1}{\partial #2}}
+
+% --- 1:58 Conditional Formatting ---
+% Define a variable to toggle solutions on/off.
+% If \conditionalformat is defined as 'S', solutions are shown.
+\newcommand{\conditionalformat}{S} % Change 'S' to empty {} to hide solutions
+
+% Define the solution command (takes 1 argument: the solution text)
+\newcommand{\solution}[1]{%
+    \textbf{Solution:}~% space after label
+    \ifthenelse{\equal{\conditionalformat}{S}}{#1}{There is no solution.}%
+}
+
+% Theorem setup
+\newtheorem{theorem}{Theorem}
+
+\title{My Favorite \\LaTeX\\ Tricks to Save Time}
+\author{Vu's Efficiency Toolkit}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{Custom Commands and Conditional Formatting}
+
+\subsection{New Commands Example (0:28)}
+The partial derivative of $Z$ with respect to $X$ is written compactly using our custom command:
+$$\PD{Z}{X}$$
+
+\subsection{Conditional Toggle (1:58)}
+\noindent \textbf{Question 1:} Find the derivative of $y=x^2$.
+
+\solution{The derivative is $\PD{y}{x} = 2x$.}
+
+\section{Code Inclusion and File Management}
+
+\subsection{Including Code with Minted (13:48)}
+Using the \texttt{minted} package provides superior syntax highlighting for code blocks.
+\begin{listing}[h]
+\begin{minted}[
+    linenos,
+    frame=single,
+    bgcolor=gray!10
+]{python}
+# GNN Initialization for your PhD project
+class GNNLayer(MessagePassing):
+    def forward(self, x, edge_index):
+        # 1. Message Passing (Propagation)
+        return self.propagate(edge_index, x=x)
+\end{minted}
+\caption{Python GNN function using the \texttt{minted} package.}
+\label{lst:python_gnn}
+\end{listing}
+
+\subsection{Using Multiple Files (5:37)}
+% This demonstrates the concept of including files
+% To use \includeonly, move the command BEFORE \begin{document}.
+This content comes from the main file.
+\input{subsection_one.tex} % \input does NOT start a new page
+\input{subsection_two.tex} % use input to avoid include nesting restrictions
+
+\section{Academic Styling and Referencing}
+
+\subsection{Be Semantic (9:25)}
+\textbf{The Semantic Approach:} It is better to use \texttt{\textbackslash emph\{word\}} (emphasis) than \texttt{\textbackslash textit\{word\}} (italic).
+\begin{quote}
+    In normal text, \emph{emphasis} looks like \textit{italics}.
+\end{quote}
+However, inside a \texttt{theorem} environment, the formatting changes automatically:
+\begin{theorem}
+    If the text is already italicized, \emph{emphasis} becomes non-italicized for contrast.
+\end{theorem}
+This focuses on the \emph{meaning}, not the raw formatting.
+
+\subsection{Annotating Equations (11:40)}
+We can use \texttt{\textbackslash underbrace} and \texttt{tcolorbox} to draw attention to specific parts.
+\begin{equation}
+    E = \underbrace{m \cdot c^2}_{\text{\colorbox{yellow}{Energy Term}}} +
+    \underbrace{p \cdot c}_{\text{Momentum Term}}
+    \label{eq:einstein}
+\end{equation}
+
+% Example WithArrows usage (optional demonstration)
+\[
+\begin{WithArrows}
+    E = m c^2 + p c & \Arrow{Interpreting the components} \\
+    = \underbrace{m c^2}_{\text{rest energy}} + \underbrace{p c}_{\text{momentum term}} &
+\end{WithArrows}
+\]
+
+\subsection{Clever Referencing (12:31)}
+\textbf{Cleveref:} We can reference multiple items in a compact, smart way.
+
+The custom GNN code is located in \cref{lst:python_gnn}.
+We can also reference the equation and the listing together: \cref{eq:einstein,lst:python_gnn}.
+Notice how \texttt{\textbackslash cref} automatically inserts labels and handles pluralization.
+
+% --- File Structure Refresh (For the include/input commands to work) ---
+% These files exist separately in this folder:
+% 1. subsection_one.tex
+% 2. subsection_two.tex
+
+\end{document}
+
+

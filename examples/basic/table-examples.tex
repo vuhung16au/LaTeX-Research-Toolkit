@@ -1,6 +1,25 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
+\usepackage[table]{xcolor} % coloring tables
+\usepackage{booktabs}      % professional-quality tables
+\usepackage{array}         % extended column definitions (m{}, b{}, >{\raggedright\arraybackslash}p{}, ...)
+\usepackage{multirow}      % multirow cells
+\usepackage{makecell}      % line breaks and formatting inside cells
+\usepackage{colortbl}      % color cells/rows/columns
+\usepackage{longtable}     % multi-page tables
+\usepackage{tabularx}      % automatic column width X
+\usepackage{csvsimple}     % CSV to table
+\usepackage{filecontents}  % create small CSV demo inline
+
+% Inline CSV demo for the csvsimple example
+\begin{filecontents*}{data.csv}
+Name,Score,Passed
+Alice,95,Yes
+Bob,78,Yes
+Carol,62,Yes
+Dave,55,No
+\end{filecontents*}
 
 \title{Table Examples in LaTeX}
 \author{Your Name}
@@ -94,5 +113,226 @@ As shown in Table~\ref{tab:simple}, we can see the basic table structure.
 Table~\ref{tab:types} demonstrates different column types.
 
 The mathematical table (Table~\ref{tab:math}) shows the relationship between $x$, $x^2$, and $\sqrt{x}$.
+
+% --- Added examples below ---
+% The following sections extend the document with more table features.
+% You can copy individual environments into your own documents as needed.
+
+\clearpage
+\section{Column Alignment and Lines}
+Here are common alignments and line styles in the \texttt{tabular} preamble.
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{|l|c|r|}
+\hline
+Left-aligned & Centered & Right-aligned \\
+\hline
+alpha & beta & gamma \\
+delta & epsilon & zeta \\
+\hline
+\end{tabular}
+\caption{Alignment with vertical and horizontal rules}
+\label{tab:alignment-lines}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{@{} l c r @{}}
+\toprule
+Left (no outer rules) & Center & Right \\
+\midrule
+1 & 2 & 3 \\
+10 & 20 & 30 \\
+\bottomrule
+\end{tabular}
+\caption{Using \texttt{booktabs} for high-quality rules}
+\label{tab:booktabs}
+\end{table}
+
+\clearpage
+\section{Specifying Widths and Line Breaks}
+Use paragraph columns and helpers for controlled wrapping.
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{|m{3cm}|m{3cm}|m{3cm}|}
+\hline
+\textbf{m-column (middle)} & \textbf{m-column (middle)} & \textbf{m-column (middle)} \\
+\hline
+This text wraps and is vertically centered & Another wrapped cell & More wrapped content \\
+\hline
+\end{tabular}
+\caption{Fixed-width columns with \texttt{array}'s \texttt{m\{\}}}
+\label{tab:fixed-width-m}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\begin{tabularx}{\linewidth}{|>{\raggedright\arraybackslash}p{3cm}|X|X|}
+\hline
+\textbf{Fixed 3cm} & \textbf{Flexible X} & \textbf{Flexible X} \\
+\hline
+Long description that fits in 3cm & This column automatically uses remaining space and wraps text as needed & Same here, with automatic wrapping \\
+\hline
+\end{tabularx}
+\caption{Auto-width columns with \texttt{tabularx} (X type)}
+\label{tab:tabularx}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+\makecell[tl]{Top-left\\multiline cell} & \makecell[cb]{Centered bottom\\with line break} \\
+\hline
+\end{tabular}
+\caption{Line breaks inside cells using \texttt{makecell}}
+\label{tab:makecell}
+\end{table}
+
+\clearpage
+\section{Multiple Rows and Columns}
+Merge cells horizontally with \verb|\multicolumn| and vertically with \verb|\multirow|.
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{|l|c|c|}
+\hline
+\multirow{2}{*}{\textbf{Name}} & \multicolumn{2}{c|}{\textbf{Scores}} \\
+\cline{2-3}
+ & Math & Physics \\
+\hline
+Alice & 95 & 92 \\
+Bob & 88 & 90 \\
+\hline
+\end{tabular}
+\caption{Using \texttt{\textbackslash multirow} and \texttt{\textbackslash multicolumn}}
+\label{tab:multirow-multicol}
+\end{table}
+
+\clearpage
+\section{Coloring Cells, Rows, and Columns}
+Apply color to emphasize information.
+
+\begin{table}[htbp]
+\centering
+\rowcolors{2}{white}{gray!10}
+\begin{tabular}{lcc}
+\toprule
+\rowcolor{gray!30}
+Product & Quantity & Price \\
+\midrule
+Apples & 10 & \$5.00 \\
+Oranges & 15 & \$7.50 \\
+Bananas & 20 & \$4.00 \\
+Grapes & 5 & \$6.00 \\
+\bottomrule
+\end{tabular}
+\caption{Striped rows with header color}
+\label{tab:striped}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{|>{\columncolor{gray!15}}l|c|c|}
+\hline
+\textbf{Region} & Q1 & Q2 \\
+\hline
+North & 120 & 130 \\
+South & 110 & 115 \\
+\hline
+\end{tabular}
+\caption{Column background color using \texttt{colortbl}}
+\label{tab:col-colors}
+\end{table}
+
+\clearpage
+\section{Formatting Cells}
+Use font switches and alignment directives locally as needed.
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{lcr}
+\toprule
+\textbf{\sffamily Item} & {\itshape Description} & {\small Notes} \\
+\midrule
+Widget A & Fast and reliable & Preferred \\
+Widget B & \bfseries Budget option & Good value \\
+\bottomrule
+\end{tabular}
+\caption{Cell-level formatting}
+\label{tab:cell-formatting}
+\end{table}
+
+\clearpage
+\section{Placement, Captions, and Labels}
+Use placement hints like \verb|[h]| (here), \verb|[t]| (top), \verb|[b]| (bottom), and \verb|[p]| (page of floats). Combine like \verb|[htbp]|.
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{lc}
+\toprule
+Key & Value \\
+\midrule
+alpha & 1 \\
+beta & 2 \\
+\bottomrule
+\end{tabular}
+\caption{A table demonstrating placement options}
+\label{tab:placement}
+\end{table}
+
+\clearpage
+\section{Multi-page Tables (longtable)}
+For multi-page data, use \texttt{longtable}. Captions and headers repeat automatically.
+
+% Small demo longtable
+\begin{center}
+\begin{longtable}{|l|c|}
+\hline
+Header & Value \\
+\hline
+\endfirsthead
+\hline
+Header & Value \\
+\hline
+\endhead
+\hline
+\endfoot
+\hline
+\endlastfoot
+Row 1 & 1 \\
+Row 2 & 2 \\
+Row 3 & 3 \\
+Row 4 & 4 \\
+Row 5 & 5 \\
+Row 6 & 6 \\
+Row 7 & 7 \\
+Row 8 & 8 \\
+Row 9 & 9 \\
+Row 10 & 10 \\
+Row 11 & 11 \\
+Row 12 & 12 \\
+Row 13 & 13 \\
+Row 14 & 14 \\
+Row 15 & 15 \\
+\end{longtable}
+\end{center}
+
+\clearpage
+\section{Auto-generating Tables from CSV}
+Create a small CSV inline (already created in the preamble) and import it.
+
+\begin{table}[htbp]
+\centering
+\csvautotabular{data.csv}
+\caption{Importing data from CSV with \texttt{csvsimple}}
+\label{tab:csvsimple}
+\end{table}
+
+\clearpage
+\section{Other Useful Packages}
+See the Overleaf guide for tables for more patterns and best practices.
 
 \end{document}

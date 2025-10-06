@@ -152,6 +152,13 @@ env/
 *.figlist
 *.auxlock
 
+
+
+# Cache files
+examples/advanced/_minted/
+**/_minted/
+_minted/
+
 # Keep important files
 !README.md
 !.gitignore
@@ -160,4 +167,5 @@ env/
 !CHANGELOG.md
 
 Prompts.md
+TODO/
 
