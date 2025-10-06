@@ -99,7 +99,6 @@ LaTeX-Research-Toolkit/
 
 
 
-
 ## 🧰 Build with make
 
 You can compile examples and clean artifacts using `make` both at the repository root and within subfolders.
@@ -149,3 +148,15 @@ To see available targets in any folder, run:
 ```bash
 make help
 ```
+
+## 🌟 New Showcases
+
+The following new example and template files demonstrate commonly requested LaTeX features. Build them with the existing Makefiles:
+
+- `examples/basic/latex-tricks-showcase.tex` — Custom commands, conditional content, clever references.
+- `examples/intermediate/pgfplots-showcase.tex` — 2D/3D plots, custom ticks, stacked bars with `pgfplots`.
+- `examples/advanced/tikz-nodes-and-flows.tex` — TikZ nodes, anchors, and flow arrows.
+- `examples/research-specific/paper-structure-outline.tex` — STEM paper section outline.
+- `exercises/beginner/homework-assignment.tex` — Homework template with aligned math and figures.
+- `templates/presentation/beamer-overlays-demo.tex` — Beamer overlays, columns, blocks, and theming.
+- `templates/thesis/thesis-minimal.tex` — Minimal thesis/report scaffold.

@@ -1,0 +1,44 @@
+% Beamer Themed Variants Demo
+\documentclass[aspectratio=169]{beamer}
+\setbeamertemplate{navigation symbols}{}
+
+% Set one theme/colortheme here (preamble only)
+\usetheme{Madrid}
+\usecolortheme{seahorse}
+
+\title{Beamer Themed Variants}
+\author{LaTeX Research Toolkit}
+\date{\today}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Theme: Madrid + Seahorse}
+\begin{itemize}
+  \item Point A
+  \item Point B
+  \item Point C
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Blocks and Columns}
+\begin{columns}
+\begin{column}{0.48\textwidth}
+\begin{block}{Block}
+Content styled by Madrid+Seahorse.
+\end{block}
+\end{column}
+\begin{column}{0.48\textwidth}
+Right column content.
+\end{column}
+\end{columns}
+\end{frame}
+
+% To try other variants, change the preamble to one of these:
+% \usetheme{Copenhagen} \usecolortheme{beaver}
+% \usetheme{Boadilla}   \usecolortheme{crane}
+
+\end{document}

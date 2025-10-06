@@ -1,0 +1,45 @@
+% Homework Assignment Template (based on TODO/homework.md)
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{hyperref}
+
+\title{Homework \#1}
+\author{Your Name \\ Course \& Section \\ Date}
+\date{}
+
+\setlist[enumerate,1]{label=Problem~\arabic*:}
+\setlist[enumerate,2]{label=\alph*)}
+
+\begin{document}
+\maketitle
+
+\section*{Instructions}
+Show all work. When aligning multi-step derivations, use the \texttt{align} environment.
+
+\section*{Problems}
+\begin{enumerate}
+  \item Evaluate the integral
+  \[\int_{0}^{1} x^2\,dx.\]
+  \item Derive the derivative of $f(x)=x^2$ using limits:
+\begin{align}
+  f'(x) &= \lim_{h\to 0} \frac{(x+h)^2 - x^2}{h} \\
+         &= \lim_{h\to 0} \frac{2xh + h^2}{h} \\
+         &= 2x.
+\end{align}
+  \item Create a numbered list with sub-parts:
+  \begin{enumerate}
+    \item Part A.
+    \item Part B.
+  \end{enumerate}
+  \item Insert a figure with a caption (placeholder below):
+  \begin{figure}[h]
+    \centering
+    \fbox{\rule{0pt}{1.2in}\rule{1.8in}{0pt}}
+    \caption{A placeholder figure.}
+  \end{figure}
+\end{enumerate}
+
+\end{document}

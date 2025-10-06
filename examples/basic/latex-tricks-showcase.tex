@@ -1,0 +1,73 @@
+% LaTeX Tricks Showcase (based on TODO/fav.md)
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{cleveref}
+
+% Example of custom commands (newcommand)
+\newcommand{\PD}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\vect}[1]{\boldsymbol{#1}}
+
+% Conditional formatting toggle
+\newif\ifsolution
+\solutiontrue % set to \solutionfalse to hide solutions
+
+% Move some preamble items to a style file could be shown in packages/
+% (here we just note it, actual .sty already provided in repo)
+
+\title{LaTeX Tricks Showcase}
+\author{LaTeX Research Toolkit}
+\date{Demonstrating newcommand, conditional content, clever references, and structure}
+
+\begin{document}
+\maketitle
+
+\section{Custom Commands}
+Define short commands to speed up typing:
+\begin{align}
+    \PD{f}{x} &= \lim_{h\to 0} \frac{f(x+h)-f(x)}{h},\\
+    \vect{x} &= (x_1,\ldots,x_n).
+\end{align}
+
+\section{Conditional Content}
+Toggle solutions on or off with a single switch in the preamble.
+\begin{enumerate}
+    \item Compute $\int_0^1 x^2\,dx$.
+    \ifsolution
+    
+    Solution: Using $\int x^2\,dx = x^3/3$, we get $1/3$.
+    \fi
+    \item Solve $f'(x)=2x$.
+    \ifsolution
+    
+    Solution: $f(x)=x^2 + C$.
+    \fi
+\end{enumerate}
+
+\section{Being Semantic}
+Use \emph{emphasis} rather than manual italics to let contexts decide styling.
+
+\section{Clever References}
+See \cref{eq:example} and \cref{fig:parabola} for automatic labels.
+\begin{align}
+    f'(x) &= \lim_{h\to 0} \frac{(x+h)^2-x^2}{h} = 2x. \label{eq:example}
+\end{align}
+
+\begin{figure}[h]
+    \centering
+    % Placeholder image path; replace with an existing image if desired
+    % Using a small rule so the figure compiles even without external image
+    \fbox{\rule{0pt}{1in}\rule{1.5in}{0pt}}
+    \caption{A placeholder figure.}
+    \label{fig:parabola}
+\end{figure}
+
+\section{Multi-file Structure}
+Large projects should use \verb+\include+ and \verb+\input+ to split content into smaller files.
+
+\section{Creating Templates}
+Save frequently used environments (tables, plots) as reusable snippets or packages.
+
+\end{document}

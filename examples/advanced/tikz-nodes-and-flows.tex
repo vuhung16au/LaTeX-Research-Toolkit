@@ -1,0 +1,41 @@
+% TikZ Nodes and Flows (based on TODO/TikZ.md)
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows.meta}
+
+\title{TikZ Nodes and Flows}
+\author{LaTeX Research Toolkit}
+\date{Boxes, nodes, anchors, and arrows}
+
+\begin{document}
+\maketitle
+
+\tikzset{
+  flow/.style={rectangle, draw=blue!60!black, fill=blue!5, very thick,
+               minimum width=2.6cm, minimum height=1cm, align=center},
+  >={Stealth[length=3mm,width=2mm]}
+}
+
+\begin{center}
+\begin{tikzpicture}[node distance=1.6cm]
+  \node[flow] (start) {Start};
+  \node[flow, below of=start] (process) {Process\\$f(x)$};
+  \node[flow, below of=process] (decision) {Decision?};
+  \node[flow, below left=1.2cm and 1.8cm of decision] (altA) {Alternative A};
+  \node[flow, below right=1.2cm and 1.8cm of decision] (altB) {Alternative B};
+  \node[flow, below=2.0cm of decision] (end) {End};
+
+  \draw[->, very thick] (start) -- (process);
+  \draw[->, very thick] (process) -- (decision);
+  \draw[->, very thick] (decision.west) to[bend left=20] node[left]{Yes} (altA.north);
+  \draw[->, very thick] (decision.east) to[bend right=20] node[right]{No} (altB.north);
+  \draw[->, very thick] (altA.south) |- (end.west);
+  \draw[->, very thick] (altB.south) |- (end.east);
+\end{tikzpicture}
+\end{center}
+
+\bigskip
+Nodes can be positioned with keywords like \emph{below of} or relatively via anchors such as \verb+(decision.west)+.
+
+\end{document}

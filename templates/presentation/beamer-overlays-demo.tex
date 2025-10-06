@@ -1,0 +1,61 @@
+% Beamer Overlays Demo (based on TODO/presentation.md)
+\documentclass[aspectratio=169]{beamer}
+\usetheme{Copenhagen}
+\usecolortheme{beaver}
+\setbeamertemplate{navigation symbols}{}
+
+\title{Beamer Overlays Demo}
+\author{LaTeX Research Toolkit}
+\date{\today}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Table of Contents}
+  \tableofcontents
+\end{frame}
+
+\section{Overlays}
+\begin{frame}{Incremental Lists}
+\begin{itemize}
+  \item<1-> First point
+  \item<2-> Second point
+  \item<3-> Third point with \alert{emphasis}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Only vs Onslide}
+Text that appears only on slide 2:
+\only<2>{\textbf{Hello on slide 2 only!}}
+\onslide<3->{Visible from slide 3 onward}
+\end{frame}
+
+\section{Columns}
+\begin{frame}{Two Columns}
+\begin{columns}
+  \begin{column}{0.48\textwidth}
+    Left column content.
+  \end{column}
+  \begin{column}{0.48\textwidth}
+    Right column content.
+  \end{column}
+\end{columns}
+\end{frame}
+
+\section{Blocks}
+\begin{frame}{Blocks and Theorems}
+\begin{block}{A Block}
+Content inside a block.
+\end{block}
+\begin{example}
+An example environment.
+\end{example}
+\begin{theorem}
+A sample theorem.
+\end{theorem}
+\end{frame}
+
+\end{document}
