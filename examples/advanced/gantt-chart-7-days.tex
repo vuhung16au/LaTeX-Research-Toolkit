@@ -1,0 +1,95 @@
+% 7-Day Gantt chart for the AI Resume Tailoring MVP
+\documentclass[a4paper,11pt]{article}
+
+\usepackage[margin=1.6cm]{geometry}
+\usepackage{pgfgantt}
+\usepackage{xcolor}
+\usepackage{helvet}
+\renewcommand\familydefault{\sfdefault}
+
+% Colors
+\definecolor{phaseblue}{RGB}{66,133,244}
+\definecolor{taskblue}{RGB}{100,181,246}
+\definecolor{milestone}{RGB}{234,67,53}
+\definecolor{gridgray}{gray}{0.8}
+
+\title{7-Day Project Gantt Chart}
+\author{AI Resume Tailoring MVP}
+\date{Team: AI Developer + Coding Agent}
+
+\begin{document}
+\maketitle
+
+\begin{center}
+\begin{ganttchart}[
+  hgrid, vgrid,
+  vgrid={{draw=gridgray}},
+  x unit=0.8cm,
+  y unit chart=0.7cm,
+  y unit title=0.9cm,
+  group label font=\bfseries, group/.append style={draw=none, fill=phaseblue!55},
+  bar/.append style={draw=none, fill=taskblue!80},
+  milestone/.append style={fill=milestone, draw=none},
+  link/.style={-latex, very thick, draw=black!65},
+  bar label font=\small, group label font=\small\bfseries
+]{1}{7}
+
+  % Titles
+  \gantttitle{7-Day MVP Timeline}{7} \\
+  \gantttitlelist{1,...,7}{1} \\
+
+  % Day 1 – Architecture, Repo, and Secure Foundations
+  \ganttgroup{Day 1: Foundations}{1}{1} \\
+  \ganttbar{Monorepo + CI Green}{1}{1} \\
+  \ganttbar{Security Baseline Docs}{1}{1} \\
+  \ganttmilestone{Day 1 Complete}{1} \\
+
+  % Day 2 – File Ingestion Pipeline
+  \ganttgroup{Day 2: Ingestion}{2}{2} \\
+  \ganttbar{Upload Endpoint + Validation}{2}{2} \\
+  \ganttbar{Parsers: PDF/DOCX/RTF/TXT}{2}{2} \\
+  \ganttmilestone{Ingestion Demo}{2} \\
+
+  % Day 3 – Gemini POC and Tailoring
+  \ganttgroup{Day 3: AI Tailoring}{3}{3} \\
+  \ganttbar{Integrate Gemini SDK}{3}{3} \\
+  \ganttbar{Prompt Templates + Guardrails}{3}{3} \\
+  \ganttmilestone{Tailored Draft E2E}{3} \\
+
+  % Day 4 – Comparison UI and Structured Output
+  \ganttgroup{Day 4: Comparison UI}{4}{4} \\
+  \ganttbar{JSON Post-processing}{4}{4} \\
+  \ganttbar{Split View + Highlights}{4}{4} \\
+  \ganttmilestone{Interactive Compare}{4} \\
+
+  % Day 5 – Exports and UX Polish
+  \ganttgroup{Day 5: Exports + UX}{5}{5} \\
+  \ganttbar{Export: Text + Markdown}{5}{5} \\
+  \ganttbar{UI Polish + States}{5}{5} \\
+  \ganttmilestone{Usable Demo UX}{5} \\
+
+  % Day 6 – Hardening, Tests, Observability
+  \ganttgroup{Day 6: Hardening}{6}{6} \\
+  \ganttbar{Unit + Smoke Tests}{6}{6} \\
+  \ganttbar{Monitoring + Error Handling}{6}{6} \\
+  \ganttmilestone{Stability Baseline}{6} \\
+
+  % Day 7 – Release, Docs, Demo
+  \ganttgroup{Day 7: Release}{7}{7} \\
+  \ganttbar{One-click Deploy + Smoke}{7}{7} \\
+  \ganttbar{Docs + Demo Script}{7}{7} \\
+  \ganttmilestone{Public Demo URL}{7}
+
+  % Dependencies
+  \ganttlink{elem2}{elem5} % CI -> Upload Endpoint
+  \ganttlink{elem5}{elem8} % Ingestion -> Gemini
+  \ganttlink{elem8}{elem11} % AI -> JSON Post-processing
+  \ganttlink{elem11}{elem14} % Compare -> Exports
+  \ganttlink{elem14}{elem17} % Exports -> Tests/Monitoring
+  \ganttlink{elem17}{elem20} % Hardening -> Release
+\end{ganttchart}
+\end{center}
+
+\end{document}
+
+

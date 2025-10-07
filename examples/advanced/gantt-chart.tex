@@ -1,0 +1,102 @@
+% Gantt chart for a 12-month client-server web app project
+% Features: 4 phases, 3 months each; Team: 2 frontend, 2 backend
+% This example uses the pgfgantt package (no custom class required)
+\documentclass[a4paper,11pt]{article}
+
+\usepackage[margin=1.6cm]{geometry}
+\usepackage{pgfgantt}
+\usepackage{helvet}
+\renewcommand\familydefault{\sfdefault}
+
+% Helper styles for a cleaner look
+\definecolor{phaseblue}{RGB}{66,133,244}
+\definecolor{taskblue}{RGB}{100,181,246}
+\definecolor{milestone}{RGB}{234,67,53}
+\definecolor{gridgray}{gray}{0.8}
+
+\newcommand{\TeamInfo}{2 Frontend Devs, 2 Backend Devs}
+
+\title{12-Month Project Gantt Chart}
+\author{Client-Server Resume Tailoring Web Application}
+\date{Team: \TeamInfo}
+
+\begin{document}
+\maketitle
+
+% Timeline: 12 months total, grouped into 4 phases of 3 months each
+% Months are numbered 1..12 to keep this template year-agnostic.
+\begin{center}
+\begin{ganttchart}[
+  hgrid, vgrid,
+  vgrid={{draw=gridgray}},
+  % We mimic months 1..12 using a simple 1..12 axis
+  x unit=0.55cm,
+  y unit chart=0.7cm,
+  y unit title=0.9cm,
+  group label font=\bfseries, group/.append style={draw=none, fill=phaseblue!55},
+  bar/.append style={draw=none, fill=taskblue!80},
+  milestone/.append style={fill=milestone, draw=none},
+  link/.style={-latex, very thick, draw=black!65},
+  bar label font=\small, group label font=\small\bfseries
+]{1}{12}
+
+  % Titles
+  \gantttitle{12-Month Project Timeline}{12} \\
+  \gantttitlelist{1,...,12}{1} \\
+
+  % Phase 1: Discovery & Planning (Months 1-3)
+  \ganttgroup{Phase 1: Discovery \\ \& Planning}{1}{3} \\
+  \ganttbar{Requirements \\ Elicitation}{1}{1} \\
+  \ganttbar{Solution Architecture \\ (Client-Server)}{1}{2} \\
+  \ganttbar{Backlog \\ Definition}{2}{3} \\
+  \ganttmilestone{Phase 1 Review}{3} \\
+
+  % Phase 2: Design [0m\& Prototyping (Months 4-6)
+  \ganttgroup{Phase 2: Design \\ \& Prototyping}{4}{6} \\
+  \ganttbar{UI/UX Wireframes \\ (Frontend)}{4}{5} \\
+  \ganttbar{API Design \\ (Backend)}{4}{5} \\
+  \ganttbar{Clickable Prototype \\ (Frontend)}{5}{6} \\
+  \ganttmilestone{Design Sign-off}{6} \\
+
+  % Phase 3: Implementation (Months 7-9)
+  \ganttgroup{Phase 3: Implementation}{7}{9} \\
+  \ganttbar{Backend Services \\ (Auth, Resume Processing)}{7}{9} \\
+  \ganttbar{Frontend App \\ (Upload, Compare, Export)}{7}{9} \\
+  \ganttbar{AI Integration \\ (Gemini-based tailoring)}{8}{9} \\
+  \ganttmilestone{Feature Complete}{9} \\
+
+  % Phase 4: Stabilization [0m\& Release (Months 10-12)
+  \ganttgroup{Phase 4: Stabilization \\ \& Release}{10}{12} \\
+  \ganttbar{E2E Testing \\ \& Performance}{10}{11} \\
+  \ganttbar{Security Hardening \\ \& Compliance}{10}{11} \\
+  \ganttbar{Release Prep \\ \& Launch}{12}{12} \\
+  \ganttmilestone{Go Live}{12}
+
+  % Dependencies (simple illustrative links)
+  \ganttlink{elem2}{elem5} % Requirements -> UI/UX
+  \ganttlink{elem3}{elem6} % Architecture -> API Design
+  \ganttlink{elem8}{elem12} % Prototype -> Frontend App
+  \ganttlink{elem7}{elem11} % API Design -> Backend Services
+  \ganttlink{elem10}{elem14} % Feature Complete -> E2E Testing
+\end{ganttchart}
+\end{center}
+
+\vspace{1em}
+\textbf{Team:} \TeamInfo\\
+\textbf{Phases:} 4 phases, 3 months each (total 12 months)
+
+\section*{Project Info}
+This is a client-server web application that helps job seekers tailor their resumes to specific job descriptions using AI. Your data is processed securely on our servers and not stored after your session ends. The application integrates Google Gemini AI for resume tailoring. By using this app, you agree to the Gemini AI Terms of Service. AI can make mistakes. You must review and verify all results before using them for any official or important purpose.
+
+\section*{Key Features}
+\begin{itemize}
+  \item Smart Resume Analysis: Upload in PDF, DOCX, TXT, RTF
+  \item Job Description Matching: AI-powered skill and requirement extraction
+  \item Multiple Export Formats: Text, DOCX, RTF, Markdown
+  \item Side-by-Side Comparison of original vs tailored resume
+  \item One-Click Copying and Sample Data to try the tool
+\end{itemize}
+
+\end{document}
+
+
