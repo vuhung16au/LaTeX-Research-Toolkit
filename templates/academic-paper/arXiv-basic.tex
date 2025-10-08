@@ -1,0 +1,62 @@
+\documentclass[10pt,leqno]{amsart}
+\usepackage{graphicx}
+\baselineskip=16pt
+
+\usepackage{indentfirst,csquotes}
+
+\topmargin= .5cm
+\textheight= 20cm
+\textwidth= 32cc
+\baselineskip=16pt
+
+\evensidemargin= .9cm
+\oddsidemargin= .9cm
+
+\usepackage{amssymb,amsthm,amsmath}
+\usepackage{xcolor,paralist,hyperref,titlesec,fancyhdr,etoolbox}
+\newtheorem{theorem}{Theorem}[]
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\titleformat{\section}[display]{\normalfont\huge\bfseries\centering}{\centering\chaptertitlename\thechapter}{10pt}{\Large}
+\titlespacing*{\section}{0pt}{0ex}{0ex}
+
+\hypersetup{ colorlinks=true, linkcolor=black, filecolor=black, urlcolor=black }
+\def\proof{\noindent {\it Proof. $\, $}}
+\def\endproof{\hfill $\Box$ \vskip 5 pt }
+
+\usepackage{lipsum}
+
+\begin{document}
+\title{Title} %%%%%%%%%%%%
+\author[Initial Surname]{Author}
+\date{\today}
+\address{Address}
+\email{example@mail.com}
+\maketitle
+
+\let\thefootnote\relax
+\footnotetext{MSC2020: Primary 00A05, Secondary 00A66.} %%%%%%%%%%
+
+\begin{abstract}
+Abstract 
+\end{abstract} %%%%%%%%%
+
+\bigskip
+
+\noindent \lipsum[1] \cite{1}
+
+$\,$
+
+$\,$
+
+\begin{thebibliography}{99}
+
+\bibitem{1} Spiegel, M. R. (1981). Theory and problems of Advanced Calculus: Si (metric) edition. McGraw-Hill. 
+
+\end{thebibliography}
+\end{document}
