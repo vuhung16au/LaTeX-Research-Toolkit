@@ -67,7 +67,8 @@ LaTeX-Research-Toolkit/
 1. Start with `docs/getting-started/installation.md`
 2. Follow `docs/getting-started/basic-syntax.md`
 3. Try `examples/basic/simple-document.tex`
-4. Practice with `exercises/beginner/`
+4. **New!** Complete homework tutorial: `exercises/beginner/homework-assignment.tex` with [video guide](exercises/beginner/HOMEWORK-VIDEO-GUIDE.md)
+5. Practice with `exercises/beginner/`
 
 ### Intermediate
 1. Review `docs/theory/` for advanced concepts
@@ -158,6 +159,6 @@ The following new example and template files demonstrate commonly requested LaTe
 - `examples/advanced/tikz-nodes-and-flows.tex` — TikZ nodes, anchors, and flow arrows.
 - `examples/advanced/beamer-presentation-complete.tex` — Complete Beamer tutorial: overlays, animations, themes, columns, blocks, theorems, handouts (based on Dr. Trefor Bazett's tutorial).
 - `examples/research-specific/paper-structure-outline.tex` — STEM paper section outline.
-- `exercises/beginner/homework-assignment.tex` — Homework template with aligned math and figures.
+- `exercises/beginner/homework-assignment.tex` — Complete homework example demonstrating key LaTeX techniques: Riemann integral, aligned derivations, tables, cross-references, and figures. Includes comprehensive [video guide](exercises/beginner/HOMEWORK-VIDEO-GUIDE.md).
 - `templates/presentation/beamer-overlays-demo.tex` — Beamer overlays, columns, blocks, and theming.
 - `templates/thesis/thesis-minimal.tex` — Minimal thesis/report scaffold.

@@ -1,4 +1,11 @@
-% Homework Assignment Template (based on TODO/homework.md)
+% Homework Assignment Template
+% Demonstrates key LaTeX techniques for homework:
+% - Math mode with \[ ... \] for display equations
+% - enumerate environment for numbered problem lists
+% - align environment for multi-step derivations
+% - Tables with [h] positioning
+% - Cross-referencing with \label and \ref
+% - Including figures
 \documentclass[11pt]{article}
 \usepackage[a4paper,margin=1in]{geometry}
 \usepackage{amsmath,amssymb}
@@ -10,7 +17,9 @@
 \author{Your Name \\ Course \& Section \\ Date}
 \date{}
 
+% Customize list labels: "Problem 1:", "Problem 2:", etc.
 \setlist[enumerate,1]{label=Problem~\arabic*:}
+% Sub-parts use letters: a), b), c)
 \setlist[enumerate,2]{label=\alph*)}
 
 \begin{document}
@@ -21,25 +30,60 @@ Show all work. When aligning multi-step derivations, use the \texttt{align} envi
 
 \section*{Problems}
 \begin{enumerate}
-  \item Evaluate the integral
-  \[\int_{0}^{1} x^2\,dx.\]
-  \item Derive the derivative of $f(x)=x^2$ using limits:
+  % Problem 1: Riemann Integral - demonstrates \int, subscripts, superscripts, \lim, \sum
+  \item Write out the definition of the Riemann integral using the limit of Riemann sums:
+  \[
+  \int_{a}^{b} f(x) \, dx = \lim_{||\Delta x|| \to 0} \sum_{k=1}^{n} f(x_k^*) \Delta x_k
+  \]
+  
+  % Problem 2: Derivative derivation - demonstrates align environment with & for alignment
+  \item Derive the derivative of $f(x)=x^2$ using the limit definition. Use the \texttt{align} environment to align all equals signs:
 \begin{align}
-  f'(x) &= \lim_{h\to 0} \frac{(x+h)^2 - x^2}{h} \\
-         &= \lim_{h\to 0} \frac{2xh + h^2}{h} \\
-         &= 2x.
+  f'(x) &= \lim_{h \to 0} \frac{(x+h)^2 - x^2}{h} \label{eq:step1} \\
+        &= \lim_{h \to 0} \frac{(x^2 + 2xh + h^2) - x^2}{h} \label{eq:step2} \\
+        &= \lim_{h \to 0} \frac{2xh + h^2}{h} \label{eq:step3} \\
+        &= \lim_{h \to 0} (2x + h) \label{eq:step4} \\
+        &= 2x \label{eq:final}
 \end{align}
-  \item Create a numbered list with sub-parts:
+  Notice how the ampersand (\&) before each equals sign aligns them vertically. We can reference equation \ref{eq:final} for the final result.
+  
+  % Problem 3: Table example - demonstrates table environment with [h] positioning
+  \item Create a table showing the values of $f(x) = x^2$ for several values of $x$. The table should appear exactly here (not floating to top/bottom of page):
+  \begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|}
+      \hline
+      $x$ & $f(x) = x^2$ \\
+      \hline
+      0 & 0 \\
+      1 & 1 \\
+      2 & 4 \\
+      3 & 9 \\
+      \hline
+    \end{tabular}
+    \caption{Values of $f(x) = x^2$}
+    \label{tab:squares}
+  \end{table}
+  We can reference Table~\ref{tab:squares} using the \verb|\ref| command.
+  
+  % Problem 4: Nested enumerate - demonstrates sub-parts with automatic letter labels
+  \item This problem has multiple sub-parts:
   \begin{enumerate}
-    \item Part A.
-    \item Part B.
+    \item Evaluate $\int_{0}^{1} x^2\,dx$.
+    \item Explain why this integral represents the area under the parabola.
+    \item Sketch the region and label it as Figure~\ref{fig:parabola}.
   \end{enumerate}
-  \item Insert a figure with a caption (placeholder below):
+  
+  % Problem 5: Figure inclusion - demonstrates figure environment with [h] positioning
+  \item Insert a figure showing the parabola $y = x^2$:
   \begin{figure}[h]
     \centering
     \fbox{\rule{0pt}{1.2in}\rule{1.8in}{0pt}}
-    \caption{A placeholder figure.}
+    \caption{Graph of the parabola $y = x^2$ (placeholder figure).}
+    \label{fig:parabola}
   \end{figure}
+  The \verb|[h]| parameter tells LaTeX to try to place the figure \textbf{h}ere, preventing it from floating to the top or bottom of the page.
+  
 \end{enumerate}
 
 \end{document}
