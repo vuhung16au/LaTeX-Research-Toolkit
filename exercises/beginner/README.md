@@ -77,6 +77,14 @@ Try these exercises to practice what you've learned:
 
 - `exercise-1.tex` - Basic LaTeX document structure
 - `exercise-2.tex` - More practice with equations and lists
+- `exercise-3.tex` - Cross-references and labels (`\label`, `\ref`, `\pageref`)
+- `exercise-4.tex` - Figures and tables basics (including subfigures)
+- `exercise-5.tex` - Bibliography with natbib (`\cite`, `\citet`, `\citep`)
+- `exercise-6.tex` - Math alignment and numbering (`align`, matrices, cases)
+- `exercise-7.tex` - Page layout and headers/footers (`geometry`, `fancyhdr`)
+- `exercise-8.tex` - Custom commands and environments (`\newcommand`, custom environments)
+- `exercise-9.tex` - Footnotes, quotes, and hyperlinks (`\footnote`, `\enquote`, `\href`)
+- `exercise-10.tex` - Better tables with booktabs (`\toprule`, `\midrule`, `\bottomrule`, `siunitx`)
 
 ## Need Help?
 
