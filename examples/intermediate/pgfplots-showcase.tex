@@ -20,6 +20,35 @@
   \end{axis}
 \end{tikzpicture}
 
+\section{Intermediate 2D Plot: Multiple Functions}
+% Demonstrates: multiple plots, styling, domain, legend, and text annotation
+\begin{tikzpicture}
+  \begin{axis}[
+    axis lines=middle,
+    xmin=-3, xmax=3,
+    ymin=-1, ymax=5,
+    xlabel={$x$}, ylabel={$y$},
+    title={Multiple Functions with Styling},
+    legend pos=north west,
+    grid=major
+  ]
+    % Quadratic function with solid red line
+    \addplot[color=red, thick, samples=100, domain=-3:3] {x^2};
+    \addlegendentry{$x^2$}
+    
+    % Exponential function with dashed blue line
+    \addplot[color=blue, dashed, thick, samples=100, domain=-3:1.5] {exp(x/2)};
+    \addlegendentry{$e^{x/2}$}
+    
+    % Sine function with markers, limited domain
+    \addplot[color=green!60!black, mark=*, mark size=1.5pt, samples=50, domain=0:3] {2*sin(deg(x)) + 2};
+    \addlegendentry{$2\sin(x) + 2$}
+    
+    % Text annotation at a specific point
+    \node[pin=45:{Local maximum}] at (axis cs: 0, 0) {};
+  \end{axis}
+\end{tikzpicture}
+
 \section{Custom Ticks and Grid}
 \begin{tikzpicture}
   \begin{axis}[axis lines=middle, xmin=0, xmax=3.2, ymin=-1.5, ymax=1.5,
