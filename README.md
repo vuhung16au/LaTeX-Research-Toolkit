@@ -156,6 +156,7 @@ The following new example and template files demonstrate commonly requested LaTe
 - `examples/basic/latex-tricks-showcase.tex` — Custom commands, conditional content, clever references.
 - `examples/intermediate/pgfplots-showcase.tex` — 2D/3D plots, custom ticks, stacked bars with `pgfplots`.
 - `examples/advanced/tikz-nodes-and-flows.tex` — TikZ nodes, anchors, and flow arrows.
+- `examples/advanced/beamer-presentation-complete.tex` — Complete Beamer tutorial: overlays, animations, themes, columns, blocks, theorems, handouts (based on Dr. Trefor Bazett's tutorial).
 - `examples/research-specific/paper-structure-outline.tex` — STEM paper section outline.
 - `exercises/beginner/homework-assignment.tex` — Homework template with aligned math and figures.
 - `templates/presentation/beamer-overlays-demo.tex` — Beamer overlays, columns, blocks, and theming.
