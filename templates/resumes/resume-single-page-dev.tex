@@ -1,0 +1,192 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Single Page Developer Resume
+% LaTeX Template
+% Version 1.0
+%
+% A clean, single-page resume template for developers
+% optimized for ATS (Applicant Tracking Systems)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-1pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeSubItem}[2]{\resumeItem{#1}{#2}\vspace{-4pt}}
+
+\renewcommand{\labelitemii}{$\circ$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  CV STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%----------HEADING-----------------
+\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+  \textbf{\href{https://vuhung.dev/}{\Large Vu Hung Nguyen}} & Email : \href{mailto:vuhung@example.com}{vuhung@example.com}\\
+  \href{https://vuhung.dev/}{https://vuhung.dev} & Mobile : +1-000-111-1111 \\
+  \href{https://github.com/vuhung}{GitHub: github.com/vuhung} & \href{https://linkedin.com/in/vuhung}{LinkedIn: linkedin.com/in/vuhung}
+\end{tabular*}
+
+%-----------EDUCATION-----------------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {University Name}{City, State}
+      {Doctor of Philosophy in Computer Science;  GPA: 3.9/4.0}{2008 -- 2012}
+    \resumeSubheading
+      {University Name}{City, State}
+      {Bachelor of Science in Computer Science;  GPA: 3.8/4.0}{2004 -- 2008}
+  \resumeSubHeadingListEnd
+
+%-----------EXPERIENCE-----------------
+\section{Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Tech Company Inc.}{City, State}
+      {Senior Software Engineer}{Jan 2020 - Present}
+      \resumeItemListStart
+        \resumeItem
+          {Led development of microservices architecture serving 10M+ users using Python, Go, and AWS}
+        \resumeItem
+          {Architected containerized infrastructure with Docker and Kubernetes reducing deployment time by 60\%}
+        \resumeItem
+          {Mentored team of 5 junior developers through code reviews and technical guidance}
+        \resumeItem
+          {Optimized API performance achieving 40\% reduction in response times and 99.9\% uptime}
+        \resumeItem
+          {Implemented CI/CD pipelines using Jenkins and GitHub Actions improving release velocity}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Software Solutions LLC}{City, State}
+      {Software Engineer}{Jun 2015 - Dec 2019}
+      \resumeItemListStart
+        \resumeItem
+          {Built full-stack web applications using React, Node.js, Python Django serving 1M+ users}
+        \resumeItem
+          {Designed and optimized PostgreSQL and MongoDB schemas improving query performance by 50\%}
+        \resumeItem
+          {Developed RESTful APIs with comprehensive documentation and automated testing}
+        \resumeItem
+          {Contributed to open-source projects and developed internal development tools}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {StartUp Technologies}{City, State}
+      {Junior Software Developer}{Jan 2013 - May 2015}
+      \resumeItemListStart
+        \resumeItem
+          {Developed responsive web interfaces using React, Angular, and Vue.js}
+        \resumeItem
+          {Built backend services using Django, Flask, and Express.js}
+        \resumeItem
+          {Integrated third-party APIs and payment processing systems}
+        \resumeItem
+          {Participated in agile development with daily standups and sprint planning}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+%-----------PROJECTS-----------------
+\section{Projects}
+  \resumeSubHeadingListStart
+    \resumeSubItem{Distributed Data Processing System}
+      {Architected system processing 1TB+ daily using Apache Kafka, Spark, and Python. Reduced processing time by 60\%.}
+    \resumeSubItem{Real-time Analytics Dashboard}
+      {Built dashboard using React, Node.js, WebSocket providing live insights with sub-second latency.}
+    \resumeSubItem{API Gateway Service}
+      {Designed gateway handling 10K+ requests/second using Go, Redis, and NGINX. Achieved 99.99\% uptime.}
+  \resumeSubHeadingListEnd
+
+%--------TECHNICAL SKILLS------------
+\section{Technical Skills}
+  \resumeSubHeadingListStart
+    \item{
+      \textbf{Languages}{: Python, JavaScript, TypeScript, Go, Java, C++, SQL}
+    }
+    \item{
+      \textbf{Frameworks}{: React, Node.js, Django, Flask, Express, Angular, Vue.js}
+    }
+    \item{
+      \textbf{Cloud \& DevOps}{: AWS (EC2, S3, Lambda, RDS), Google Cloud, Docker, Kubernetes, Terraform}
+    }
+    \item{
+      \textbf{Databases}{: PostgreSQL, MongoDB, Redis, MySQL, Cassandra}
+    }
+    \item{
+      \textbf{Tools}{: Git, Jenkins, CircleCI, JIRA, Confluence}
+    }
+  \resumeSubHeadingListEnd
+
+%-----------CERTIFICATIONS-----------------
+\section{Certifications}
+  \resumeSubHeadingListStart
+    \item{AWS Certified Solutions Architect - Professional (2021)}
+    \item{Google Cloud Professional Cloud Architect (2019)}
+    \item{Certified Kubernetes Administrator - CKA (2018)}
+  \resumeSubHeadingListEnd
+
+%-------------------------------------------
+\end{document}

@@ -1,0 +1,106 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Wilson Resume/CV
+% Structure Specification File
+% Version 1.0 (22/1/2015)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\usepackage[a4paper, hmargin=25mm, vmargin=30mm, top=20mm]{geometry} % Use A4 paper and set margins
+
+\usepackage{fancyhdr} % Customize the header and footer
+
+\usepackage{lastpage} % Required for calculating the number of pages in the document
+
+\usepackage{hyperref} % Colors for links, text and headings
+
+\setcounter{secnumdepth}{0} % Suppress section numbering
+
+\usepackage[utf8]{inputenc} % Required for inputting international characters
+\usepackage[T1]{fontenc} % Output font encoding for international characters
+
+\usepackage{color} % Required for custom colors
+\definecolor{slateblue}{rgb}{0.17,0.22,0.34}
+
+\usepackage{sectsty} % Allows customization of titles
+\sectionfont{\color{slateblue}} % Color section titles
+
+\pagestyle{fancy}
+\fancyhf{} % Clear default headers/footers
+\renewcommand{\headrulewidth}{0pt} % No header rule
+\renewcommand{\footrulewidth}{0pt} % No footer rule
+\fancyfoot[C]{\thepage\ of \pageref{LastPage}} % Page numbers in footer
+
+%----------------------------------------------------------------------------------------
+%	SECTION TITLE STYLING AND SPACING
+%----------------------------------------------------------------------------------------
+
+\usepackage{titlesec} % Required for modifying sections
+
+%------------------------------------------------
+% Section
+\titleformat{\section} % Section type being modified
+{\color{slateblue}\Large\bfseries\scshape\raggedright} % Format of the whole section
+{}{0em} % Format of the section label
+{} % Code before the label
+[\color{black}\titlerule] % Code after the label
+
+\titlespacing{\section}{0pt}{12pt}{5pt} % Spacing around section titles, the order is: left, before and after
+
+%------------------------------------------------
+% Subsection
+\titleformat{\subsection} % Section type being modified
+{\large\bfseries\scshape\raggedright} % Format of the whole section
+{}{0em} % Format of the section label
+{} % Code before the label
+[\color{black}] % Code after the label
+
+\titlespacing{\subsection}{0pt}{8pt}{3pt} % Spacing around section titles, the order is: left, before and after
+
+%----------------------------------------------------------------------------------------
+%	COMMANDS
+%----------------------------------------------------------------------------------------
+
+\newcommand{\tabbedblock}[1]{
+	\begin{tabbing}
+	\hspace{2cm} \= \hspace{8cm} \= \kill
+	#1
+	\end{tabbing}}
+
+\newcommand{\job}[6]{
+	\begin{tabbing}
+	\hspace{2cm} \= \hspace{10cm} \= \kill
+	\textbf{#1} \> \textbf{#3} \> \textbf{#2}\\
+	\>\>\small{\href{#4}{#4}}\\[4pt]
+	\>\textbf{\textit{#5}}\\
+	\>\small{#6}
+	\end{tabbing}
+	\vspace{2mm}
+}
+
+\newcommand{\skillgroup}[2]{
+	\textbf{#1}\\
+	\hspace*{5mm}#2\\
+	\vspace{2mm}
+}
+
+\newcommand{\interestsgroup}[1]{
+	\hspace*{5mm}#1
+}
+
+\newcommand{\interest}[1]{
+	\textbullet \ #1\\
+}
+
+\newenvironment{itemize-noindent}
+{\setlength{\leftmargini}{0em}\begin{itemize}}
+{\end{itemize}}

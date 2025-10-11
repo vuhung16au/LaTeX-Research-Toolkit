@@ -1,0 +1,178 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Stylish CV
+% LaTeX Template
+% Version 1.0 (18/7/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Stefano (http://stefano.italians.nl/)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[a4paper, oneside, final]{scrartcl} % Paper options using the scrartcl class
+
+\usepackage{scrpage2} % Provides headers and footers configuration
+\usepackage{titlesec} % Allows creating custom \section's
+\usepackage{marvosym} % Allows the use of symbols
+\usepackage{tabularx,colortbl} % Advanced table configurations
+\usepackage{fontspec} % Allows font customization
+\usepackage{xcolor} % Color support
+
+\defaultfontfeatures{Mapping=tex-text}
+%\setmainfont{Adobe Garamond Pro} % Main document font
+
+\titleformat{\section}{\large\scshape\raggedright}{}{0em}{}[\titlerule] % Section formatting
+
+\pagestyle{scrheadings} % Print the headers and footers on all pages
+
+\addtolength{\voffset}{-0.5in} % Adjust the vertical offset - less whitespace at the top of the page
+\addtolength{\textheight}{3cm} % Adjust the text height - less whitespace at the bottom of the page
+
+\newcommand{\gray}{\rowcolor[gray]{.90}} % Custom highlighting for the work and education sections
+
+%----------------------------------------------------------------------------------------
+%	FOOTER SECTION
+%----------------------------------------------------------------------------------------
+
+\renewcommand{\headfont}{\normalfont\rmfamily\scshape} % Font settings for footer
+
+\cofoot{
+\fontsize{12.5}{17}\selectfont % Letter spacing and font size
+\textls[150]{123 Broadway {\large\textperiodcentered} City {\large\textperiodcentered} 12345}\\ % Your mailing address
+{\Large\Letter} \textls[150]{vuhung@example.com \ {\Large\Telefon} (000) 111-1111} % Your email address and phone number
+}
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\begin{center} % Center everything in the document
+
+%----------------------------------------------------------------------------------------
+%	HEADER SECTION
+%----------------------------------------------------------------------------------------
+
+{\fontsize{36}{36}\selectfont\scshape\textls[200]{Vu Hung Nguyen}} % Your name at the top
+
+\vspace{1cm} % Extra whitespace after the large name at the top
+
+%----------------------------------------------------------------------------------------
+%	OBJECTIVE
+%----------------------------------------------------------------------------------------
+
+\section{Objective}
+
+A position as a software engineer specializing in full-stack development and cloud architecture, where I can leverage my expertise in building scalable systems and mentoring development teams to deliver innovative solutions.
+
+%----------------------------------------------------------------------------------------
+%	WORK EXPERIENCE
+%----------------------------------------------------------------------------------------
+
+\section{Work Experience}
+
+\begin{tabularx}{0.97\linewidth}{>{\raggedleft\scshape}p{2cm}X}
+\gray Period & \textbf{Jan 2020 --- Present}\\
+\gray Employer & \textbf{Tech Company Inc.} \hfill City, State\\
+\gray Job Title & \textbf{Senior Software Engineer}\\
+\gray Languages & Python, JavaScript, TypeScript, Go\\
+       & Led development of microservices architecture serving 10M+ users. Implemented CI/CD pipelines and mentored junior developers. Optimized system performance achieving 40\% reduction in response time.\\
+\end{tabularx}
+
+\vspace{12pt}
+
+\begin{tabularx}{0.97\linewidth}{>{\raggedleft\scshape}p{2cm}X}
+\gray Period & \textbf{Jun 2015 --- Dec 2019}\\
+\gray Employer & \textbf{Software Solutions LLC} \hfill City, State\\
+\gray Job Title & \textbf{Software Engineer}\\
+\gray Languages & Python, Java, JavaScript, SQL\\
+       & Developed RESTful APIs and full-stack web applications. Designed and optimized database schemas. Contributed to multiple open-source projects and internal tools.\\
+\end{tabularx}
+
+\vspace{12pt}
+
+\begin{tabularx}{0.97\linewidth}{>{\raggedleft\scshape}p{2cm}X}
+\gray Period & \textbf{Jan 2013 --- May 2015}\\
+\gray Employer & \textbf{StartUp Technologies} \hfill City, State\\
+\gray Job Title & \textbf{Junior Software Developer}\\
+\gray Languages & JavaScript, Python, Ruby\\
+       & Built responsive web interfaces using modern frameworks. Collaborated with cross-functional teams in agile environment. Participated in code reviews and technical discussions.\\
+\end{tabularx}
+
+%----------------------------------------------------------------------------------------
+%	EDUCATION
+%----------------------------------------------------------------------------------------
+
+\section{Education}
+
+\begin{tabularx}{0.97\linewidth}{>{\raggedleft\scshape}p{2cm}X}
+\gray Period & \textbf{2008 --- 2012}\\
+\gray Degree & \textbf{Doctor of Philosophy in Computer Science}\\
+\gray University & \textbf{University Name} \hfill City, State\\
+\gray Thesis & \textit{Advanced Topics in Machine Learning and Distributed Systems}\\
+\end{tabularx}
+
+\vspace{12pt}
+
+\begin{tabularx}{0.97\linewidth}{>{\raggedleft\scshape}p{2cm}X}
+\gray Period & \textbf{2004 --- 2008}\\
+\gray Degree & \textbf{Bachelor of Science in Computer Science}\\
+\gray University & \textbf{University Name} \hfill City, State\\
+\gray Note & First Class Honours\\
+\end{tabularx}
+
+%----------------------------------------------------------------------------------------
+%	SKILLS
+%----------------------------------------------------------------------------------------
+
+\section{Skills}
+
+\begin{tabular}{ @{} >{\bfseries}l @{\hspace{6ex}} l }
+Programming Languages & Python, JavaScript, TypeScript, Java, C++, Go \\
+Web Technologies & React, Node.js, Django, Flask, Express.js \\
+Cloud Platforms & AWS, Google Cloud Platform, Azure \\
+Databases & PostgreSQL, MongoDB, Redis, MySQL \\
+DevOps & Docker, Kubernetes, Jenkins, CircleCI, Terraform \\
+Version Control & Git, GitHub, GitLab \\
+Methodologies & Agile, Scrum, TDD, CI/CD \\
+\end{tabular}
+
+%----------------------------------------------------------------------------------------
+%	PROJECTS
+%----------------------------------------------------------------------------------------
+
+\section{Notable Projects}
+
+\begin{tabularx}{0.97\linewidth}{>{\raggedleft\scshape}p{2cm}X}
+\gray Project & \textbf{Distributed Data Processing System}\\
+       & Architected and implemented a distributed data processing system handling 1TB+ daily. Used Apache Kafka, Spark, and Python. Reduced processing time by 60\%.\\
+\end{tabularx}
+
+\vspace{12pt}
+
+\begin{tabularx}{0.97\linewidth}{>{\raggedleft\scshape}p{2cm}X}
+\gray Project & \textbf{Real-time Analytics Dashboard}\\
+       & Built a real-time analytics dashboard using React, Node.js, and WebSocket. Provides live insights to business stakeholders with sub-second latency.\\
+\end{tabularx}
+
+%----------------------------------------------------------------------------------------
+%	CERTIFICATIONS
+%----------------------------------------------------------------------------------------
+
+\section{Certifications}
+
+\begin{tabularx}{0.97\linewidth}{>{\raggedleft\scshape}p{2cm}X}
+\gray 2021 & AWS Certified Solutions Architect - Professional\\
+\gray 2019 & Google Cloud Professional Cloud Architect\\
+\gray 2018 & Certified Kubernetes Administrator (CKA)\\
+\end{tabularx}
+
+%----------------------------------------------------------------------------------------
+
+\end{center}
+
+\end{document}
