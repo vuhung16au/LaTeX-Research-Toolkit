@@ -1,0 +1,295 @@
+\documentclass{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{bm}
+\usepackage{braket}
+\usepackage{physics}
+
+% Theme and color settings
+\usetheme{Madrid}
+\usecolortheme{default}
+
+% Title page information
+\title{Advanced Mathematics in LaTeX}
+\subtitle{A Comprehensive Showcase of Mathematical Formulas}
+\author{LaTeX Research Toolkit}
+\institute{Mathematics Department}
+\date{\today}
+
+\begin{document}
+
+% Title slide
+\begin{frame}
+\titlepage
+\end{frame}
+
+% Table of contents
+\begin{frame}
+\frametitle{Table of Contents}
+\tableofcontents
+\end{frame}
+
+\section{Calculus}
+
+\begin{frame}
+\frametitle{Fundamental Theorem of Calculus}
+\begin{theorem}[Fundamental Theorem of Calculus]
+If $f$ is continuous on $[a,b]$ and $F$ is an antiderivative of $f$ on $[a,b]$, then:
+\[
+\int_a^b f(x) \, dx = F(b) - F(a)
+\]
+\end{theorem}
+
+\begin{proof}
+By the definition of the definite integral and the mean value theorem.
+\end{proof}
+\end{frame}
+
+\begin{frame}
+\frametitle{Leibniz Rule for Differentiation}
+The Leibniz rule for differentiating under the integral sign:
+\[
+\frac{d}{dx} \int_{a(x)}^{b(x)} f(x,t) \, dt = \int_{a(x)}^{b(x)} \frac{\partial f}{\partial x}(x,t) \, dt + f(x,b(x)) \cdot b'(x) - f(x,a(x)) \cdot a'(x)
+\]
+\end{frame}
+
+\begin{frame}
+\frametitle{Taylor Series Expansion}
+The Taylor series expansion of a function $f(x)$ around point $a$:
+\[
+f(x) = \sum_{n=0}^{\infty} \frac{f^{(n)}(a)}{n!} (x-a)^n = f(a) + f'(a)(x-a) + \frac{f''(a)}{2!}(x-a)^2 + \frac{f'''(a)}{3!}(x-a)^3 + \cdots
+\]
+\end{frame}
+
+\section{Linear Algebra}
+
+\begin{frame}
+\frametitle{Eigenvalue Problem}
+For a square matrix $A$, the eigenvalue problem is:
+\[
+A \mathbf{v} = \lambda \mathbf{v}
+\]
+where $\lambda$ is an eigenvalue and $\mathbf{v}$ is the corresponding eigenvector.
+
+The characteristic equation is:
+\[
+\det(A - \lambda I) = 0
+\]
+\end{frame}
+
+\begin{frame}
+\frametitle{Singular Value Decomposition}
+Any matrix $A \in \mathbb{R}^{m \times n}$ can be decomposed as:
+\[
+A = U \Sigma V^T
+\]
+where:
+\begin{itemize}
+\item $U \in \mathbb{R}^{m \times m}$ is orthogonal
+\item $\Sigma \in \mathbb{R}^{m \times n}$ is diagonal with non-negative entries
+\item $V \in \mathbb{R}^{n \times n}$ is orthogonal
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Matrix Exponential}
+The matrix exponential is defined as:
+\[
+e^A = \sum_{k=0}^{\infty} \frac{A^k}{k!} = I + A + \frac{A^2}{2!} + \frac{A^3}{3!} + \cdots
+\]
+For diagonalizable matrices $A = PDP^{-1}$:
+\[
+e^A = P e^D P^{-1}
+\]
+\end{frame}
+
+\section{Complex Analysis}
+
+\begin{frame}
+\frametitle{Cauchy-Riemann Equations}
+A function $f(z) = u(x,y) + iv(x,y)$ is holomorphic if and only if:
+\[
+\frac{\partial u}{\partial x} = \frac{\partial v}{\partial y} \quad \text{and} \quad \frac{\partial u}{\partial y} = -\frac{\partial v}{\partial x}
+\]
+These are the Cauchy-Riemann equations.
+\end{frame}
+
+\begin{frame}
+\frametitle{Cauchy's Integral Formula}
+If $f$ is holomorphic in a simply connected domain $D$ and $\gamma$ is a simple closed curve in $D$, then:
+\[
+f(z_0) = \frac{1}{2\pi i} \oint_{\gamma} \frac{f(z)}{z - z_0} \, dz
+\]
+for any point $z_0$ inside $\gamma$.
+\end{frame}
+
+\begin{frame}
+\frametitle{Residue Theorem}
+If $f$ is holomorphic except for isolated singularities $a_1, a_2, \ldots, a_n$ inside a simple closed curve $\gamma$, then:
+\[
+\oint_{\gamma} f(z) \, dz = 2\pi i \sum_{k=1}^{n} \text{Res}(f, a_k)
+\]
+where $\text{Res}(f, a_k)$ is the residue of $f$ at $a_k$.
+\end{frame}
+
+\section{Probability and Statistics}
+
+\begin{frame}
+\frametitle{Central Limit Theorem}
+Let $X_1, X_2, \ldots, X_n$ be independent and identically distributed random variables with mean $\mu$ and variance $\sigma^2$. Then:
+\[
+\frac{\sqrt{n}(\bar{X}_n - \mu)}{\sigma} \xrightarrow{d} \mathcal{N}(0,1)
+\]
+as $n \to \infty$, where $\bar{X}_n = \frac{1}{n}\sum_{i=1}^n X_i$.
+\end{frame}
+
+\begin{frame}
+\frametitle{Bayes' Theorem}
+For events $A$ and $B$ with $P(B) > 0$:
+\[
+P(A|B) = \frac{P(B|A) \cdot P(A)}{P(B)}
+\]
+In continuous form:
+\[
+f(\theta|x) = \frac{f(x|\theta) \cdot f(\theta)}{\int f(x|\theta) \cdot f(\theta) \, d\theta}
+\]
+\end{frame}
+
+\begin{frame}
+\frametitle{Maximum Likelihood Estimation}
+The maximum likelihood estimator $\hat{\theta}$ maximizes the likelihood function:
+\[
+L(\theta) = \prod_{i=1}^{n} f(x_i|\theta)
+\]
+Equivalently, it maximizes the log-likelihood:
+\[
+\ell(\theta) = \sum_{i=1}^{n} \log f(x_i|\theta)
+\]
+\end{frame}
+
+\section{Partial Differential Equations}
+
+\begin{frame}
+\frametitle{Heat Equation}
+The heat equation in one dimension:
+\[
+\frac{\partial u}{\partial t} = \alpha \frac{\partial^2 u}{\partial x^2}
+\]
+where $u(x,t)$ represents temperature at position $x$ and time $t$, and $\alpha$ is the thermal diffusivity.
+\end{frame}
+
+\begin{frame}
+\frametitle{Wave Equation}
+The wave equation in three dimensions:
+\[
+\frac{\partial^2 u}{\partial t^2} = c^2 \nabla^2 u = c^2 \left( \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} + \frac{\partial^2 u}{\partial z^2} \right)
+\]
+where $c$ is the wave speed and $\nabla^2$ is the Laplacian operator.
+\end{frame}
+
+\begin{frame}
+\frametitle{Schrödinger Equation}
+The time-dependent Schrödinger equation:
+\[
+i\hbar \frac{\partial \psi}{\partial t} = \hat{H} \psi = \left( -\frac{\hbar^2}{2m} \nabla^2 + V(\mathbf{r},t) \right) \psi(\mathbf{r},t)
+\]
+where $\psi$ is the wave function, $\hat{H}$ is the Hamiltonian operator, and $V$ is the potential energy.
+\end{frame}
+
+\section{Number Theory}
+
+\begin{frame}
+\frametitle{Euler's Formula}
+Euler's formula connects complex analysis and trigonometry:
+\[
+e^{i\theta} = \cos \theta + i \sin \theta
+\]
+A special case is Euler's identity:
+\[
+e^{i\pi} + 1 = 0
+\]
+\end{frame}
+
+\begin{frame}
+\frametitle{Prime Number Theorem}
+The prime counting function $\pi(x)$ satisfies:
+\[
+\pi(x) \sim \frac{x}{\log x}
+\]
+as $x \to \infty$, meaning:
+\[
+\lim_{x \to \infty} \frac{\pi(x) \log x}{x} = 1
+\]
+\end{frame}
+
+\begin{frame}
+\frametitle{Riemann Zeta Function}
+The Riemann zeta function is defined as:
+\[
+\zeta(s) = \sum_{n=1}^{\infty} \frac{1}{n^s} = \prod_{p \text{ prime}} \frac{1}{1 - p^{-s}}
+\]
+for $\text{Re}(s) > 1$. The Riemann hypothesis states that all non-trivial zeros have real part $\frac{1}{2}$.
+\end{frame}
+
+\section{Topology}
+
+\begin{frame}
+\frametitle{Brouwer Fixed Point Theorem}
+Let $D^n = \{x \in \mathbb{R}^n : \|x\| \leq 1\}$ be the closed unit ball. Any continuous function $f: D^n \to D^n$ has at least one fixed point, i.e., there exists $x \in D^n$ such that $f(x) = x$.
+\end{frame}
+
+\begin{frame}
+\frametitle{Poincaré Conjecture}
+Every simply connected, closed 3-manifold is homeomorphic to the 3-sphere $S^3$. This was proven by Grigori Perelman in 2003.
+\end{frame}
+
+\section{Optimization}
+
+\begin{frame}
+\frametitle{Karush-Kuhn-Tucker Conditions}
+For the optimization problem:
+\begin{align}
+\min_{x} \quad & f(x) \\
+\text{subject to} \quad & g_i(x) \leq 0, \quad i = 1, \ldots, m \\
+& h_j(x) = 0, \quad j = 1, \ldots, p
+\end{align}
+
+The KKT conditions are:
+\begin{align}
+\nabla f(x^*) + \sum_{i=1}^{m} \lambda_i \nabla g_i(x^*) + \sum_{j=1}^{p} \mu_j \nabla h_j(x^*) &= 0 \\
+g_i(x^*) &\leq 0, \quad i = 1, \ldots, m \\
+h_j(x^*) &= 0, \quad j = 1, \ldots, p \\
+\lambda_i &\geq 0, \quad i = 1, \ldots, m \\
+\lambda_i g_i(x^*) &= 0, \quad i = 1, \ldots, m
+\end{align}
+\end{frame}
+
+\section{Conclusion}
+
+\begin{frame}
+\frametitle{Conclusion}
+This presentation showcased various advanced mathematical concepts using LaTeX:
+
+\begin{itemize}
+\item Calculus: Fundamental theorems and series expansions
+\item Linear Algebra: Eigenvalues, SVD, and matrix exponentials
+\item Complex Analysis: Cauchy-Riemann equations and residue theory
+\item Probability: Central limit theorem and Bayesian inference
+\item PDEs: Heat, wave, and Schrödinger equations
+\item Number Theory: Euler's formula and prime distribution
+\item Topology: Fixed point theorems and manifolds
+\item Optimization: KKT conditions for constrained optimization
+\end{itemize}
+
+LaTeX provides excellent support for typesetting complex mathematical expressions!
+\end{frame}
+
+\end{document}
