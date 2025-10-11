@@ -1,0 +1,198 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Wilson Resume/CV
+% XeLaTeX Template
+% Version 1.0 (22/1/2015)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Howard Wilson (https://github.com/watsonbox/cv_template_2004) with
+% extensive modifications by Vel (vel@latextemplates.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[10pt]{article} % Default font size
+
+\input{structure.tex} % Include the file specifying document layout
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	NAME AND CONTACT INFORMATION
+%----------------------------------------------------------------------------------------
+
+\title{Vu Hung Nguyen -- Resume} % Print the main header
+
+%------------------------------------------------
+
+\parbox{0.5\textwidth}{ % First block
+\begin{tabbing} % Enables tabbing
+\hspace{3cm} \= \hspace{4cm} \= \kill % Spacing within the block
+{\bf Address} \> 123 Broadway,\\ % Address line 1
+\> City, 12345 \\ % Address line 2
+{\bf Date of Birth} \> 7$^{th}$ September 1979 \\ % Date of birth 
+{\bf Nationality} \> British % Nationality
+\end{tabbing}}
+\hfill % Horizontal space between the two blocks
+\parbox{0.5\textwidth}{ % Second block
+\begin{tabbing} % Enables tabbing
+\hspace{3cm} \= \hspace{4cm} \= \kill % Spacing within the block
+{\bf Home Phone} \> +0 (000) 111 1111 \\ % Home phone
+{\bf Mobile Phone} \> +0 (000) 111 1112 \\ % Mobile phone
+{\bf Email} \> \href{mailto:vuhung@example.com}{vuhung@example.com} \\ % Email address
+\end{tabbing}}
+
+%----------------------------------------------------------------------------------------
+%	PERSONAL PROFILE
+%----------------------------------------------------------------------------------------
+
+\section{Personal Profile}
+
+Highly motivated and skilled software engineer with extensive experience in developing scalable applications and leading technical teams. Passionate about solving complex problems and delivering high-quality solutions. Strong background in computer science with a focus on software architecture and system design.
+
+%----------------------------------------------------------------------------------------
+%	EDUCATION SECTION
+%----------------------------------------------------------------------------------------
+
+\section{Education}
+
+\tabbedblock{
+\bf{2008-2012} \> Ph.D. in Computer Science - \href{https://www.university.edu}{University Name} \\[5pt]
+\>\+
+\textit{Dissertation: Advanced Topics in Machine Learning and Distributed Systems}\\
+Developed novel algorithms for distributed machine learning systems. Achieved significant performance improvements in large-scale data processing.
+}
+
+%------------------------------------------------
+
+\tabbedblock{
+\bf{2004-2008} \> B.Sc. (Hons) in Computer Science - \href{https://www.university.edu}{University Name} \\[5pt]
+\>\+
+\textit{First Class Honours}\\
+Graduated with distinction. Focus on software engineering and algorithms.
+}
+
+%----------------------------------------------------------------------------------------
+%	EMPLOYMENT HISTORY SECTION
+%----------------------------------------------------------------------------------------
+
+\section{Employment History}
+
+\job
+{Jan 2020 -}{Present}
+{Tech Company, City, State}
+{https://www.techcompany.com}
+{Senior Software Engineer}
+{Led development of cloud-based applications serving millions of users. Responsibilities included:
+\begin{itemize-noindent}
+\item{Architected and implemented microservices infrastructure using Docker and Kubernetes}
+\item{Mentored junior developers and conducted code reviews}
+\item{Optimized system performance resulting in 40\% reduction in latency}
+\item{Collaborated with cross-functional teams to deliver features on time}
+\end{itemize-noindent}}
+
+%------------------------------------------------
+
+\job
+{Jun 2015 -}{Dec 2019}
+{Software Solutions Inc., City, State}
+{https://www.solutions.com}
+{Software Engineer}
+{Developed full-stack web applications and RESTful APIs. Key achievements:
+\begin{itemize-noindent}
+\item{Built scalable backend services using Python and Node.js}
+\item{Implemented CI/CD pipelines improving deployment efficiency by 60\%}
+\item{Designed and optimized database schemas for PostgreSQL and MongoDB}
+\item{Contributed to open-source projects and internal tools}
+\end{itemize-noindent}}
+
+%------------------------------------------------
+
+\job
+{Jan 2013 -}{May 2015}
+{StartUp Tech, City, State}
+{https://www.startup.com}
+{Junior Software Developer}
+{Worked on various web development projects using modern frameworks:
+\begin{itemize-noindent}
+\item{Developed responsive front-end interfaces using React and Angular}
+\item{Implemented backend APIs using Django and Express.js}
+\item{Participated in agile development processes}
+\item{Collaborated with designers to implement user-friendly interfaces}
+\end{itemize-noindent}}
+
+%----------------------------------------------------------------------------------------
+%	IT/COMPUTING SKILLS SECTION
+%----------------------------------------------------------------------------------------
+
+\section{Technical Skills}
+
+\skillgroup{Programming Languages}
+{
+\textit{Expert:} Python, JavaScript, TypeScript\\
+\textit{Advanced:} Java, C++, Go, SQL\\
+\textit{Intermediate:} Rust, Scala, Ruby
+}
+
+%------------------------------------------------
+
+\skillgroup{Technologies \& Frameworks}
+{
+\textit{Web:} React, Node.js, Django, Flask, Express\\
+\textit{Cloud:} AWS, Google Cloud, Azure, Docker, Kubernetes\\
+\textit{Databases:} PostgreSQL, MongoDB, Redis, MySQL\\
+\textit{Tools:} Git, Jenkins, CircleCI, Terraform
+}
+
+%----------------------------------------------------------------------------------------
+%	INTERESTS SECTION
+%----------------------------------------------------------------------------------------
+
+\section{Interests}
+
+\interestsgroup{
+\interest{Open Source Contribution}
+\interest{Machine Learning Research}
+\interest{Cloud Architecture}
+\interest{Technical Writing}
+\interest{Photography}
+\interest{Hiking}
+}
+
+%----------------------------------------------------------------------------------------
+%	REFEREE SECTION
+%----------------------------------------------------------------------------------------
+
+\section{Referees}
+
+\parbox{0.5\textwidth}{ % First block
+\begin{tabbing}
+\hspace{2.75cm} \= \hspace{4cm} \= \kill % Spacing within the block
+{\bf Name} \> Dr. Jane Smith\\ % Referee name
+{\bf Company} \> Tech Company \\ % Referee company
+{\bf Position} \> Engineering Manager \\ % Referee job title 
+{\bf Contact} \> \href{mailto:jane@company.com}{jane@company.com} % Referee contact information
+\end{tabbing}}
+\hfill % Horizontal space between the two blocks
+\parbox{0.5\textwidth}{ % Second block
+\begin{tabbing}
+\hspace{2.75cm} \= \hspace{4cm} \= \kill % Spacing within the block
+{\bf Name} \> Prof. John Doe\\ % Referee name
+{\bf Company} \> University Name \\ % Referee company
+{\bf Position} \> Professor of Computer Science \\ % Referee job title 
+{\bf Contact} \> \href{mailto:john@university.edu}{john@university.edu} % Referee contact information
+\end{tabbing}}
+
+%----------------------------------------------------------------------------------------
+
+\end{document}

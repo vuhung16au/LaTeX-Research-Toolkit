@@ -1,6 +1,6 @@
-.PHONY: help pdf clean academic-paper thesis presentation letter
+.PHONY: help pdf clean academic-paper thesis presentation letter resumes
 
-SUBDIRS := academic-paper thesis presentation letter
+SUBDIRS := academic-paper thesis presentation letter resumes
 
 help:
 	@echo "Templates targets:"
