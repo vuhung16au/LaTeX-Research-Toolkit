@@ -1,0 +1,75 @@
+This book uses the following notation throughout:
+
+\section*{General Notation}
+
+\begin{itemize}[leftmargin=2em]
+    \item $a, b, c$ --- scalars (lowercase italic letters)
+    \item $\vect{a}, \vect{b}, \vect{c}$ --- vectors (bold lowercase letters)
+    \item $\mat{A}, \mat{B}, \mat{C}$ --- matrices (bold uppercase letters)
+    \item $\mathcal{A}, \mathcal{B}, \mathcal{C}$ --- sets (calligraphic uppercase)
+    \item $a_i$ --- the $i$-th element of vector $\vect{a}$
+    \item $A_{ij}$ or $\mat{A}_{ij}$ --- element at row $i$, column $j$ of matrix $\mat{A}$
+    \item $\mat{A}\transpose$ --- transpose of matrix $\mat{A}$
+    \item $\mat{A}^{-1}$ --- inverse of matrix $\mat{A}$
+    \item $\norm{\vect{x}}$ --- norm of vector $\vect{x}$ (typically $L^2$ norm)
+    \item $\norm{\vect{x}}_p$ --- $L^p$ norm of vector $\vect{x}$
+    \item $\abs{x}$ --- absolute value of scalar $x$
+    \item $\mathbb{R}$ --- set of real numbers
+    \item $\mathbb{R}^n$ --- $n$-dimensional real vector space
+    \item $\mathbb{R}^{m \times n}$ --- set of real $m \times n$ matrices
+\end{itemize}
+
+\section*{Probability and Statistics}
+
+\begin{itemize}[leftmargin=2em]
+    \item $P(X)$ --- probability distribution over discrete variable $X$
+    \item $p(x)$ --- probability density function over continuous variable $x$
+    \item $P(X=x)$ or $P(x)$ --- probability that $X$ takes value $x$
+    \item $P(X|Y)$ --- conditional probability of $X$ given $Y$
+    \item $\mathbb{E}_{x \sim P}[f(x)]$ --- expectation of $f(x)$ with respect to distribution $P$
+    \item $\text{Var}(X)$ --- variance of random variable $X$
+    \item $\text{Cov}(X, Y)$ --- covariance of random variables $X$ and $Y$
+    \item $\mathcal{N}(\mu, \sigma^2)$ --- Gaussian distribution with mean $\mu$ and variance $\sigma^2$
+\end{itemize}
+
+\section*{Calculus and Optimization}
+
+\begin{itemize}[leftmargin=2em]
+    \item $\frac{dy}{dx}$ or $\frac{\partial y}{\partial x}$ --- derivative of $y$ with respect to $x$
+    \item $\nabla_{\vect{x}} f$ --- gradient of function $f$ with respect to $\vect{x}$
+    \item $\nabla^2 f$ or $\mat{H}$ --- Hessian matrix (matrix of second derivatives)
+    \item $\arg\min_x f(x)$ --- value of $x$ that minimizes $f(x)$
+    \item $\arg\max_x f(x)$ --- value of $x$ that maximizes $f(x)$
+\end{itemize}
+
+\section*{Machine Learning}
+
+\begin{itemize}[leftmargin=2em]
+    \item $\mathcal{D}$ --- dataset
+    \item $\mathcal{D}_{\text{train}}$ --- training dataset
+    \item $\mathcal{D}_{\text{val}}$ --- validation dataset
+    \item $\mathcal{D}_{\text{test}}$ --- test dataset
+    \item $n$ --- number of examples in dataset
+    \item $m$ --- mini-batch size
+    \item $\vect{x}$ --- input vector or feature vector
+    \item $y$ --- target or label
+    \item $\hat{y}$ --- prediction or estimated output
+    \item $\vect{\theta}$ or $\vect{w}$ --- parameters or weights
+    \item $\mathcal{L}$ --- loss function
+    \item $J$ --- cost function (sum or average of losses)
+    \item $\alpha$ or $\eta$ --- learning rate
+    \item $\lambda$ --- regularization coefficient
+\end{itemize}
+
+\section*{Neural Networks}
+
+\begin{itemize}[leftmargin=2em]
+    \item $L$ --- number of layers in a neural network
+    \item $n^{[l]}$ --- number of units in layer $l$
+    \item $\vect{a}^{[l]}$ --- activations of layer $l$
+    \item $\vect{z}^{[l]}$ --- pre-activation values of layer $l$
+    \item $\mat{W}^{[l]}$ --- weight matrix for layer $l$
+    \item $\vect{b}^{[l]}$ --- bias vector for layer $l$
+    \item $f$ or $\sigma$ --- activation function
+    \item $g$ --- general function or transformation
+\end{itemize}

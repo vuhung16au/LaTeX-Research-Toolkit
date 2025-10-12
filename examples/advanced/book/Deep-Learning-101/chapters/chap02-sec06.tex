@@ -1,0 +1,139 @@
+% Chapter 2, Section 6: Eigendecomposition
+
+\section{Eigendecomposition}
+\label{sec:eigendecomposition}
+
+Eigendecomposition is a powerful tool for understanding and analyzing linear transformations, with important applications in deep learning.
+
+\subsection{Eigenvalues and Eigenvectors}
+
+\begin{definition}[Eigenvector and Eigenvalue]
+An \emph{eigenvector} of a square matrix $\mat{A} \in \mathbb{R}^{n \times n}$ is a non-zero vector $\vect{v}$ such that:
+\begin{equation}
+    \mat{A}\vect{v} = \lambda\vect{v}
+\end{equation}
+where $\lambda \in \mathbb{R}$ (or $\mathbb{C}$) is the corresponding \emph{eigenvalue}.
+\end{definition}
+
+The eigenvector's direction is preserved under the transformation $\mat{A}$, with only its magnitude scaled by $\lambda$.
+
+\begin{example}
+Consider $\mat{A} = \begin{bmatrix} 3 & 1 \\ 0 & 2 \end{bmatrix}$. We can verify that $\vect{v}_1 = \begin{bmatrix} 1 \\ 0 \end{bmatrix}$ is an eigenvector:
+\begin{equation}
+    \mat{A}\vect{v}_1 = \begin{bmatrix} 3 & 1 \\ 0 & 2 \end{bmatrix}\begin{bmatrix} 1 \\ 0 \end{bmatrix} = \begin{bmatrix} 3 \\ 0 \end{bmatrix} = 3\vect{v}_1
+\end{equation}
+So $\lambda_1 = 3$ is an eigenvalue.
+\end{example}
+
+\subsection{Finding Eigenvalues}
+
+To find eigenvalues, we solve the \emph{characteristic equation}:
+\begin{equation}
+    \det(\mat{A} - \lambda\mat{I}) = 0
+\end{equation}
+
+This gives a polynomial of degree $n$ called the characteristic polynomial, which has $n$ roots (counting multiplicities) in $\mathbb{C}$.
+
+\begin{example}
+For $\mat{A} = \begin{bmatrix} 2 & 1 \\ 1 & 2 \end{bmatrix}$:
+\begin{equation}
+    \det\begin{bmatrix} 2-\lambda & 1 \\ 1 & 2-\lambda \end{bmatrix} = (2-\lambda)^2 - 1 = \lambda^2 - 4\lambda + 3 = 0
+\end{equation}
+Solving gives $\lambda_1 = 3$ and $\lambda_2 = 1$.
+\end{example}
+
+\subsection{Eigendecomposition}
+
+If a matrix $\mat{A} \in \mathbb{R}^{n \times n}$ has $n$ linearly independent eigenvectors, it can be decomposed as:
+
+\begin{equation}
+    \mat{A} = \mat{V}\boldsymbol{\Lambda}\mat{V}^{-1}
+\end{equation}
+
+where:
+\begin{itemize}
+    \item $\mat{V}$ is the matrix whose columns are eigenvectors: $\mat{V} = [\vect{v}_1, \vect{v}_2, \ldots, \vect{v}_n]$
+    \item $\boldsymbol{\Lambda}$ is a diagonal matrix of eigenvalues: $\boldsymbol{\Lambda} = \text{diag}(\lambda_1, \lambda_2, \ldots, \lambda_n)$
+\end{itemize}
+
+This is called the \emph{eigendecomposition} or \emph{spectral decomposition}.
+
+\subsection{Symmetric Matrices}
+
+Symmetric matrices have particularly nice properties.
+
+\begin{theorem}[Spectral Theorem for Symmetric Matrices]
+If $\mat{A}$ is a real symmetric matrix ($\mat{A} = \mat{A}\transpose$), then:
+\begin{enumerate}
+    \item All eigenvalues are real
+    \item Eigenvectors corresponding to different eigenvalues are orthogonal
+    \item $\mat{A}$ can be decomposed as:
+    \begin{equation}
+        \mat{A} = \mat{Q}\boldsymbol{\Lambda}\mat{Q}\transpose
+    \end{equation}
+    where $\mat{Q}$ is an orthogonal matrix ($\mat{Q}\transpose\mat{Q} = \mat{I}$) of eigenvectors.
+\end{enumerate}
+\end{theorem}
+
+This decomposition is fundamental in many algorithms, including Principal Component Analysis (PCA).
+
+\subsection{Properties of Eigenvalues}
+
+For a matrix $\mat{A} \in \mathbb{R}^{n \times n}$:
+
+\begin{itemize}
+    \item $\text{trace}(\mat{A}) = \sum_{i=1}^{n} A_{ii} = \sum_{i=1}^{n} \lambda_i$
+    \item $\det(\mat{A}) = \prod_{i=1}^{n} \lambda_i$
+    \item If $\mat{A}$ is invertible, eigenvalues of $\mat{A}^{-1}$ are $1/\lambda_i$
+    \item Eigenvalues of $\mat{A}^k$ are $\lambda_i^k$
+\end{itemize}
+
+\subsection{Positive Definite Matrices}
+
+\begin{definition}[Positive Definite]
+A symmetric matrix $\mat{A}$ is \emph{positive definite} if for all non-zero $\vect{x} \in \mathbb{R}^n$:
+\begin{equation}
+    \vect{x}\transpose\mat{A}\vect{x} > 0
+\end{equation}
+Equivalently, all eigenvalues of $\mat{A}$ are positive.
+\end{definition}
+
+\begin{definition}[Positive Semi-definite]
+$\mat{A}$ is \emph{positive semi-definite} if $\vect{x}\transpose\mat{A}\vect{x} \geq 0$ for all $\vect{x}$, i.e., all eigenvalues are non-negative.
+\end{definition}
+
+Positive definite matrices are crucial in optimization, as they ensure that local minima are global minima for quadratic functions.
+
+\subsection{Applications in Deep Learning}
+
+Eigendecomposition has several important applications:
+
+\begin{enumerate}
+    \item \textbf{Principal Component Analysis (PCA):} Finds directions of maximum variance by computing eigenvectors of the covariance matrix.
+    
+    \item \textbf{Optimization:} The Hessian matrix's eigenvalues determine the curvature of the loss surface. Positive definite Hessians indicate convexity.
+    
+    \item \textbf{Spectral Normalization:} Constrains the largest eigenvalue of weight matrices to stabilize training of GANs.
+    
+    \item \textbf{Graph Neural Networks:} Graph Laplacian eigendecomposition defines spectral graph convolutions.
+    
+    \item \textbf{Understanding Dynamics:} Eigenvalues of recurrent weight matrices affect gradient flow and stability.
+\end{enumerate}
+
+\subsection{Computational Considerations}
+
+Computing eigendecomposition:
+\begin{itemize}
+    \item Full eigendecomposition: $O(n^3)$ for dense matrices
+    \item Power iteration for dominant eigenvector: $O(kn^2)$ for $k$ iterations
+    \item Iterative methods (e.g., Lanczos) for sparse matrices
+\end{itemize}
+
+For large-scale deep learning, we often use:
+\begin{itemize}
+    \item Approximations (e.g., power iteration)
+    \item Focus on top-$k$ eigenvalues/eigenvectors
+    \item Specialized algorithms for specific structures (e.g., symmetric, sparse)
+\end{itemize}
+
+Understanding eigendecomposition provides insight into the geometric properties of linear transformations and is essential for many advanced deep learning techniques.

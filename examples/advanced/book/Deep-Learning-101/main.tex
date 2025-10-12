@@ -1,0 +1,215 @@
+% Deep Learning 101 - Main Book File
+% Author: Vu Hung Nguyen
+% License: Creative Commons License Version 4.0 (CC BY 4.0)
+
+\documentclass[10pt,a5paper,twoside,openright]{book}
+
+% --- Page Layout ---
+\usepackage[a5paper, top=2cm, bottom=2cm, inner=1.8cm, outer=1.5cm]{geometry}
+\usepackage{setspace}
+\onehalfspacing
+
+% --- Essential Packages ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+
+% --- Math Packages ---
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage{mathtools}
+
+% --- Graphics and Colors ---
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{tikz}
+
+% --- Tables and Lists ---
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{enumitem}
+
+% --- References and Links ---
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!60!black,
+    citecolor=green!60!black,
+    urlcolor=blue!60!black,
+    bookmarksopen=true,
+}
+\usepackage[capitalise,noabbrev]{cleveref}
+
+% --- Bibliography ---
+\usepackage[backend=biber,style=alphabetic,sorting=nyt]{biblatex}
+\addbibresource{references.bib}
+
+% --- Theorem Environments ---
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+% --- Custom Commands ---
+\newcommand{\vect}[1]{\boldsymbol{#1}}
+\newcommand{\mat}[1]{\boldsymbol{#1}}
+\newcommand{\transpose}{^\top}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\abs}[1]{\left|#1\right|}
+
+% --- Title and Author Information ---
+\title{\textbf{Deep Learning 101}}
+\author{Vu Hung Nguyen}
+\date{\today}
+
+% ======================================================================
+% BEGIN DOCUMENT
+% ======================================================================
+
+\begin{document}
+
+% --- Front Matter ---
+\frontmatter
+
+% Title Page
+\begin{titlepage}
+    \centering
+    \vspace*{2cm}
+    
+    {\Huge\bfseries Deep Learning 101\par}
+    \vspace{1.5cm}
+    
+    {\Large Vu Hung Nguyen\par}
+    \vspace{2cm}
+    
+    {\large A Comprehensive Guide to\\
+    Deep Learning Theory and Practice\par}
+    
+    \vfill
+    
+    {\large \today\par}
+    \vspace{0.5cm}
+    
+    {\small License: Creative Commons Attribution 4.0 International (CC BY 4.0)\par}
+\end{titlepage}
+
+% Copyright Page
+\newpage
+\thispagestyle{empty}
+\vspace*{\fill}
+\begin{flushleft}
+\textbf{Deep Learning 101}\\
+Copyright \copyright~\the\year~Vu Hung Nguyen\\[0.5em]
+This work is licensed under the Creative Commons Attribution 4.0 International License.\\
+To view a copy of this license, visit \url{http://creativecommons.org/licenses/by/4.0/}\\[0.5em]
+First Edition: \today
+\end{flushleft}
+\vspace*{\fill}
+\clearpage
+
+% Table of Contents
+\tableofcontents
+
+% Acknowledgements
+\chapter*{Acknowledgements}
+\addcontentsline{toc}{chapter}{Acknowledgements}
+\input{chapters/acknowledgements}
+
+% Notation
+\chapter*{Notation}
+\addcontentsline{toc}{chapter}{Notation}
+\input{chapters/notation}
+
+% --- Main Matter ---
+\mainmatter
+
+% Chapter 1: Introduction
+\include{chapters/chap01}
+
+% ======================================================================
+% PART I: Basic Math and Machine Learning Foundation
+% ======================================================================
+\part{Basic Math and Machine Learning Foundation}
+
+% Chapter 2: Linear Algebra
+\include{chapters/chap02}
+
+% Chapter 3: Probability and Information Theory
+\include{chapters/chap03}
+
+% Chapter 4: Numerical Computation
+\include{chapters/chap04}
+
+% Chapter 5: Classical Machine Learning Algorithms
+\include{chapters/chap05}
+
+% ======================================================================
+% PART II: Practical Deep Networks
+% ======================================================================
+\part{Practical Deep Networks}
+
+% Chapter 6: Deep Feedforward Networks
+\include{chapters/chap06}
+
+% Chapter 7: Regularization for Deep Learning
+\include{chapters/chap07}
+
+% Chapter 8: Optimization for Training Deep Models
+\include{chapters/chap08}
+
+% Chapter 9: Convolutional Networks
+\include{chapters/chap09}
+
+% Chapter 10: Sequence Modeling: Recurrent and Recursive Nets
+\include{chapters/chap10}
+
+% Chapter 11: Practical Methodology
+\include{chapters/chap11}
+
+% Chapter 12: Applications
+\include{chapters/chap12}
+
+% ======================================================================
+% PART III: Deep Learning Research
+% ======================================================================
+\part{Deep Learning Research}
+
+% Chapter 13: Linear Factor Models
+\include{chapters/chap13}
+
+% Chapter 14: Autoencoders
+\include{chapters/chap14}
+
+% Chapter 15: Representation Learning
+\include{chapters/chap15}
+
+% Chapter 16: Structured Probabilistic Models for Deep Learning
+\include{chapters/chap16}
+
+% Chapter 17: Monte Carlo Methods
+\include{chapters/chap17}
+
+% Chapter 18: Confronting the Partition Function
+\include{chapters/chap18}
+
+% Chapter 19: Approximate Inference
+\include{chapters/chap19}
+
+% Chapter 20: Deep Generative Models
+\include{chapters/chap20}
+
+% --- Back Matter ---
+\backmatter
+
+% Bibliography
+\printbibliography[heading=bibintoc,title={Bibliography}]
+
+% Index (if needed in future)
+% \printindex
+
+\end{document}

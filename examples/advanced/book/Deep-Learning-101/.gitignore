@@ -1,0 +1,31 @@
+# LaTeX build artifacts
+*.aux
+*.log
+*.out
+*.toc
+*.bbl
+*.blg
+*.bcf
+*.run.xml
+*.synctex.gz
+*.idx
+*.ind
+*.ilg
+*.lot
+*.lof
+*.lol
+*.fdb_latexmk
+*.fls
+*.auxlock
+
+# PDF output (comment this line if you want to commit the PDF)
+# main.pdf
+
+# Backup files
+*~
+*.bak
+*.backup
+
+# OS files
+.DS_Store
+Thumbs.db

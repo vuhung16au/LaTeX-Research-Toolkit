@@ -1,0 +1,112 @@
+% Chapter 2, Section 3: Identity and Inverse Matrices
+
+\section{Identity and Inverse Matrices}
+\label{sec:identity-inverse}
+
+Special matrices play important roles in linear algebra and deep learning. The identity matrix and matrix inverses are among the most fundamental.
+
+\subsection{Identity Matrix}
+
+The identity matrix is the matrix analog of the number 1.
+
+\begin{definition}[Identity Matrix]
+The identity matrix $\mat{I}_n \in \mathbb{R}^{n \times n}$ is a square matrix with ones on the diagonal and zeros elsewhere:
+\begin{equation}
+    \mat{I}_n = \begin{bmatrix}
+        1 & 0 & \cdots & 0 \\
+        0 & 1 & \cdots & 0 \\
+        \vdots & \vdots & \ddots & \vdots \\
+        0 & 0 & \cdots & 1
+    \end{bmatrix}
+\end{equation}
+Formally, $(\mat{I}_n)_{ij} = \delta_{ij}$ where $\delta_{ij}$ is the Kronecker delta:
+\begin{equation}
+    \delta_{ij} = \begin{cases}
+        1 & \text{if } i = j \\
+        0 & \text{if } i \neq j
+    \end{cases}
+\end{equation}
+\end{definition}
+
+The key property of the identity matrix is:
+\begin{equation}
+    \mat{I}_n\mat{A} = \mat{A}\mat{I}_n = \mat{A}
+\end{equation}
+for any matrix $\mat{A} \in \mathbb{R}^{n \times n}$.
+
+\subsection{Matrix Inverse}
+
+The inverse of a matrix, when it exists, allows us to solve systems of linear equations.
+
+\begin{definition}[Matrix Inverse]
+A square matrix $\mat{A} \in \mathbb{R}^{n \times n}$ is \emph{invertible} (or \emph{non-singular}) if there exists a matrix $\mat{A}^{-1} \in \mathbb{R}^{n \times n}$ such that:
+\begin{equation}
+    \mat{A}^{-1}\mat{A} = \mat{A}\mat{A}^{-1} = \mat{I}_n
+\end{equation}
+\end{definition}
+
+\begin{example}
+The matrix $\mat{A} = \begin{bmatrix} 2 & 1 \\ 1 & 1 \end{bmatrix}$ has inverse:
+\begin{equation}
+    \mat{A}^{-1} = \begin{bmatrix} 1 & -1 \\ -1 & 2 \end{bmatrix}
+\end{equation}
+We can verify: $\mat{A}\mat{A}^{-1} = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix} = \mat{I}_2$.
+\end{example}
+
+\subsection{Properties of Inverses}
+
+If $\mat{A}$ and $\mat{B}$ are invertible, then:
+
+\begin{align}
+    (\mat{A}^{-1})^{-1} &= \mat{A} \\
+    (\mat{AB})^{-1} &= \mat{B}^{-1}\mat{A}^{-1} \\
+    (\mat{A}\transpose)^{-1} &= (\mat{A}^{-1})\transpose
+\end{align}
+
+\subsection{Solving Linear Systems}
+
+The inverse allows us to solve systems of linear equations. Given $\mat{A}\vect{x} = \vect{b}$, if $\mat{A}$ is invertible:
+\begin{equation}
+    \vect{x} = \mat{A}^{-1}\vect{b}
+\end{equation}
+
+However, computing inverses is expensive ($O(n^3)$ for dense matrices) and numerically unstable. In practice, we often use more efficient methods like LU decomposition or iterative solvers.
+
+\subsection{Conditions for Invertibility}
+
+A matrix $\mat{A} \in \mathbb{R}^{n \times n}$ is invertible if and only if:
+\begin{itemize}
+    \item Its determinant is non-zero: $\det(\mat{A}) \neq 0$
+    \item Its columns (and rows) are linearly independent
+    \item It has full rank: $\text{rank}(\mat{A}) = n$
+    \item Its null space contains only the zero vector
+\end{itemize}
+
+\subsection{Singular Matrices}
+
+Matrices that are not invertible are called \emph{singular} or \emph{degenerate}.
+
+\begin{example}
+The matrix $\mat{A} = \begin{bmatrix} 1 & 2 \\ 2 & 4 \end{bmatrix}$ is singular because its rows are linearly dependent (the second row is twice the first). Its determinant is $\det(\mat{A}) = 4 - 4 = 0$.
+\end{example}
+
+Singular matrices arise in deep learning when:
+\begin{itemize}
+    \item Features are perfectly correlated
+    \item The model is overparameterized
+    \item Numerical precision issues occur
+\end{itemize}
+
+\subsection{Pseudo-inverse}
+
+For non-square or singular matrices, we can use the Moore-Penrose pseudo-inverse $\mat{A}^+$, which provides a generalized notion of inversion. The pseudo-inverse is particularly useful in least squares problems and is discussed further in later chapters.
+
+\subsection{Practical Considerations}
+
+In deep learning implementations:
+\begin{itemize}
+    \item Avoid explicitly computing matrix inverses when possible
+    \item Use numerically stable algorithms (e.g., QR decomposition, SVD)
+    \item Add regularization to ensure invertibility (e.g., $(\mat{A}\transpose\mat{A} + \lambda\mat{I})^{-1}$)
+    \item Leverage optimized linear algebra libraries (BLAS, LAPACK, cuBLAS)
+\end{itemize}
