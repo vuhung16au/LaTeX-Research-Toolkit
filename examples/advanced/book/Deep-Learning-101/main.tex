@@ -44,6 +44,13 @@
 \usepackage[backend=biber,style=alphabetic,sorting=nyt]{biblatex}
 \addbibresource{references.bib}
 
+% --- Glossary and Index ---
+\usepackage{makeidx}
+\usepackage{glossaries}
+\makeindex
+\makeglossaries
+\loadglsentries{chapters/glossary}
+
 % --- Theorem Environments ---
 \newtheorem{theorem}{Theorem}[chapter]
 \newtheorem{lemma}[theorem]{Lemma}
@@ -61,6 +68,23 @@
 \newcommand{\transpose}{^\top}
 \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
 \newcommand{\abs}[1]{\left|#1\right|}
+
+% --- Difficulty Level Commands ---
+\newcommand{\difficulty}[1]{%
+    \ifstrequal{#1}{beginner}{%
+        \textcolor{green!70!black}{\textbf{[Beginner]}}%
+    }{%
+        \ifstrequal{#1}{intermediate}{%
+            \textcolor{orange!70!black}{\textbf{[Intermediate]}}%
+        }{%
+            \ifstrequal{#1}{advanced}{%
+                \textcolor{red!70!black}{\textbf{[Advanced]}}%
+            }{%
+                \textbf{[#1]}%
+            }%
+        }%
+    }%
+}
 
 % --- Title and Author Information ---
 \title{\textbf{Deep Learning 101}}
@@ -206,10 +230,13 @@ First Edition: \today
 % --- Back Matter ---
 \backmatter
 
+% Glossary
+\printglossary[title={Glossary},toctitle={Glossary}]
+
+% Index
+\printindex
+
 % Bibliography
 \printbibliography[heading=bibintoc,title={Bibliography}]
-
-% Index (if needed in future)
-% \printindex
 
 \end{document}

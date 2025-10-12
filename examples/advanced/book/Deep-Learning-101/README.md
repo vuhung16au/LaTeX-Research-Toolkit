@@ -56,6 +56,8 @@ make clean
 - LaTeX distribution (TeX Live, MiKTeX, or similar)
 - pdflatex
 - biber (for bibliography)
+- makeglossaries (for glossary)
+- makeindex (for index)
 
 ## Current Status
 
@@ -84,6 +86,11 @@ make clean
 - ✅ Front matter (Acknowledgements, Notation)
 - ✅ Book infrastructure (main.tex, Makefile, bibliography)
 - ✅ Extended bibliography with modern references
+- ✅ Glossary with technical terms and definitions
+- ✅ Comprehensive subject index
+- ✅ Difficulty level indicators (Beginner/Intermediate/Advanced)
+- ✅ Contributing guidelines with difficulty level policies
+- ✅ AI assistant instruction policies (Copilot & Gemini)
 
 **Book Statistics:**
 - 📖 186 pages
