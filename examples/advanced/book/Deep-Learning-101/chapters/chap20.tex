@@ -6,24 +6,233 @@
 This chapter examines modern approaches to generating new data samples using deep learning.
 
 \section{Variational Autoencoders (VAEs)}
+\label{sec:vaes}
 
-\textit{This section will cover VAE architecture and training in detail.}
+(See also Chapter 14 for detailed VAE coverage.)
+
+\subsection{Recap}
+
+VAE learns latent representation $\vect{z}$ and decoder $p_{\theta}(\vect{x}|\vect{z})$:
+\begin{equation}
+\max_{\theta, \phi} \mathbb{E}_{q_{\phi}(\vect{z}|\vect{x})}[\log p_{\theta}(\vect{x}|\vect{z})] - D_{KL}(q_{\phi}(\vect{z}|\vect{x}) \| p(\vect{z}))
+\end{equation}
+
+\subsection{Conditional VAEs}
+
+Generate conditioned on class or attributes:
+\begin{equation}
+\max \mathbb{E}_{q(\vect{z}|\vect{x}, y)}[\log p(\vect{x}|\vect{z}, y)] - D_{KL}(q(\vect{z}|\vect{x}, y) \| p(\vect{z}))
+\end{equation}
+
+\subsection{Disentangled Representations}
+
+\textbf{$\beta$-VAE:} Increase KL weight for disentanglement
+\begin{equation}
+\mathcal{L} = \mathbb{E}_{q}[\log p(\vect{x}|\vect{z})] - \beta D_{KL}(q(\vect{z}|\vect{x}) \| p(\vect{z}))
+\end{equation}
 
 \section{Generative Adversarial Networks (GANs)}
+\label{sec:gans}
 
-\textit{This section will introduce GANs, training dynamics, and common architectures.}
+\subsection{Core Idea}
+
+Two networks compete:
+\begin{itemize}
+    \item \textbf{Generator} $G$: Creates fake samples from noise
+    \item \textbf{Discriminator} $D$: Distinguishes real from fake
+\end{itemize}
+
+\subsection{Objective}
+
+Minimax game:
+\begin{equation}
+\min_G \max_D \mathbb{E}_{\vect{x} \sim p_{\text{data}}}[\log D(\vect{x})] + \mathbb{E}_{\vect{z} \sim p(\vect{z})}[\log(1 - D(G(\vect{z})))]
+\end{equation}
+
+\subsection{Training Procedure}
+
+Alternate updates:
+\begin{enumerate}
+    \item \textbf{Update D:} Maximize discrimination
+    \begin{equation}
+    \max_D \mathbb{E}_{\vect{x}}[\log D(\vect{x})] + \mathbb{E}_{\vect{z}}[\log(1 - D(G(\vect{z})))]
+    \end{equation}
+    
+    \item \textbf{Update G:} Minimize discrimination (or maximize $\log D(G(\vect{z}))$)
+    \begin{equation}
+    \min_G \mathbb{E}_{\vect{z}}[\log(1 - D(G(\vect{z})))]
+    \end{equation}
+\end{enumerate}
+
+\subsection{Training Challenges}
+
+\textbf{Mode collapse:} Generator produces limited variety
+
+\textbf{Training instability:} Oscillations, non-convergence
+
+\textbf{Vanishing gradients:} When discriminator too strong
+
+\subsection{GAN Variants}
+
+\textbf{DCGAN:} Deep Convolutional GAN with architectural guidelines
+
+\textbf{WGAN:} Wasserstein GAN with improved training stability
+
+\textbf{StyleGAN:} High-quality image generation with style control
+
+\textbf{Conditional GAN:} Generate from class labels
+
+\textbf{CycleGAN:} Unpaired image-to-image translation
 
 \section{Normalizing Flows}
+\label{sec:normalizing-flows}
 
-\textit{This section will discuss invertible transformations for density estimation.}
+\subsection{Key Idea}
+
+Transform simple distribution (e.g., Gaussian) through invertible mappings:
+\begin{equation}
+\vect{x} = f_{\theta}(\vect{z}), \quad \vect{z} \sim p_z(\vect{z})
+\end{equation}
+
+\subsection{Change of Variables}
+
+Density transforms as:
+\begin{equation}
+p_x(\vect{x}) = p_z(f^{-1}(\vect{x})) \left|\det \frac{\partial f^{-1}}{\partial \vect{x}}\right|
+\end{equation}
+
+or equivalently:
+\begin{equation}
+\log p_x(\vect{x}) = \log p_z(\vect{z}) - \log\left|\det \frac{\partial f}{\partial \vect{z}}\right|
+\end{equation}
+
+\subsection{Requirements}
+
+Function $f$ must be:
+\begin{itemize}
+    \item Invertible
+    \item Have tractable Jacobian determinant
+\end{itemize}
+
+\subsection{Flow Architectures}
+
+\textbf{Coupling layers:} Split dimensions and transform half conditioned on other half
+
+\textbf{Autoregressive flows:} Each dimension depends on previous ones
+
+\textbf{Continuous normalizing flows:} Use neural ODEs
+
+\subsection{Advantages}
+
+\begin{itemize}
+    \item Exact likelihood computation
+    \item Exact sampling
+    \item Stable training (no adversarial dynamics)
+\end{itemize}
 
 \section{Diffusion Models}
+\label{sec:diffusion-models}
 
-\textit{This section will cover modern diffusion-based generative models.}
+\subsection{Forward Process}
+
+Gradually add noise over $T$ steps:
+\begin{equation}
+q(\vect{x}_t|\vect{x}_{t-1}) = \mathcal{N}(\vect{x}_t; \sqrt{1-\beta_t} \vect{x}_{t-1}, \beta_t \mat{I})
+\end{equation}
+
+Eventually $\vect{x}_T \approx \mathcal{N}(\boldsymbol{0}, \mat{I})$.
+
+\subsection{Reverse Process}
+
+Learn to denoise (reverse diffusion):
+\begin{equation}
+p_{\theta}(\vect{x}_{t-1}|\vect{x}_t) = \mathcal{N}(\vect{x}_{t-1}; \boldsymbol{\mu}_{\theta}(\vect{x}_t, t), \boldsymbol{\Sigma}_{\theta}(\vect{x}_t, t))
+\end{equation}
+
+\subsection{Training}
+
+Predict noise $\boldsymbol{\epsilon}_{\theta}(\vect{x}_t, t)$ at each step:
+\begin{equation}
+\mathcal{L} = \mathbb{E}_{t, \vect{x}_0, \boldsymbol{\epsilon}}\left[\|\boldsymbol{\epsilon} - \boldsymbol{\epsilon}_{\theta}(\vect{x}_t, t)\|^2\right]
+\end{equation}
+
+\subsection{Sampling}
+
+Start from noise and iteratively denoise:
+\begin{equation}
+\vect{x}_{t-1} = \frac{1}{\sqrt{\alpha_t}}\left(\vect{x}_t - \frac{1-\alpha_t}{\sqrt{1-\bar{\alpha}_t}}\boldsymbol{\epsilon}_{\theta}(\vect{x}_t, t)\right) + \sigma_t \vect{z}
+\end{equation}
+
+\subsection{Advantages}
+
+\begin{itemize}
+    \item High-quality generation (DALL-E 2, Stable Diffusion, Midjourney)
+    \item Stable training
+    \item Strong theoretical foundations
+    \item Can condition on text, images, etc.
+\end{itemize}
 
 \section{Applications and Future Directions}
+\label{sec:generative-applications}
 
-\textit{This section will explore applications in image generation, text, and beyond.}
+\subsection{Current Applications}
 
-\vspace{1em}
-\noindent\textit{Note: Detailed content for this chapter will be added in future revisions.}
+\textbf{Image generation:}
+\begin{itemize}
+    \item Text-to-image (DALL-E, Stable Diffusion)
+    \item Image editing and inpainting
+    \item Super-resolution
+    \item Style transfer
+\end{itemize}
+
+\textbf{Text generation:}
+\begin{itemize}
+    \item Large language models (GPT family)
+    \item Code generation
+    \item Creative writing
+\end{itemize}
+
+\textbf{Audio/speech:}
+\begin{itemize}
+    \item Text-to-speech
+    \item Music generation
+    \item Voice conversion
+\end{itemize}
+
+\textbf{Video:}
+\begin{itemize}
+    \item Video prediction
+    \item Video synthesis
+    \item Animation
+\end{itemize}
+
+\textbf{Scientific applications:}
+\begin{itemize}
+    \item Molecule design
+    \item Protein structure prediction
+    \item Materials discovery
+\end{itemize}
+
+\subsection{Future Directions}
+
+\begin{itemize}
+    \item \textbf{Controllability:} Fine-grained control over generation
+    \item \textbf{Efficiency:} Faster sampling and smaller models
+    \item \textbf{Multi-modal:} Unified models across modalities
+    \item \textbf{Reasoning:} Incorporating logical reasoning
+    \item \textbf{Safety:} Preventing harmful content generation
+    \item \textbf{Evaluation:} Better metrics for generation quality
+\end{itemize}
+
+\subsection{Societal Impact}
+
+Generative models raise important considerations:
+\begin{itemize}
+    \item Copyright and intellectual property
+    \item Misinformation and deepfakes
+    \item Job displacement in creative fields
+    \item Environmental cost of large-scale training
+    \item Equitable access to technology
+\end{itemize}
+
+Responsible development requires addressing these challenges while advancing capabilities.
