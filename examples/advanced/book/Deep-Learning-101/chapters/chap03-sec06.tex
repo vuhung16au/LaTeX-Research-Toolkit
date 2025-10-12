@@ -1,0 +1,148 @@
+% Chapter 3, Section 6: Problems
+
+\section{Problems}
+\label{sec:probability-problems}
+
+This section provides exercises to reinforce your understanding of probability and information theory concepts. Problems are categorized by difficulty level.
+
+\subsection{Easy Problems (6 problems)}
+
+\begin{problem}[Coin Flipping]
+A fair coin is flipped 3 times. What is the probability of getting exactly 2 heads?
+\end{problem}
+
+\begin{problem}[Dice Probability]
+A fair six-sided die is rolled. What is the probability of getting an even number?
+\end{problem}
+
+\begin{problem}[Basic Conditional Probability]
+In a class of 30 students, 18 are girls and 12 are boys. If a student is selected at random, what is the probability that they are a girl?
+\end{problem}
+
+\begin{problem}[Independent Events]
+Two fair coins are flipped. What is the probability that both show heads?
+\end{problem}
+
+\begin{problem}[Complement Rule]
+The probability that it will rain tomorrow is 0.3. What is the probability that it will not rain tomorrow?
+\end{problem}
+
+\begin{problem}[Basic Expectation]
+A fair die is rolled. What is the expected value of the outcome?
+\end{problem}
+
+\subsection{Medium Problems (5 problems)}
+
+\begin{problem}[Bayes' Theorem Application]
+A medical test for a disease has a 95\% accuracy rate (sensitivity) and a 90\% specificity rate. If 2\% of the population has the disease, what is the probability that a person who tests positive actually has the disease?
+\end{problem}
+
+\begin{problem}[Joint Probability]
+In a survey of 100 people, 60 like pizza, 40 like burgers, and 20 like both. If a person is selected at random, what is the probability that they like pizza or burgers (or both)?
+\end{problem}
+
+\begin{problem}[Variance Calculation]
+A random variable $X$ has the following probability distribution:
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+$x$ & $P(X=x)$ \\
+\hline
+1 & 0.2 \\
+2 & 0.3 \\
+3 & 0.3 \\
+4 & 0.2 \\
+\hline
+\end{tabular}
+\end{center}
+Calculate the variance of $X$.
+\end{problem}
+
+\begin{problem}[Normal Distribution]
+A random variable $X$ follows a normal distribution with mean $\mu = 50$ and standard deviation $\sigma = 10$. What is the probability that $X$ is between 40 and 60?
+\end{problem}
+
+\begin{problem}[Entropy Calculation]
+A random variable $X$ can take values $\{1, 2, 3, 4\}$ with probabilities $\{0.1, 0.4, 0.3, 0.2\}$ respectively. Calculate the entropy $H(X)$.
+\end{problem}
+
+\subsection{Hard Problems (5 problems)}
+
+\begin{problem}[Bayesian Inference]
+You have two coins: one fair and one biased (with probability 0.8 of heads). You randomly select one coin and flip it 3 times, getting heads each time. What is the probability that you selected the biased coin?
+\end{problem}
+
+\begin{problem}[Covariance and Correlation]
+Two random variables $X$ and $Y$ have the following joint probability distribution:
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+ & $Y=1$ & $Y=2$ \\
+\hline
+$X=1$ & 0.2 & 0.1 \\
+$X=2$ & 0.3 & 0.4 \\
+\hline
+\end{tabular}
+\end{center}
+Calculate the covariance and correlation coefficient between $X$ and $Y$.
+\end{problem}
+
+\begin{problem}[KL Divergence]
+Calculate the Kullback-Leibler divergence $D_{KL}(P \| Q)$ where:
+\begin{align}
+P(x) &= \begin{cases} 0.5 & \text{if } x = 0 \\ 0.5 & \text{if } x = 1 \end{cases} \\
+Q(x) &= \begin{cases} 0.3 & \text{if } x = 0 \\ 0.7 & \text{if } x = 1 \end{cases}
+\end{align}
+\end{problem}
+
+\begin{problem}[Mutual Information]
+Two random variables $X$ and $Y$ have joint distribution:
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+ & $Y=0$ & $Y=1$ \\
+\hline
+$X=0$ & 0.4 & 0.1 \\
+$X=1$ & 0.2 & 0.3 \\
+\hline
+\end{tabular}
+\end{center}
+Calculate the mutual information $I(X; Y)$.
+\end{problem}
+
+\begin{problem}[Maximum Likelihood and MAP]
+Given observations $\{x_1, x_2, \ldots, x_n\}$ from a normal distribution $\mathcal{N}(\mu, \sigma^2)$, derive the maximum likelihood estimate of $\mu$. Then, assuming a normal prior $\mathcal{N}(\mu_0, \sigma_0^2)$ for $\mu$, derive the MAP estimate.
+\end{problem}
+
+\section*{Hints}
+
+\subsection*{Easy Problems Hints}
+
+\begin{enumerate}
+\item \textbf{Coin Flipping}: Use the binomial distribution or enumerate all possible outcomes.
+\item \textbf{Dice Probability}: Count favorable outcomes (2, 4, 6) over total outcomes.
+\item \textbf{Basic Conditional Probability}: This is just a ratio of favorable cases to total cases.
+\item \textbf{Independent Events}: Multiply the individual probabilities.
+\item \textbf{Complement Rule}: Use $P(\text{not A}) = 1 - P(A)$.
+\item \textbf{Basic Expectation}: Use the definition $\mathbb{E}[X] = \sum x \cdot P(X=x)$.
+\end{enumerate}
+
+\subsection*{Medium Problems Hints}
+
+\begin{enumerate}
+\item \textbf{Bayes' Theorem}: Use the formula $P(\text{Disease}|\text{Positive}) = \frac{P(\text{Positive}|\text{Disease})P(\text{Disease})}{P(\text{Positive})}$.
+\item \textbf{Joint Probability}: Use the inclusion-exclusion principle: $P(A \cup B) = P(A) + P(B) - P(A \cap B)$.
+\item \textbf{Variance Calculation}: First find $\mathbb{E}[X]$ and $\mathbb{E}[X^2]$, then use $\text{Var}(X) = \mathbb{E}[X^2] - (\mathbb{E}[X])^2$.
+\item \textbf{Normal Distribution}: Use the 68-95-99.7 rule or standardize and use normal tables.
+\item \textbf{Entropy Calculation}: Use $H(X) = -\sum_{i} p_i \log p_i$.
+\end{enumerate}
+
+\subsection*{Hard Problems Hints}
+
+\begin{enumerate}
+\item \textbf{Bayesian Inference}: Use Bayes' theorem with the prior probability of selecting each coin.
+\item \textbf{Covariance and Correlation}: First find marginal distributions, then use $\text{Cov}(X,Y) = \mathbb{E}[XY] - \mathbb{E}[X]\mathbb{E}[Y]$.
+\item \textbf{KL Divergence}: Use $D_{KL}(P \| Q) = \sum_x P(x) \log \frac{P(x)}{Q(x)}$.
+\item \textbf{Mutual Information}: Use $I(X;Y) = H(X) + H(Y) - H(X,Y)$ or $I(X;Y) = \sum_{x,y} P(x,y) \log \frac{P(x,y)}{P(x)P(y)}$.
+\item \textbf{Maximum Likelihood and MAP}: Take derivatives of the log-likelihood and log-posterior respectively.
+\end{enumerate}
