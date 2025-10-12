@@ -1,0 +1,30 @@
+% Chapter 18, Section 1
+
+\section{The Partition Function Problem}
+\label{sec:partition-problem}
+
+Many models have form:
+\begin{equation}
+p(\vect{x}) = \frac{1}{Z} \tilde{p}(\vect{x})
+\end{equation}
+
+where partition function $Z = \sum_{\vect{x}} \tilde{p}(\vect{x})$ or $Z = \int \tilde{p}(\vect{x}) d\vect{x}$ is intractable.
+
+\subsection{Why It's Hard}
+
+Computing $Z$ requires:
+\begin{itemize}
+    \item Summing/integrating over all configurations
+    \item Exponential in dimensionality
+    \item Prohibitive for high-dimensional models
+\end{itemize}
+
+\subsection{Impact}
+
+Cannot directly:
+\begin{itemize}
+    \item Evaluate likelihood $p(\vect{x})$
+    \item Compute gradients for learning
+    \item Compare models
+\end{itemize}
+

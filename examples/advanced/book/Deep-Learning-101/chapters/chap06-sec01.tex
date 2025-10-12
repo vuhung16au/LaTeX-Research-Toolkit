@@ -1,0 +1,42 @@
+% Chapter 6, Section 1
+
+\section{Introduction to Feedforward Networks}
+\label{sec:intro-feedforward}
+
+A \textbf{feedforward neural network} approximates a function $f^*$. For input $\vect{x}$, the network computes $y = f(\vect{x}; \vect{\theta})$ and learns parameters $\vect{\theta}$ such that $f \approx f^*$.
+
+\subsection{Network Architecture}
+
+A feedforward network consists of layers:
+\begin{itemize}
+    \item \textbf{Input layer:} receives raw features $\vect{x}$
+    \item \textbf{Hidden layers:} intermediate representations $\vect{h}^{(1)}, \vect{h}^{(2)}, \ldots$
+    \item \textbf{Output layer:} produces predictions $\hat{y}$
+\end{itemize}
+
+For a network with $L$ layers:
+
+\begin{equation}
+\vect{h}^{(l)} = \sigma(\mat{W}^{(l)} \vect{h}^{(l-1)} + \vect{b}^{(l)})
+\end{equation}
+
+where $\vect{h}^{(0)} = \vect{x}$, $\mat{W}^{(l)}$ are weights, $\vect{b}^{(l)}$ are biases, and $\sigma$ is an activation function.
+
+\subsection{Forward Propagation}
+
+The computation proceeds from input to output:
+
+\begin{align}
+\vect{z}^{(1)} &= \mat{W}^{(1)} \vect{x} + \vect{b}^{(1)} \\
+\vect{h}^{(1)} &= \sigma(\vect{z}^{(1)}) \\
+\vect{z}^{(2)} &= \mat{W}^{(2)} \vect{h}^{(1)} + \vect{b}^{(2)} \\
+&\vdots \\
+\hat{y} &= \vect{h}^{(L)}
+\end{align}
+
+\subsection{Universal Approximation}
+
+The \textbf{universal approximation theorem} states that a feedforward network with a single hidden layer containing a finite number of neurons can approximate any continuous function on a compact subset of $\mathbb{R}^n$, given appropriate activation functions.
+
+However, deeper networks often learn more efficiently.
+

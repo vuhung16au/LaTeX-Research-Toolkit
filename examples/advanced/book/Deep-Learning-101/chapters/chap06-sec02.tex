@@ -1,0 +1,82 @@
+% Chapter 6, Section 2
+
+\section{Activation Functions}
+\label{sec:activation-functions}
+
+Activation functions introduce non-linearity, enabling networks to learn complex patterns.
+
+\subsection{Sigmoid}
+
+\begin{equation}
+\sigma(z) = \frac{1}{1 + e^{-z}}
+\end{equation}
+
+Properties:
+\begin{itemize}
+    \item Range: $(0, 1)$
+    \item Saturates for large $|z|$ (vanishing gradients)
+    \item Not zero-centered
+    \item Historically important but less common in hidden layers
+\end{itemize}
+
+\subsection{Hyperbolic Tangent (tanh)}
+
+\begin{equation}
+\tanh(z) = \frac{e^z - e^{-z}}{e^z + e^{-z}}
+\end{equation}
+
+Properties:
+\begin{itemize}
+    \item Range: $(-1, 1)$
+    \item Zero-centered
+    \item Still suffers from saturation
+\end{itemize}
+
+\subsection{Rectified Linear Unit (ReLU)}
+
+\begin{equation}
+\text{ReLU}(z) = \max(0, z)
+\end{equation}
+
+Properties:
+\begin{itemize}
+    \item Simple and computationally efficient
+    \item No saturation for positive values
+    \item Can cause "dead neurons" (always output 0)
+    \item Most widely used activation
+\end{itemize}
+
+\subsection{Leaky ReLU and Variants}
+
+\textbf{Leaky ReLU:}
+\begin{equation}
+\text{LeakyReLU}(z) = \max(\alpha z, z), \quad \alpha \ll 1
+\end{equation}
+
+\textbf{Parametric ReLU (PReLU):}
+\begin{equation}
+\text{PReLU}(z) = \max(\alpha z, z)
+\end{equation}
+where $\alpha$ is learned.
+
+\textbf{Exponential Linear Unit (ELU):}
+\begin{equation}
+\text{ELU}(z) = \begin{cases}
+z & \text{if } z > 0 \\
+\alpha(e^z - 1) & \text{if } z \leq 0
+\end{cases}
+\end{equation}
+
+\subsection{Swish and GELU}
+
+\textbf{Swish:}
+\begin{equation}
+\text{Swish}(z) = z \cdot \sigma(z)
+\end{equation}
+
+\textbf{Gaussian Error Linear Unit (GELU):}
+\begin{equation}
+\text{GELU}(z) = z \cdot \Phi(z)
+\end{equation}
+where $\Phi$ is the Gaussian CDF. Used in modern transformers.
+

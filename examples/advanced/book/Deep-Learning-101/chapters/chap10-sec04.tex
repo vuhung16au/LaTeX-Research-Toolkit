@@ -1,0 +1,31 @@
+% Chapter 10, Section 4
+
+\section{Gated Recurrent Units (GRU)}
+\label{sec:gru}
+
+\subsection{Architecture}
+
+GRU simplifies LSTM with fewer parameters:
+
+\begin{align}
+\vect{z}_t &= \sigma(\mat{W}_z [\vect{h}_{t-1}, \vect{x}_t]) \quad \text{(update gate)} \\
+\vect{r}_t &= \sigma(\mat{W}_r [\vect{h}_{t-1}, \vect{x}_t]) \quad \text{(reset gate)} \\
+\tilde{\vect{h}}_t &= \tanh(\mat{W} [\vect{r}_t \odot \vect{h}_{t-1}, \vect{x}_t]) \quad \text{(candidate)} \\
+\vect{h}_t &= (1 - \vect{z}_t) \odot \vect{h}_{t-1} + \vect{z}_t \odot \tilde{\vect{h}}_t
+\end{align}
+
+\subsection{Comparison with LSTM}
+
+\textbf{GRU:}
+\begin{itemize}
+    \item Fewer parameters (faster to train)
+    \item No separate cell state
+    \item Often performs similarly to LSTM
+\end{itemize}
+
+\textbf{LSTM:}
+\begin{itemize}
+    \item More expressive (separate forget/input gates)
+    \item Better for longer sequences in some cases
+\end{itemize}
+

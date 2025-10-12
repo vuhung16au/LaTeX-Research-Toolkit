@@ -1,0 +1,44 @@
+% Chapter 5, Section 02
+
+\section{Logistic Regression}
+\label{sec:logistic-regression}
+
+\textbf{Logistic regression} is used for binary classification.
+
+\subsection{Binary Classification}
+
+The model uses the sigmoid function:
+
+\begin{equation}
+\sigma(z) = \frac{1}{1 + e^{-z}}
+\end{equation}
+
+Prediction:
+\begin{equation}
+P(y=1|\vect{x}) = \sigma(\vect{w}^\top \vect{x} + b)
+\end{equation}
+
+\subsection{Cross-Entropy Loss}
+
+The loss function (negative log-likelihood) is:
+
+\begin{equation}
+L(\vect{w}, b) = -\frac{1}{n} \sum_{i=1}^{n} \left[y^{(i)} \log \hat{y}^{(i)} + (1-y^{(i)}) \log(1-\hat{y}^{(i)})\right]
+\end{equation}
+
+\subsection{Multiclass Classification}
+
+For $K$ classes, we use \textbf{softmax regression}:
+
+\begin{equation}
+P(y=k|\vect{x}) = \frac{\exp(\vect{w}_k^\top \vect{x})}{\sum_{j=1}^{K} \exp(\vect{w}_j^\top \vect{x})}
+\end{equation}
+
+The loss is the categorical cross-entropy:
+
+\begin{equation}
+L = -\frac{1}{n} \sum_{i=1}^{n} \sum_{k=1}^{K} y_k^{(i)} \log \hat{y}_k^{(i)}
+\end{equation}
+
+where $y_k^{(i)}$ is 1 if example $i$ belongs to class $k$, and 0 otherwise.
+

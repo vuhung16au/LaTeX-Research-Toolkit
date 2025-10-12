@@ -1,0 +1,48 @@
+% Chapter 20, Section 3
+
+\section{Normalizing Flows}
+\label{sec:normalizing-flows}
+
+\subsection{Key Idea}
+
+Transform simple distribution (e.g., Gaussian) through invertible mappings:
+\begin{equation}
+\vect{x} = f_{\theta}(\vect{z}), \quad \vect{z} \sim p_z(\vect{z})
+\end{equation}
+
+\subsection{Change of Variables}
+
+Density transforms as:
+\begin{equation}
+p_x(\vect{x}) = p_z(f^{-1}(\vect{x})) \left|\det \frac{\partial f^{-1}}{\partial \vect{x}}\right|
+\end{equation}
+
+or equivalently:
+\begin{equation}
+\log p_x(\vect{x}) = \log p_z(\vect{z}) - \log\left|\det \frac{\partial f}{\partial \vect{z}}\right|
+\end{equation}
+
+\subsection{Requirements}
+
+Function $f$ must be:
+\begin{itemize}
+    \item Invertible
+    \item Have tractable Jacobian determinant
+\end{itemize}
+
+\subsection{Flow Architectures}
+
+\textbf{Coupling layers:} Split dimensions and transform half conditioned on other half
+
+\textbf{Autoregressive flows:} Each dimension depends on previous ones
+
+\textbf{Continuous normalizing flows:} Use neural ODEs
+
+\subsection{Advantages}
+
+\begin{itemize}
+    \item Exact likelihood computation
+    \item Exact sampling
+    \item Stable training (no adversarial dynamics)
+\end{itemize}
+

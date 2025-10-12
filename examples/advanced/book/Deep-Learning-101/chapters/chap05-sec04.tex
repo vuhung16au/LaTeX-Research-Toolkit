@@ -1,0 +1,43 @@
+% Chapter 5, Section 04
+
+\section{Decision Trees and Ensemble Methods}
+\label{sec:decision-trees}
+
+\subsection{Decision Trees}
+
+A \textbf{decision tree} recursively partitions the input space based on feature values.
+
+\textbf{Splitting criteria:}
+\begin{itemize}
+    \item \textbf{Gini impurity:} $1 - \sum_{k} p_k^2$
+    \item \textbf{Entropy:} $-\sum_{k} p_k \log p_k$
+    \item \textbf{MSE} (for regression): variance of target values
+\end{itemize}
+
+where $p_k$ is the proportion of class $k$ examples in a node.
+
+\subsection{Random Forests}
+
+\textbf{Random forests} combine multiple decision trees trained on bootstrap samples with random feature subsets at each split.
+
+Prediction is made by averaging (regression) or voting (classification):
+
+\begin{equation}
+\hat{y} = \frac{1}{B} \sum_{b=1}^{B} f_b(\vect{x})
+\end{equation}
+
+where $B$ is the number of trees.
+
+\subsection{Gradient Boosting}
+
+\textbf{Gradient boosting} builds an ensemble sequentially, where each tree corrects errors of the previous ensemble.
+
+For iteration $m$:
+\begin{enumerate}
+    \item Compute residuals: $r_i^{(m)} = y^{(i)} - \hat{y}^{(m-1)}(\vect{x}^{(i)})$
+    \item Fit tree $f_m$ to residuals
+    \item Update: $\hat{y}^{(m)} = \hat{y}^{(m-1)} + \nu f_m$
+\end{enumerate}
+
+where $\nu$ is the learning rate.
+

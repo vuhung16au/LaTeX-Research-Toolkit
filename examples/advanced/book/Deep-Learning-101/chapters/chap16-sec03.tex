@@ -1,0 +1,38 @@
+% Chapter 16, Section 3
+
+\section{Deep Learning and Structured Models}
+\label{sec:deep-structured}
+
+\subsection{Structured Output Prediction}
+
+Use graphical models to model output structure:
+
+\textbf{Conditional Random Fields (CRFs):}
+\begin{equation}
+p(\vect{y}|\vect{x}) = \frac{1}{Z(\vect{x})} \exp\left(\sum_c \vect{w}^\top \vect{\phi}_c(\vect{x}, \vect{y}_c)\right)
+\end{equation}
+
+\textbf{Applications:}
+\begin{itemize}
+    \item Sequence labeling (NER, POS tagging)
+    \item Image segmentation
+    \item Parsing
+\end{itemize}
+
+\subsection{Structured Prediction with Neural Networks}
+
+Combine neural networks with graphical models:
+\begin{itemize}
+    \item \textbf{Feature extraction:} CNN/RNN extracts features
+    \item \textbf{Structured inference:} CRF layer for structured output
+    \item End-to-end training with backpropagation
+\end{itemize}
+
+\textbf{Example:} CNN-CRF for semantic segmentation
+
+\subsection{Neural Module Networks}
+
+Compose neural modules based on program structure for visual reasoning.
+
+\subsection{Graph Neural Networks}
+

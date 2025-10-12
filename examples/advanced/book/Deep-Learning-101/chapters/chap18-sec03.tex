@@ -1,0 +1,32 @@
+% Chapter 18, Section 3
+
+\section{Noise-Contrastive Estimation}
+\label{sec:nce}
+
+\subsection{Key Idea}
+
+Turn density estimation into binary classification:
+\begin{itemize}
+    \item Distinguish data samples from noise samples
+    \item Avoids computing partition function
+\end{itemize}
+
+\subsection{NCE Objective}
+
+\begin{equation}
+\mathcal{L} = \mathbb{E}_{p_{\text{data}}}[\log h(\vect{x})] + k \cdot \mathbb{E}_{p_{\text{noise}}}[\log(1-h(\vect{x}))]
+\end{equation}
+
+where:
+\begin{equation}
+h(\vect{x}) = \frac{p_{\text{model}}(\vect{x})}{p_{\text{model}}(\vect{x}) + k \cdot p_{\text{noise}}(\vect{x})}
+\end{equation}
+
+\subsection{Applications}
+
+\begin{itemize}
+    \item Word embeddings (word2vec)
+    \item Language models
+    \item Energy-based models
+\end{itemize}
+

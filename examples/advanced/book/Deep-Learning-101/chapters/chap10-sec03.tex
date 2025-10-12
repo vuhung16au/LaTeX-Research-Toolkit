@@ -1,0 +1,41 @@
+% Chapter 10, Section 3
+
+\section{Long Short-Term Memory (LSTM)}
+\label{sec:lstm}
+
+\subsection{Architecture}
+
+LSTM uses \textbf{gating mechanisms} to control information flow:
+
+\begin{align}
+\vect{f}_t &= \sigma(\mat{W}_f [\vect{h}_{t-1}, \vect{x}_t] + \vect{b}_f) \quad \text{(forget gate)} \\
+\vect{i}_t &= \sigma(\mat{W}_i [\vect{h}_{t-1}, \vect{x}_t] + \vect{b}_i) \quad \text{(input gate)} \\
+\tilde{\vect{c}}_t &= \tanh(\mat{W}_c [\vect{h}_{t-1}, \vect{x}_t] + \vect{b}_c) \quad \text{(candidate)} \\
+\vect{c}_t &= \vect{f}_t \odot \vect{c}_{t-1} + \vect{i}_t \odot \tilde{\vect{c}}_t \quad \text{(cell state)} \\
+\vect{o}_t &= \sigma(\mat{W}_o [\vect{h}_{t-1}, \vect{x}_t] + \vect{b}_o) \quad \text{(output gate)} \\
+\vect{h}_t &= \vect{o}_t \odot \tanh(\vect{c}_t) \quad \text{(hidden state)}
+\end{align}
+
+\subsection{Key Ideas}
+
+\textbf{Cell state} $\vect{c}_t$: Long-term memory
+\begin{itemize}
+    \item Information flows with minimal transformation
+    \item Gates control what to remember/forget
+\end{itemize}
+
+\textbf{Forget gate} $\vect{f}_t$: Decides what to discard from cell state
+
+\textbf{Input gate} $\vect{i}_t$: Decides what new information to store
+
+\textbf{Output gate} $\vect{o}_t$: Decides what to output
+
+\subsection{Advantages}
+
+\begin{itemize}
+    \item Addresses vanishing gradient problem
+    \item Can learn long-term dependencies
+    \item Gradients flow more easily through cell state
+    \item Widely used for sequential tasks
+\end{itemize}
+

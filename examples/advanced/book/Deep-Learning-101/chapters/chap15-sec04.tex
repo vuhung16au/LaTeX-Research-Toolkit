@@ -1,0 +1,47 @@
+% Chapter 15, Section 4
+
+\section{Contrastive Learning}
+\label{sec:contrastive-learning}
+
+Learn representations by contrasting positive and negative pairs.
+
+\subsection{Core Idea}
+
+Maximize agreement between different views of same data (positive pairs), minimize agreement with other data (negative pairs).
+
+\subsection{SimCLR Framework}
+
+\begin{enumerate}
+    \item Apply two random augmentations to each image
+    \item Encode both views: $\vect{z}_i = f(\vect{x}_i)$, $\vect{z}_j = f(\vect{x}_j)$
+    \item Minimize contrastive loss (NT-Xent):
+\end{enumerate}
+
+\begin{equation}
+\ell_{i,j} = -\log \frac{\exp(\text{sim}(\vect{z}_i, \vect{z}_j)/\tau)}{\sum_{k=1}^{2N} \mathbb{I}_{[k \neq i]} \exp(\text{sim}(\vect{z}_i, \vect{z}_k)/\tau)}
+\end{equation}
+
+where $\text{sim}(\cdot, \cdot)$ is cosine similarity and $\tau$ is temperature.
+
+\subsection{MoCo (Momentum Contrast)}
+
+Uses momentum encoder and queue of negative samples for efficiency.
+
+\subsection{BYOL (Bootstrap Your Own Latent)}
+
+Surprisingly, can work without negative samples using:
+\begin{itemize}
+    \item Online network (updated by gradients)
+    \item Target network (momentum update)
+    \item Prediction head on online network
+\end{itemize}
+
+\subsection{Applications}
+
+State-of-the-art results in:
+\begin{itemize}
+    \item Image classification
+    \item Object detection
+    \item Segmentation
+    \item Medical imaging with limited labels
+\end{itemize}

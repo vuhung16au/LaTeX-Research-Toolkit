@@ -1,0 +1,44 @@
+% Chapter 6, Section 4
+
+\section{Backpropagation}
+\label{sec:backpropagation}
+
+\textbf{Backpropagation} efficiently computes gradients using the chain rule.
+
+\subsection{The Chain Rule}
+
+For composition $f(g(x))$:
+\begin{equation}
+\frac{df}{dx} = \frac{df}{dg} \frac{dg}{dx}
+\end{equation}
+
+For vectors, we use the Jacobian:
+\begin{equation}
+\frac{\partial \vect{y}}{\partial \vect{x}} = \frac{\partial \vect{y}}{\partial \vect{z}} \frac{\partial \vect{z}}{\partial \vect{x}}
+\end{equation}
+
+\subsection{Backward Pass}
+
+Starting from the loss $L$, we compute gradients layer by layer:
+
+\begin{align}
+\delta^{(L)} &= \nabla_{\vect{h}^{(L)}} L \\
+\delta^{(l)} &= (\mat{W}^{(l+1)})^\top \delta^{(l+1)} \odot \sigma'(\vect{z}^{(l)})
+\end{align}
+
+where $\odot$ denotes element-wise multiplication.
+
+Parameter gradients:
+\begin{align}
+\frac{\partial L}{\partial \mat{W}^{(l)}} &= \delta^{(l)} (\vect{h}^{(l-1)})^\top \\
+\frac{\partial L}{\partial \vect{b}^{(l)}} &= \delta^{(l)}
+\end{align}
+
+\subsection{Computational Graph}
+
+Modern frameworks use automatic differentiation on computational graphs:
+\begin{itemize}
+    \item \textbf{Forward mode:} efficient when outputs $\gg$ inputs
+    \item \textbf{Reverse mode (backprop):} efficient when inputs $\gg$ outputs
+\end{itemize}
+

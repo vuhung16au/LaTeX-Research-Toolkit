@@ -1,0 +1,48 @@
+% Chapter 7, Section 4
+
+\section{Dropout}
+\label{sec:dropout}
+
+\textbf{Dropout} randomly deactivates neurons during training, preventing co-adaptation.
+
+\subsection{Training with Dropout}
+
+At each training step, for each layer:
+\begin{enumerate}
+    \item Sample binary mask $\vect{m}$ with $P(m_i = 1) = p$
+    \item Apply mask: $\vect{h} = \vect{m} \odot \vect{h}$
+\end{enumerate}
+
+Mathematically:
+\begin{equation}
+\vect{h}_{\text{dropout}} = \vect{m} \odot f(\mat{W}\vect{x} + \vect{b})
+\end{equation}
+
+where $m_i \sim \text{Bernoulli}(p)$.
+
+\subsection{Inference}
+
+At test time, scale outputs by dropout probability:
+\begin{equation}
+\vect{h}_{\text{test}} = p \cdot f(\mat{W}\vect{x} + \vect{b})
+\end{equation}
+
+Or equivalently, scale weights during training by $\frac{1}{p}$ (inverted dropout).
+
+\subsection{Interpretation}
+
+Dropout can be viewed as:
+\begin{itemize}
+    \item Training an ensemble of $2^n$ subnetworks
+    \item Adding noise to hidden activations
+    \item Approximate Bayesian inference
+\end{itemize}
+
+\subsection{Variants}
+
+\textbf{DropConnect:} drop weights instead of activations
+
+\textbf{Spatial Dropout:} drop entire feature maps in CNNs
+
+\textbf{Variational Dropout:} use same mask across time steps in RNNs
+

@@ -1,0 +1,36 @@
+% Chapter 14, Section 3
+
+\section{Variational Autoencoders}
+\label{sec:vae}
+
+\subsection{Probabilistic Framework}
+
+VAE is a generative model:
+\begin{align}
+p(\vect{x}) &= \int p(\vect{x}|\vect{z}) p(\vect{z}) d\vect{z} \\
+p(\vect{z}) &= \mathcal{N}(\boldsymbol{0}, \mat{I}) \\
+p(\vect{x}|\vect{z}) &= \mathcal{N}(\vect{x}; \boldsymbol{\mu}_{\theta}(\vect{z}), \boldsymbol{\sigma}^2_{\theta}(\vect{z})\mat{I})
+\end{align}
+
+\subsection{Evidence Lower Bound (ELBO)}
+
+Cannot directly maximize $\log p(\vect{x})$. Instead maximize ELBO:
+\begin{equation}
+\mathcal{L} = \mathbb{E}_{q(\vect{z}|\vect{x})}[\log p(\vect{x}|\vect{z})] - D_{KL}(q(\vect{z}|\vect{x}) \| p(\vect{z}))
+\end{equation}
+
+where $q(\vect{z}|\vect{x}) = \mathcal{N}(\vect{z}; \boldsymbol{\mu}_{\phi}(\vect{x}), \boldsymbol{\sigma}^2_{\phi}(\vect{x})\mat{I})$ is the encoder.
+
+\subsection{Reparameterization Trick}
+
+To backpropagate through sampling:
+\begin{equation}
+\vect{z} = \boldsymbol{\mu}_{\phi}(\vect{x}) + \boldsymbol{\sigma}_{\phi}(\vect{x}) \odot \boldsymbol{\epsilon}, \quad \boldsymbol{\epsilon} \sim \mathcal{N}(\boldsymbol{0}, \mat{I})
+\end{equation}
+
+Enables end-to-end gradient-based training.
+
+\subsection{Generation}
+
+Sample from prior $\vect{z} \sim \mathcal{N}(\boldsymbol{0}, \mat{I})$ and decode to generate new data.
+

@@ -1,0 +1,55 @@
+% Chapter 20, Section 2
+
+\section{Generative Adversarial Networks (GANs)}
+\label{sec:gans}
+
+\subsection{Core Idea}
+
+Two networks compete:
+\begin{itemize}
+    \item \textbf{Generator} $G$: Creates fake samples from noise
+    \item \textbf{Discriminator} $D$: Distinguishes real from fake
+\end{itemize}
+
+\subsection{Objective}
+
+Minimax game:
+\begin{equation}
+\min_G \max_D \mathbb{E}_{\vect{x} \sim p_{\text{data}}}[\log D(\vect{x})] + \mathbb{E}_{\vect{z} \sim p(\vect{z})}[\log(1 - D(G(\vect{z})))]
+\end{equation}
+
+\subsection{Training Procedure}
+
+Alternate updates:
+\begin{enumerate}
+    \item \textbf{Update D:} Maximize discrimination
+    \begin{equation}
+    \max_D \mathbb{E}_{\vect{x}}[\log D(\vect{x})] + \mathbb{E}_{\vect{z}}[\log(1 - D(G(\vect{z})))]
+    \end{equation}
+    
+    \item \textbf{Update G:} Minimize discrimination (or maximize $\log D(G(\vect{z}))$)
+    \begin{equation}
+    \min_G \mathbb{E}_{\vect{z}}[\log(1 - D(G(\vect{z})))]
+    \end{equation}
+\end{enumerate}
+
+\subsection{Training Challenges}
+
+\textbf{Mode collapse:} Generator produces limited variety
+
+\textbf{Training instability:} Oscillations, non-convergence
+
+\textbf{Vanishing gradients:} When discriminator too strong
+
+\subsection{GAN Variants}
+
+\textbf{DCGAN:} Deep Convolutional GAN with architectural guidelines
+
+\textbf{WGAN:} Wasserstein GAN with improved training stability
+
+\textbf{StyleGAN:} High-quality image generation with style control
+
+\textbf{Conditional GAN:} Generate from class labels
+
+\textbf{CycleGAN:} Unpaired image-to-image translation
+

@@ -1,0 +1,52 @@
+% Chapter 11, Section 1
+
+\section{Performance Metrics}
+\label{sec:performance-metrics}
+
+\subsection{Classification Metrics}
+
+\textbf{Accuracy:}
+\begin{equation}
+\text{Accuracy} = \frac{\text{Correct predictions}}{\text{Total predictions}}
+\end{equation}
+
+\textbf{Precision and Recall:}
+\begin{align}
+\text{Precision} &= \frac{\text{TP}}{\text{TP} + \text{FP}} \\
+\text{Recall} &= \frac{\text{TP}}{\text{TP} + \text{FN}}
+\end{align}
+
+\textbf{F1 Score:} Harmonic mean of precision and recall
+\begin{equation}
+F_1 = 2 \cdot \frac{\text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}}
+\end{equation}
+
+\textbf{ROC Curve and AUC:} Trade-off between true positive rate and false positive rate
+
+\textbf{Confusion Matrix:} Visualizes prediction performance across classes
+
+\subsection{Regression Metrics}
+
+\textbf{Mean Squared Error (MSE):}
+\begin{equation}
+\text{MSE} = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2
+\end{equation}
+
+\textbf{Mean Absolute Error (MAE):}
+\begin{equation}
+\text{MAE} = \frac{1}{n} \sum_{i=1}^{n} |y_i - \hat{y}_i|
+\end{equation}
+
+\textbf{R-squared ($R^2$):} Proportion of variance explained
+
+\subsection{NLP Metrics}
+
+\textbf{BLEU:} For machine translation (measures n-gram overlap)
+
+\textbf{ROUGE:} For summarization
+
+\textbf{Perplexity:} For language models
+\begin{equation}
+\text{PPL} = \exp\left(-\frac{1}{N} \sum_{i=1}^{N} \log P(x_i)\right)
+\end{equation}
+

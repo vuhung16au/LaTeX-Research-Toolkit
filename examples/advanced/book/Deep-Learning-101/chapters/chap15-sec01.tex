@@ -1,0 +1,41 @@
+% Chapter 15, Section 1
+
+\section{What Makes a Good Representation?}
+\label{sec:good-representations}
+
+\subsection{Desirable Properties}
+
+\textbf{Disentanglement:} Different factors of variation are separated
+\begin{itemize}
+    \item Changes in one dimension affect one factor
+    \item Easier interpretation and manipulation
+\end{itemize}
+
+\textbf{Invariance:} Representation unchanged under irrelevant transformations
+\begin{itemize}
+    \item Translation, rotation invariance for objects
+    \item Speaker invariance for speech content
+\end{itemize}
+
+\textbf{Smoothness:} Similar inputs have similar representations
+\begin{itemize}
+    \item Enables generalization
+    \item Supports interpolation
+\end{itemize}
+
+\textbf{Sparsity:} Few features active for each input
+\begin{itemize}
+    \item Computational efficiency
+    \item Interpretability
+\end{itemize}
+
+\subsection{Manifold Hypothesis}
+
+Natural data lies on low-dimensional manifolds embedded in high-dimensional space.
+
+Deep learning learns to:
+\begin{itemize}
+    \item Discover the manifold structure
+    \item Map data to meaningful coordinates on manifold
+\end{itemize}
+

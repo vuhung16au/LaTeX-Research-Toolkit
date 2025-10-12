@@ -1,0 +1,24 @@
+% Chapter 17, Section 1
+
+\section{Sampling and Monte Carlo Estimators}
+\label{sec:mc-estimators}
+
+\subsection{Monte Carlo Estimation}
+
+Approximate expectations using samples:
+\begin{equation}
+\mathbb{E}_{p(x)}[f(x)] \approx \frac{1}{N} \sum_{i=1}^{N} f(x^{(i)}), \quad x^{(i)} \sim p(x)
+\end{equation}
+
+\textbf{Law of large numbers:} Estimate converges to true expectation as $N \to \infty$.
+
+\subsection{Variance Reduction}
+
+Reduce variance of estimators:
+
+\textbf{Rao-Blackwellization:} Use conditional expectations
+
+\textbf{Control variates:} Subtract correlated zero-mean terms
+
+\textbf{Antithetic sampling:} Use negatively correlated samples
+

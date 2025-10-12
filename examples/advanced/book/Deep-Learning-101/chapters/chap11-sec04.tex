@@ -1,0 +1,48 @@
+% Chapter 11, Section 4
+
+\section{Data Preparation and Preprocessing}
+\label{sec:data-preparation}
+
+\subsection{Data Splitting}
+
+\textbf{Train/Validation/Test split:}
+\begin{itemize}
+    \item Training: 60-80\%
+    \item Validation: 10-20\%
+    \item Test: 10-20\%
+\end{itemize}
+
+\textbf{Cross-validation:} For small datasets
+\begin{itemize}
+    \item k-fold cross-validation
+    \item Stratified splits for imbalanced data
+\end{itemize}
+
+\subsection{Normalization}
+
+\textbf{Min-Max Scaling:}
+\begin{equation}
+x' = \frac{x - x_{\min}}{x_{\max} - x_{\min}}
+\end{equation}
+
+\textbf{Standardization (Z-score):}
+\begin{equation}
+x' = \frac{x - \mu}{\sigma}
+\end{equation}
+
+Always compute statistics on training set only!
+
+\subsection{Handling Imbalanced Data}
+
+\begin{itemize}
+    \item \textbf{Oversampling:} Duplicate minority class examples
+    \item \textbf{Undersampling:} Remove majority class examples
+    \item \textbf{SMOTE:} Synthetic minority oversampling
+    \item \textbf{Class weights:} Penalize errors on minority class more
+    \item \textbf{Focal loss:} Focus on hard examples
+\end{itemize}
+
+\subsection{Data Augmentation}
+
+Generate additional training examples through transformations (see Chapter 7).
+

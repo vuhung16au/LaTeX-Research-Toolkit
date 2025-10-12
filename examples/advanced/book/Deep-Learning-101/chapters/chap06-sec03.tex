@@ -1,0 +1,43 @@
+% Chapter 6, Section 3
+
+\section{Output Units and Loss Functions}
+\label{sec:output-loss}
+
+The choice of output layer and loss function depends on the task.
+
+\subsection{Linear Output for Regression}
+
+For regression, use linear output:
+\begin{equation}
+\hat{y} = \mat{W}^\top \vect{h} + b
+\end{equation}
+
+with MSE loss:
+\begin{equation}
+L = \frac{1}{n} \sum_{i=1}^{n} (y^{(i)} - \hat{y}^{(i)})^2
+\end{equation}
+
+\subsection{Sigmoid Output for Binary Classification}
+
+For binary classification:
+\begin{equation}
+\hat{y} = \sigma(\mat{W}^\top \vect{h} + b)
+\end{equation}
+
+with binary cross-entropy loss:
+\begin{equation}
+L = -\frac{1}{n} \sum_{i=1}^{n} [y^{(i)} \log \hat{y}^{(i)} + (1-y^{(i)}) \log(1-\hat{y}^{(i)})]
+\end{equation}
+
+\subsection{Softmax Output for Multiclass Classification}
+
+For $K$ classes:
+\begin{equation}
+\hat{y}_k = \frac{\exp(z_k)}{\sum_{j=1}^{K} \exp(z_j)}
+\end{equation}
+
+with categorical cross-entropy loss:
+\begin{equation}
+L = -\frac{1}{n} \sum_{i=1}^{n} \sum_{k=1}^{K} y_k^{(i)} \log \hat{y}_k^{(i)}
+\end{equation}
+

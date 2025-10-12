@@ -1,0 +1,48 @@
+% Chapter 8, Section 5
+
+\section{Optimization Challenges}
+\label{sec:challenges}
+
+\subsection{Vanishing and Exploding Gradients}
+
+In deep networks, gradients can become exponentially small or large.
+
+\textbf{Vanishing gradients:}
+\begin{itemize}
+    \item Common with sigmoid/tanh activations
+    \item Mitigated by ReLU, batch normalization, residual connections
+\end{itemize}
+
+\textbf{Exploding gradients:}
+\begin{itemize}
+    \item Common in RNNs
+    \item Mitigated by gradient clipping, careful initialization
+\end{itemize}
+
+\textbf{Gradient clipping:}
+\begin{equation}
+\vect{g} \leftarrow \frac{\vect{g}}{\max(1, \|\vect{g}\| / \theta)}
+\end{equation}
+
+\subsection{Local Minima and Saddle Points}
+
+In high dimensions, saddle points are more common than local minima.
+
+Saddle points have:
+\begin{itemize}
+    \item Zero gradient
+    \item Mixed curvature (positive and negative eigenvalues)
+\end{itemize}
+
+Momentum and noise help escape saddle points.
+
+\subsection{Plateaus}
+
+Flat regions with small gradients slow convergence. Adaptive methods and learning rate schedules help navigate plateaus.
+
+\subsection{Practical Optimization Strategy}
+
+\textbf{Recommended approach:}
+\begin{enumerate}
+    \item Start with Adam optimizer
+    \item Learning rate: try 0.001, 0.0003, 0.0001

@@ -1,0 +1,52 @@
+% Chapter 19, Section 1
+
+\section{Variational Inference}
+\label{sec:variational-inference}
+
+\subsection{Evidence Lower Bound (ELBO)}
+
+For latent variable model with intractable posterior $p(\vect{z}|\vect{x})$, approximate with $q(\vect{z})$:
+
+\begin{align}
+\log p(\vect{x}) &= \mathbb{E}_{q(\vect{z})}[\log p(\vect{x})] \\
+&= \mathbb{E}_{q(\vect{z})}\left[\log \frac{p(\vect{x}, \vect{z})}{p(\vect{z}|\vect{x})}\right] \\
+&= \mathbb{E}_{q(\vect{z})}\left[\log \frac{p(\vect{x}, \vect{z})}{q(\vect{z})}\right] + D_{KL}(q(\vect{z}) \| p(\vect{z}|\vect{x})) \\
+&\geq \mathbb{E}_{q(\vect{z})}\left[\log \frac{p(\vect{x}, \vect{z})}{q(\vect{z})}\right] = \mathcal{L}(q)
+\end{align}
+
+Maximizing $\mathcal{L}(q)$ minimizes $D_{KL}(q(\vect{z}) \| p(\vect{z}|\vect{x}))$.
+
+\subsection{Variational Family}
+
+Choose tractable family of distributions:
+
+\textbf{Mean field:} Fully factorized
+\begin{equation}
+q(\vect{z}) = \prod_{i=1}^{n} q_i(z_i)
+\end{equation}
+
+\textbf{Structured:} Allow some dependencies
+\begin{equation}
+q(\vect{z}) = \prod_{c} q_c(\vect{z}_c)
+\end{equation}
+
+Trade-off between expressiveness and tractability.
+
+\subsection{Coordinate Ascent VI}
+
+Optimize each factor iteratively:
+\begin{equation}
+q_j^*(z_j) \propto \exp\left(\mathbb{E}_{q_{-j}}[\log p(\vect{z}, \vect{x})]\right)
+\end{equation}
+
+Guaranteed to converge to local optimum of ELBO.
+
+\subsection{Stochastic Variational Inference}
+
+Use stochastic gradients for scalability:
+\begin{itemize}
+    \item Mini-batch data
+    \item Monte Carlo estimation of expectations
+    \item Reparameterization trick for low variance
+\end{itemize}
+

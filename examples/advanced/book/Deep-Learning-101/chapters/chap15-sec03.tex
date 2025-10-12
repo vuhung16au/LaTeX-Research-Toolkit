@@ -1,0 +1,32 @@
+% Chapter 15, Section 3
+
+\section{Self-Supervised Learning}
+\label{sec:self-supervised}
+
+Learn representations without manual labels by solving pretext tasks.
+
+\subsection{Pretext Tasks}
+
+\textbf{For images:}
+\begin{itemize}
+    \item \textbf{Rotation prediction:} Predict rotation angle
+    \item \textbf{Jigsaw puzzle:} Arrange shuffled patches
+    \item \textbf{Colorization:} Predict colors from grayscale
+    \item \textbf{Inpainting:} Fill masked regions
+\end{itemize}
+
+\textbf{For text:}
+\begin{itemize}
+    \item \textbf{Masked language modeling:} Predict masked words (BERT)
+    \item \textbf{Next sentence prediction:} Predict if sentences are consecutive
+    \item \textbf{Autoregressive generation:} Predict next token (GPT)
+\end{itemize}
+
+\subsection{Benefits}
+
+\begin{itemize}
+    \item Leverage unlabeled data
+    \item Learn general-purpose representations
+    \item Often outperforms supervised pre-training
+\end{itemize}
+

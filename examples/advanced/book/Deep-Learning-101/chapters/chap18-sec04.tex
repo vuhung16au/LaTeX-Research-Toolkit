@@ -1,0 +1,16 @@
+% Chapter 18, Section 4
+
+\section{Score Matching}
+\label{sec:score-matching}
+
+Match gradients of log-density (score function):
+\begin{equation}
+\psi(\vect{x}) = \nabla_{\vect{x}} \log p(\vect{x})
+\end{equation}
+
+Objective:
+\begin{equation}
+\mathcal{L} = \frac{1}{2} \mathbb{E}_{p_{\text{data}}}[\|\psi_{\theta}(\vect{x}) - \nabla_{\vect{x}} \log p_{\text{data}}(\vect{x})\|^2]
+\end{equation}
+
+Avoids partition function since it cancels in gradient.

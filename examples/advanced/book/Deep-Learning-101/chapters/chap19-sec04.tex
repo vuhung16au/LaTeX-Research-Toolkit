@@ -1,0 +1,13 @@
+% Chapter 19, Section 4
+
+\section{Expectation Propagation}
+\label{sec:ep}
+
+Approximates each factor with simpler distribution:
+\begin{equation}
+p(\vect{x}) = \frac{1}{Z} \prod_i f_i(\vect{x}) \approx \frac{1}{Z} \prod_i \tilde{f}_i(\vect{x})
+\end{equation}
+
+Iteratively refine approximations to match moments.
+
+Better than mean field for multi-modal posteriors.

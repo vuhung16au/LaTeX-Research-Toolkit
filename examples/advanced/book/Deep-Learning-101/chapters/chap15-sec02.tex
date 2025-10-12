@@ -1,0 +1,43 @@
+% Chapter 15, Section 2
+
+\section{Transfer Learning and Domain Adaptation}
+\label{sec:transfer-learning}
+
+\subsection{Transfer Learning}
+
+Leverage knowledge from source task to improve target task:
+
+\textbf{Feature extraction:}
+\begin{enumerate}
+    \item Pre-train on large dataset (e.g., ImageNet)
+    \item Freeze convolutional layers
+    \item Train only final classification layers on target task
+\end{enumerate}
+
+\textbf{Fine-tuning:}
+\begin{enumerate}
+    \item Start with pre-trained model
+    \item Continue training on target task with lower learning rate
+    \item Optionally freeze early layers
+\end{enumerate}
+
+\subsection{Domain Adaptation}
+
+Adapt model when training (source) and test (target) distributions differ.
+
+\textbf{Approaches:}
+\begin{itemize}
+    \item \textbf{Domain-adversarial training:} Learn domain-invariant features
+    \item \textbf{Self-training:} Use confident predictions on target domain
+    \item \textbf{Multi-task learning:} Joint training on both domains
+\end{itemize}
+
+\subsection{Few-Shot Learning}
+
+Learn from few examples per class:
+\begin{itemize}
+    \item \textbf{Meta-learning:} Learn to learn quickly (MAML)
+    \item \textbf{Prototypical networks:} Learn metric space
+    \item \textbf{Matching networks:} Attention-based comparison
+\end{itemize}
+

@@ -1,0 +1,38 @@
+% Chapter 16, Section 1
+
+\section{Graphical Models}
+\label{sec:graphical-models}
+
+\subsection{Motivation}
+
+Graphical models represent complex probability distributions using graphs:
+\begin{itemize}
+    \item Nodes: Random variables
+    \item Edges: Probabilistic dependencies
+\end{itemize}
+
+\subsection{Bayesian Networks}
+
+\textbf{Directed acyclic graphs} (DAGs) represent conditional dependencies:
+\begin{equation}
+p(\vect{x}) = \prod_{i=1}^{n} p(x_i | \text{Pa}(x_i))
+\end{equation}
+
+where $\text{Pa}(x_i)$ are parents of $x_i$.
+
+\textbf{Example:} Naive Bayes classifier
+\begin{equation}
+p(y, \vect{x}) = p(y) \prod_{i=1}^{d} p(x_i|y)
+\end{equation}
+
+\subsection{Markov Random Fields}
+
+\textbf{Undirected graphs} with potential functions:
+\begin{equation}
+p(\vect{x}) = \frac{1}{Z} \prod_{c \in \mathcal{C}} \psi_c(\vect{x}_c)
+\end{equation}
+
+where $\mathcal{C}$ are cliques and $Z$ is the partition function.
+
+\textbf{Example:} Ising model, Conditional Random Fields (CRFs)
+

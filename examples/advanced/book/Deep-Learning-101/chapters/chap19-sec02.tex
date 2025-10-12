@@ -1,0 +1,29 @@
+% Chapter 19, Section 2
+
+\section{Mean Field Approximation}
+\label{sec:mean-field}
+
+\subsection{Fully Factorized Approximation}
+
+Assume all variables independent:
+\begin{equation}
+q(\vect{z}) = \prod_{i=1}^{n} q_i(z_i)
+\end{equation}
+
+\subsection{Update Equations}
+
+For each variable:
+\begin{equation}
+\log q_j^*(z_j) = \mathbb{E}_{i \neq j}[\log p(\vect{z}, \vect{x})] + \text{const}
+\end{equation}
+
+Iterate until convergence.
+
+\subsection{Properties}
+
+\begin{itemize}
+    \item Underestimates variance (overconfident)
+    \item Computationally efficient
+    \item Often good approximation in practice
+\end{itemize}
+

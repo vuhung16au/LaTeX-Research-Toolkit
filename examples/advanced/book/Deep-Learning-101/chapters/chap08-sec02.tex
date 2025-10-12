@@ -1,0 +1,32 @@
+% Chapter 8, Section 2
+
+\section{Momentum-Based Methods}
+\label{sec:momentum}
+
+\subsection{Momentum}
+
+Accumulates gradients over time:
+\begin{align}
+\vect{v}_t &= \beta \vect{v}_{t-1} - \alpha \nabla_{\vect{\theta}} L(\vect{\theta}_t) \\
+\vect{\theta}_{t+1} &= \vect{\theta}_t + \vect{v}_t
+\end{align}
+
+where $\beta \in [0, 1)$ is the momentum coefficient (typically 0.9).
+
+Benefits:
+\begin{itemize}
+    \item Accelerates convergence in relevant directions
+    \item Dampens oscillations
+    \item Helps escape local minima and saddle points
+\end{itemize}
+
+\subsection{Nesterov Accelerated Gradient (NAG)}
+
+"Look-ahead" version of momentum:
+\begin{align}
+\vect{v}_t &= \beta \vect{v}_{t-1} - \alpha \nabla_{\vect{\theta}} L(\vect{\theta}_t + \beta \vect{v}_{t-1}) \\
+\vect{\theta}_{t+1} &= \vect{\theta}_t + \vect{v}_t
+\end{align}
+
+Evaluates gradient at anticipated future position, often providing better updates.
+

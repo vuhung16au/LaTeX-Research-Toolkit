@@ -1,0 +1,43 @@
+% Chapter 7, Section 1
+
+\section{Parameter Norm Penalties}
+\label{sec:parameter-penalties}
+
+\textbf{Parameter norm penalties} constrain model capacity by penalizing large weights.
+
+\subsection{L2 Regularization (Weight Decay)}
+
+Add squared L2 norm of weights to the loss:
+
+\begin{equation}
+\tilde{L}(\vect{\theta}) = L(\vect{\theta}) + \frac{\lambda}{2} \|\vect{w}\|^2
+\end{equation}
+
+Gradient update becomes:
+\begin{equation}
+\vect{w} \leftarrow (1 - \alpha\lambda)\vect{w} - \alpha \nabla_{\vect{w}} L
+\end{equation}
+
+The factor $(1 - \alpha\lambda)$ causes "weight decay."
+
+\subsection{L1 Regularization}
+
+Add L1 norm:
+\begin{equation}
+\tilde{L}(\vect{\theta}) = L(\vect{\theta}) + \lambda \|\vect{w}\|_1
+\end{equation}
+
+L1 regularization:
+\begin{itemize}
+    \item Promotes sparsity (many weights become exactly zero)
+    \item Useful for feature selection
+    \item Gradient: $\text{sign}(\vect{w})$
+\end{itemize}
+
+\subsection{Elastic Net}
+
+Combines L1 and L2:
+\begin{equation}
+\tilde{L}(\vect{\theta}) = L(\vect{\theta}) + \lambda_1 \|\vect{w}\|_1 + \lambda_2 \|\vect{w}\|^2
+\end{equation}
+

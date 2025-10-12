@@ -1,0 +1,44 @@
+% Chapter 6, Section 5
+
+\section{Design Choices}
+\label{sec:design-choices}
+
+\subsection{Network Depth and Width}
+
+\textbf{Depth} (number of layers):
+\begin{itemize}
+    \item Deeper networks can learn more complex functions
+    \item Can be harder to optimize (vanishing/exploding gradients)
+    \item Modern techniques enable very deep networks (100+ layers)
+\end{itemize}
+
+\textbf{Width} (neurons per layer):
+\begin{itemize}
+    \item Wider networks have more capacity
+    \item Trade-off between width and depth
+    \item Very wide shallow networks vs. narrow deep networks
+\end{itemize}
+
+\subsection{Weight Initialization}
+
+Poor initialization can prevent learning. Common strategies:
+
+\textbf{Xavier/Glorot initialization:}
+\begin{equation}
+W_{ij} \sim \mathcal{N}\left(0, \frac{2}{n_{\text{in}} + n_{\text{out}}}\right)
+\end{equation}
+
+\textbf{He initialization} (for ReLU):
+\begin{equation}
+W_{ij} \sim \mathcal{N}\left(0, \frac{2}{n_{\text{in}}}\right)
+\end{equation}
+
+\subsection{Batch Training}
+
+\textbf{Mini-batch gradient descent:}
+\begin{itemize}
+    \item Compute gradients on small batches (typically 32-256 examples)
+    \item Provides regularization through noise
+    \item Enables efficient parallel computation
+    \item Balances between SGD and full-batch GD
+\end{itemize}

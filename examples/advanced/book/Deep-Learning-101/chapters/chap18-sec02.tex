@@ -1,0 +1,28 @@
+% Chapter 18, Section 2
+
+\section{Contrastive Divergence}
+\label{sec:contrastive-divergence}
+
+\subsection{Motivation}
+
+For Restricted Boltzmann Machines (RBMs):
+\begin{equation}
+p(\vect{v}, \vect{h}) = \frac{1}{Z} \exp(-E(\vect{v}, \vect{h}))
+\end{equation}
+
+Exact gradient requires expectations under model:
+\begin{equation}
+\frac{\partial \log p(\vect{v})}{\partial \theta} = -\mathbb{E}_{p(\vect{h}|\vect{v})}\left[\frac{\partial E}{\partial \theta}\right] + \mathbb{E}_{p(\vect{v}, \vect{h})}\left[\frac{\partial E}{\partial \theta}\right]
+\end{equation}
+
+\subsection{CD-k Algorithm}
+
+Approximate second term with short MCMC chain (k steps):
+\begin{enumerate}
+    \item Start from data: $\vect{v}_0 = \vect{v}$
+    \item Run k Gibbs steps
+    \item Use $\vect{v}_k$ for negative phase
+\end{enumerate}
+
+Works surprisingly well despite being biased.
+

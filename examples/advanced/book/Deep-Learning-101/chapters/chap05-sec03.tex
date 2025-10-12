@@ -1,0 +1,52 @@
+% Chapter 5, Section 03
+
+\section{Support Vector Machines}
+\label{sec:svm}
+
+\textbf{Support Vector Machines} (SVMs) find the maximum-margin hyperplane separating classes.
+
+\subsection{Linear SVM}
+
+For binary classification with labels $y \in \{-1, +1\}$, the decision boundary is:
+
+\begin{equation}
+\vect{w}^\top \vect{x} + b = 0
+\end{equation}
+
+The \textbf{margin} is $\frac{2}{\|\vect{w}\|}$. Maximizing the margin is equivalent to minimizing $\|\vect{w}\|^2$ subject to:
+
+\begin{equation}
+y^{(i)}(\vect{w}^\top \vect{x}^{(i)} + b) \geq 1 \quad \forall i
+\end{equation}
+
+\subsection{Soft Margin SVM}
+
+To handle non-separable data, we introduce slack variables $\xi_i$:
+
+\begin{equation}
+\min_{\vect{w}, b, \boldsymbol{\xi}} \frac{1}{2}\|\vect{w}\|^2 + C \sum_{i=1}^{n} \xi_i
+\end{equation}
+
+subject to:
+\begin{equation}
+y^{(i)}(\vect{w}^\top \vect{x}^{(i)} + b) \geq 1 - \xi_i, \quad \xi_i \geq 0
+\end{equation}
+
+$C$ controls the trade-off between margin size and training errors.
+
+\subsection{Kernel Trick}
+
+For non-linear decision boundaries, we map inputs to a higher-dimensional space using a \textbf{kernel function} $k(\vect{x}, \vect{x}')$:
+
+\textbf{Common kernels:}
+\begin{itemize}
+    \item \textbf{Linear:} $k(\vect{x}, \vect{x}') = \vect{x}^\top \vect{x}'$
+    \item \textbf{Polynomial:} $k(\vect{x}, \vect{x}') = (\vect{x}^\top \vect{x}' + c)^d$
+    \item \textbf{RBF (Gaussian):} $k(\vect{x}, \vect{x}') = \exp(-\gamma \|\vect{x} - \vect{x}'\|^2)$
+\end{itemize}
+
+The decision function becomes:
+\begin{equation}
+f(\vect{x}) = \sum_{i=1}^{n} \alpha_i y^{(i)} k(\vect{x}^{(i)}, \vect{x}) + b
+\end{equation}
+
