@@ -1,0 +1,129 @@
+% Chapter 2, Section 2: Matrix Operations
+
+\section{Matrix Operations}
+\label{sec:matrix-operations}
+
+Matrix operations form the computational backbone of neural networks. Understanding these operations is crucial for implementing and analyzing deep learning algorithms.
+
+\subsection{Matrix Addition and Scalar Multiplication}
+
+Matrices of the same dimensions can be added element-wise:
+
+\begin{definition}[Matrix Addition]
+Given $\mat{A}, \mat{B} \in \mathbb{R}^{m \times n}$, their sum $\mat{C} = \mat{A} + \mat{B}$ is defined as:
+\begin{equation}
+    C_{ij} = A_{ij} + B_{ij}
+\end{equation}
+for all $i = 1, \ldots, m$ and $j = 1, \ldots, n$.
+\end{definition}
+
+\begin{definition}[Scalar Multiplication]
+Given a scalar $\alpha \in \mathbb{R}$ and a matrix $\mat{A} \in \mathbb{R}^{m \times n}$, the product $\mat{B} = \alpha\mat{A}$ is:
+\begin{equation}
+    B_{ij} = \alpha A_{ij}
+\end{equation}
+\end{definition}
+
+\subsection{Matrix Transpose}
+
+The transpose is a fundamental operation that exchanges rows and columns.
+
+\begin{definition}[Transpose]
+The transpose of a matrix $\mat{A} \in \mathbb{R}^{m \times n}$ is a matrix $\mat{A}\transpose \in \mathbb{R}^{n \times m}$ where:
+\begin{equation}
+    (\mat{A}\transpose)_{ij} = A_{ji}
+\end{equation}
+\end{definition}
+
+Properties of transpose:
+\begin{align}
+    (\mat{A}\transpose)\transpose &= \mat{A} \\
+    (\mat{A} + \mat{B})\transpose &= \mat{A}\transpose + \mat{B}\transpose \\
+    (\alpha\mat{A})\transpose &= \alpha\mat{A}\transpose \\
+    (\mat{AB})\transpose &= \mat{B}\transpose\mat{A}\transpose
+\end{align}
+
+\subsection{Matrix Multiplication}
+
+Matrix multiplication is central to neural network computations.
+
+\begin{definition}[Matrix Multiplication]
+Given $\mat{A} \in \mathbb{R}^{m \times n}$ and $\mat{B} \in \mathbb{R}^{n \times p}$, their product $\mat{C} = \mat{AB} \in \mathbb{R}^{m \times p}$ is defined as:
+\begin{equation}
+    C_{ij} = \sum_{k=1}^{n} A_{ik}B_{kj}
+\end{equation}
+\end{definition}
+
+\begin{example}
+Consider the multiplication:
+\begin{equation}
+    \begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix}
+    \begin{bmatrix} 5 & 6 \\ 7 & 8 \end{bmatrix}
+    = \begin{bmatrix} 19 & 22 \\ 43 & 50 \end{bmatrix}
+\end{equation}
+where $C_{11} = 1 \cdot 5 + 2 \cdot 7 = 19$.
+\end{example}
+
+Important properties:
+\begin{itemize}
+    \item \textbf{Associative:} $(\mat{AB})\mat{C} = \mat{A}(\mat{BC})$
+    \item \textbf{Distributive:} $\mat{A}(\mat{B} + \mat{C}) = \mat{AB} + \mat{AC}$
+    \item \textbf{Not commutative:} Generally $\mat{AB} \neq \mat{BA}$
+\end{itemize}
+
+\subsection{Element-wise (Hadamard) Product}
+
+The element-wise product is denoted by $\odot$ and operates on corresponding elements.
+
+\begin{definition}[Hadamard Product]
+Given $\mat{A}, \mat{B} \in \mathbb{R}^{m \times n}$, the Hadamard product $\mat{C} = \mat{A} \odot \mat{B}$ is:
+\begin{equation}
+    C_{ij} = A_{ij}B_{ij}
+\end{equation}
+\end{definition}
+
+This operation is common in neural networks, particularly in activation functions and gating mechanisms.
+
+\subsection{Matrix-Vector Products}
+
+When multiplying a matrix by a vector, we can view it as a special case of matrix multiplication:
+
+\begin{equation}
+    \mat{A}\vect{x} = \vect{b}
+\end{equation}
+
+where $\mat{A} \in \mathbb{R}^{m \times n}$, $\vect{x} \in \mathbb{R}^n$, and $\vect{b} \in \mathbb{R}^m$.
+
+This operation is fundamental in neural networks, where it represents the linear transformation:
+\begin{equation}
+    b_i = \sum_{j=1}^{n} A_{ij}x_j
+\end{equation}
+
+\subsection{Dot Product}
+
+The dot product (or inner product) of two vectors is a special case of matrix multiplication:
+
+\begin{definition}[Dot Product]
+For vectors $\vect{x}, \vect{y} \in \mathbb{R}^n$, their dot product is:
+\begin{equation}
+    \vect{x} \cdot \vect{y} = \vect{x}\transpose\vect{y} = \sum_{i=1}^{n} x_i y_i
+\end{equation}
+\end{definition}
+
+The dot product has geometric interpretation:
+\begin{equation}
+    \vect{x} \cdot \vect{y} = \norm{\vect{x}} \norm{\vect{y}} \cos\theta
+\end{equation}
+where $\theta$ is the angle between the vectors.
+
+\subsection{Computational Complexity}
+
+Understanding computational costs is important for efficient implementation:
+
+\begin{itemize}
+    \item Matrix-matrix multiplication $\mat{A} \in \mathbb{R}^{m \times n}$, $\mat{B} \in \mathbb{R}^{n \times p}$: $O(mnp)$ operations
+    \item Matrix-vector multiplication: $O(mn)$ operations
+    \item Element-wise operations: $O(mn)$ operations
+\end{itemize}
+
+These operations can be efficiently parallelized on modern hardware (GPUs, TPUs), which is one reason deep learning has become practical.

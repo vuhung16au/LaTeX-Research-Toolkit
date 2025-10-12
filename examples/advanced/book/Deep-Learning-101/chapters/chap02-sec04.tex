@@ -1,0 +1,118 @@
+% Chapter 2, Section 4: Linear Dependence and Span
+
+\section{Linear Dependence and Span}
+\label{sec:linear-dependence-span}
+
+Understanding linear independence and span is crucial for analyzing the capacity and expressiveness of neural networks.
+
+\subsection{Linear Combinations}
+
+A \emph{linear combination} of vectors $\vect{v}_1, \vect{v}_2, \ldots, \vect{v}_n$ is any vector of the form:
+\begin{equation}
+    \vect{v} = a_1\vect{v}_1 + a_2\vect{v}_2 + \cdots + a_n\vect{v}_n
+\end{equation}
+where $a_1, a_2, \ldots, a_n$ are scalars called \emph{coefficients}.
+
+\begin{example}
+If $\vect{v}_1 = \begin{bmatrix} 1 \\ 0 \end{bmatrix}$ and $\vect{v}_2 = \begin{bmatrix} 0 \\ 1 \end{bmatrix}$, then any vector in $\mathbb{R}^2$ can be written as a linear combination:
+\begin{equation}
+    \begin{bmatrix} x \\ y \end{bmatrix} = x\vect{v}_1 + y\vect{v}_2
+\end{equation}
+\end{example}
+
+\subsection{Span}
+
+\begin{definition}[Span]
+The \emph{span} of a set of vectors $\{\vect{v}_1, \vect{v}_2, \ldots, \vect{v}_n\}$ is the set of all possible linear combinations of these vectors:
+\begin{equation}
+    \text{span}(\{\vect{v}_1, \ldots, \vect{v}_n\}) = \left\{ \sum_{i=1}^{n} a_i\vect{v}_i \;\middle|\; a_i \in \mathbb{R} \right\}
+\end{equation}
+\end{definition}
+
+The span defines all vectors that can be reached by scaling and adding the given vectors.
+
+\begin{example}
+In $\mathbb{R}^3$, the span of $\vect{v}_1 = \begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix}$ and $\vect{v}_2 = \begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix}$ is the $xy$-plane:
+\begin{equation}
+    \text{span}(\{\vect{v}_1, \vect{v}_2\}) = \left\{ \begin{bmatrix} x \\ y \\ 0 \end{bmatrix} \;\middle|\; x, y \in \mathbb{R} \right\}
+\end{equation}
+\end{example}
+
+\subsection{Linear Independence}
+
+\begin{definition}[Linear Independence]
+A set of vectors $\{\vect{v}_1, \vect{v}_2, \ldots, \vect{v}_n\}$ is \emph{linearly independent} if no vector can be written as a linear combination of the others. Formally, the only solution to:
+\begin{equation}
+    a_1\vect{v}_1 + a_2\vect{v}_2 + \cdots + a_n\vect{v}_n = \vect{0}
+\end{equation}
+is $a_1 = a_2 = \cdots = a_n = 0$.
+\end{definition}
+
+If a set of vectors is not linearly independent, it is \emph{linearly dependent}.
+
+\begin{example}[Linear Dependence]
+The vectors $\vect{v}_1 = \begin{bmatrix} 1 \\ 2 \end{bmatrix}$, $\vect{v}_2 = \begin{bmatrix} 2 \\ 4 \end{bmatrix}$ are linearly dependent because $\vect{v}_2 = 2\vect{v}_1$.
+\end{example}
+
+\begin{example}[Linear Independence]
+The standard basis vectors $\vect{e}_1 = \begin{bmatrix} 1 \\ 0 \end{bmatrix}$ and $\vect{e}_2 = \begin{bmatrix} 0 \\ 1 \end{bmatrix}$ are linearly independent.
+\end{example}
+
+\subsection{Basis}
+
+\begin{definition}[Basis]
+A \emph{basis} for a vector space $V$ is a set of linearly independent vectors that span $V$. Every vector in $V$ can be uniquely expressed as a linear combination of basis vectors.
+\end{definition}
+
+\begin{example}[Standard Basis]
+The standard basis for $\mathbb{R}^3$ is:
+\begin{equation}
+    \vect{e}_1 = \begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix}, \quad
+    \vect{e}_2 = \begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix}, \quad
+    \vect{e}_3 = \begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix}
+\end{equation}
+\end{example}
+
+\subsection{Dimension and Rank}
+
+\begin{definition}[Dimension]
+The \emph{dimension} of a vector space is the number of vectors in any basis for that space. We write $\dim(V)$ for the dimension of space $V$.
+\end{definition}
+
+\begin{definition}[Rank]
+The \emph{rank} of a matrix $\mat{A}$ is the dimension of the space spanned by its columns (column rank) or rows (row rank). For any matrix, column rank equals row rank, so we simply refer to ``the rank.''
+\end{definition}
+
+Properties of rank:
+\begin{itemize}
+    \item $\text{rank}(\mat{A}) \leq \min(m, n)$ for $\mat{A} \in \mathbb{R}^{m \times n}$
+    \item $\text{rank}(\mat{AB}) \leq \min(\text{rank}(\mat{A}), \text{rank}(\mat{B}))$
+    \item $\mat{A}$ is invertible if and only if $\text{rank}(\mat{A}) = n$ (full rank)
+\end{itemize}
+
+\subsection{Column Space and Null Space}
+
+\begin{definition}[Column Space]
+The \emph{column space} (or \emph{range}) of a matrix $\mat{A} \in \mathbb{R}^{m \times n}$ is the span of its columns:
+\begin{equation}
+    \text{Col}(\mat{A}) = \{\mat{A}\vect{x} \mid \vect{x} \in \mathbb{R}^n\}
+\end{equation}
+The dimension of the column space is the rank of $\mat{A}$.
+\end{definition}
+
+\begin{definition}[Null Space]
+The \emph{null space} (or \emph{kernel}) of $\mat{A}$ is the set of all vectors that map to zero:
+\begin{equation}
+    \text{Null}(\mat{A}) = \{\vect{x} \in \mathbb{R}^n \mid \mat{A}\vect{x} = \vect{0}\}
+\end{equation}
+\end{definition}
+
+\subsection{Relevance to Deep Learning}
+
+These concepts are fundamental to understanding:
+\begin{itemize}
+    \item \textbf{Model Capacity:} The expressiveness of a layer depends on the rank of its weight matrix
+    \item \textbf{Redundancy:} Linear dependence in features indicates redundant information
+    \item \textbf{Dimensionality Reduction:} Methods like PCA seek low-dimensional representations
+    \item \textbf{Network Design:} Understanding which transformations are possible with given architectures
+\end{itemize}

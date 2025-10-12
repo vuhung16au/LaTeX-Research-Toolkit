@@ -1,0 +1,145 @@
+% Chapter 2, Section 5: Norms
+
+\section{Norms}
+\label{sec:norms}
+
+Norms are functions that measure the size or length of vectors. They are essential for regularization, optimization, and measuring distances in deep learning.
+
+\subsection{Definition of a Norm}
+
+\begin{definition}[Norm]
+A function $f: \mathbb{R}^n \rightarrow \mathbb{R}$ is a norm if it satisfies the following properties for all $\vect{x}, \vect{y} \in \mathbb{R}^n$ and $\alpha \in \mathbb{R}$:
+\begin{enumerate}
+    \item \textbf{Non-negativity:} $f(\vect{x}) \geq 0$, with equality if and only if $\vect{x} = \vect{0}$
+    \item \textbf{Homogeneity:} $f(\alpha\vect{x}) = |\alpha|f(\vect{x})$
+    \item \textbf{Triangle inequality:} $f(\vect{x} + \vect{y}) \leq f(\vect{x}) + f(\vect{y})$
+\end{enumerate}
+\end{definition}
+
+We typically denote norms using the notation $\norm{\vect{x}}$.
+
+\subsection{$L^p$ Norms}
+
+The most common family of norms are the $L^p$ norms.
+
+\begin{definition}[$L^p$ Norm]
+For $p \geq 1$, the $L^p$ norm of a vector $\vect{x} \in \mathbb{R}^n$ is:
+\begin{equation}
+    \norm{\vect{x}}_p = \left(\sum_{i=1}^{n} |x_i|^p\right)^{1/p}
+\end{equation}
+\end{definition}
+
+\subsection{Common Norms}
+
+\subsubsection{$L^1$ Norm (Manhattan Distance)}
+
+The $L^1$ norm is the sum of absolute values:
+\begin{equation}
+    \norm{\vect{x}}_1 = \sum_{i=1}^{n} |x_i|
+\end{equation}
+
+\begin{example}
+For $\vect{x} = \begin{bmatrix} 3 \\ -4 \\ 2 \end{bmatrix}$, we have $\norm{\vect{x}}_1 = 3 + 4 + 2 = 9$.
+\end{example}
+
+The $L^1$ norm is used in:
+\begin{itemize}
+    \item Lasso regularization (encourages sparsity)
+    \item Robust statistics
+    \item Compressed sensing
+\end{itemize}
+
+\subsubsection{$L^2$ Norm (Euclidean Distance)}
+
+The $L^2$ norm is the most common norm, corresponding to Euclidean distance:
+\begin{equation}
+    \norm{\vect{x}}_2 = \sqrt{\sum_{i=1}^{n} x_i^2} = \sqrt{\vect{x}\transpose\vect{x}}
+\end{equation}
+
+\begin{example}
+For $\vect{x} = \begin{bmatrix} 3 \\ -4 \\ 2 \end{bmatrix}$, we have $\norm{\vect{x}}_2 = \sqrt{9 + 16 + 4} = \sqrt{29} \approx 5.39$.
+\end{example}
+
+The $L^2$ norm is used in:
+\begin{itemize}
+    \item Ridge regularization (weight decay)
+    \item Gradient descent
+    \item Distance metrics
+\end{itemize}
+
+The squared $L^2$ norm is often used in optimization because it has simpler derivatives:
+\begin{equation}
+    \norm{\vect{x}}_2^2 = \vect{x}\transpose\vect{x} = \sum_{i=1}^{n} x_i^2
+\end{equation}
+
+\subsubsection{$L^\infty$ Norm (Maximum Norm)}
+
+The $L^\infty$ norm is defined as:
+\begin{equation}
+    \norm{\vect{x}}_\infty = \max_i |x_i|
+\end{equation}
+
+This can be viewed as the limit of $L^p$ norms as $p \rightarrow \infty$.
+
+\begin{example}
+For $\vect{x} = \begin{bmatrix} 3 \\ -4 \\ 2 \end{bmatrix}$, we have $\norm{\vect{x}}_\infty = \max(3, 4, 2) = 4$.
+\end{example}
+
+\subsection{Frobenius Norm}
+
+For matrices, the Frobenius norm is analogous to the $L^2$ norm for vectors.
+
+\begin{definition}[Frobenius Norm]
+For a matrix $\mat{A} \in \mathbb{R}^{m \times n}$:
+\begin{equation}
+    \norm{\mat{A}}_F = \sqrt{\sum_{i=1}^{m}\sum_{j=1}^{n} A_{ij}^2} = \sqrt{\text{trace}(\mat{A}\transpose\mat{A})}
+\end{equation}
+\end{definition}
+
+The Frobenius norm is used for regularizing weight matrices in neural networks.
+
+\subsection{Unit Vectors and Normalization}
+
+A vector with unit norm ($\norm{\vect{x}} = 1$) is called a \emph{unit vector}.
+
+\begin{definition}[Normalization]
+To normalize a vector $\vect{x}$, we divide by its norm:
+\begin{equation}
+    \hat{\vect{x}} = \frac{\vect{x}}{\norm{\vect{x}}}
+\end{equation}
+resulting in a unit vector pointing in the same direction.
+\end{definition}
+
+Normalization is commonly used in deep learning:
+\begin{itemize}
+    \item Batch normalization
+    \item Layer normalization
+    \item Input feature scaling
+    \item Weight normalization
+\end{itemize}
+
+\subsection{Distance Metrics}
+
+Norms induce distance metrics. The distance between vectors $\vect{x}$ and $\vect{y}$ is:
+\begin{equation}
+    d(\vect{x}, \vect{y}) = \norm{\vect{x} - \vect{y}}
+\end{equation}
+
+Different norms lead to different notions of distance:
+\begin{itemize}
+    \item $L^1$: Manhattan distance (sum of coordinate differences)
+    \item $L^2$: Euclidean distance (straight-line distance)
+    \item $L^\infty$: Chebyshev distance (maximum coordinate difference)
+\end{itemize}
+
+\subsection{Regularization in Deep Learning}
+
+Norms are central to regularization techniques:
+
+\begin{itemize}
+    \item \textbf{$L^1$ Regularization:} Adds $\lambda\norm{\vect{w}}_1$ to loss, promoting sparsity
+    \item \textbf{$L^2$ Regularization:} Adds $\lambda\norm{\vect{w}}_2^2$ to loss, preventing large weights
+    \item \textbf{Elastic Net:} Combines $L^1$ and $L^2$: $\lambda_1\norm{\vect{w}}_1 + \lambda_2\norm{\vect{w}}_2^2$
+\end{itemize}
+
+Understanding norms and their properties is essential for designing effective regularization strategies and analyzing model behavior.

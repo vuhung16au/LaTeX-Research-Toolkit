@@ -1,0 +1,93 @@
+% Chapter 2, Section 1: Scalars, Vectors, Matrices, and Tensors
+
+\section{Scalars, Vectors, Matrices, and Tensors}
+\label{sec:scalars-vectors-matrices-tensors}
+
+Linear algebra provides the mathematical framework for understanding and implementing deep learning algorithms. We begin with the basic objects that form the foundation of this framework.
+
+\subsection{Scalars}
+
+A \emph{scalar} is a single number, in contrast to objects that contain multiple numbers. We typically denote scalars with lowercase italic letters, such as $a$, $n$, or $x$.
+
+\begin{example}
+The learning rate $\alpha = 0.01$ is a scalar. The number of training examples $n = 1000$ is also a scalar.
+\end{example}
+
+In deep learning, scalars are often real numbers ($a \in \mathbb{R}$), but they can also be integers, complex numbers, or elements of other fields depending on the context.
+
+\subsection{Vectors}
+
+A \emph{vector} is an array of numbers arranged in order. We identify each individual number in the vector by its position in the ordering. We denote vectors with bold lowercase letters, such as $\vect{x}$, $\vect{y}$, or $\vect{w}$.
+
+\begin{definition}[Vector]
+A vector $\vect{x} \in \mathbb{R}^n$ is an ordered collection of $n$ real numbers:
+\begin{equation}
+    \vect{x} = \begin{bmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{bmatrix}
+\end{equation}
+where $x_i$ denotes the $i$-th element of $\vect{x}$.
+\end{definition}
+
+\begin{example}
+A feature vector for a house might be:
+\begin{equation}
+    \vect{x} = \begin{bmatrix} 2000 \\ 3 \\ 2 \\ 50 \end{bmatrix}
+\end{equation}
+representing square footage, number of bedrooms, number of bathrooms, and age in years.
+\end{example}
+
+\subsection{Matrices}
+
+A \emph{matrix} is a 2-D array of numbers, where each element is identified by two indices. We denote matrices with bold uppercase letters such as $\mat{A}$, $\mat{W}$, or $\mat{X}$.
+
+\begin{definition}[Matrix]
+A matrix $\mat{A} \in \mathbb{R}^{m \times n}$ is a rectangular array of real numbers with $m$ rows and $n$ columns:
+\begin{equation}
+    \mat{A} = \begin{bmatrix}
+        A_{11} & A_{12} & \cdots & A_{1n} \\
+        A_{21} & A_{22} & \cdots & A_{2n} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        A_{m1} & A_{m2} & \cdots & A_{mn}
+    \end{bmatrix}
+\end{equation}
+where $A_{ij}$ denotes the element at row $i$ and column $j$.
+\end{definition}
+
+\begin{example}
+A matrix of training examples where each row is a feature vector:
+\begin{equation}
+    \mat{X} = \begin{bmatrix}
+        x_{11} & x_{12} & x_{13} \\
+        x_{21} & x_{22} & x_{23} \\
+        x_{31} & x_{32} & x_{33}
+    \end{bmatrix}
+\end{equation}
+Here, $\mat{X} \in \mathbb{R}^{3 \times 3}$ contains 3 examples with 3 features each.
+\end{example}
+
+\subsection{Tensors}
+
+A \emph{tensor} is an array with more than two axes. While scalars are 0-D tensors, vectors are 1-D tensors, and matrices are 2-D tensors, we typically reserve the term ``tensor'' for arrays with three or more dimensions.
+
+\begin{definition}[Tensor]
+A tensor $\mathcal{A} \in \mathbb{R}^{n_1 \times n_2 \times \cdots \times n_k}$ is a $k$-dimensional array where elements are identified by $k$ indices: $\mathcal{A}_{i_1, i_2, \ldots, i_k}$.
+\end{definition}
+
+\begin{example}
+A batch of color images can be represented as a 4-D tensor:
+\begin{equation}
+    \mathcal{X} \in \mathbb{R}^{B \times H \times W \times C}
+\end{equation}
+where $B$ is the batch size, $H$ and $W$ are height and width, and $C$ is the number of color channels (e.g., 3 for RGB).
+\end{example}
+
+\subsection{Notation Conventions}
+
+Throughout this book, we adopt the following conventions:
+\begin{itemize}
+    \item Scalars: lowercase italic ($a$, $b$, $x$)
+    \item Vectors: bold lowercase ($\vect{a}$, $\vect{x}$, $\vect{w}$)
+    \item Matrices: bold uppercase ($\mat{A}$, $\mat{X}$, $\mat{W}$)
+    \item Tensors: calligraphic uppercase ($\mathcal{A}$, $\mathcal{X}$)
+\end{itemize}
+
+Understanding these fundamental objects and their properties is essential for working with the mathematical formulations of deep learning algorithms.
