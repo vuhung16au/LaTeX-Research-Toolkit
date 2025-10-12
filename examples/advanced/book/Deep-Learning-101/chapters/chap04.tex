@@ -6,20 +6,185 @@
 This chapter covers numerical methods and computational considerations essential for implementing deep learning algorithms. Topics include gradient-based optimization, numerical stability, and conditioning.
 
 \section{Overflow and Underflow}
+\label{sec:overflow-underflow}
 
-\textit{This section will discuss numerical precision issues and how to handle them.}
+Computers represent real numbers with finite precision, typically using floating-point arithmetic. This leads to \textbf{rounding errors} that can accumulate and cause problems.
+
+\subsection{Floating-Point Representation}
+
+The IEEE 754 standard defines floating-point numbers. For 32-bit floats:
+\begin{itemize}
+    \item Smallest positive number: approximately $10^{-38}$
+    \item Largest number: approximately $10^{38}$
+    \item Machine epsilon: approximately $10^{-7}$
+\end{itemize}
+
+\subsection{Underflow}
+
+\textbf{Underflow} occurs when numbers near zero are rounded to zero. This can be problematic when we need to compute ratios or logarithms. For example, the softmax function:
+
+\begin{equation}
+\text{softmax}(\vect{x})_i = \frac{\exp(x_i)}{\sum_j \exp(x_j)}
+\end{equation}
+
+can underflow if all $x_i$ are very negative.
+
+\subsection{Overflow}
+
+\textbf{Overflow} occurs when large numbers exceed representable values. In the softmax example, overflow can occur if some $x_i$ are very large.
+
+\subsection{Numerical Stability}
+
+To stabilize softmax, we use the identity:
+
+\begin{equation}
+\text{softmax}(\vect{x}) = \text{softmax}(\vect{x} - c)
+\end{equation}
+
+where $c = \max_i x_i$. This prevents both overflow and underflow.
+
+Similarly, when computing $\log(\sum_i \exp(x_i))$, we use the \textbf{log-sum-exp} trick:
+
+\begin{equation}
+\log\left(\sum_i \exp(x_i)\right) = c + \log\left(\sum_i \exp(x_i - c)\right)
+\end{equation}
 
 \section{Gradient-Based Optimization}
+\label{sec:gradient-optimization}
 
-\textit{This section will introduce the foundations of optimization using gradients.}
+Most deep learning algorithms involve optimization: finding parameters that minimize or maximize an objective function.
+
+\subsection{Gradient Descent}
+
+For a function $f(\vect{\theta})$, \textbf{gradient descent} updates parameters as:
+
+\begin{equation}
+\vect{\theta}_{t+1} = \vect{\theta}_t - \alpha \nabla_{\vect{\theta}} f(\vect{\theta}_t)
+\end{equation}
+
+where $\alpha > 0$ is the \textbf{learning rate}.
+
+\subsection{Jacobian and Hessian Matrices}
+
+The \textbf{Jacobian matrix} contains all first-order partial derivatives. For $\vect{f}: \mathbb{R}^n \to \mathbb{R}^m$:
+
+\begin{equation}
+\mat{J}_{ij} = \frac{\partial f_i}{\partial x_j}
+\end{equation}
+
+The \textbf{Hessian matrix} contains second-order derivatives:
+
+\begin{equation}
+\mat{H}_{ij} = \frac{\partial^2 f}{\partial x_i \partial x_j}
+\end{equation}
+
+The Hessian characterizes the local curvature of the function.
+
+\subsection{Taylor Series Approximation}
+
+Near point $\vect{x}_0$, we can approximate $f(\vect{x})$ using Taylor series:
+
+\begin{equation}
+f(\vect{x}) \approx f(\vect{x}_0) + (\vect{x} - \vect{x}_0)^\top \nabla f(\vect{x}_0) + \frac{1}{2}(\vect{x} - \vect{x}_0)^\top \mat{H}(\vect{x}_0) (\vect{x} - \vect{x}_0)
+\end{equation}
+
+This provides insight into optimization behavior.
+
+\subsection{Critical Points}
+
+At a \textbf{critical point}, $\nabla f(\vect{x}) = \boldsymbol{0}$. The Hessian determines the nature:
+\begin{itemize}
+    \item \textbf{Local minimum:} Hessian is positive definite
+    \item \textbf{Local maximum:} Hessian is negative definite
+    \item \textbf{Saddle point:} Hessian has both positive and negative eigenvalues
+\end{itemize}
+
+Deep learning often encounters saddle points rather than local minima in high dimensions.
+
+\subsection{Directional Derivatives}
+
+The directional derivative in direction $\vect{u}$ (with $\|\vect{u}\| = 1$) is:
+
+\begin{equation}
+\frac{\partial}{\partial \alpha} f(\vect{x} + \alpha \vect{u}) \bigg|_{\alpha=0} = \vect{u}^\top \nabla f(\vect{x})
+\end{equation}
+
+To minimize $f$, we move in the direction $\vect{u} = -\frac{\nabla f(\vect{x})}{\|\nabla f(\vect{x})\|}$.
 
 \section{Constrained Optimization}
+\label{sec:constrained-optimization}
 
-\textit{This section will cover optimization with constraints and Lagrange multipliers.}
+Many problems require optimizing a function subject to constraints.
+
+\subsection{Lagrange Multipliers}
+
+For equality constraint $g(\vect{x}) = 0$, the \textbf{Lagrangian} is:
+
+\begin{equation}
+\mathcal{L}(\vect{x}, \lambda) = f(\vect{x}) + \lambda g(\vect{x})
+\end{equation}
+
+At the optimum, both:
+\begin{equation}
+\nabla_{\vect{x}} \mathcal{L} = \boldsymbol{0} \quad \text{and} \quad \frac{\partial \mathcal{L}}{\partial \lambda} = 0
+\end{equation}
+
+\subsection{Inequality Constraints}
+
+For inequality constraint $g(\vect{x}) \leq 0$, we use the \textbf{Karush-Kuhn-Tucker (KKT)} conditions:
+
+\begin{align}
+\nabla_{\vect{x}} \mathcal{L} &= \boldsymbol{0} \\
+\lambda &\geq 0 \\
+\lambda g(\vect{x}) &= 0 \quad \text{(complementary slackness)} \\
+g(\vect{x}) &\leq 0
+\end{align}
+
+\subsection{Projected Gradient Descent}
+
+For constraints defining a set $\mathcal{C}$, \textbf{projected gradient descent} applies:
+
+\begin{equation}
+\vect{x}_{t+1} = \text{Proj}_{\mathcal{C}}\left(\vect{x}_t - \alpha \nabla f(\vect{x}_t)\right)
+\end{equation}
+
+where $\text{Proj}_{\mathcal{C}}$ projects onto the feasible set.
 
 \section{Numerical Stability and Conditioning}
+\label{sec:numerical-stability}
 
-\textit{This section will discuss condition numbers and numerical stability.}
+\subsection{Condition Number}
 
-\vspace{1em}
-\noindent\textit{Note: Detailed content for this chapter will be added in future revisions.}
+The \textbf{condition number} of matrix $\mat{A}$ is:
+
+\begin{equation}
+\kappa(\mat{A}) = \|\mat{A}\| \|\mat{A}^{-1}\|
+\end{equation}
+
+For symmetric matrices with eigenvalues $\lambda_i$:
+
+\begin{equation}
+\kappa(\mat{A}) = \frac{\max_i |\lambda_i|}{\min_i |\lambda_i|}
+\end{equation}
+
+High condition numbers indicate numerical instability: small changes in input lead to large changes in output.
+
+\subsection{Ill-Conditioned Matrices}
+
+In deep learning, ill-conditioned Hessians can make optimization difficult. This motivates techniques like:
+\begin{itemize}
+    \item Batch normalization
+    \item Careful weight initialization
+    \item Adaptive learning rate methods
+    \item Preconditioning
+\end{itemize}
+
+\subsection{Gradient Checking}
+
+To verify gradient computations, we use \textbf{finite differences}:
+
+\begin{equation}
+\frac{\partial f}{\partial \theta_i} \approx \frac{f(\theta_i + \epsilon) - f(\theta_i - \epsilon)}{2\epsilon}
+\end{equation}
+
+This is computationally expensive but useful for debugging.

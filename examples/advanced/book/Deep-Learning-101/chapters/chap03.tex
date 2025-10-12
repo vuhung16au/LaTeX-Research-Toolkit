@@ -6,24 +6,239 @@
 This chapter introduces fundamental concepts from probability theory and information theory that are essential for understanding machine learning and deep learning. Topics include probability distributions, conditional probability, expectation, variance, entropy, and mutual information.
 
 \section{Probability Distributions}
+\label{sec:probability-distributions}
 
-\textit{This section will cover discrete and continuous probability distributions, including common distributions used in deep learning.}
+Probability theory provides a mathematical framework for quantifying uncertainty. In deep learning, we use probability distributions to model uncertainty in data, model parameters, and predictions.
+
+\subsection{Discrete Probability Distributions}
+
+A discrete random variable $X$ takes values from a countable set. The \textbf{probability mass function} (PMF) $P(X=x)$ assigns probabilities to each possible value:
+
+\begin{equation}
+P(X=x) \geq 0 \quad \text{for all } x
+\end{equation}
+
+\begin{equation}
+\sum_{x} P(X=x) = 1
+\end{equation}
+
+\subsection{Continuous Probability Distributions}
+
+A continuous random variable can take any value in a continuous range. We describe it using a \textbf{probability density function} (PDF) $p(x)$:
+
+\begin{equation}
+p(x) \geq 0 \quad \text{for all } x
+\end{equation}
+
+\begin{equation}
+\int_{-\infty}^{\infty} p(x) \, dx = 1
+\end{equation}
+
+The probability that $X$ falls in an interval $[a, b]$ is:
+
+\begin{equation}
+P(a \leq X \leq b) = \int_a^b p(x) \, dx
+\end{equation}
+
+\subsection{Joint and Marginal Distributions}
+
+For multiple random variables $X$ and $Y$, the \textbf{joint distribution} $P(X, Y)$ describes their combined behavior. The \textbf{marginal distribution} is obtained by summing (or integrating) over the other variable:
+
+\begin{equation}
+P(X=x) = \sum_{y} P(X=x, Y=y)
+\end{equation}
+
+For continuous variables:
+
+\begin{equation}
+p(x) = \int p(x, y) \, dy
+\end{equation}
 
 \section{Conditional Probability and Bayes' Rule}
+\label{sec:conditional-probability}
 
-\textit{This section will discuss conditional probability, independence, and Bayes' theorem.}
+\subsection{Conditional Probability}
+
+The \textbf{conditional probability} of $X$ given $Y$ is:
+
+\begin{equation}
+P(X|Y) = \frac{P(X, Y)}{P(Y)}
+\end{equation}
+
+This quantifies how the probability of $X$ changes when we know the value of $Y$.
+
+\subsection{Independence}
+
+Two random variables $X$ and $Y$ are \textbf{independent} if:
+
+\begin{equation}
+P(X, Y) = P(X)P(Y)
+\end{equation}
+
+Equivalently, $P(X|Y) = P(X)$ and $P(Y|X) = P(Y)$.
+
+\subsection{Bayes' Theorem}
+
+\textbf{Bayes' theorem} is fundamental to probabilistic inference:
+
+\begin{equation}
+P(X|Y) = \frac{P(Y|X)P(X)}{P(Y)}
+\end{equation}
+
+In machine learning terminology:
+\begin{itemize}
+    \item $P(X)$ is the \textbf{prior} probability
+    \item $P(Y|X)$ is the \textbf{likelihood}
+    \item $P(X|Y)$ is the \textbf{posterior} probability
+    \item $P(Y)$ is the \textbf{evidence} or marginal likelihood
+\end{itemize}
 
 \section{Expectation, Variance, and Covariance}
+\label{sec:expectation-variance}
 
-\textit{This section will introduce key statistical measures and their properties.}
+\subsection{Expectation}
+
+The \textbf{expected value} or \textbf{mean} of a function $f(x)$ with respect to distribution $P(x)$ is:
+
+For discrete variables:
+\begin{equation}
+\mathbb{E}_{x \sim P}[f(x)] = \sum_{x} P(x) f(x)
+\end{equation}
+
+For continuous variables:
+\begin{equation}
+\mathbb{E}_{x \sim p}[f(x)] = \int p(x) f(x) \, dx
+\end{equation}
+
+\subsection{Variance}
+
+The \textbf{variance} measures the spread of a distribution:
+
+\begin{equation}
+\text{Var}(X) = \mathbb{E}[(X - \mathbb{E}[X])^2] = \mathbb{E}[X^2] - (\mathbb{E}[X])^2
+\end{equation}
+
+The \textbf{standard deviation} is $\sigma = \sqrt{\text{Var}(X)}$.
+
+\subsection{Covariance}
+
+The \textbf{covariance} measures how two variables vary together:
+
+\begin{equation}
+\text{Cov}(X, Y) = \mathbb{E}[(X - \mathbb{E}[X])(Y - \mathbb{E}[Y])]
+\end{equation}
+
+Positive covariance indicates that $X$ and $Y$ tend to increase together, while negative covariance indicates they tend to vary in opposite directions.
 
 \section{Common Probability Distributions}
+\label{sec:common-distributions}
 
-\textit{This section will cover Gaussian, Bernoulli, categorical, and other distributions commonly used in deep learning.}
+\subsection{Bernoulli Distribution}
+
+Models a binary random variable (0 or 1):
+
+\begin{equation}
+P(X=1) = \phi, \quad P(X=0) = 1-\phi
+\end{equation}
+
+\subsection{Categorical Distribution}
+
+Generalizes Bernoulli to $k$ discrete outcomes. If $X$ can take values $\{1, 2, \ldots, k\}$:
+
+\begin{equation}
+P(X=i) = p_i \quad \text{where} \quad \sum_{i=1}^{k} p_i = 1
+\end{equation}
+
+\subsection{Gaussian (Normal) Distribution}
+
+The most important continuous distribution in deep learning:
+
+\begin{equation}
+\mathcal{N}(x; \mu, \sigma^2) = \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)
+\end{equation}
+
+The multivariate Gaussian with mean vector $\boldsymbol{\mu}$ and covariance matrix $\boldsymbol{\Sigma}$ is:
+
+\begin{equation}
+\mathcal{N}(\vect{x}; \boldsymbol{\mu}, \boldsymbol{\Sigma}) = \frac{1}{\sqrt{(2\pi)^n |\boldsymbol{\Sigma}|}} \exp\left(-\frac{1}{2}(\vect{x}-\boldsymbol{\mu})^\top \boldsymbol{\Sigma}^{-1} (\vect{x}-\boldsymbol{\mu})\right)
+\end{equation}
+
+\subsection{Exponential Distribution}
+
+Models the time between events in a Poisson process:
+
+\begin{equation}
+p(x; \lambda) = \lambda e^{-\lambda x} \quad \text{for } x \geq 0
+\end{equation}
 
 \section{Information Theory Basics}
+\label{sec:information-theory}
 
-\textit{This section will introduce entropy, cross-entropy, KL divergence, and mutual information.}
+Information theory provides tools for quantifying information and uncertainty, which are crucial for understanding learning and compression.
 
-\vspace{1em}
-\noindent\textit{Note: Detailed content for this chapter will be added in future revisions.}
+\subsection{Self-Information}
+
+The \textbf{self-information} or \textbf{surprisal} of an event $x$ is:
+
+\begin{equation}
+I(x) = -\log P(x)
+\end{equation}
+
+Rare events have high information content, while certain events have zero information.
+
+\subsection{Entropy}
+
+The \textbf{Shannon entropy} measures the expected information in a distribution:
+
+\begin{equation}
+H(X) = \mathbb{E}_{x \sim P}[I(x)] = -\sum_{x} P(x) \log P(x)
+\end{equation}
+
+For continuous distributions, we use \textbf{differential entropy}:
+
+\begin{equation}
+H(X) = -\int p(x) \log p(x) \, dx
+\end{equation}
+
+Entropy is maximized when all outcomes are equally likely.
+
+\subsection{Cross-Entropy}
+
+The \textbf{cross-entropy} between distributions $P$ and $Q$ is:
+
+\begin{equation}
+H(P, Q) = -\mathbb{E}_{x \sim P}[\log Q(x)] = -\sum_{x} P(x) \log Q(x)
+\end{equation}
+
+In deep learning, cross-entropy is commonly used as a loss function for classification.
+
+\subsection{Kullback-Leibler Divergence}
+
+The \textbf{KL divergence} measures how one distribution differs from another:
+
+\begin{equation}
+D_{KL}(P \| Q) = \mathbb{E}_{x \sim P}\left[\log \frac{P(x)}{Q(x)}\right] = \sum_{x} P(x) \log \frac{P(x)}{Q(x)}
+\end{equation}
+
+Properties:
+\begin{itemize}
+    \item $D_{KL}(P \| Q) \geq 0$ with equality if and only if $P = Q$
+    \item Not symmetric: $D_{KL}(P \| Q) \neq D_{KL}(Q \| P)$
+    \item Related to cross-entropy: $D_{KL}(P \| Q) = H(P, Q) - H(P)$
+\end{itemize}
+
+\subsection{Mutual Information}
+
+The \textbf{mutual information} between $X$ and $Y$ quantifies how much knowing one reduces uncertainty about the other:
+
+\begin{equation}
+I(X; Y) = D_{KL}(P(X, Y) \| P(X)P(Y))
+\end{equation}
+
+Equivalently:
+
+\begin{equation}
+I(X; Y) = H(X) - H(X|Y) = H(Y) - H(Y|X)
+\end{equation}
+
+Mutual information is symmetric and measures the dependence between variables.

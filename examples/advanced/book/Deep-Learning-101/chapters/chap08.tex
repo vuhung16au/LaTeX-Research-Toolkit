@@ -3,27 +3,225 @@
 \chapter{Optimization for Training Deep Models}
 \label{chap:optimization}
 
-This chapter covers optimization algorithms and strategies for training deep neural networks effectively.
+This chapter covers optimization algorithms and strategies for training deep neural networks effectively. Modern optimizers go beyond basic gradient descent to accelerate convergence and improve performance.
 
 \section{Gradient Descent Variants}
+\label{sec:gd-variants}
 
-\textit{This section will cover batch, mini-batch, and stochastic gradient descent.}
+\subsection{Batch Gradient Descent}
+
+Computes gradient using entire training set:
+\begin{equation}
+\vect{\theta}_{t+1} = \vect{\theta}_t - \alpha \nabla_{\vect{\theta}} \frac{1}{n} \sum_{i=1}^{n} L(\vect{\theta}, \vect{x}^{(i)}, y^{(i)})
+\end{equation}
+
+Characteristics:
+\begin{itemize}
+    \item Guaranteed convergence to global minimum (convex) or local minimum (non-convex)
+    \item Very slow for large datasets
+    \item Deterministic updates
+\end{itemize}
+
+\subsection{Stochastic Gradient Descent (SGD)}
+
+Uses a single random example per update:
+\begin{equation}
+\vect{\theta}_{t+1} = \vect{\theta}_t - \alpha \nabla_{\vect{\theta}} L(\vect{\theta}, \vect{x}^{(i)}, y^{(i)})
+\end{equation}
+
+Characteristics:
+\begin{itemize}
+    \item Much faster per iteration
+    \item Noisy updates can escape shallow local minima
+    \item High variance in updates
+    \item May not converge to exact minimum
+\end{itemize}
+
+\subsection{Mini-Batch Gradient Descent}
+
+Balances batch and stochastic approaches:
+\begin{equation}
+\vect{\theta}_{t+1} = \vect{\theta}_t - \alpha \nabla_{\vect{\theta}} \frac{1}{|\mathcal{B}|} \sum_{i \in \mathcal{B}} L(\vect{\theta}, \vect{x}^{(i)}, y^{(i)})
+\end{equation}
+
+where $\mathcal{B}$ is a mini-batch (typically 32-256 examples).
+
+Benefits:
+\begin{itemize}
+    \item Reduces gradient variance
+    \item Efficient GPU utilization
+    \item Good balance of speed and stability
+\end{itemize}
 
 \section{Momentum-Based Methods}
+\label{sec:momentum}
 
-\textit{This section will introduce momentum, Nesterov momentum, and related techniques.}
+\subsection{Momentum}
+
+Accumulates gradients over time:
+\begin{align}
+\vect{v}_t &= \beta \vect{v}_{t-1} - \alpha \nabla_{\vect{\theta}} L(\vect{\theta}_t) \\
+\vect{\theta}_{t+1} &= \vect{\theta}_t + \vect{v}_t
+\end{align}
+
+where $\beta \in [0, 1)$ is the momentum coefficient (typically 0.9).
+
+Benefits:
+\begin{itemize}
+    \item Accelerates convergence in relevant directions
+    \item Dampens oscillations
+    \item Helps escape local minima and saddle points
+\end{itemize}
+
+\subsection{Nesterov Accelerated Gradient (NAG)}
+
+"Look-ahead" version of momentum:
+\begin{align}
+\vect{v}_t &= \beta \vect{v}_{t-1} - \alpha \nabla_{\vect{\theta}} L(\vect{\theta}_t + \beta \vect{v}_{t-1}) \\
+\vect{\theta}_{t+1} &= \vect{\theta}_t + \vect{v}_t
+\end{align}
+
+Evaluates gradient at anticipated future position, often providing better updates.
 
 \section{Adaptive Learning Rate Methods}
+\label{sec:adaptive-methods}
 
-\textit{This section will cover AdaGrad, RMSProp, Adam, and other adaptive optimizers.}
+\subsection{AdaGrad}
+
+Adapts learning rate per parameter based on historical gradients:
+\begin{align}
+\vect{g}_t &= \nabla_{\vect{\theta}} L(\vect{\theta}_t) \\
+\vect{r}_t &= \vect{r}_{t-1} + \vect{g}_t \odot \vect{g}_t \\
+\vect{\theta}_{t+1} &= \vect{\theta}_t - \frac{\alpha}{\sqrt{\vect{r}_t + \epsilon}} \odot \vect{g}_t
+\end{align}
+
+where $\epsilon$ (e.g., $10^{-8}$) prevents division by zero.
+
+\subsection{RMSProp}
+
+Addresses AdaGrad's aggressive decay using exponential moving average:
+\begin{align}
+\vect{r}_t &= \rho \vect{r}_{t-1} + (1-\rho) \vect{g}_t \odot \vect{g}_t \\
+\vect{\theta}_{t+1} &= \vect{\theta}_t - \frac{\alpha}{\sqrt{\vect{r}_t + \epsilon}} \odot \vect{g}_t
+\end{align}
+
+\subsection{Adam (Adaptive Moment Estimation)}
+
+Combines momentum and adaptive learning rates:
+\begin{align}
+\vect{m}_t &= \beta_1 \vect{m}_{t-1} + (1-\beta_1) \vect{g}_t \\
+\vect{v}_t &= \beta_2 \vect{v}_{t-1} + (1-\beta_2) \vect{g}_t \odot \vect{g}_t \\
+\hat{\vect{m}}_t &= \frac{\vect{m}_t}{1 - \beta_1^t} \\
+\hat{\vect{v}}_t &= \frac{\vect{v}_t}{1 - \beta_2^t} \\
+\vect{\theta}_{t+1} &= \vect{\theta}_t - \frac{\alpha \hat{\vect{m}}_t}{\sqrt{\hat{\vect{v}}_t} + \epsilon}
+\end{align}
+
+Default hyperparameters: $\beta_1 = 0.9$, $\beta_2 = 0.999$, $\epsilon = 10^{-8}$, $\alpha = 0.001$.
+
+\subsection{Learning Rate Schedules}
+
+\textbf{Step Decay:}
+\begin{equation}
+\alpha_t = \alpha_0 \cdot \gamma^{\lfloor t / s \rfloor}
+\end{equation}
+
+\textbf{Exponential Decay:}
+\begin{equation}
+\alpha_t = \alpha_0 e^{-\lambda t}
+\end{equation}
+
+\textbf{Cosine Annealing:}
+\begin{equation}
+\alpha_t = \alpha_{\min} + \frac{1}{2}(\alpha_{\max} - \alpha_{\min})\left(1 + \cos\left(\frac{t}{T}\pi\right)\right)
+\end{equation}
 
 \section{Second-Order Methods}
+\label{sec:second-order}
 
-\textit{This section will discuss Newton's method and quasi-Newton methods.}
+\subsection{Newton's Method}
+
+Uses second-order Taylor expansion:
+\begin{equation}
+\vect{\theta}_{t+1} = \vect{\theta}_t - \mat{H}^{-1} \nabla_{\vect{\theta}} L(\vect{\theta}_t)
+\end{equation}
+
+where $\mat{H}$ is the Hessian matrix.
+
+Challenges:
+\begin{itemize}
+    \item Computing Hessian is $O(n^2)$ in parameters
+    \item Inverting Hessian is $O(n^3)$
+    \item Infeasible for large neural networks
+\end{itemize}
+
+\subsection{Quasi-Newton Methods}
+
+Approximate the Hessian inverse:
+
+\textbf{L-BFGS:} maintains low-rank approximation of Hessian inverse
+\begin{itemize}
+    \item More efficient than full Newton's method
+    \item Still expensive for very large models
+    \item Used for smaller networks or specific applications
+\end{itemize}
+
+\subsection{Natural Gradient}
+
+Uses Fisher information matrix instead of Hessian:
+\begin{equation}
+\vect{\theta}_{t+1} = \vect{\theta}_t - \alpha \mat{F}^{-1} \nabla_{\vect{\theta}} L(\vect{\theta}_t)
+\end{equation}
+
+Provides parameter updates invariant to reparameterization.
 
 \section{Optimization Challenges}
+\label{sec:challenges}
 
-\textit{This section will address local minima, saddle points, and plateaus.}
+\subsection{Vanishing and Exploding Gradients}
 
-\vspace{1em}
-\noindent\textit{Note: Detailed content for this chapter will be added in future revisions.}
+In deep networks, gradients can become exponentially small or large.
+
+\textbf{Vanishing gradients:}
+\begin{itemize}
+    \item Common with sigmoid/tanh activations
+    \item Mitigated by ReLU, batch normalization, residual connections
+\end{itemize}
+
+\textbf{Exploding gradients:}
+\begin{itemize}
+    \item Common in RNNs
+    \item Mitigated by gradient clipping, careful initialization
+\end{itemize}
+
+\textbf{Gradient clipping:}
+\begin{equation}
+\vect{g} \leftarrow \frac{\vect{g}}{\max(1, \|\vect{g}\| / \theta)}
+\end{equation}
+
+\subsection{Local Minima and Saddle Points}
+
+In high dimensions, saddle points are more common than local minima.
+
+Saddle points have:
+\begin{itemize}
+    \item Zero gradient
+    \item Mixed curvature (positive and negative eigenvalues)
+\end{itemize}
+
+Momentum and noise help escape saddle points.
+
+\subsection{Plateaus}
+
+Flat regions with small gradients slow convergence. Adaptive methods and learning rate schedules help navigate plateaus.
+
+\subsection{Practical Optimization Strategy}
+
+\textbf{Recommended approach:}
+\begin{enumerate}
+    \item Start with Adam optimizer
+    \item Learning rate: try 0.001, 0.0003, 0.0001
+    \item Batch size: use 32-256
+    \item Monitor training metrics
+    \item Add learning rate schedule if needed
+    \item Use gradient clipping if unstable
+\end{enumerate}

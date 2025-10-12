@@ -6,20 +6,97 @@
 This chapter introduces sampling-based approaches for probabilistic inference and learning.
 
 \section{Sampling and Monte Carlo Estimators}
+\label{sec:mc-estimators}
 
-\textit{This section will introduce basic Monte Carlo methods and variance reduction.}
+\subsection{Monte Carlo Estimation}
+
+Approximate expectations using samples:
+\begin{equation}
+\mathbb{E}_{p(x)}[f(x)] \approx \frac{1}{N} \sum_{i=1}^{N} f(x^{(i)}), \quad x^{(i)} \sim p(x)
+\end{equation}
+
+\textbf{Law of large numbers:} Estimate converges to true expectation as $N \to \infty$.
+
+\subsection{Variance Reduction}
+
+Reduce variance of estimators:
+
+\textbf{Rao-Blackwellization:} Use conditional expectations
+
+\textbf{Control variates:} Subtract correlated zero-mean terms
+
+\textbf{Antithetic sampling:} Use negatively correlated samples
 
 \section{Markov Chain Monte Carlo}
+\label{sec:mcmc}
 
-\textit{This section will cover Metropolis-Hastings, Gibbs sampling, and related methods.}
+\subsection{Markov Chains}
+
+Sequence where $p(x_t|x_{t-1}, \ldots, x_1) = p(x_t|x_{t-1})$.
+
+\textbf{Stationary distribution:} $\pi(x)$ such that if $x_t \sim \pi$, then $x_{t+1} \sim \pi$.
+
+\subsection{Metropolis-Hastings Algorithm}
+
+Sample from target distribution $p(x)$:
+\begin{enumerate}
+    \item Propose: $x' \sim q(x'|x_t)$
+    \item Accept with probability:
+    \begin{equation}
+    A(x', x_t) = \min\left(1, \frac{p(x')q(x_t|x')}{p(x_t)q(x'|x_t)}\right)
+    \end{equation}
+    \item If accepted, $x_{t+1} = x'$; otherwise $x_{t+1} = x_t$
+\end{enumerate}
+
+\subsection{Gibbs Sampling}
+
+Special case where each variable updated conditionally:
+\begin{equation}
+x_i^{(t+1)} \sim p(x_i | x_{-i}^{(t)})
+\end{equation}
+
+Simple when conditional distributions are tractable.
+
+\subsection{Hamiltonian Monte Carlo}
+
+Uses gradient information for efficient exploration:
+\begin{itemize}
+    \item Treats parameters as position in physics simulation
+    \item Uses momentum for faster mixing
+    \item More efficient than random walk methods
+\end{itemize}
 
 \section{Importance Sampling}
+\label{sec:importance-sampling}
 
-\textit{This section will discuss importance sampling and its applications.}
+Sample from proposal $q(x)$ instead of target $p(x)$:
+\begin{equation}
+\mathbb{E}_{p}[f(x)] = \mathbb{E}_{q}\left[\frac{p(x)}{q(x)} f(x)\right] \approx \frac{1}{N} \sum_{i=1}^{N} \frac{p(x^{(i)})}{q(x^{(i)})} f(x^{(i)})
+\end{equation}
+
+\textbf{Effective when:}
+\begin{itemize}
+    \item $q$ is easy to sample from
+    \item $q$ has heavier tails than $p$
+\end{itemize}
 
 \section{Applications in Deep Learning}
+\label{sec:mc-applications}
 
-\textit{This section will explore how sampling methods are used in modern deep learning.}
+\textbf{Bayesian deep learning:}
+\begin{itemize}
+    \item Sample network weights
+    \item Uncertainty quantification
+\end{itemize}
 
-\vspace{1em}
-\noindent\textit{Note: Detailed content for this chapter will be added in future revisions.}
+\textbf{Reinforcement learning:}
+\begin{itemize}
+    \item Policy gradient estimation
+    \item Monte Carlo tree search
+\end{itemize}
+
+\textbf{Generative models:}
+\begin{itemize}
+    \item Training energy-based models
+    \item Sampling from learned distributions
+\end{itemize}
