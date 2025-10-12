@@ -1,0 +1,50 @@
+% Chapter 3, Section 1: Probability Distributions
+
+\section{Probability Distributions}
+\label{sec:probability-distributions}
+
+Probability theory provides a mathematical framework for quantifying uncertainty. In deep learning, we use probability distributions to model uncertainty in data, model parameters, and predictions.
+
+\subsection{Discrete Probability Distributions}
+
+A discrete random variable $X$ takes values from a countable set. The \textbf{probability mass function} (PMF) $P(X=x)$ assigns probabilities to each possible value:
+
+\begin{equation}
+P(X=x) \geq 0 \quad \text{for all } x
+\end{equation}
+
+\begin{equation}
+\sum_{x} P(X=x) = 1
+\end{equation}
+
+\subsection{Continuous Probability Distributions}
+
+A continuous random variable can take any value in a continuous range. We describe it using a \textbf{probability density function} (PDF) $p(x)$:
+
+\begin{equation}
+p(x) \geq 0 \quad \text{for all } x
+\end{equation}
+
+\begin{equation}
+\int_{-\infty}^{\infty} p(x) \, dx = 1
+\end{equation}
+
+The probability that $X$ falls in an interval $[a, b]$ is:
+
+\begin{equation}
+P(a \leq X \leq b) = \int_a^b p(x) \, dx
+\end{equation}
+
+\subsection{Joint and Marginal Distributions}
+
+For multiple random variables $X$ and $Y$, the \textbf{joint distribution} $P(X, Y)$ describes their combined behavior. The \textbf{marginal distribution} is obtained by summing (or integrating) over the other variable:
+
+\begin{equation}
+P(X=x) = \sum_{y} P(X=x, Y=y)
+\end{equation}
+
+For continuous variables:
+
+\begin{equation}
+p(x) = \int p(x, y) \, dy
+\end{equation}

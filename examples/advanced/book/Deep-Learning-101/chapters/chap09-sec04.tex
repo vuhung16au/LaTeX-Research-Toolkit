@@ -1,0 +1,42 @@
+% Chapter 9, Section 4
+
+\section{Applications of CNNs}
+\label{sec:cnn-applications}
+
+\subsection{Image Classification}
+
+Task: Assign label to entire image.
+
+Architecture:
+\begin{itemize}
+    \item Convolutional layers extract features
+    \item Pooling reduces dimensions
+    \item Fully connected layers for classification
+    \item Softmax output
+\end{itemize}
+
+\subsection{Object Detection}
+
+Task: Localize and classify objects in images.
+
+\textbf{Region-based methods (R-CNN family):}
+\begin{itemize}
+    \item R-CNN: region proposals + CNN features
+    \item Fast R-CNN: end-to-end training
+    \item Faster R-CNN: learned region proposals
+    \item Mask R-CNN: adds instance segmentation
+\end{itemize}
+
+\textbf{Single-shot methods:}
+\begin{itemize}
+    \item YOLO (You Only Look Once): real-time detection
+    \item SSD (Single Shot Detector): multi-scale detection
+\end{itemize}
+
+\subsection{Semantic Segmentation}
+
+Task: Assign class label to each pixel.
+
+\textbf{FCN (Fully Convolutional Networks):}
+\begin{itemize}
+    \item Replace FC layers with convolutions

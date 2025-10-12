@@ -1,0 +1,44 @@
+% Chapter 10, Section 1
+
+\section{Recurrent Neural Networks}
+\label{sec:rnns}
+
+\subsection{Motivation}
+
+Sequential data has temporal dependencies:
+\begin{itemize}
+    \item Time series (stock prices, sensor readings)
+    \item Text (words depend on previous words)
+    \item Speech (phonemes form words)
+    \item Video (frames over time)
+\end{itemize}
+
+Standard feedforward networks cannot capture these dependencies effectively.
+
+\subsection{Basic RNN Architecture}
+
+An RNN maintains a hidden state $\vect{h}_t$ that evolves over time:
+
+\begin{align}
+\vect{h}_t &= \sigma(\mat{W}_{hh} \vect{h}_{t-1} + \mat{W}_{xh} \vect{x}_t + \vect{b}_h) \\
+\vect{y}_t &= \mat{W}_{hy} \vect{h}_t + \vect{b}_y
+\end{align}
+
+where $\vect{x}_t$ is input at time $t$, and $\sigma$ is typically tanh.
+
+\subsection{Unfolding in Time}
+
+RNNs can be "unrolled" into a feedforward network with shared weights across time steps:
+
+\begin{equation}
+\vect{h}_t = f(\vect{h}_{t-1}, \vect{x}_t; \vect{\theta})
+\end{equation}
+
+\subsection{Types of Sequences}
+
+\textbf{One-to-many:} Single input, sequence output (e.g., image captioning)
+
+\textbf{Many-to-one:} Sequence input, single output (e.g., sentiment classification)
+
+\textbf{Many-to-many:} Sequence input and output (e.g., machine translation)
+

@@ -1,0 +1,41 @@
+% Chapter 8, Section 4
+
+\section{Second-Order Methods}
+\label{sec:second-order}
+
+\subsection{Newton's Method}
+
+Uses second-order Taylor expansion:
+\begin{equation}
+\vect{\theta}_{t+1} = \vect{\theta}_t - \mat{H}^{-1} \nabla_{\vect{\theta}} L(\vect{\theta}_t)
+\end{equation}
+
+where $\mat{H}$ is the Hessian matrix.
+
+Challenges:
+\begin{itemize}
+    \item Computing Hessian is $O(n^2)$ in parameters
+    \item Inverting Hessian is $O(n^3)$
+    \item Infeasible for large neural networks
+\end{itemize}
+
+\subsection{Quasi-Newton Methods}
+
+Approximate the Hessian inverse:
+
+\textbf{L-BFGS:} maintains low-rank approximation of Hessian inverse
+\begin{itemize}
+    \item More efficient than full Newton's method
+    \item Still expensive for very large models
+    \item Used for smaller networks or specific applications
+\end{itemize}
+
+\subsection{Natural Gradient}
+
+Uses Fisher information matrix instead of Hessian:
+\begin{equation}
+\vect{\theta}_{t+1} = \vect{\theta}_t - \alpha \mat{F}^{-1} \nabla_{\vect{\theta}} L(\vect{\theta}_t)
+\end{equation}
+
+Provides parameter updates invariant to reparameterization.
+

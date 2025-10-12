@@ -1,0 +1,42 @@
+% Chapter 10, Section 6
+
+\section{Advanced Topics}
+\label{sec:rnn-advanced}
+
+\subsection{Bidirectional RNNs}
+
+Process sequence in both directions:
+\begin{align}
+\overrightarrow{\vect{h}}_t &= f(\vect{x}_t, \overrightarrow{\vect{h}}_{t-1}) \\
+\overleftarrow{\vect{h}}_t &= f(\vect{x}_t, \overleftarrow{\vect{h}}_{t+1}) \\
+\vect{h}_t &= [\overrightarrow{\vect{h}}_t; \overleftarrow{\vect{h}}_t]
+\end{align}
+
+Useful when future context is available.
+
+\subsection{Deep RNNs}
+
+Stack multiple RNN layers:
+\begin{equation}
+\vect{h}_t^{(l)} = f(\vect{h}_t^{(l-1)}, \vect{h}_{t-1}^{(l)})
+\end{equation}
+
+Each layer captures different levels of abstraction.
+
+\subsection{Teacher Forcing}
+
+During training, use ground truth as decoder input (not model's prediction):
+\begin{itemize}
+    \item Faster convergence
+    \item Stable training
+    \item May cause exposure bias at test time
+\end{itemize}
+
+\subsection{Beam Search}
+
+For inference, maintain top-$k$ hypotheses:
+\begin{itemize}
+    \item Better than greedy decoding
+    \item Trade-off between quality and speed
+    \item Common beam size: 5-10
+\end{itemize}

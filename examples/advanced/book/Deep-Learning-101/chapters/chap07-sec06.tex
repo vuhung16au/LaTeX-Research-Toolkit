@@ -1,0 +1,49 @@
+% Chapter 7, Section 6
+
+\section{Other Regularization Techniques}
+\label{sec:other-regularization}
+
+\subsection{Label Smoothing}
+
+Replace hard targets with smoothed distributions:
+\begin{equation}
+y'_k = (1 - \epsilon) y_k + \frac{\epsilon}{K}
+\end{equation}
+
+Prevents overconfident predictions.
+
+\subsection{Gradient Clipping}
+
+Limit gradient magnitude to prevent exploding gradients:
+
+\textbf{Clipping by value:}
+\begin{equation}
+g \leftarrow \max(\min(g, \theta), -\theta)
+\end{equation}
+
+\textbf{Clipping by norm:}
+\begin{equation}
+g \leftarrow \frac{g}{\max(1, \|g\| / \theta)}
+\end{equation}
+
+\subsection{Stochastic Depth}
+
+Randomly skip layers during training (for very deep networks).
+
+\subsection{Mixup}
+
+Train on convex combinations of examples:
+\begin{align}
+\tilde{\vect{x}} &= \lambda \vect{x}_i + (1-\lambda) \vect{x}_j \\
+\tilde{y} &= \lambda y_i + (1-\lambda) y_j
+\end{align}
+
+where $\lambda \sim \text{Beta}(\alpha, \alpha)$.
+
+\subsection{Adversarial Training}
+
+Add adversarially perturbed examples to training:
+\begin{equation}
+\vect{x}_{\text{adv}} = \vect{x} + \epsilon \cdot \text{sign}(\nabla_{\vect{x}} L(\vect{x}, y))
+\end{equation}
+

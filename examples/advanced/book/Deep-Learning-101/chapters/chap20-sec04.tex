@@ -1,0 +1,44 @@
+% Chapter 20, Section 4
+
+\section{Diffusion Models}
+\label{sec:diffusion-models}
+
+\subsection{Forward Process}
+
+Gradually add noise over $T$ steps:
+\begin{equation}
+q(\vect{x}_t|\vect{x}_{t-1}) = \mathcal{N}(\vect{x}_t; \sqrt{1-\beta_t} \vect{x}_{t-1}, \beta_t \mat{I})
+\end{equation}
+
+Eventually $\vect{x}_T \approx \mathcal{N}(\boldsymbol{0}, \mat{I})$.
+
+\subsection{Reverse Process}
+
+Learn to denoise (reverse diffusion):
+\begin{equation}
+p_{\theta}(\vect{x}_{t-1}|\vect{x}_t) = \mathcal{N}(\vect{x}_{t-1}; \boldsymbol{\mu}_{\theta}(\vect{x}_t, t), \boldsymbol{\Sigma}_{\theta}(\vect{x}_t, t))
+\end{equation}
+
+\subsection{Training}
+
+Predict noise $\boldsymbol{\epsilon}_{\theta}(\vect{x}_t, t)$ at each step:
+\begin{equation}
+\mathcal{L} = \mathbb{E}_{t, \vect{x}_0, \boldsymbol{\epsilon}}\left[\|\boldsymbol{\epsilon} - \boldsymbol{\epsilon}_{\theta}(\vect{x}_t, t)\|^2\right]
+\end{equation}
+
+\subsection{Sampling}
+
+Start from noise and iteratively denoise:
+\begin{equation}
+\vect{x}_{t-1} = \frac{1}{\sqrt{\alpha_t}}\left(\vect{x}_t - \frac{1-\alpha_t}{\sqrt{1-\bar{\alpha}_t}}\boldsymbol{\epsilon}_{\theta}(\vect{x}_t, t)\right) + \sigma_t \vect{z}
+\end{equation}
+
+\subsection{Advantages}
+
+\begin{itemize}
+    \item High-quality generation (DALL-E 2, Stable Diffusion, Midjourney)
+    \item Stable training
+    \item Strong theoretical foundations
+    \item Can condition on text, images, etc.
+\end{itemize}
+

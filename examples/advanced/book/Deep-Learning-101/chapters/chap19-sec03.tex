@@ -1,0 +1,32 @@
+% Chapter 19, Section 3
+
+\section{Loopy Belief Propagation}
+\label{sec:loopy-bp}
+
+\subsection{Message Passing}
+
+On graphical models, pass messages between nodes:
+\begin{equation}
+m_{i \to j}(x_j) = \sum_{x_i} \psi(x_i, x_j) \psi(x_i) \prod_{k \in N(i) \setminus j} m_{k \to i}(x_i)
+\end{equation}
+
+\subsection{Beliefs}
+
+Compute marginals from messages:
+\begin{equation}
+b_i(x_i) \propto \psi(x_i) \prod_{j \in N(i)} m_{j \to i}(x_i)
+\end{equation}
+
+\subsection{Exact on Trees}
+
+For tree-structured graphs, converges to exact marginals.
+
+\subsection{Loopy Graphs}
+
+On graphs with cycles:
+\begin{itemize}
+    \item May not converge
+    \item Often gives good approximations
+    \item Used in error-correcting codes, computer vision
+\end{itemize}
+

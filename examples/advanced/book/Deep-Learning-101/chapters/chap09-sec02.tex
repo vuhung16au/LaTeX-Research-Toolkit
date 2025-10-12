@@ -1,0 +1,37 @@
+% Chapter 9, Section 2
+
+\section{Pooling}
+\label{sec:pooling}
+
+\textbf{Pooling} reduces spatial dimensions and provides translation invariance.
+
+\subsection{Max Pooling}
+
+Takes maximum value in each pooling region:
+\begin{equation}
+\text{MaxPool}(i,j) = \max_{m,n \in \mathcal{R}_{ij}} I(m,n)
+\end{equation}
+
+Common: $2 \times 2$ max pooling with stride 2 (halves spatial dimensions).
+
+\subsection{Average Pooling}
+
+Computes average:
+\begin{equation}
+\text{AvgPool}(i,j) = \frac{1}{|\mathcal{R}_{ij}|} \sum_{m,n \in \mathcal{R}_{ij}} I(m,n)
+\end{equation}
+
+\subsection{Global Pooling}
+
+Pools over entire spatial dimensions:
+\begin{itemize}
+    \item \textbf{Global Average Pooling (GAP):} average over all spatial locations
+    \item \textbf{Global Max Pooling:} maximum over all spatial locations
+\end{itemize}
+
+Useful for reducing parameters before fully connected layers.
+
+\subsection{Alternative: Strided Convolutions}
+
+Modern architectures sometimes replace pooling with strided convolutions to learn downsampling.
+

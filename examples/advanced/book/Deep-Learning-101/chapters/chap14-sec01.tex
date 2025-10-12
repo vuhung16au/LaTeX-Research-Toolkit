@@ -1,0 +1,31 @@
+% Chapter 14, Section 1
+
+\section{Undercomplete Autoencoders}
+\label{sec:undercomplete-ae}
+
+\subsection{Architecture}
+
+An autoencoder consists of:
+\begin{itemize}
+    \item \textbf{Encoder:} $\vect{h} = f(\vect{x})$ maps input to latent representation
+    \item \textbf{Decoder:} $\hat{\vect{x}} = g(\vect{h})$ reconstructs from latent code
+\end{itemize}
+
+\subsection{Training Objective}
+
+Minimize reconstruction error:
+\begin{equation}
+L = \|\vect{x} - g(f(\vect{x}))\|^2
+\end{equation}
+
+or more generally:
+\begin{equation}
+L = -\log p(\vect{x} | g(f(\vect{x})))
+\end{equation}
+
+\subsection{Undercomplete Constraint}
+
+If $\dim(\vect{h}) < \dim(\vect{x})$, the autoencoder learns compressed representation.
+
+Acts as dimensionality reduction (similar to PCA but non-linear).
+

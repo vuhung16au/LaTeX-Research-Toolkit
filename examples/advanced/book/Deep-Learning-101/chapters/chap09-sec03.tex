@@ -1,0 +1,85 @@
+% Chapter 9, Section 3
+
+\section{CNN Architectures}
+\label{sec:cnn-architectures}
+
+\subsection{LeNet-5 (1998)}
+
+Early CNN for digit recognition:
+\begin{itemize}
+    \item Conv $\to$ Pool $\to$ Conv $\to$ Pool $\to$ FC $\to$ FC
+    \item Used sigmoid/tanh activations
+    \item ~60K parameters
+\end{itemize}
+
+\subsection{AlexNet (2012)}
+
+Breakthrough on ImageNet:
+\begin{itemize}
+    \item 8 layers (5 conv, 3 FC)
+    \item ReLU activation
+    \item Dropout regularization
+    \item Data augmentation
+    \item ~60M parameters
+\end{itemize}
+
+\subsection{VGG Networks (2014)}
+
+Simplified architecture with small filters:
+\begin{itemize}
+    \item Only $3 \times 3$ convolutions
+    \item Deeper networks (VGG-16, VGG-19)
+    \item $2 \times 2$ max pooling
+    \item ~138M parameters (VGG-16)
+\end{itemize}
+
+\subsection{ResNet (2015)}
+
+Introduced \textbf{residual connections}:
+
+\begin{equation}
+\vect{y} = \mathcal{F}(\vect{x}, \{\mat{W}_i\}) + \vect{x}
+\end{equation}
+
+where $\mathcal{F}$ is the residual mapping.
+
+Benefits:
+\begin{itemize}
+    \item Enables very deep networks (50, 101, 152 layers)
+    \item Addresses vanishing gradient problem
+    \item Identity mappings facilitate optimization
+    \item Won ImageNet 2015
+\end{itemize}
+
+\textbf{Bottleneck block:}
+\begin{itemize}
+    \item $1 \times 1$ conv (reduce dimensions)
+    \item $3 \times 3$ conv
+    \item $1 \times 1$ conv (restore dimensions)
+    \item Skip connection
+\end{itemize}
+
+\subsection{Inception/GoogLeNet (2014)}
+
+\textbf{Inception modules} apply multiple filter sizes in parallel:
+\begin{itemize}
+    \item $1 \times 1$, $3 \times 3$, $5 \times 5$ convolutions
+    \item $3 \times 3$ max pooling
+    \item Concatenate outputs
+    \item $1 \times 1$ convolutions for dimension reduction
+\end{itemize}
+
+\subsection{MobileNet and EfficientNet}
+
+\textbf{MobileNet:} Efficient architecture for mobile/edge devices
+\begin{itemize}
+    \item Depthwise separable convolutions
+    \item Reduces computation and parameters
+\end{itemize}
+
+\textbf{EfficientNet:} Compound scaling method
+\begin{itemize}
+    \item Balances depth, width, and resolution
+    \item State-of-the-art efficiency
+\end{itemize}
+

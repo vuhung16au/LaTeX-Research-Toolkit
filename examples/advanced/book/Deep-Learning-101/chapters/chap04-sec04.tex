@@ -1,0 +1,59 @@
+% Chapter 4, Section 4: Numerical Stability and Conditioning
+
+\section{Numerical Stability and Conditioning}
+\label{sec:numerical-stability}
+
+\subsection{Condition Number}
+
+The \textbf{condition number} of matrix $\mat{A}$ is:
+
+\begin{equation}
+\kappa(\mat{A}) = \|\mat{A}\| \|\mat{A}^{-1}\|
+\end{equation}
+
+For symmetric matrices with eigenvalues $\lambda_i$:
+
+\begin{equation}
+\kappa(\mat{A}) = \frac{\max_i |\lambda_i|}{\min_i |\lambda_i|}
+\end{equation}
+
+High condition numbers indicate numerical instability: small changes in input lead to large changes in output.
+
+\subsection{Ill-Conditioned Matrices}
+
+In deep learning, ill-conditioned Hessians can make optimization difficult. This motivates techniques like:
+\begin{itemize}
+    \item Batch normalization
+    \item Careful weight initialization
+    \item Adaptive learning rate methods
+    \item Preconditioning
+\end{itemize}
+
+\subsection{Gradient Checking}
+
+To verify gradient computations, we use \textbf{finite differences}:
+
+\begin{equation}
+\frac{\partial f}{\partial \theta_i} \approx \frac{f(\theta_i + \epsilon) - f(\theta_i - \epsilon)}{2\epsilon}
+\end{equation}
+
+This is computationally expensive but useful for debugging.
+
+\subsection{Numerical Precision Trade-offs}
+
+\textbf{Mixed precision training:}
+\begin{itemize}
+    \item Store weights in FP32
+    \item Compute activations/gradients in FP16
+    \item Use loss scaling to prevent underflow
+    \item 2-3x speedup with minimal accuracy loss
+\end{itemize}
+
+\subsection{Practical Tips}
+
+\begin{itemize}
+    \item Monitor gradient norms during training
+    \item Use gradient clipping for RNNs
+    \item Prefer numerically stable implementations (log-space computations)
+    \item Be aware of precision limits in very deep networks
+\end{itemize}

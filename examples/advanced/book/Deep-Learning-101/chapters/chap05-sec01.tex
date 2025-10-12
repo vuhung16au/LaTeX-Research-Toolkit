@@ -1,0 +1,58 @@
+% Chapter 5, Section 01
+
+\section{Linear Regression}
+\label{sec:linear-regression}
+
+\textbf{Linear regression} models the relationship between input features and a continuous output.
+
+\subsection{Model Formulation}
+
+For input $\vect{x} \in \mathbb{R}^d$ and output $y \in \mathbb{R}$:
+
+\begin{equation}
+\hat{y} = \vect{w}^\top \vect{x} + b
+\end{equation}
+
+where $\vect{w}$ are weights and $b$ is the bias.
+
+\subsection{Ordinary Least Squares}
+
+The \textbf{mean squared error} (MSE) loss is:
+
+\begin{equation}
+L(\vect{w}, b) = \frac{1}{n} \sum_{i=1}^{n} (y^{(i)} - \hat{y}^{(i)})^2
+\end{equation}
+
+The closed-form solution (using matrix form with bias absorbed) is:
+
+\begin{equation}
+\vect{w}^* = (\mat{X}^\top \mat{X})^{-1} \mat{X}^\top \vect{y}
+\end{equation}
+
+\subsection{Regularized Regression}
+
+\textbf{Ridge regression} (L2 regularization) adds a penalty:
+
+\begin{equation}
+L(\vect{w}) = \|\mat{X}\vect{w} - \vect{y}\|^2 + \lambda \|\vect{w}\|^2
+\end{equation}
+
+Solution:
+\begin{equation}
+\vect{w}^* = (\mat{X}^\top \mat{X} + \lambda \mat{I})^{-1} \mat{X}^\top \vect{y}
+\end{equation}
+
+\textbf{Lasso regression} (L1 regularization) promotes sparsity:
+
+\begin{equation}
+L(\vect{w}) = \|\mat{X}\vect{w} - \vect{y}\|^2 + \lambda \|\vect{w}\|_1
+\end{equation}
+
+\subsection{Gradient Descent Solution}
+
+For large datasets, we use iterative optimization:
+
+\begin{equation}
+\vect{w}_{t+1} = \vect{w}_t - \alpha \frac{2}{n} \mat{X}^\top (\mat{X}\vect{w}_t - \vect{y})
+\end{equation}
+

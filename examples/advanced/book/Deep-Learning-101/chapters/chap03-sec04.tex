@@ -1,0 +1,77 @@
+% Chapter 3, Section 4: Common Probability Distributions
+
+\section{Common Probability Distributions}
+\label{sec:common-distributions}
+
+\subsection{Bernoulli Distribution}
+
+Models a binary random variable (0 or 1):
+
+\begin{equation}
+P(X=1) = \phi, \quad P(X=0) = 1-\phi
+\end{equation}
+
+Used for binary classification problems.
+
+\subsection{Categorical Distribution}
+
+Generalizes Bernoulli to $k$ discrete outcomes. If $X$ can take values $\{1, 2, \ldots, k\}$:
+
+\begin{equation}
+P(X=i) = p_i \quad \text{where} \quad \sum_{i=1}^{k} p_i = 1
+\end{equation}
+
+\subsection{Gaussian (Normal) Distribution}
+
+The most important continuous distribution in deep learning:
+
+\begin{equation}
+\mathcal{N}(x; \mu, \sigma^2) = \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)
+\end{equation}
+
+Properties:
+\begin{itemize}
+    \item Mean: $\mu$
+    \item Variance: $\sigma^2$
+    \item Central limit theorem: sums of independent variables approach Gaussian
+\end{itemize}
+
+The multivariate Gaussian with mean vector $\boldsymbol{\mu}$ and covariance matrix $\boldsymbol{\Sigma}$ is:
+
+\begin{equation}
+\mathcal{N}(\vect{x}; \boldsymbol{\mu}, \boldsymbol{\Sigma}) = \frac{1}{\sqrt{(2\pi)^n |\boldsymbol{\Sigma}|}} \exp\left(-\frac{1}{2}(\vect{x}-\boldsymbol{\mu})^\top \boldsymbol{\Sigma}^{-1} (\vect{x}-\boldsymbol{\mu})\right)
+\end{equation}
+
+\subsection{Exponential Distribution}
+
+Models the time between events in a Poisson process:
+
+\begin{equation}
+p(x; \lambda) = \lambda e^{-\lambda x} \quad \text{for } x \geq 0
+\end{equation}
+
+\subsection{Laplace Distribution}
+
+Heavy-tailed alternative to Gaussian:
+
+\begin{equation}
+\text{Laplace}(x; \mu, b) = \frac{1}{2b} \exp\left(-\frac{|x-\mu|}{b}\right)
+\end{equation}
+
+Used in robust statistics and L1 regularization.
+
+\subsection{Dirac Delta and Mixture Distributions}
+
+The \textbf{Dirac delta} $\delta(x)$ concentrates all probability at a single point:
+
+\begin{equation}
+p(x) = \delta(x - \mu)
+\end{equation}
+
+\textbf{Mixture distributions} combine multiple distributions:
+
+\begin{equation}
+p(x) = \sum_{i=1}^{k} \alpha_i p_i(x), \quad \sum_{i=1}^{k} \alpha_i = 1
+\end{equation}
+
+Example: Gaussian Mixture Model (GMM).

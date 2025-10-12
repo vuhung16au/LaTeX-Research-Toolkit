@@ -1,0 +1,33 @@
+% Chapter 7, Section 3
+
+\section{Early Stopping}
+\label{sec:early-stopping}
+
+\textbf{Early stopping} monitors validation performance and stops training when it begins to degrade.
+
+\subsection{Algorithm}
+
+\begin{enumerate}
+    \item Train model and evaluate on validation set periodically
+    \item Track best validation performance
+    \item If no improvement for $p$ epochs (patience), stop
+    \item Return model with best validation performance
+\end{enumerate}
+
+\subsection{Benefits}
+
+\begin{itemize}
+    \item Simple and effective
+    \item Automatically determines training duration
+    \item Acts as regularization without changing the model
+    \item Reduces computational cost
+\end{itemize}
+
+\subsection{Considerations}
+
+\begin{itemize}
+    \item Requires separate validation set
+    \item Choice of patience hyperparameter
+    \item Can interact with learning rate schedules
+\end{itemize}
+

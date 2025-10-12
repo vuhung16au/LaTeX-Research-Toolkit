@@ -1,0 +1,42 @@
+% Chapter 14, Section 2
+
+\section{Regularized Autoencoders}
+\label{sec:regularized-ae}
+
+\subsection{Sparse Autoencoders}
+
+Add sparsity penalty on hidden activations:
+\begin{equation}
+L = \|\vect{x} - \hat{\vect{x}}\|^2 + \lambda \sum_j |h_j|
+\end{equation}
+
+Encourages learning of sparse, interpretable features.
+
+\subsection{Denoising Autoencoders (DAE)}
+
+Train to reconstruct clean input from corrupted version:
+\begin{enumerate}
+    \item Corrupt input: $\tilde{\vect{x}} \sim q(\tilde{\vect{x}}|\vect{x})$
+    \item Encode corrupted input: $\vect{h} = f(\tilde{\vect{x}})$
+    \item Decode and reconstruct: $\hat{\vect{x}} = g(\vect{h})$
+    \item Minimize: $L = \|\vect{x} - \hat{\vect{x}}\|^2$
+\end{enumerate}
+
+\textbf{Corruption types:}
+\begin{itemize}
+    \item Additive Gaussian noise
+    \item Masking (randomly set inputs to zero)
+    \item Salt-and-pepper noise
+\end{itemize}
+
+Learns robust representations.
+
+\subsection{Contractive Autoencoders (CAE)}
+
+Add penalty on Jacobian of encoder:
+\begin{equation}
+L = \|\vect{x} - \hat{\vect{x}}\|^2 + \lambda \left\|\frac{\partial f(\vect{x})}{\partial \vect{x}}\right\|_F^2
+\end{equation}
+
+Encourages locally contractive mappings (robust to small perturbations).
+

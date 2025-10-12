@@ -1,0 +1,28 @@
+% Chapter 20, Section 1
+
+\section{Variational Autoencoders (VAEs)}
+\label{sec:vaes}
+
+(See also Chapter 14 for detailed VAE coverage.)
+
+\subsection{Recap}
+
+VAE learns latent representation $\vect{z}$ and decoder $p_{\theta}(\vect{x}|\vect{z})$:
+\begin{equation}
+\max_{\theta, \phi} \mathbb{E}_{q_{\phi}(\vect{z}|\vect{x})}[\log p_{\theta}(\vect{x}|\vect{z})] - D_{KL}(q_{\phi}(\vect{z}|\vect{x}) \| p(\vect{z}))
+\end{equation}
+
+\subsection{Conditional VAEs}
+
+Generate conditioned on class or attributes:
+\begin{equation}
+\max \mathbb{E}_{q(\vect{z}|\vect{x}, y)}[\log p(\vect{x}|\vect{z}, y)] - D_{KL}(q(\vect{z}|\vect{x}, y) \| p(\vect{z}))
+\end{equation}
+
+\subsection{Disentangled Representations}
+
+\textbf{$\beta$-VAE:} Increase KL weight for disentanglement
+\begin{equation}
+\mathcal{L} = \mathbb{E}_{q}[\log p(\vect{x}|\vect{z})] - \beta D_{KL}(q(\vect{z}|\vect{x}) \| p(\vect{z}))
+\end{equation}
+

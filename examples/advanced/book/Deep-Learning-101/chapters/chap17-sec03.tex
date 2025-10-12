@@ -1,0 +1,16 @@
+% Chapter 17, Section 3
+
+\section{Importance Sampling}
+\label{sec:importance-sampling}
+
+Sample from proposal $q(x)$ instead of target $p(x)$:
+\begin{equation}
+\mathbb{E}_{p}[f(x)] = \mathbb{E}_{q}\left[\frac{p(x)}{q(x)} f(x)\right] \approx \frac{1}{N} \sum_{i=1}^{N} \frac{p(x^{(i)})}{q(x^{(i)})} f(x^{(i)})
+\end{equation}
+
+\textbf{Effective when:}
+\begin{itemize}
+    \item $q$ is easy to sample from
+    \item $q$ has heavier tails than $p$
+\end{itemize}
+

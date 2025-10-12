@@ -1,0 +1,63 @@
+% Chapter 9, Section 1
+
+\section{The Convolution Operation}
+\label{sec:convolution}
+
+\subsection{Definition}
+
+The \textbf{convolution} operation applies a filter (kernel) across an input:
+
+For discrete 2D convolution:
+\begin{equation}
+S(i,j) = (I * K)(i,j) = \sum_m \sum_n I(i-m, j-n) K(m, n)
+\end{equation}
+
+where $I$ is the input and $K$ is the kernel.
+
+In practice, we often use \textbf{cross-correlation}:
+\begin{equation}
+S(i,j) = (I * K)(i,j) = \sum_m \sum_n I(i+m, j+n) K(m, n)
+\end{equation}
+
+\subsection{Properties}
+
+\textbf{Parameter sharing:} Same kernel applied across spatial locations
+\begin{itemize}
+    \item Reduces parameters compared to fully connected layers
+    \item Enables translation equivariance
+\end{itemize}
+
+\textbf{Local connectivity:} Each output depends on local input region
+\begin{itemize}
+    \item Exploits spatial locality in images
+    \item Hierarchically builds complex features
+\end{itemize}
+
+\subsection{Multi-Channel Convolution}
+
+For input with $C_{\text{in}}$ channels and $C_{\text{out}}$ output channels:
+\begin{equation}
+S_{c_{\text{out}}}(i,j) = \sum_{c_{\text{in}}=1}^{C_{\text{in}}} (I_{c_{\text{in}}} * K_{c_{\text{out}}, c_{\text{in}}})(i,j) + b_{c_{\text{out}}}
+\end{equation}
+
+\subsection{Hyperparameters}
+
+\textbf{Kernel size:} Typically $3 \times 3$ or $5 \times 5$
+
+\textbf{Stride:} Step size for sliding kernel (stride $s$):
+\begin{equation}
+\text{Output size} = \left\lfloor \frac{n - k}{s} \right\rfloor + 1
+\end{equation}
+
+\textbf{Padding:} Add zeros around input
+\begin{itemize}
+    \item \textbf{Valid:} no padding
+    \item \textbf{Same:} padding to preserve spatial size
+    \item \textbf{Full:} maximum padding
+\end{itemize}
+
+For "same" padding with stride 1:
+\begin{equation}
+p = \left\lfloor \frac{k-1}{2} \right\rfloor
+\end{equation}
+

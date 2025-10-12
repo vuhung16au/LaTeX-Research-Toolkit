@@ -1,0 +1,55 @@
+% Chapter 11, Section 3
+
+\section{Hyperparameter Tuning}
+\label{sec:hyperparameter-tuning}
+
+\subsection{Key Hyperparameters (Priority Order)}
+
+\begin{enumerate}
+    \item \textbf{Learning rate:} Most critical
+    \item \textbf{Network architecture:} Layers, neurons
+    \item \textbf{Batch size:} Affects training dynamics
+    \item \textbf{Regularization:} Dropout, weight decay
+    \item \textbf{Optimizer parameters:} Momentum, beta values
+\end{enumerate}
+
+\subsection{Search Strategies}
+
+\textbf{Manual Search:}
+\begin{itemize}
+    \item Start with educated guesses
+    \item Adjust based on results
+    \item Time-consuming but insightful
+\end{itemize}
+
+\textbf{Grid Search:}
+\begin{itemize}
+    \item Try all combinations from predefined values
+    \item Exhaustive but expensive
+    \item Better for 2-3 hyperparameters
+\end{itemize}
+
+\textbf{Random Search:}
+\begin{itemize}
+    \item Sample hyperparameters randomly
+    \item More efficient than grid search
+    \item Better for high-dimensional spaces
+\end{itemize}
+
+\textbf{Bayesian Optimization:}
+\begin{itemize}
+    \item Model hyperparameter performance
+    \item Choose next trials intelligently
+    \item More sample-efficient
+\end{itemize}
+
+\subsection{Best Practices}
+
+\begin{itemize}
+    \item Use logarithmic scale for learning rate
+    \item Try learning rates: 0.1, 0.01, 0.001, 0.0001
+    \item Start with standard architectures
+    \item Use validation set for selection
+    \item Retrain with best hyperparameters on full train set
+\end{itemize}
+

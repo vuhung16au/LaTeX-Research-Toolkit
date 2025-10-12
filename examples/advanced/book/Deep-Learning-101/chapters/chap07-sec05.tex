@@ -1,0 +1,45 @@
+% Chapter 7, Section 5
+
+\section{Batch Normalization}
+\label{sec:batch-normalization}
+
+\textbf{Batch normalization} normalizes layer inputs across the batch dimension.
+
+\subsection{Algorithm}
+
+For mini-batch $\mathcal{B}$ with activations $\vect{x}$:
+
+\begin{align}
+\mu_{\mathcal{B}} &= \frac{1}{|\mathcal{B}|} \sum_{i \in \mathcal{B}} x_i \\
+\sigma^2_{\mathcal{B}} &= \frac{1}{|\mathcal{B}|} \sum_{i \in \mathcal{B}} (x_i - \mu_{\mathcal{B}})^2 \\
+\hat{x}_i &= \frac{x_i - \mu_{\mathcal{B}}}{\sqrt{\sigma^2_{\mathcal{B}} + \epsilon}} \\
+y_i &= \gamma \hat{x}_i + \beta
+\end{align}
+
+where $\gamma$ and $\beta$ are learnable parameters.
+
+\subsection{Benefits}
+
+\begin{itemize}
+    \item Reduces internal covariate shift
+    \item Allows higher learning rates
+    \item Reduces sensitivity to initialization
+    \item Acts as regularization
+    \item Enables deeper networks
+\end{itemize}
+
+\subsection{Inference}
+
+At test time, use running averages computed during training:
+\begin{equation}
+y = \gamma \frac{x - \mu_{\text{running}}}{\sqrt{\sigma^2_{\text{running}} + \epsilon}} + \beta
+\end{equation}
+
+\subsection{Variants}
+
+\textbf{Layer Normalization:} normalize across features (useful for RNNs)
+
+\textbf{Group Normalization:} normalize within groups of channels
+
+\textbf{Instance Normalization:} normalize each sample independently (used in style transfer)
+

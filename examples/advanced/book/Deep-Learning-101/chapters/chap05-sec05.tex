@@ -1,0 +1,42 @@
+% Chapter 5, Section 05
+
+\section{k-Nearest Neighbors}
+\label{sec:knn}
+
+\textbf{k-Nearest Neighbors} (k-NN) is a non-parametric instance-based method.
+
+\subsection{Algorithm}
+
+For a query point $\vect{x}$:
+\begin{enumerate}
+    \item Find the $k$ closest training examples
+    \item For classification: return the majority class
+    \item For regression: return the average of their values
+\end{enumerate}
+
+\subsection{Distance Metrics}
+
+Common distance metrics:
+\begin{itemize}
+    \item \textbf{Euclidean:} $d(\vect{x}, \vect{x}') = \sqrt{\sum_i (x_i - x_i')^2}$
+    \item \textbf{Manhattan:} $d(\vect{x}, \vect{x}') = \sum_i |x_i - x_i'|$
+    \item \textbf{Minkowski:} $d(\vect{x}, \vect{x}') = \left(\sum_i |x_i - x_i'|^p\right)^{1/p}$
+\end{itemize}
+
+\subsection{Choosing k}
+
+\begin{itemize}
+    \item Small $k$: flexible decision boundary but sensitive to noise
+    \item Large $k$: smoother decision boundary but may miss local structure
+    \item Typically chosen by cross-validation
+\end{itemize}
+
+\subsection{Computational Considerations}
+
+k-NN requires:
+\begin{itemize}
+    \item No training time (lazy learning)
+    \item $O(n)$ prediction time for $n$ training examples
+    \item Can be accelerated using KD-trees or ball trees
+\end{itemize}
+

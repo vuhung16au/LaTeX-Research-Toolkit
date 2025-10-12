@@ -1,0 +1,59 @@
+% Chapter 4, Section 1: Overflow and Underflow
+
+\section{Overflow and Underflow}
+\label{sec:overflow-underflow}
+
+Computers represent real numbers with finite precision, typically using floating-point arithmetic. This leads to \textbf{rounding errors} that can accumulate and cause problems.
+
+\subsection{Floating-Point Representation}
+
+The IEEE 754 standard defines floating-point numbers. For 32-bit floats:
+\begin{itemize}
+    \item Smallest positive number: approximately $10^{-38}$
+    \item Largest number: approximately $10^{38}$
+    \item Machine epsilon: approximately $10^{-7}$
+\end{itemize}
+
+\subsection{Underflow}
+
+\textbf{Underflow} occurs when numbers near zero are rounded to zero. This can be problematic when we need to compute ratios or logarithms. For example, the softmax function:
+
+\begin{equation}
+\text{softmax}(\vect{x})_i = \frac{\exp(x_i)}{\sum_j \exp(x_j)}
+\end{equation}
+
+can underflow if all $x_i$ are very negative.
+
+\subsection{Overflow}
+
+\textbf{Overflow} occurs when large numbers exceed representable values. In the softmax example, overflow can occur if some $x_i$ are very large.
+
+\subsection{Numerical Stability}
+
+To stabilize softmax, we use the identity:
+
+\begin{equation}
+\text{softmax}(\vect{x}) = \text{softmax}(\vect{x} - c)
+\end{equation}
+
+where $c = \max_i x_i$. This prevents both overflow and underflow.
+
+Similarly, when computing $\log(\sum_i \exp(x_i))$, we use the \textbf{log-sum-exp} trick:
+
+\begin{equation}
+\log\left(\sum_i \exp(x_i)\right) = c + \log\left(\sum_i \exp(x_i - c)\right)
+\end{equation}
+
+\subsection{Other Numerical Issues}
+
+\textbf{Catastrophic cancellation:} Loss of precision when subtracting nearly equal numbers.
+
+\textbf{Accumulated rounding errors:} Small errors compound through many operations.
+
+\textbf{Solutions:}
+\begin{itemize}
+    \item Use higher precision (64-bit floats)
+    \item Algorithmic modifications (like log-sum-exp)
+    \item Batch normalization
+    \item Gradient clipping
+\end{itemize}

@@ -1,0 +1,33 @@
+% Chapter 11, Section 5
+
+\section{Production Considerations}
+\label{sec:production}
+
+\subsection{Model Deployment}
+
+\begin{itemize}
+    \item Model compression (pruning, quantization)
+    \item Model serving infrastructure
+    \item Latency requirements
+    \item Batch vs. online inference
+\end{itemize}
+
+\subsection{Monitoring}
+
+Track in production:
+\begin{itemize}
+    \item Prediction distribution shifts
+    \item Model performance metrics
+    \item System latency and throughput
+    \item Error analysis
+\end{itemize}
+
+\subsection{Iterative Improvement}
+
+\begin{enumerate}
+    \item Deploy initial model
+    \item Monitor performance
+    \item Collect more data
+    \item Retrain and improve
+    \item A/B test new models
+\end{enumerate}

@@ -1,0 +1,61 @@
+% Chapter 11, Section 2
+
+\section{Baseline Models and Debugging}
+\label{sec:baselines-debugging}
+
+\subsection{Establishing Baselines}
+
+Start with simple baselines:
+\begin{enumerate}
+    \item \textbf{Random baseline:} Random predictions
+    \item \textbf{Simple heuristics:} Rule-based systems
+    \item \textbf{Classical ML:} Logistic regression, random forests
+    \item \textbf{Simple neural networks:} Small architectures
+\end{enumerate}
+
+Compare deep learning improvements against these baselines.
+
+\subsection{Debugging Strategy}
+
+\textbf{Step 1: Overfit a small dataset}
+\begin{itemize}
+    \item Take 10-100 examples
+    \item Turn off regularization
+    \item If can't overfit, model has bugs
+\end{itemize}
+
+\textbf{Step 2: Check intermediate outputs}
+\begin{itemize}
+    \item Visualize activations
+    \item Check gradient magnitudes
+    \item Verify loss decreases on training set
+\end{itemize}
+
+\textbf{Step 3: Diagnose underfitting vs. overfitting}
+\begin{itemize}
+    \item \textbf{Underfitting:} Poor train performance $\to$ increase capacity
+    \item \textbf{Overfitting:} Good train, poor validation $\to$ add regularization
+\end{itemize}
+
+\subsection{Common Issues}
+
+\textbf{Vanishing/exploding gradients:}
+\begin{itemize}
+    \item Use batch normalization
+    \item Gradient clipping
+    \item Better initialization
+\end{itemize}
+
+\textbf{Dead ReLUs:}
+\begin{itemize}
+    \item Lower learning rate
+    \item Use Leaky ReLU or ELU
+\end{itemize}
+
+\textbf{Loss not decreasing:}
+\begin{itemize}
+    \item Check learning rate (too high or too low)
+    \item Verify gradient computation
+    \item Check data preprocessing
+\end{itemize}
+

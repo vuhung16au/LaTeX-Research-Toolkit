@@ -1,0 +1,43 @@
+% Chapter 7, Section 2
+
+\section{Dataset Augmentation}
+\label{sec:data-augmentation}
+
+\textbf{Data augmentation} artificially increases training set size by applying transformations that preserve labels.
+
+\subsection{Image Augmentation}
+
+Common transformations:
+\begin{itemize}
+    \item \textbf{Geometric:} rotation, translation, scaling, flipping, cropping
+    \item \textbf{Color:} brightness, contrast, saturation adjustments
+    \item \textbf{Noise:} Gaussian noise, blur
+    \item \textbf{Cutout/Erasing:} randomly mask regions
+    \item \textbf{Mixup:} blend pairs of images and labels
+\end{itemize}
+
+Example: horizontal flip
+\begin{equation}
+\vect{x}_{\text{aug}} = \text{flip}(\vect{x}), \quad y_{\text{aug}} = y
+\end{equation}
+
+\subsection{Text Augmentation}
+
+For NLP:
+\begin{itemize}
+    \item Synonym replacement
+    \item Random insertion/deletion
+    \item Back-translation
+    \item Paraphrasing
+\end{itemize}
+
+\subsection{Audio Augmentation}
+
+For speech/audio:
+\begin{itemize}
+    \item Time stretching
+    \item Pitch shifting
+    \item Adding background noise
+    \item SpecAugment (masking frequency/time regions)
+\end{itemize}
+

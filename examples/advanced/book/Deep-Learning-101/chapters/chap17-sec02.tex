@@ -1,0 +1,41 @@
+% Chapter 17, Section 2
+
+\section{Markov Chain Monte Carlo}
+\label{sec:mcmc}
+
+\subsection{Markov Chains}
+
+Sequence where $p(x_t|x_{t-1}, \ldots, x_1) = p(x_t|x_{t-1})$.
+
+\textbf{Stationary distribution:} $\pi(x)$ such that if $x_t \sim \pi$, then $x_{t+1} \sim \pi$.
+
+\subsection{Metropolis-Hastings Algorithm}
+
+Sample from target distribution $p(x)$:
+\begin{enumerate}
+    \item Propose: $x' \sim q(x'|x_t)$
+    \item Accept with probability:
+    \begin{equation}
+    A(x', x_t) = \min\left(1, \frac{p(x')q(x_t|x')}{p(x_t)q(x'|x_t)}\right)
+    \end{equation}
+    \item If accepted, $x_{t+1} = x'$; otherwise $x_{t+1} = x_t$
+\end{enumerate}
+
+\subsection{Gibbs Sampling}
+
+Special case where each variable updated conditionally:
+\begin{equation}
+x_i^{(t+1)} \sim p(x_i | x_{-i}^{(t)})
+\end{equation}
+
+Simple when conditional distributions are tractable.
+
+\subsection{Hamiltonian Monte Carlo}
+
+Uses gradient information for efficient exploration:
+\begin{itemize}
+    \item Treats parameters as position in physics simulation
+    \item Uses momentum for faster mixing
+    \item More efficient than random walk methods
+\end{itemize}
+

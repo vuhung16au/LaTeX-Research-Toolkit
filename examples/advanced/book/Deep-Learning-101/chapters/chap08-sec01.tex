@@ -1,0 +1,50 @@
+% Chapter 8, Section 1
+
+\section{Gradient Descent Variants}
+\label{sec:gd-variants}
+
+\subsection{Batch Gradient Descent}
+
+Computes gradient using entire training set:
+\begin{equation}
+\vect{\theta}_{t+1} = \vect{\theta}_t - \alpha \nabla_{\vect{\theta}} \frac{1}{n} \sum_{i=1}^{n} L(\vect{\theta}, \vect{x}^{(i)}, y^{(i)})
+\end{equation}
+
+Characteristics:
+\begin{itemize}
+    \item Guaranteed convergence to global minimum (convex) or local minimum (non-convex)
+    \item Very slow for large datasets
+    \item Deterministic updates
+\end{itemize}
+
+\subsection{Stochastic Gradient Descent (SGD)}
+
+Uses a single random example per update:
+\begin{equation}
+\vect{\theta}_{t+1} = \vect{\theta}_t - \alpha \nabla_{\vect{\theta}} L(\vect{\theta}, \vect{x}^{(i)}, y^{(i)})
+\end{equation}
+
+Characteristics:
+\begin{itemize}
+    \item Much faster per iteration
+    \item Noisy updates can escape shallow local minima
+    \item High variance in updates
+    \item May not converge to exact minimum
+\end{itemize}
+
+\subsection{Mini-Batch Gradient Descent}
+
+Balances batch and stochastic approaches:
+\begin{equation}
+\vect{\theta}_{t+1} = \vect{\theta}_t - \alpha \nabla_{\vect{\theta}} \frac{1}{|\mathcal{B}|} \sum_{i \in \mathcal{B}} L(\vect{\theta}, \vect{x}^{(i)}, y^{(i)})
+\end{equation}
+
+where $\mathcal{B}$ is a mini-batch (typically 32-256 examples).
+
+Benefits:
+\begin{itemize}
+    \item Reduces gradient variance
+    \item Efficient GPU utilization
+    \item Good balance of speed and stability
+\end{itemize}
+

@@ -1,0 +1,37 @@
+% Chapter 13, Section 1
+
+\section{Probabilistic PCA}
+\label{sec:prob-pca}
+
+\subsection{Principal Component Analysis Review}
+
+PCA finds orthogonal directions of maximum variance:
+\begin{equation}
+\vect{z} = \mat{W}^\top (\vect{x} - \boldsymbol{\mu})
+\end{equation}
+
+where $\mat{W}$ contains principal components (eigenvectors of covariance matrix).
+
+\subsection{Probabilistic Formulation}
+
+Model observations as:
+\begin{align}
+\vect{z} &\sim \mathcal{N}(\boldsymbol{0}, \mat{I}) \\
+\vect{x} | \vect{z} &\sim \mathcal{N}(\mat{W}\vect{z} + \boldsymbol{\mu}, \sigma^2 \mat{I})
+\end{align}
+
+Marginalizing over $\vect{z}$:
+\begin{equation}
+\vect{x} \sim \mathcal{N}(\boldsymbol{\mu}, \mat{W}\mat{W}^\top + \sigma^2 \mat{I})
+\end{equation}
+
+\subsection{Learning}
+
+Maximize likelihood using EM algorithm:
+\begin{itemize}
+    \item \textbf{E-step:} Compute $p(\vect{z}|\vect{x})$
+    \item \textbf{M-step:} Update $\mat{W}$, $\boldsymbol{\mu}$, $\sigma^2$
+\end{itemize}
+
+As $\sigma^2 \to 0$, recovers standard PCA.
+

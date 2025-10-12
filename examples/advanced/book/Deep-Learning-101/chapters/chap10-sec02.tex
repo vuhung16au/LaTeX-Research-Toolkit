@@ -1,0 +1,49 @@
+% Chapter 10, Section 2
+
+\section{Backpropagation Through Time}
+\label{sec:bptt}
+
+\subsection{BPTT Algorithm}
+
+Gradients are computed by unrolling the network and applying backpropagation:
+
+\begin{equation}
+\frac{\partial L}{\partial \vect{h}_t} = \frac{\partial L}{\partial \vect{y}_t} \frac{\partial \vect{y}_t}{\partial \vect{h}_t} + \frac{\partial L}{\partial \vect{h}_{t+1}} \frac{\partial \vect{h}_{t+1}}{\partial \vect{h}_t}
+\end{equation}
+
+For weight matrix $\mat{W}$:
+\begin{equation}
+\frac{\partial L}{\partial \mat{W}} = \sum_{t=1}^{T} \frac{\partial L_t}{\partial \mat{W}}
+\end{equation}
+
+\subsection{Vanishing and Exploding Gradients}
+
+Gradients can vanish or explode exponentially:
+
+\begin{equation}
+\frac{\partial \vect{h}_t}{\partial \vect{h}_k} = \prod_{i=k+1}^{t} \frac{\partial \vect{h}_i}{\partial \vect{h}_{i-1}} = \prod_{i=k+1}^{t} \mat{W}^\top \text{diag}(\sigma'(\vect{z}_i))
+\end{equation}
+
+If eigenvalues of $\mat{W}$ are:
+\begin{itemize}
+    \item $< 1$: gradients vanish
+    \item $> 1$: gradients explode
+\end{itemize}
+
+\textbf{Solutions:}
+\begin{itemize}
+    \item Gradient clipping (for explosion)
+    \item Careful initialization
+    \item ReLU activation
+    \item LSTM/GRU architectures
+\end{itemize}
+
+\subsection{Truncated BPTT}
+
+For very long sequences, truncate gradient computation:
+\begin{itemize}
+    \item Only backpropagate through $k$ time steps
+    \item Reduces memory and computation
+    \item Trade-off: cannot capture long-term dependencies
+\end{itemize}
+

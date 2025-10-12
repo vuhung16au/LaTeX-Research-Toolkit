@@ -1,0 +1,54 @@
+% Chapter 8, Section 3
+
+\section{Adaptive Learning Rate Methods}
+\label{sec:adaptive-methods}
+
+\subsection{AdaGrad}
+
+Adapts learning rate per parameter based on historical gradients:
+\begin{align}
+\vect{g}_t &= \nabla_{\vect{\theta}} L(\vect{\theta}_t) \\
+\vect{r}_t &= \vect{r}_{t-1} + \vect{g}_t \odot \vect{g}_t \\
+\vect{\theta}_{t+1} &= \vect{\theta}_t - \frac{\alpha}{\sqrt{\vect{r}_t + \epsilon}} \odot \vect{g}_t
+\end{align}
+
+where $\epsilon$ (e.g., $10^{-8}$) prevents division by zero.
+
+\subsection{RMSProp}
+
+Addresses AdaGrad's aggressive decay using exponential moving average:
+\begin{align}
+\vect{r}_t &= \rho \vect{r}_{t-1} + (1-\rho) \vect{g}_t \odot \vect{g}_t \\
+\vect{\theta}_{t+1} &= \vect{\theta}_t - \frac{\alpha}{\sqrt{\vect{r}_t + \epsilon}} \odot \vect{g}_t
+\end{align}
+
+\subsection{Adam (Adaptive Moment Estimation)}
+
+Combines momentum and adaptive learning rates:
+\begin{align}
+\vect{m}_t &= \beta_1 \vect{m}_{t-1} + (1-\beta_1) \vect{g}_t \\
+\vect{v}_t &= \beta_2 \vect{v}_{t-1} + (1-\beta_2) \vect{g}_t \odot \vect{g}_t \\
+\hat{\vect{m}}_t &= \frac{\vect{m}_t}{1 - \beta_1^t} \\
+\hat{\vect{v}}_t &= \frac{\vect{v}_t}{1 - \beta_2^t} \\
+\vect{\theta}_{t+1} &= \vect{\theta}_t - \frac{\alpha \hat{\vect{m}}_t}{\sqrt{\hat{\vect{v}}_t} + \epsilon}
+\end{align}
+
+Default hyperparameters: $\beta_1 = 0.9$, $\beta_2 = 0.999$, $\epsilon = 10^{-8}$, $\alpha = 0.001$.
+
+\subsection{Learning Rate Schedules}
+
+\textbf{Step Decay:}
+\begin{equation}
+\alpha_t = \alpha_0 \cdot \gamma^{\lfloor t / s \rfloor}
+\end{equation}
+
+\textbf{Exponential Decay:}
+\begin{equation}
+\alpha_t = \alpha_0 e^{-\lambda t}
+\end{equation}
+
+\textbf{Cosine Annealing:}
+\begin{equation}
+\alpha_t = \alpha_{\min} + \frac{1}{2}(\alpha_{\max} - \alpha_{\min})\left(1 + \cos\left(\frac{t}{T}\pi\right)\right)
+\end{equation}
+

@@ -1,0 +1,48 @@
+% Chapter 10, Section 5
+
+\section{Sequence-to-Sequence Models}
+\label{sec:seq2seq}
+
+\subsection{Encoder-Decoder Architecture}
+
+For tasks like machine translation:
+
+\textbf{Encoder:} Processes input sequence into fixed representation
+\begin{equation}
+\vect{c} = f(\vect{x}_1, \vect{x}_2, \ldots, \vect{x}_T)
+\end{equation}
+
+\textbf{Decoder:} Generates output sequence from representation
+\begin{equation}
+\vect{y}_t = g(\vect{y}_{t-1}, \vect{c}, \vect{s}_{t-1})
+\end{equation}
+
+\subsection{Attention Mechanism}
+
+Standard seq2seq compresses entire input into fixed vector $\vect{c}$, causing information bottleneck.
+
+\textbf{Attention} allows decoder to focus on relevant input parts:
+
+\begin{align}
+e_{ti} &= a(\vect{s}_{t-1}, \vect{h}_i) \quad \text{(alignment scores)} \\
+\alpha_{ti} &= \frac{\exp(e_{ti})}{\sum_j \exp(e_{tj})} \quad \text{(attention weights)} \\
+\vect{c}_t &= \sum_i \alpha_{ti} \vect{h}_i \quad \text{(context vector)}
+\end{align}
+
+Benefits:
+\begin{itemize}
+    \item Dynamic context for each output
+    \item Better for long sequences
+    \item Interpretable (visualize attention weights)
+\end{itemize}
+
+\subsection{Applications}
+
+\begin{itemize}
+    \item Machine translation
+    \item Text summarization
+    \item Question answering
+    \item Image captioning (CNN encoder, RNN decoder)
+    \item Speech recognition
+\end{itemize}
+
