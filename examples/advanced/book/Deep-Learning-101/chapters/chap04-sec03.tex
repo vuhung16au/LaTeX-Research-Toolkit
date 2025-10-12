@@ -1,0 +1,50 @@
+% Chapter 4, Section 3: Constrained Optimization
+
+\section{Constrained Optimization}
+\label{sec:constrained-optimization}
+
+Many problems require optimizing a function subject to constraints.
+
+\subsection{Lagrange Multipliers}
+
+For equality constraint $g(\vect{x}) = 0$, the \textbf{Lagrangian} is:
+
+\begin{equation}
+\mathcal{L}(\vect{x}, \lambda) = f(\vect{x}) + \lambda g(\vect{x})
+\end{equation}
+
+At the optimum, both:
+\begin{equation}
+\nabla_{\vect{x}} \mathcal{L} = \boldsymbol{0} \quad \text{and} \quad \frac{\partial \mathcal{L}}{\partial \lambda} = 0
+\end{equation}
+
+\subsection{Inequality Constraints}
+
+For inequality constraint $g(\vect{x}) \leq 0$, we use the \textbf{Karush-Kuhn-Tucker (KKT)} conditions:
+
+\begin{align}
+\nabla_{\vect{x}} \mathcal{L} &= \boldsymbol{0} \\
+\lambda &\geq 0 \\
+\lambda g(\vect{x}) &= 0 \quad \text{(complementary slackness)} \\
+g(\vect{x}) &\leq 0
+\end{align}
+
+\subsection{Projected Gradient Descent}
+
+For constraints defining a set $\mathcal{C}$, \textbf{projected gradient descent} applies:
+
+\begin{equation}
+\vect{x}_{t+1} = \text{Proj}_{\mathcal{C}}\left(\vect{x}_t - \alpha \nabla f(\vect{x}_t)\right)
+\end{equation}
+
+where $\text{Proj}_{\mathcal{C}}$ projects onto the feasible set.
+
+\subsection{Applications in Deep Learning}
+
+Constrained optimization appears in:
+\begin{itemize}
+    \item Weight constraints (e.g., unit norm constraints)
+    \item Projection to valid probability distributions
+    \item Adversarial training with bounded perturbations
+    \item Fairness constraints
+\end{itemize}

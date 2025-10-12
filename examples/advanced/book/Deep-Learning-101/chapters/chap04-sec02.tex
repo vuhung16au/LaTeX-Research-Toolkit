@@ -1,0 +1,63 @@
+% Chapter 4, Section 2: Gradient-Based Optimization
+
+\section{Gradient-Based Optimization}
+\label{sec:gradient-optimization}
+
+Most deep learning algorithms involve optimization: finding parameters that minimize or maximize an objective function.
+
+\subsection{Gradient Descent}
+
+For a function $f(\vect{\theta})$, \textbf{gradient descent} updates parameters as:
+
+\begin{equation}
+\vect{\theta}_{t+1} = \vect{\theta}_t - \alpha \nabla_{\vect{\theta}} f(\vect{\theta}_t)
+\end{equation}
+
+where $\alpha > 0$ is the \textbf{learning rate}.
+
+\subsection{Jacobian and Hessian Matrices}
+
+The \textbf{Jacobian matrix} contains all first-order partial derivatives. For $\vect{f}: \mathbb{R}^n \to \mathbb{R}^m$:
+
+\begin{equation}
+\mat{J}_{ij} = \frac{\partial f_i}{\partial x_j}
+\end{equation}
+
+The \textbf{Hessian matrix} contains second-order derivatives:
+
+\begin{equation}
+\mat{H}_{ij} = \frac{\partial^2 f}{\partial x_i \partial x_j}
+\end{equation}
+
+The Hessian characterizes the local curvature of the function.
+
+\subsection{Taylor Series Approximation}
+
+Near point $\vect{x}_0$, we can approximate $f(\vect{x})$ using Taylor series:
+
+\begin{equation}
+f(\vect{x}) \approx f(\vect{x}_0) + (\vect{x} - \vect{x}_0)^\top \nabla f(\vect{x}_0) + \frac{1}{2}(\vect{x} - \vect{x}_0)^\top \mat{H}(\vect{x}_0) (\vect{x} - \vect{x}_0)
+\end{equation}
+
+This provides insight into optimization behavior.
+
+\subsection{Critical Points}
+
+At a \textbf{critical point}, $\nabla f(\vect{x}) = \boldsymbol{0}$. The Hessian determines the nature:
+\begin{itemize}
+    \item \textbf{Local minimum:} Hessian is positive definite
+    \item \textbf{Local maximum:} Hessian is negative definite
+    \item \textbf{Saddle point:} Hessian has both positive and negative eigenvalues
+\end{itemize}
+
+Deep learning often encounters saddle points rather than local minima in high dimensions.
+
+\subsection{Directional Derivatives}
+
+The directional derivative in direction $\vect{u}$ (with $\|\vect{u}\| = 1$) is:
+
+\begin{equation}
+\frac{\partial}{\partial \alpha} f(\vect{x} + \alpha \vect{u}) \bigg|_{\alpha=0} = \vect{u}^\top \nabla f(\vect{x})
+\end{equation}
+
+To minimize $f$, we move in the direction $\vect{u} = -\frac{\nabla f(\vect{x})}{\|\nabla f(\vect{x})\|}$.

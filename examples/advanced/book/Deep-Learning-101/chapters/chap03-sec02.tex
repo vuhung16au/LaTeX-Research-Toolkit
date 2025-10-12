@@ -1,0 +1,56 @@
+% Chapter 3, Section 2: Conditional Probability and Bayes' Rule
+
+\section{Conditional Probability and Bayes' Rule}
+\label{sec:conditional-probability}
+
+\subsection{Conditional Probability}
+
+The \textbf{conditional probability} of $X$ given $Y$ is:
+
+\begin{equation}
+P(X|Y) = \frac{P(X, Y)}{P(Y)}
+\end{equation}
+
+This quantifies how the probability of $X$ changes when we know the value of $Y$.
+
+\subsection{Independence}
+
+Two random variables $X$ and $Y$ are \textbf{independent} if:
+
+\begin{equation}
+P(X, Y) = P(X)P(Y)
+\end{equation}
+
+Equivalently, $P(X|Y) = P(X)$ and $P(Y|X) = P(Y)$.
+
+\subsection{Bayes' Theorem}
+
+\textbf{Bayes' theorem} is fundamental to probabilistic inference:
+
+\begin{equation}
+P(X|Y) = \frac{P(Y|X)P(X)}{P(Y)}
+\end{equation}
+
+In machine learning terminology:
+\begin{itemize}
+    \item $P(X)$ is the \textbf{prior} probability
+    \item $P(Y|X)$ is the \textbf{likelihood}
+    \item $P(X|Y)$ is the \textbf{posterior} probability
+    \item $P(Y)$ is the \textbf{evidence} or marginal likelihood
+\end{itemize}
+
+\subsection{Application to Machine Learning}
+
+Bayes' theorem forms the basis of:
+\begin{itemize}
+    \item Bayesian inference
+    \item Naive Bayes classifiers
+    \item Maximum a posteriori (MAP) estimation
+    \item Bayesian neural networks
+\end{itemize}
+
+Given data $\mathcal{D}$ and model parameters $\theta$:
+
+\begin{equation}
+P(\theta|\mathcal{D}) = \frac{P(\mathcal{D}|\theta)P(\theta)}{P(\mathcal{D})}
+\end{equation}

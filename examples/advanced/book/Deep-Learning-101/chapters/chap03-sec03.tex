@@ -1,0 +1,53 @@
+% Chapter 3, Section 3: Expectation, Variance, and Covariance
+
+\section{Expectation, Variance, and Covariance}
+\label{sec:expectation-variance}
+
+\subsection{Expectation}
+
+The \textbf{expected value} or \textbf{mean} of a function $f(x)$ with respect to distribution $P(x)$ is:
+
+For discrete variables:
+\begin{equation}
+\mathbb{E}_{x \sim P}[f(x)] = \sum_{x} P(x) f(x)
+\end{equation}
+
+For continuous variables:
+\begin{equation}
+\mathbb{E}_{x \sim p}[f(x)] = \int p(x) f(x) \, dx
+\end{equation}
+
+\subsection{Variance}
+
+The \textbf{variance} measures the spread of a distribution:
+
+\begin{equation}
+\text{Var}(X) = \mathbb{E}[(X - \mathbb{E}[X])^2] = \mathbb{E}[X^2] - (\mathbb{E}[X])^2
+\end{equation}
+
+The \textbf{standard deviation} is $\sigma = \sqrt{\text{Var}(X)}$.
+
+\subsection{Covariance}
+
+The \textbf{covariance} measures how two variables vary together:
+
+\begin{equation}
+\text{Cov}(X, Y) = \mathbb{E}[(X - \mathbb{E}[X])(Y - \mathbb{E}[Y])]
+\end{equation}
+
+Positive covariance indicates that $X$ and $Y$ tend to increase together, while negative covariance indicates they tend to vary in opposite directions.
+
+\subsection{Correlation}
+
+The \textbf{correlation coefficient} normalizes covariance:
+
+\begin{equation}
+\rho(X, Y) = \frac{\text{Cov}(X, Y)}{\sqrt{\text{Var}(X)\text{Var}(Y)}}
+\end{equation}
+
+Properties:
+\begin{itemize}
+    \item $-1 \leq \rho \leq 1$
+    \item $|\rho| = 1$ indicates perfect linear relationship
+    \item $\rho = 0$ indicates no linear relationship (but variables may still be dependent)
+\end{itemize}

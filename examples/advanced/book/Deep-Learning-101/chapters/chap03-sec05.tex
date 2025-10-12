@@ -1,0 +1,84 @@
+% Chapter 3, Section 5: Information Theory Basics
+
+\section{Information Theory Basics}
+\label{sec:information-theory}
+
+Information theory provides tools for quantifying information and uncertainty, which are crucial for understanding learning and compression.
+
+\subsection{Self-Information}
+
+The \textbf{self-information} or \textbf{surprisal} of an event $x$ is:
+
+\begin{equation}
+I(x) = -\log P(x)
+\end{equation}
+
+Rare events have high information content, while certain events have zero information.
+
+\subsection{Entropy}
+
+The \textbf{Shannon entropy} measures the expected information in a distribution:
+
+\begin{equation}
+H(X) = \mathbb{E}_{x \sim P}[I(x)] = -\sum_{x} P(x) \log P(x)
+\end{equation}
+
+For continuous distributions, we use \textbf{differential entropy}:
+
+\begin{equation}
+H(X) = -\int p(x) \log p(x) \, dx
+\end{equation}
+
+Entropy is maximized when all outcomes are equally likely.
+
+\subsection{Cross-Entropy}
+
+The \textbf{cross-entropy} between distributions $P$ and $Q$ is:
+
+\begin{equation}
+H(P, Q) = -\mathbb{E}_{x \sim P}[\log Q(x)] = -\sum_{x} P(x) \log Q(x)
+\end{equation}
+
+In deep learning, cross-entropy is commonly used as a loss function for classification.
+
+\subsection{Kullback-Leibler Divergence}
+
+The \textbf{KL divergence} measures how one distribution differs from another:
+
+\begin{equation}
+D_{KL}(P \| Q) = \mathbb{E}_{x \sim P}\left[\log \frac{P(x)}{Q(x)}\right] = \sum_{x} P(x) \log \frac{P(x)}{Q(x)}
+\end{equation}
+
+Properties:
+\begin{itemize}
+    \item $D_{KL}(P \| Q) \geq 0$ with equality if and only if $P = Q$
+    \item Not symmetric: $D_{KL}(P \| Q) \neq D_{KL}(Q \| P)$
+    \item Related to cross-entropy: $D_{KL}(P \| Q) = H(P, Q) - H(P)$
+\end{itemize}
+
+\subsection{Mutual Information}
+
+The \textbf{mutual information} between $X$ and $Y$ quantifies how much knowing one reduces uncertainty about the other:
+
+\begin{equation}
+I(X; Y) = D_{KL}(P(X, Y) \| P(X)P(Y))
+\end{equation}
+
+Equivalently:
+
+\begin{equation}
+I(X; Y) = H(X) - H(X|Y) = H(Y) - H(Y|X)
+\end{equation}
+
+Mutual information is symmetric and measures the dependence between variables.
+
+\subsection{Applications in Deep Learning}
+
+Information theory concepts are used in:
+\begin{itemize}
+    \item Loss functions (cross-entropy loss)
+    \item Model selection (AIC, BIC use information-theoretic principles)
+    \item Variational inference (minimizing KL divergence)
+    \item Information bottleneck theory
+    \item Mutual information maximization in self-supervised learning
+\end{itemize}
