@@ -6,24 +6,250 @@
 This chapter reviews traditional machine learning methods that provide context and motivation for deep learning approaches. Understanding these classical algorithms helps appreciate the advantages and innovations of deep learning.
 
 \section{Linear Regression}
+\label{sec:linear-regression}
 
-\textit{This section will cover ordinary least squares, regularized regression, and gradient descent.}
+\textbf{Linear regression} models the relationship between input features and a continuous output.
+
+\subsection{Model Formulation}
+
+For input $\vect{x} \in \mathbb{R}^d$ and output $y \in \mathbb{R}$:
+
+\begin{equation}
+\hat{y} = \vect{w}^\top \vect{x} + b
+\end{equation}
+
+where $\vect{w}$ are weights and $b$ is the bias.
+
+\subsection{Ordinary Least Squares}
+
+The \textbf{mean squared error} (MSE) loss is:
+
+\begin{equation}
+L(\vect{w}, b) = \frac{1}{n} \sum_{i=1}^{n} (y^{(i)} - \hat{y}^{(i)})^2
+\end{equation}
+
+The closed-form solution (using matrix form with bias absorbed) is:
+
+\begin{equation}
+\vect{w}^* = (\mat{X}^\top \mat{X})^{-1} \mat{X}^\top \vect{y}
+\end{equation}
+
+\subsection{Regularized Regression}
+
+\textbf{Ridge regression} (L2 regularization) adds a penalty:
+
+\begin{equation}
+L(\vect{w}) = \|\mat{X}\vect{w} - \vect{y}\|^2 + \lambda \|\vect{w}\|^2
+\end{equation}
+
+Solution:
+\begin{equation}
+\vect{w}^* = (\mat{X}^\top \mat{X} + \lambda \mat{I})^{-1} \mat{X}^\top \vect{y}
+\end{equation}
+
+\textbf{Lasso regression} (L1 regularization) promotes sparsity:
+
+\begin{equation}
+L(\vect{w}) = \|\mat{X}\vect{w} - \vect{y}\|^2 + \lambda \|\vect{w}\|_1
+\end{equation}
+
+\subsection{Gradient Descent Solution}
+
+For large datasets, we use iterative optimization:
+
+\begin{equation}
+\vect{w}_{t+1} = \vect{w}_t - \alpha \frac{2}{n} \mat{X}^\top (\mat{X}\vect{w}_t - \vect{y})
+\end{equation}
 
 \section{Logistic Regression}
+\label{sec:logistic-regression}
 
-\textit{This section will introduce binary and multiclass classification using logistic models.}
+\textbf{Logistic regression} is used for binary classification.
+
+\subsection{Binary Classification}
+
+The model uses the sigmoid function:
+
+\begin{equation}
+\sigma(z) = \frac{1}{1 + e^{-z}}
+\end{equation}
+
+Prediction:
+\begin{equation}
+P(y=1|\vect{x}) = \sigma(\vect{w}^\top \vect{x} + b)
+\end{equation}
+
+\subsection{Cross-Entropy Loss}
+
+The loss function (negative log-likelihood) is:
+
+\begin{equation}
+L(\vect{w}, b) = -\frac{1}{n} \sum_{i=1}^{n} \left[y^{(i)} \log \hat{y}^{(i)} + (1-y^{(i)}) \log(1-\hat{y}^{(i)})\right]
+\end{equation}
+
+\subsection{Multiclass Classification}
+
+For $K$ classes, we use \textbf{softmax regression}:
+
+\begin{equation}
+P(y=k|\vect{x}) = \frac{\exp(\vect{w}_k^\top \vect{x})}{\sum_{j=1}^{K} \exp(\vect{w}_j^\top \vect{x})}
+\end{equation}
+
+The loss is the categorical cross-entropy:
+
+\begin{equation}
+L = -\frac{1}{n} \sum_{i=1}^{n} \sum_{k=1}^{K} y_k^{(i)} \log \hat{y}_k^{(i)}
+\end{equation}
+
+where $y_k^{(i)}$ is 1 if example $i$ belongs to class $k$, and 0 otherwise.
 
 \section{Support Vector Machines}
+\label{sec:svm}
 
-\textit{This section will discuss SVMs, kernels, and the margin concept.}
+\textbf{Support Vector Machines} (SVMs) find the maximum-margin hyperplane separating classes.
+
+\subsection{Linear SVM}
+
+For binary classification with labels $y \in \{-1, +1\}$, the decision boundary is:
+
+\begin{equation}
+\vect{w}^\top \vect{x} + b = 0
+\end{equation}
+
+The \textbf{margin} is $\frac{2}{\|\vect{w}\|}$. Maximizing the margin is equivalent to minimizing $\|\vect{w}\|^2$ subject to:
+
+\begin{equation}
+y^{(i)}(\vect{w}^\top \vect{x}^{(i)} + b) \geq 1 \quad \forall i
+\end{equation}
+
+\subsection{Soft Margin SVM}
+
+To handle non-separable data, we introduce slack variables $\xi_i$:
+
+\begin{equation}
+\min_{\vect{w}, b, \boldsymbol{\xi}} \frac{1}{2}\|\vect{w}\|^2 + C \sum_{i=1}^{n} \xi_i
+\end{equation}
+
+subject to:
+\begin{equation}
+y^{(i)}(\vect{w}^\top \vect{x}^{(i)} + b) \geq 1 - \xi_i, \quad \xi_i \geq 0
+\end{equation}
+
+$C$ controls the trade-off between margin size and training errors.
+
+\subsection{Kernel Trick}
+
+For non-linear decision boundaries, we map inputs to a higher-dimensional space using a \textbf{kernel function} $k(\vect{x}, \vect{x}')$:
+
+\textbf{Common kernels:}
+\begin{itemize}
+    \item \textbf{Linear:} $k(\vect{x}, \vect{x}') = \vect{x}^\top \vect{x}'$
+    \item \textbf{Polynomial:} $k(\vect{x}, \vect{x}') = (\vect{x}^\top \vect{x}' + c)^d$
+    \item \textbf{RBF (Gaussian):} $k(\vect{x}, \vect{x}') = \exp(-\gamma \|\vect{x} - \vect{x}'\|^2)$
+\end{itemize}
+
+The decision function becomes:
+\begin{equation}
+f(\vect{x}) = \sum_{i=1}^{n} \alpha_i y^{(i)} k(\vect{x}^{(i)}, \vect{x}) + b
+\end{equation}
 
 \section{Decision Trees and Ensemble Methods}
+\label{sec:decision-trees}
 
-\textit{This section will cover decision trees, random forests, and boosting.}
+\subsection{Decision Trees}
+
+A \textbf{decision tree} recursively partitions the input space based on feature values.
+
+\textbf{Splitting criteria:}
+\begin{itemize}
+    \item \textbf{Gini impurity:} $1 - \sum_{k} p_k^2$
+    \item \textbf{Entropy:} $-\sum_{k} p_k \log p_k$
+    \item \textbf{MSE} (for regression): variance of target values
+\end{itemize}
+
+where $p_k$ is the proportion of class $k$ examples in a node.
+
+\subsection{Random Forests}
+
+\textbf{Random forests} combine multiple decision trees trained on bootstrap samples with random feature subsets at each split.
+
+Prediction is made by averaging (regression) or voting (classification):
+
+\begin{equation}
+\hat{y} = \frac{1}{B} \sum_{b=1}^{B} f_b(\vect{x})
+\end{equation}
+
+where $B$ is the number of trees.
+
+\subsection{Gradient Boosting}
+
+\textbf{Gradient boosting} builds an ensemble sequentially, where each tree corrects errors of the previous ensemble.
+
+For iteration $m$:
+\begin{enumerate}
+    \item Compute residuals: $r_i^{(m)} = y^{(i)} - \hat{y}^{(m-1)}(\vect{x}^{(i)})$
+    \item Fit tree $f_m$ to residuals
+    \item Update: $\hat{y}^{(m)} = \hat{y}^{(m-1)} + \nu f_m$
+\end{enumerate}
+
+where $\nu$ is the learning rate.
 
 \section{k-Nearest Neighbors}
+\label{sec:knn}
 
-\textit{This section will introduce instance-based learning and distance metrics.}
+\textbf{k-Nearest Neighbors} (k-NN) is a non-parametric instance-based method.
 
-\vspace{1em}
-\noindent\textit{Note: Detailed content for this chapter will be added in future revisions.}
+\subsection{Algorithm}
+
+For a query point $\vect{x}$:
+\begin{enumerate}
+    \item Find the $k$ closest training examples
+    \item For classification: return the majority class
+    \item For regression: return the average of their values
+\end{enumerate}
+
+\subsection{Distance Metrics}
+
+Common distance metrics:
+\begin{itemize}
+    \item \textbf{Euclidean:} $d(\vect{x}, \vect{x}') = \sqrt{\sum_i (x_i - x_i')^2}$
+    \item \textbf{Manhattan:} $d(\vect{x}, \vect{x}') = \sum_i |x_i - x_i'|$
+    \item \textbf{Minkowski:} $d(\vect{x}, \vect{x}') = \left(\sum_i |x_i - x_i'|^p\right)^{1/p}$
+\end{itemize}
+
+\subsection{Choosing k}
+
+\begin{itemize}
+    \item Small $k$: flexible decision boundary but sensitive to noise
+    \item Large $k$: smoother decision boundary but may miss local structure
+    \item Typically chosen by cross-validation
+\end{itemize}
+
+\subsection{Computational Considerations}
+
+k-NN requires:
+\begin{itemize}
+    \item No training time (lazy learning)
+    \item $O(n)$ prediction time for $n$ training examples
+    \item Can be accelerated using KD-trees or ball trees
+\end{itemize}
+
+\section{Comparison with Deep Learning}
+\label{sec:comparison}
+
+Classical methods have limitations that deep learning addresses:
+
+\begin{itemize}
+    \item \textbf{Feature engineering:} Classical methods require manual feature design; deep learning learns features automatically
+    \item \textbf{Scalability:} Deep learning scales better with data and model size
+    \item \textbf{Representation:} Deep networks learn hierarchical representations
+    \item \textbf{Flexibility:} Deep learning handles diverse data types (images, text, audio)
+\end{itemize}
+
+However, classical methods remain valuable:
+\begin{itemize}
+    \item Simpler to interpret and debug
+    \item Effective for small to medium datasets
+    \item Lower computational requirements
+    \item Strong theoretical guarantees in some cases
+\end{itemize}
