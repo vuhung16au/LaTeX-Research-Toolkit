@@ -29,3 +29,8 @@
 # OS files
 .DS_Store
 Thumbs.db
+
+# Project specific files
+TODO/
+refs/
+Prompt.md
