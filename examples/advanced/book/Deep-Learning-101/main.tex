@@ -2,10 +2,13 @@
 % Author: Vu Hung Nguyen
 % License: Creative Commons License Version 4.0 (CC BY 4.0)
 
-\documentclass[10pt,a5paper,twoside,openright]{book}
+% Define default paper size if not already defined
+\providecommand{\papersize}{a5paper}
+
+\documentclass[10pt,\papersize,twoside,openright]{book}
 
 % --- Page Layout ---
-\usepackage[a5paper, top=2cm, bottom=2cm, inner=1.8cm, outer=1.5cm]{geometry}
+\usepackage[\papersize, top=2cm, bottom=2cm, inner=1.8cm, outer=1.5cm]{geometry}
 \usepackage{setspace}
 \onehalfspacing
 
