@@ -9,6 +9,7 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
+\usepackage{multicol}
 
 % Configure pgfplots
 \pgfplotsset{compat=1.18}
@@ -43,6 +44,12 @@
 \setbeamercolor{alerted text}{fg=customred}
 \setbeamercolor{example text}{fg=custompurple}
 
+% Font sizes for Table of Contents - much smaller fonts
+\setbeamerfont{section in toc}{size=\tiny}
+\setbeamerfont{subsection in toc}{size=\tiny}
+\setbeamerfont{title}{size=\footnotesize}
+\setbeamerfont{frametitle}{size=\footnotesize}
+
 \title{TikZ and PGFPlots Showcase}
 \subtitle{Comprehensive Examples of Advanced Graphics in LaTeX}
 \author{LaTeX Research Toolkit}
@@ -53,144 +60,228 @@
 \frame{\titlepage}
 
 % ===========================================
+% TABLE OF CONTENTS
+% ===========================================
+
+\begin{frame}{Table of Contents}
+\setlength{\columnsep}{0.15cm}
+\setlength{\parskip}{0pt}
+\setlength{\itemsep}{0pt}
+\setlength{\topsep}{0pt}
+\setlength{\parsep}{0pt}
+\setlength{\partopsep}{0pt}
+\begin{multicols}{2}
+\tiny
+\tableofcontents
+\end{multicols}
+\end{frame}
+
+% ===========================================
 % BASIC DRAWING SECTION
 % ===========================================
 
+\section{Basic Drawing}
+\subsection{Basic Lines and Points}
 \input{slides/slide01.tex}
+\subsection{Grid and Coordinate System}
 \input{slides/slide02.tex}
+\subsection{Basic Shapes}
 \input{slides/slide03.tex}
 
 % ===========================================
 % 2D SHAPES AND ARCS SECTION
 % ===========================================
 
+\section{2D Shapes and Arcs}
+\subsection{Rectangles with Different Styles}
 \input{slides/slide04.tex}
+\subsection{Circles and Ellipses}
 \input{slides/slide05.tex}
+\subsection{Arcs and Curves}
 \input{slides/slide06.tex}
 
 % ===========================================
 % TRIANGLES SECTION
 % ===========================================
 
+\section{Triangles}
+\subsection{Labeled Triangle}
 \input{slides/slide07.tex}
+\subsection{Triangle with Angle Marks}
 \input{slides/slide08.tex}
+\subsection{Right Triangle with Measurements}
 \input{slides/slide09.tex}
 
 % ===========================================
 % VENN DIAGRAMS SECTION
 % ===========================================
 
+\section{Venn Diagrams}
+\subsection{Two-Set Venn Diagram}
 \input{slides/slide10.tex}
+\subsection{Three-Set Venn Diagram}
 \input{slides/slide11.tex}
 
 % ===========================================
 % PROBABILITY TREES SECTION
 % ===========================================
 
+\section{Probability Trees}
+\subsection{Simple Probability Tree}
 \input{slides/slide12.tex}
+\subsection{Two-Stage Probability Tree}
 \input{slides/slide13.tex}
 
 % ===========================================
 % BASIC PLOTTING SECTION
 % ===========================================
 
+\section{Basic Plotting}
+\subsection{Simple Function Plot}
 \input{slides/slide14.tex}
+\subsection{Multiple Function Plots}
 \input{slides/slide15.tex}
+\subsection{Area Under Curve}
 \input{slides/slide16.tex}
 
 % ===========================================
 % ADVANCED PLOTTING SECTION
 % ===========================================
 
+\section{Advanced Plotting}
+\subsection{Exponential and Logarithmic Functions}
 \input{slides/slide17.tex}
+\subsection{Parametric Curves}
 \input{slides/slide18.tex}
+\subsection{Scatter Plot with Data Points}
 \input{slides/slide19.tex}
 
 % ===========================================
 % SHADING BETWEEN CURVES SECTION
 % ===========================================
 
+\section{Shading Between Curves}
+\subsection{Area Between Two Curves}
 \input{slides/slide20.tex}
+\subsection{Multiple Shaded Regions}
 \input{slides/slide21.tex}
 
 % ===========================================
 % EXTERNAL DATA PLOTTING SECTION
 % ===========================================
 
+\section{External Data Plotting}
+\subsection{Data from CSV File}
 \input{slides/slide22.tex}
 
 % ===========================================
 % FLOWCHARTS SECTION
 % ===========================================
 
+\section{Flowcharts}
+\subsection{Simple Flowchart}
 \input{slides/slide23.tex}
+\subsection{Complex Flowchart with Loops}
 \input{slides/slide24.tex}
 
 % ===========================================
 % GEOMETRY FIGURES SECTION
 % ===========================================
 
+\section{Geometry Figures}
+\subsection{Annotated Circle}
 \input{slides/slide25.tex}
+\subsection{Polygon with Measurements}
 \input{slides/slide26.tex}
 
 % ===========================================
 % 3D PLOTS SECTION
 % ===========================================
 
+\section{3D Plots}
+\subsection{3D Surface Plot}
 \input{slides/slide27.tex}
+\subsection{3D Parametric Curve}
 \input{slides/slide28.tex}
 
 % ===========================================
 % ANIMATION SECTION
 % ===========================================
 
+\section{Animation}
+\subsection{Animated Function Plot}
 \input{slides/slide29.tex}
 
 % ===========================================
 % ADVANCED AXIS STYLING SECTION
 % ===========================================
 
+\section{Advanced Axis Styling}
+\subsection{Logarithmic Scale}
 \input{slides/slide30.tex}
+\subsection{Custom Tick Marks}
 \input{slides/slide31.tex}
 
 % ===========================================
 % MATHEMATICAL DIAGRAMS SECTION
 % ===========================================
 
+\section{Mathematical Diagrams}
+\subsection{State Machine}
 \input{slides/slide32.tex}
+\subsection{Commutative Diagram}
 \input{slides/slide33.tex}
 
 % ===========================================
 % TIKZ LIBRARIES SECTION
 % ===========================================
 
+\section{TikZ Libraries}
+\subsection{Matrix of Nodes}
 \input{slides/slide34.tex}
+\subsection{Decorative Paths}
 \input{slides/slide35.tex}
+\subsection{3D Cube}
 \input{slides/slide36.tex}
 
 % ===========================================
 % FOREST PACKAGE SECTION
 % ===========================================
 
+\section{Forest Package}
+\subsection{Tree with Forest Package}
 \input{slides/slide37.tex}
 
 % ===========================================
 % ISTGAME PACKAGE SECTION
 % ===========================================
 
+\section{istgame Package}
+\subsection{Game Tree with istgame}
 \input{slides/slide38.tex}
 
 % ===========================================
 % ADVANCED EXAMPLES SECTION
 % ===========================================
 
+\section{Advanced Examples}
+\subsection{Neural Network Diagram}
 \input{slides/slide39.tex}
+\subsection{Digit Recognition using Deep Neural Network}
+\input{slides/slide40a.tex}
+\subsection{Markov Chain}
 \input{slides/slide40.tex}
+\subsection{Heatmap Visualization}
 \input{slides/slide41.tex}
+\subsection{Polar Plot}
 \input{slides/slide42.tex}
+\subsection{Error Bars}
 \input{slides/slide43.tex}
+\subsection{Contour Plot}
 \input{slides/slide44.tex}
+\subsection{Box Plot}
 \input{slides/slide45.tex}
+\subsection{Summary}
 \input{slides/slide46.tex}
 
 \end{document}
