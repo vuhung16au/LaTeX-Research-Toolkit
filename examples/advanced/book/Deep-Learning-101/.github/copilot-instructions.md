@@ -1,180 +1,125 @@
-# GitHub Copilot Instructions for Deep Learning 101
+# Deep Learning 101 - Copilot Instructions
 
-## Project Overview
-This is a comprehensive LaTeX book on Deep Learning with advanced features including glossary, index, and difficulty levels. The book is structured as a complete educational resource with 20 chapters covering fundamentals to advanced research topics.
+You are an AI assistant helping with the development of "Deep Learning 101: A Comprehensive Guide to Neural Networks and Machine Learning" - an advanced LaTeX textbook on deep learning.
 
-## Key Features to Maintain
+## Project Context
 
-### 1. Glossary and Index System
-- **Glossary**: Technical terms are defined in `chapters/glossary.tex`
-- **Usage**: Use `\gls{term}` for first occurrence of glossary terms
-- **Index**: Use `\index{term}` or `\index{term!subterm}` for hierarchical indexing
-- **Build Process**: Glossary and index are automatically processed during compilation
+This is a comprehensive deep learning textbook with:
+- **20 chapters** organized into 3 parts (Basic Math & ML Foundation, Practical Deep Networks, Deep Learning Research)
+- **96 sections** across all chapters
+- **Modular LaTeX structure** with separate files for each section
+- **Advanced features**: Glossary, Index, Bibliography, Cross-references
+- **Multiple paper sizes**: A4 and A5 support
+- **Visual aids**: TikZ/PGFPlots diagrams, tables, examples
 
-### 2. Difficulty Levels
-- **Command**: Always use `\difficulty{level}` for sections
-- **Levels**: 
-  - `beginner` - Basic concepts, intuitive explanations
-  - `intermediate` - Technical details, some background assumed  
-  - `advanced` - Cutting-edge research, complex mathematics
-- **Visual**: Color-coded indicators (green/orange/red)
+## Writing Style & Language
 
-### 3. LaTeX Structure
-- **Main File**: `main.tex` contains document structure and packages
-- **Chapters**: Each chapter in `chapters/chapXX.tex` includes sections
-- **Sections**: Individual sections in `chapters/chapXX-secYY.tex`
-- **Build**: Use `make clean && make pdf` for compilation
+- **Clear and accessible language**: Make complex concepts understandable
+- **Academic tone**: Professional but not overly formal
+- **Progressive difficulty**: Start with intuition, then build to mathematical rigor
+- **Australian context**: Use Australia/Sydney for examples when location-specific
+- **Inclusive language**: Use diverse examples and avoid bias
 
-## Coding Guidelines
+## Content Structure Requirements
 
-### LaTeX Best Practices
-1. **Package Usage**: Use established packages (amsmath, hyperref, glossaries, makeidx)
-2. **Cross-references**: Use `\label{}` and `\ref{}` for internal references
-3. **Math**: Use proper mathematical notation with `\vect{}`, `\mat{}`, `\norm{}`
-4. **Theorems**: Use defined environments (theorem, definition, example, etc.)
+### Each Chapter Must Include:
+1. **Learning Objectives** - Clear goals at chapter start
+2. **Intuition Sections** - Explain concepts before diving into math
+3. **Visual Aids** - TikZ/PGFPlots diagrams, tables, examples
+4. **Summary Section** - Key concepts recap
+5. **Exercises Section** - Maximum 16 problems:
+   - 6 Easy problems
+   - 5 Medium problems  
+   - 5 Hard problems
+   - Hints for each problem
+6. **Takeaways Section** - Main concepts and formulas summary
 
-### Content Structure
-```latex
-\section{Section Title}
-\label{sec:section-name}
-\difficulty{beginner|intermediate|advanced}
+### Each Section Must Include:
+- **Intuitive explanations** before mathematical content
+- **Visual examples** using LaTeX (TikZ, PGFPlots, tables)
+- **Real-world applications** where relevant
+- **Progressive complexity** from basic to advanced
 
-% Content with glossary entries
-\gls{neural-network} and \gls{backpropagation} are key concepts.
+## LaTeX Guidelines
 
-% Index entries
-\index{deep learning!concepts}
-\index{machine learning!neural networks}
-```
+### File Structure:
+- Main chapter files: `chapters/chapXX.tex`
+- Section files: `chapters/chapXX-secYY.tex`
+- Use `\input{}` to include sections
+- Maintain consistent labeling: `\label{chap:name}`, `\label{sec:name}`
 
-### Glossary Entries
-- Add new terms to `chapters/glossary.tex`
-- Use clear, accessible definitions
-- Match difficulty level of content
-- Include mathematical notation when appropriate
+### Visual Elements:
+- **Diagrams**: Use TikZ/PGFPlots for mathematical visualizations
+- **Tables**: Use booktabs package for professional tables
+- **Figures**: Include captions and labels for cross-referencing
+- **Math**: Use amsmath, amsthm for mathematical content
 
-### Index Entries
-- Use hierarchical structure: `\index{main!subcategory}`
-- Include both technical terms and conceptual topics
-- Add entries throughout content, not just at section ends
+### Content Organization:
+- Use `\section{}`, `\subsection{}`, `\subsubsection{}` consistently
+- Include `\begin{theorem}`, `\begin{definition}`, `\begin{example}` environments
+- Add `\begin{problem}` for exercises
+- Use `\cref{}` for cross-references
 
-## File Organization
+## Technical Requirements
 
-### Core Files
-- `main.tex` - Main document with packages and structure
-- `Makefile` - Build automation with 6-pass compilation
-- `references.bib` - Bibliography database
-- `chapters/glossary.tex` - Glossary definitions
+### Build Process:
+- Support both A4 and A5 paper sizes
+- Use `make pdf-a4`, `make pdf-a5`, `make all` commands
+- Ensure all LaTeX compiles without errors
+- Maintain glossary and index consistency
 
-### Chapter Structure
-- `chapters/chapXX.tex` - Chapter files that include sections
-- `chapters/chapXX-secYY.tex` - Individual section files
-- `chapters/acknowledgements.tex` - Front matter
-- `chapters/notation.tex` - Mathematical notation guide
-
-## Build Process
-
-### Compilation Steps
-1. Initial LaTeX compilation
-2. Bibliography processing (biber)
-3. Glossary processing (makeglossaries)
-4. Index processing (makeindex)
-5. Reference resolution
-6. Final compilation
-
-### Dependencies
-- pdflatex
-- biber (bibliography)
-- makeglossaries (glossary)
-- makeindex (index)
+### Quality Standards:
+- **Mathematical accuracy**: All formulas must be correct
+- **Consistent notation**: Use defined symbols from notation.tex
+- **Cross-references**: Link related concepts across chapters
+- **Bibliography**: Proper citations using biblatex
+- **Accessibility**: Clear structure for screen readers
 
 ## Content Guidelines
 
-### Writing Style
-- Use clear, accessible language appropriate for difficulty level
-- Provide intuitive explanations before mathematical details
-- Include practical examples and applications
-- Maintain consistent notation throughout
+### Difficulty Progression:
+- **Beginner**: Basic concepts, intuitive explanations
+- **Intermediate**: Mathematical foundations, practical applications
+- **Advanced**: Research topics, cutting-edge techniques
 
-### Mathematical Content
-- Provide step-by-step derivations for complex concepts
-- Use appropriate mathematical notation
-- Include visual aids when helpful
-- Ensure mathematical accuracy
+### Examples and Applications:
+- Use Australia/Sydney context for location-specific examples
+- Include diverse, inclusive examples
+- Connect theory to real-world applications
+- Show practical implementation considerations
 
-### Code Examples
-- Include practical, runnable code examples
-- Use clear, well-commented code
-- Provide expected outputs and explanations
-- Match difficulty level of surrounding content
+### Problem Design:
+- **Easy**: Basic concept application, single-step problems
+- **Medium**: Multi-step reasoning, application of concepts
+- **Hard**: Research-level problems, complex derivations
+- **Hints**: Provide guidance without giving away solutions
 
-## Common Tasks
+## Maintenance Tasks
 
-### Adding New Content
-1. Create section file in appropriate chapter directory
-2. Add difficulty level indicator
-3. Include glossary entries for technical terms
-4. Add relevant index entries
-5. Update chapter file to include new section
-6. Test compilation with `make clean && make pdf`
+When updating content:
+1. **Update glossary** for new technical terms
+2. **Update index** for new concepts and topics
+3. **Verify cross-references** are working
+4. **Test compilation** with `make clean && make pdf`
+5. **Check visual elements** render correctly
+6. **Validate mathematical notation** consistency
 
-### Updating Glossary
-1. Add new terms to `chapters/glossary.tex`
-2. Use `\gls{term}` in content for first occurrence
-3. Ensure definitions match content difficulty level
-4. Test compilation to verify glossary processing
+## Collaboration Guidelines
 
-### Adding Index Entries
-1. Use `\index{term}` throughout content
-2. Use hierarchical structure for related concepts
-3. Include both technical and conceptual topics
-4. Test compilation to verify index generation
+- **Modular approach**: Edit individual section files
+- **Consistent style**: Follow established patterns
+- **Version control**: Use clear commit messages
+- **Documentation**: Update STRUCTURE.md when adding content
+- **Testing**: Always test compilation after changes
 
 ## Quality Assurance
 
-### Before Committing
-- Ensure `make clean && make pdf` completes successfully
-- Verify all glossary entries are properly defined
-- Check that index entries are meaningful and hierarchical
-- Confirm difficulty levels are appropriate for content
-- Test that all cross-references work correctly
-
-### Content Review
-- Technical accuracy of mathematical content
-- Appropriateness of difficulty level indicators
-- Clarity and accessibility of explanations
-- Consistency with book style and notation
-- Proper integration of glossary and index entries
-
-## Troubleshooting
-
-### Common Issues
-- **Glossary not appearing**: Check `\loadglsentries{chapters/glossary}` in main.tex
-- **Index not generating**: Verify `\makeindex` and `\printindex` commands
-- **Build failures**: Check all required packages are installed
-- **Cross-reference errors**: Ensure all labels are unique and properly referenced
-
-### Build Verification
-```bash
-make clean
-make pdf
-# Should complete without errors and generate main.pdf
-```
-
-## Contributing Guidelines
-
-### For Contributors
-- Follow difficulty level guidelines in `CONTRIBUTING.md`
-- Use appropriate `\difficulty{}` indicators
-- Add glossary entries for technical terms
-- Include relevant index entries
-- Test compilation before submitting
-
-### For Reviewers
-- Verify technical accuracy
-- Check difficulty level appropriateness
-- Ensure proper glossary and index usage
-- Test build process
-- Validate cross-references
-
-This instruction set ensures consistent, high-quality contributions to the Deep Learning 101 book while maintaining the advanced features of glossary, index, and difficulty levels.
+Before submitting changes:
+- [ ] LaTeX compiles without errors
+- [ ] All cross-references work
+- [ ] Glossary and index updated
+- [ ] Visual elements render correctly
+- [ ] Mathematical notation is consistent
+- [ ] Content follows established style guide
+- [ ] Examples are inclusive and diverse
+- [ ] Problems have appropriate difficulty levels
