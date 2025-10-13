@@ -16,9 +16,32 @@
 % TikZ libraries
 \usetikzlibrary{calc,decorations.pathmorphing,3d,matrix,arrows.meta,positioning,shapes.geometric,angles,quotes,patterns,fillbetween}
 
+% Custom color definitions
+\definecolor{custompurple}{RGB}{60,16,83}
+\definecolor{customred}{RGB}{242,18,12}
+\definecolor{customblack}{RGB}{0,0,0}
+\definecolor{customwhite}{RGB}{255,255,255}
+
 % Theme
 \usetheme{Madrid}
 \usecolortheme{default}
+
+% Apply custom colors
+\setbeamercolor{structure}{fg=custompurple}
+\setbeamercolor{title}{fg=customwhite}
+\setbeamercolor{subtitle}{fg=customwhite}
+\setbeamercolor{frametitle}{fg=customwhite}
+\setbeamercolor{author}{fg=customred}
+\setbeamercolor{date}{fg=customred}
+\setbeamercolor{institute}{fg=customred}
+\setbeamercolor{section in toc}{fg=custompurple}
+\setbeamercolor{subsection in toc}{fg=customred}
+\setbeamercolor{item}{fg=custompurple}
+\setbeamercolor{subitem}{fg=customred}
+\setbeamercolor{block title}{fg=customwhite,bg=custompurple}
+\setbeamercolor{block body}{fg=customblack,bg=customwhite}
+\setbeamercolor{alerted text}{fg=customred}
+\setbeamercolor{example text}{fg=custompurple}
 
 \title{TikZ and PGFPlots Showcase}
 \subtitle{Comprehensive Examples of Advanced Graphics in LaTeX}
