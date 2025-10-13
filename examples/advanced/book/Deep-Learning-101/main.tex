@@ -29,6 +29,12 @@
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.18}
 
+% --- Custom Color Scheme ---
+\definecolor{bookpurple}{RGB}{60,16,83}
+\definecolor{bookred}{RGB}{242,18,12}
+\definecolor{bookblack}{RGB}{0,0,0}
+\definecolor{bookwhite}{RGB}{255,255,255}
+
 % --- Tables and Lists ---
 \usepackage{booktabs}
 \usepackage{array}
@@ -38,9 +44,9 @@
 \usepackage{hyperref}
 \hypersetup{
     colorlinks=true,
-    linkcolor=blue!60!black,
-    citecolor=green!60!black,
-    urlcolor=blue!60!black,
+    linkcolor=bookpurple,
+    citecolor=bookred,
+    urlcolor=bookpurple,
     bookmarksopen=true,
 }
 \usepackage[capitalise,noabbrev]{cleveref}
@@ -78,13 +84,13 @@
 % --- Difficulty Level Commands ---
 \newcommand{\difficulty}[1]{%
     \ifstrequal{#1}{beginner}{%
-        \textcolor{green!70!black}{\textbf{[Beginner]}}%
+        \textcolor{bookpurple}{\textbf{[Beginner]}}%
     }{%
         \ifstrequal{#1}{intermediate}{%
-            \textcolor{orange!70!black}{\textbf{[Intermediate]}}%
+            \textcolor{bookpurple!70!bookblack}{\textbf{[Intermediate]}}%
         }{%
             \ifstrequal{#1}{advanced}{%
-                \textcolor{red!70!black}{\textbf{[Advanced]}}%
+                \textcolor{bookred}{\textbf{[Advanced]}}%
             }{%
                 \textbf{[#1]}%
             }%
