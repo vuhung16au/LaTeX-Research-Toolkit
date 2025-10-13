@@ -1,0 +1,16 @@
+\begin{frame}{Grid and Coordinate System}
+\begin{center}
+\begin{tikzpicture}[scale=0.8]
+    \draw[step=0.5, gray, very thin] (-2,-2) grid (4,4);
+    \draw[thick, ->] (-2,0) -- (4,0) node[right] {$x$};
+    \draw[thick, ->] (0,-2) -- (0,4) node[above] {$y$};
+    \foreach \x in {-2,-1,0,1,2,3,4}
+        \draw (\x,0.1) -- (\x,-0.1) node[below] {\x};
+    \foreach \y in {-2,-1,0,1,2,3,4}
+        \draw (0.1,\y) -- (-0.1,\y) node[left] {\y};
+\end{tikzpicture}
+\end{center}
+
+\footnotesize
+\texttt{\textbackslash draw[step=0.5, gray, very thin] (-2,-2) grid (4,4);}
+\end{frame}

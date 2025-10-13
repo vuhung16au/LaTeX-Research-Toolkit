@@ -1,0 +1,20 @@
+\begin{frame}{Complex Flowchart with Loops}
+\begin{center}
+\begin{tikzpicture}[node distance=1.2cm]
+    \node[rectangle, draw, fill=blue!20] (start) {Start};
+    \node[rectangle, draw, fill=green!20, below of=start] (init) {Initialize};
+    \node[diamond, draw, fill=yellow!20, below of=init] (condition) {Condition?};
+    \node[rectangle, draw, fill=orange!20, below left of=condition] (process) {Process};
+    \node[rectangle, draw, fill=red!20, below right of=condition] (end) {End};
+    
+    \draw[->] (start) -- (init);
+    \draw[->] (init) -- (condition);
+    \draw[->] (condition) -- node[left] {Yes} (process);
+    \draw[->] (condition) -- node[right] {No} (end);
+    \draw[->] (process) -- ++(0,-1) -- ++(-2,0) -- ++(0,3) -- (condition);
+\end{tikzpicture}
+\end{center}
+
+\footnotesize
+Loop structure with feedback arrow
+\end{frame}

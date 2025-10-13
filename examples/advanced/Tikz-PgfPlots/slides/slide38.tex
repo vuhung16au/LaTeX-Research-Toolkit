@@ -1,0 +1,20 @@
+\begin{frame}{Game Tree with istgame}
+\begin{center}
+\begin{istgame}
+\xtdistance{15mm}{30mm}
+\istroot(0){Player 1}
+  \istb{L}[al] \istb{R}[ar]
+  \endist
+\istroot(1)(0-1){Player 2}
+  \istb{l}[al] \istb{r}[ar]
+  \endist
+\istroot(2)(0-2){Player 2}
+  \istb{l}[al] \istb{r}[ar]
+  \endist
+\end{istgame}
+\end{center}
+
+\footnotesize
+\texttt{\textbackslash istroot(0)\{Player 1\}}\\
+\texttt{\textbackslash istb\{L\}[al] \textbackslash istb\{R\}[ar]}
+\end{frame}

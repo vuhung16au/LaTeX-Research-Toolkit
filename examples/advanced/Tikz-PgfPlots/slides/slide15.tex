@@ -1,0 +1,24 @@
+\begin{frame}{Multiple Function Plots}
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+    xlabel={$x$},
+    ylabel={$y$},
+    grid=both,
+    xmin=-2*pi, xmax=2*pi,
+    ymin=-1.5, ymax=1.5,
+    width=8cm,
+    height=6cm,
+    legend pos=north east
+]
+\addplot[thick, blue, domain=-2*pi:2*pi, samples=100] {sin(deg(x))};
+\addplot[thick, red, domain=-2*pi:2*pi, samples=100] {cos(deg(x))};
+\legend{$\sin(x)$, $\cos(x)$}
+\end{axis}
+\end{tikzpicture}
+\end{center}
+
+\footnotesize
+\texttt{\textbackslash addplot[thick, blue] \{sin(deg(x))\};}\\
+\texttt{\textbackslash legend\{\$\textbackslash sin(x)\$, \$\textbackslash cos(x)\$\}}
+\end{frame}

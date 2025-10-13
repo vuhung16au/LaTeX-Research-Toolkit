@@ -1,0 +1,21 @@
+\begin{frame}{Simple Flowchart}
+\begin{center}
+\begin{tikzpicture}[node distance=1.5cm]
+    \node[rectangle, draw, fill=blue!20] (start) {Start};
+    \node[rectangle, draw, fill=green!20, below of=start] (process) {Process};
+    \node[diamond, draw, fill=yellow!20, below of=process] (decision) {Decision};
+    \node[rectangle, draw, fill=red!20, below left of=decision] (yes) {Yes};
+    \node[rectangle, draw, fill=orange!20, below right of=decision] (no) {No};
+    \node[rectangle, draw, fill=purple!20, below of=yes] (end) {End};
+    
+    \draw[->] (start) -- (process);
+    \draw[->] (process) -- (decision);
+    \draw[->] (decision) -- node[left] {Yes} (yes);
+    \draw[->] (decision) -- node[right] {No} (no);
+    \draw[->] (yes) -- (end);
+\end{tikzpicture}
+\end{center}
+
+\footnotesize
+\texttt{\textbackslash node[diamond, draw, fill=yellow!20, below of=decision] \{decision\};}
+\end{frame}

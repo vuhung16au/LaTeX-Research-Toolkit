@@ -4,7 +4,9 @@
 # Variables
 TEX_FILE = tikz-pgfplots.tex
 PDF_FILE = tikz-pgfplots.pdf
-AUX_FILES = *.aux *.log *.nav *.out *.snm *.toc *.vrb *.fls *.fdb_latexmk *.synctex.gz
+SLIDES_DIR = slides
+SLIDE_FILES = $(wildcard $(SLIDES_DIR)/slide*.tex)
+AUX_FILES = *.aux *.log *.nav *.out *.snm *.toc *.vrb *.fls *.fdb_latexmk *.synctex.gz *.dat *.script
 
 # Default target
 all: pdf
@@ -12,7 +14,7 @@ all: pdf
 # Build PDF
 pdf: $(PDF_FILE)
 
-$(PDF_FILE): $(TEX_FILE)
+$(PDF_FILE): $(TEX_FILE) $(SLIDE_FILES)
 	@echo "Building TikZ and PGFPlots showcase..."
 	pdflatex -interaction=nonstopmode $(TEX_FILE)
 	pdflatex -interaction=nonstopmode $(TEX_FILE)
@@ -22,6 +24,7 @@ $(PDF_FILE): $(TEX_FILE)
 clean:
 	@echo "Cleaning auxiliary files..."
 	rm -f $(AUX_FILES)
+	rm -f $(PDF_FILE)
 	@echo "Clean completed"
 
 # Clean everything including PDF

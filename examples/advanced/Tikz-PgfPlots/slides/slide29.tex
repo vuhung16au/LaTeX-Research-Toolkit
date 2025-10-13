@@ -1,0 +1,20 @@
+\begin{frame}{Animated Function Plot}
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+    xlabel={$x$},
+    ylabel={$y$},
+    grid=both,
+    xmin=-3, xmax=3,
+    ymin=-2, ymax=2,
+    width=8cm,
+    height=6cm
+]
+\addplot[thick, blue, domain=-3:3, samples=100] {sin(deg(x))};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+
+\footnotesize
+Static version of animated plot (use animate package for motion)
+\end{frame}

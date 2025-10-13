@@ -1,0 +1,27 @@
+\begin{frame}{Error Bars}
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+    xlabel={$x$},
+    ylabel={$y$},
+    grid=both,
+    xmin=0, xmax=6,
+    ymin=0, ymax=10,
+    width=8cm,
+    height=6cm
+]
+\addplot[thick, blue, mark=*, mark size=3pt, error bars/.cd, y dir=both, y explicit] 
+    coordinates {
+        (1,2) +- (0,0.5)
+        (2,4) +- (0,0.8)
+        (3,6) +- (0,1.2)
+        (4,7) +- (0,1.0)
+        (5,8) +- (0,0.9)
+    };
+\end{axis}
+\end{tikzpicture}
+\end{center}
+
+\footnotesize
+\texttt{error bars/.cd, y dir=both, y explicit}
+\end{frame}

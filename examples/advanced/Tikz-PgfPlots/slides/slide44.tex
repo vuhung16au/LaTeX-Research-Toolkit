@@ -1,0 +1,18 @@
+\begin{frame}{Contour Plot}
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+    xlabel={$x$},
+    ylabel={$y$},
+    width=8cm,
+    height=6cm,
+    view={0}{90}
+]
+\addplot3[surf, domain=-3:3, domain y=-3:3, samples=20, shader=interp] {x^2 + y^2};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+
+\footnotesize
+\texttt{\textbackslash addplot3[surf, domain=-3:3, domain y=-3:3, samples=20, shader=interp] \{x\textasciicircum 2 + y\textasciicircum 2\};}
+\end{frame}
