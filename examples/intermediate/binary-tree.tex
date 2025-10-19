@@ -1,0 +1,543 @@
+% Binary tree visualizations in Beamer using Forest/TikZ
+\documentclass{beamer}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage[edges]{forest}
+\usepackage{xcolor}
+
+% ACU Color Scheme
+\definecolor{ACUPurple}{RGB}{60,16,83}
+\definecolor{ACURed}{RGB}{242,18,12}
+\definecolor{ACUBlack}{RGB}{0,0,0}
+\definecolor{ACUWhite}{RGB}{255,255,255}
+
+% Individual forest styles for different slide types
+\forestset{
+  % Simple trees (1-2 levels) - larger, more readable
+  simple/.style={
+    for tree={
+      draw,
+      circle,
+      minimum size=4mm,
+      inner sep=0pt,
+      s sep=2mm,
+      l sep=3mm,
+      anchor=north
+    }
+  },
+  % Complete tree (5 levels) - ultra extreme compact
+  complete/.style={
+    for tree={
+      draw,
+      circle,
+      minimum size=0.4mm,
+      inner sep=0pt,
+      s sep=0.02mm,    % Even smaller horizontal spacing
+      l sep=0.05mm,    % Even smaller vertical spacing (main edge length)
+      anchor=north
+    }
+  },
+  % Not binary tree - custom inline style
+  notbinary/.style={
+    for tree={
+      draw,
+      circle,
+      minimum size=4mm,
+      inner sep=0pt,
+      s sep=3mm,
+      l sep=4mm,
+      anchor=north
+    }
+  },
+  % BST Insert - very compact with resizebox
+  bstinsert/.style={
+    for tree={
+      draw,
+      circle,
+      minimum size=1.5mm,
+      inner sep=0pt,
+      s sep=0.5mm,
+      l sep=1mm,
+      anchor=north
+    }
+  },
+  % BST Search - compact with resizebox
+  bstsearch/.style={
+    for tree={
+      draw,
+      circle,
+      minimum size=1.5mm,
+      inner sep=0pt,
+      s sep=0.5mm,
+      l sep=1mm,
+      anchor=north
+    }
+  },
+  % BST Delete - compact with resizebox
+  bstdelete/.style={
+    for tree={
+      draw,
+      circle,
+      minimum size=1.5mm,
+      inner sep=0pt,
+      s sep=0.5mm,
+      l sep=1mm,
+      anchor=north
+    }
+  },
+  % BST operations - more compact than notbinary
+  bstcompact/.style={
+    for tree={
+      draw,
+      circle,
+      minimum size=3mm, % Smaller node size
+      inner sep=0pt,
+      s sep=1.5mm,     % Shorter sibling separation
+      l sep=2mm,        % Shorter level separation
+      anchor=north
+    }
+  }
+}
+
+\title{Binary Tree Visualizations}
+\author{ITEC313 Week 11}
+\date{\today}
+
+\begin{document}
+
+% Optional title frame
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% 1) Empty binary tree
+\begin{frame}{\textcolor{ACUPurple}{Empty Binary Tree}}
+  \centering
+  \vspace{0.5em}
+  % An empty binary tree contains no nodes; we show \(\varnothing\) for emphasis.
+  {\Large $\varnothing$}
+
+  \vspace{1ex}
+  \small An empty tree has no nodes, no edges, no root.
+\end{frame}
+
+% 2) Only root node
+\begin{frame}{\textcolor{ACUPurple}{Binary Tree with Only Root}}
+  \centering
+  \begin{forest} simple
+    [ ]
+  \end{forest}
+  \vspace{0.5ex}
+  \small Single-node tree: the lone node is the root and also a leaf.
+\end{frame}
+
+% 3) Root with one child (e.g., only left child)
+\begin{frame}{\textcolor{ACUPurple}{Root with One Child}}
+  \centering
+  \begin{forest} simple
+    [
+      [ ] % left child
+    ]
+  \end{forest}
+  \vspace{0.5ex}
+  \small A binary tree can have at most two children per node; here only one child exists.
+\end{frame}
+
+% 4) Root with left and right children
+\begin{frame}{\textcolor{ACUPurple}{Root with Left and Right Children}}
+  \centering
+  \begin{forest} simple
+    [
+      [ ] % left
+      [ ] % right
+    ]
+  \end{forest}
+  \vspace{0.5ex}
+  \small Two children (left and right) at the root.
+\end{frame}
+
+% 5) Complete binary tree with 5 levels (levels 0..4 => 31 nodes)
+\begin{frame}{\textcolor{ACUPurple}{Complete Binary Tree with 5 Levels}}
+  \centering
+  % Use notbinary style for better readability
+  \resizebox{0.8\textwidth}{!}{%
+  \begin{forest} notbinary
+    % L4 = [ L3 L3 ], L3 = [ L2 L2 ], L2 = [ L1 L1 ], L1 = [ ][ ]
+    [ % level 0
+      [ % level 1 (left)
+        [ % level 2 (left-left)
+          [ [ ][ ] ] % L2 = [ L1 L1 ]
+          [ [ ][ ] ]
+        ]
+        [ % level 2 (left-right)
+          [ [ ][ ] ]
+          [ [ ][ ] ]
+        ]
+      ]
+      [ % level 1 (right)
+        [ % level 2 (right-left)
+          [ [ ][ ] ]
+          [ [ ][ ] ]
+        ]
+        [ % level 2 (right-right)
+          [ [ ][ ] ]
+          [ [ ][ ] ]
+        ]
+      ]
+    ]
+  \end{forest}%
+  }
+  \tiny Full/complete tree of height 4 (5 levels including the root).
+\end{frame}
+
+% 6) Example that is NOT a binary tree (node with three children)
+\begin{frame}{\textcolor{ACUPurple}{Not a Binary Tree (Violated: At Most Two Children)}}
+  \centering
+  \begin{forest} notbinary
+    [
+      [ ]
+      [ ]
+      [ ] % third child violates binary constraint
+    ]
+  \end{forest}
+  \vspace{0.5ex}
+  \small This node has three children, so the structure is not a binary tree.
+\end{frame}
+
+% --- BST Operations ---
+
+% BST Insert Operation - Step by Step
+\begin{frame}{\textcolor{ACUPurple}{BST Insert Operation}}
+  \centering
+  \textbf{Insert Operation Rules:}
+  \begin{itemize}
+    \item Always insert as a leaf
+    \item Start at root and compare values
+    \item Traverse left if value $<$ node, right if value $>$ node
+    \item Continue until finding empty position
+  \end{itemize}
+\end{frame}
+
+% BST Insert Example - Starting with empty tree
+\begin{frame}{\textcolor{ACUPurple}{BST Insert: Starting with Empty Tree}}
+  \centering
+  \textbf{Insert 5:}
+  \vspace{0.5em}
+  
+  \begin{forest} bstinsert
+    [5]
+  \end{forest}
+  
+  \vspace{1em}
+  \small First insertion creates the root node.
+\end{frame}
+
+% BST Insert Example - Insert 3
+\begin{frame}{\textcolor{ACUPurple}{BST Insert: Insert 3}}
+  \centering
+  \textbf{Insert 3:}
+  \vspace{0.5em}
+  
+  \begin{forest} bstinsert
+    [5
+      [3]
+    ]
+  \end{forest}
+  
+  \vspace{1em}
+  \small 3 $<$ 5, so insert as left child of root.
+\end{frame}
+
+% BST Insert Example - Insert 7
+\begin{frame}{\textcolor{ACUPurple}{BST Insert: Insert 7}}
+  \centering
+  \textbf{Insert 7:}
+  \vspace{0.5em}
+  
+  \begin{forest} bstinsert
+    [5
+      [3]
+      [7]
+    ]
+  \end{forest}
+  
+  \vspace{1em}
+  \small 7 $>$ 5, so insert as right child of root.
+\end{frame}
+
+% BST Insert Example - Insert 1
+\begin{frame}{\textcolor{ACUPurple}{BST Insert: Insert 1}}
+  \centering
+  \textbf{Insert 1:}
+  \vspace{0.5em}
+  
+  \begin{forest} bstinsert
+    [5
+      [3
+        [1]
+      ]
+      [7]
+    ]
+  \end{forest}
+  
+  \vspace{1em}
+  \small 1 $<$ 5, go left to 3. 1 $<$ 3, so insert as left child of 3.
+\end{frame}
+
+% BST Insert Example - Insert 4
+\begin{frame}{\textcolor{ACUPurple}{BST Insert: Insert 4}}
+  \centering
+  \textbf{Insert 4:}
+  \vspace{0.5em}
+  
+  \begin{forest} bstinsert
+    [5
+      [3
+        [1]
+        [4]
+      ]
+      [7]
+    ]
+  \end{forest}
+  
+  \vspace{1em}
+  \small 4 $<$ 5, go left to 3. 4 $>$ 3, so insert as right child of 3.
+\end{frame}
+
+% BST Insert Example - Insert 9
+\begin{frame}{\textcolor{ACUPurple}{BST Insert: Insert 9}}
+  \centering
+  \textbf{Insert 9:}
+  \vspace{0.5em}
+  
+  \begin{forest} bstinsert
+    [5
+      [3
+        [1]
+        [4]
+      ]
+      [7
+        [9]
+      ]
+    ]
+  \end{forest}
+  
+  \vspace{1em}
+  \small 9 $>$ 5, go right to 7. 9 $>$ 7, so insert as right child of 7.
+\end{frame}
+
+% BST Search Operation
+\begin{frame}{\textcolor{ACUPurple}{BST Search/Find Operation}}
+  \centering
+  \textbf{Search Operation Rules:}
+  \begin{itemize}
+    \item Start at root and compare target value
+    \item Traverse left if value $<$ node, right if value $>$ node
+    \item Repeat until node found or leaf reached (not found)
+  \end{itemize}
+\end{frame}
+
+% BST Search Example - Find 4
+\begin{frame}{\textcolor{ACUPurple}{BST Search: Find 4}}
+  \centering
+  \textbf{Search for 4:}
+  \vspace{0.5em}
+  
+  \begin{forest} bstsearch
+    [5, fill=ACURed!30
+      [3, fill=ACURed!30
+        [1]
+        [4, fill=ACUPurple!50]
+      ]
+      [7]
+    ]
+  \end{forest}
+  
+  \vspace{1em}
+  \small Path: 5 $\rightarrow$ 3 $\rightarrow$ 4 (Found!)
+\end{frame}
+
+% BST Search Example - Find 6 (not found)
+\begin{frame}{\textcolor{ACUPurple}{BST Search: Find 6 (Not Found)}}
+  \centering
+  \textbf{Search for 6:}
+  \vspace{0.5em}
+  
+  \begin{forest} bstsearch
+    [5, fill=ACURed!30
+      [3
+        [1]
+        [4]
+      ]
+      [7, fill=ACURed!30]
+    ]
+  \end{forest}
+  
+  \vspace{1em}
+  \small Path: 5 $\rightarrow$ 7. 6 $<$ 7 but no left child exists. \textcolor{ACURed}{Not Found!}
+\end{frame}
+
+% BST Delete Operation
+\begin{frame}{\textcolor{ACUPurple}{BST Delete Operation}}
+  \centering
+  \textbf{Delete Operation - Three Cases:}
+  \begin{enumerate}
+    \item \textbf{Leaf Node:} Delete directly
+    \item \textbf{One Child:} Replace with its only child
+    \item \textbf{Two Children:} Replace with in-order successor
+  \end{enumerate}
+\end{frame}
+
+% BST Delete Case 1 - Leaf Node
+\begin{frame}{\textcolor{ACUPurple}{BST Delete: Case 1 - Leaf Node}}
+  \centering
+  \textbf{Delete 1 (Leaf Node):}
+  \vspace{0.5em}
+  
+  \textbf{Before:}
+  \begin{forest} bstdelete
+    [5
+      [3
+        [1, fill=ACURed!50]
+        [4]
+      ]
+      [7
+        [9]
+      ]
+    ]
+  \end{forest}
+  
+  \vspace{1em}
+  \textbf{After:}
+  \begin{forest} bstdelete
+    [5
+      [3
+        [4]
+      ]
+      [7
+        [9]
+      ]
+    ]
+  \end{forest}
+  
+  \vspace{1em}
+  \small Simply remove the leaf node.
+\end{frame}
+
+% BST Delete Case 2 - One Child
+\begin{frame}{\textcolor{ACUPurple}{BST Delete: Case 2 - One Child}}
+  \centering
+  \textbf{Delete 7 (One Child):}
+  \vspace{0.5em}
+  
+  \textbf{Before:}
+  \begin{forest} bstdelete
+    [5
+      [3
+        [4]
+      ]
+      [7, fill=ACURed!50
+        [9]
+      ]
+    ]
+  \end{forest}
+  
+  \vspace{1em}
+  \textbf{After:}
+  \begin{forest} bstdelete
+    [5
+      [3
+        [4]
+      ]
+      [9]
+    ]
+  \end{forest}
+  
+  \vspace{1em}
+  \small Replace 7 with its only child 9.
+\end{frame}
+
+% BST Delete Case 3 - Two Children (Preparation)
+\begin{frame}{\textcolor{ACUPurple}{BST Delete: Case 3 - Two Children (Preparation)}}
+  \centering
+  \textbf{Delete 5 (Two Children):}
+  \vspace{0.5em}
+  
+  \begin{forest} bstdelete
+    [5, fill=ACURed!50
+      [3
+        [1]
+        [4]
+      ]
+      [7
+        [6]
+        [9]
+      ]
+    ]
+  \end{forest}
+  
+  \vspace{1em}
+  \small Find in-order successor: leftmost node in right subtree.
+  \small Successor of 5 is 6 (leftmost in right subtree).
+\end{frame}
+
+% BST Delete Case 3 - Two Children (Result)
+\begin{frame}{\textcolor{ACUPurple}{BST Delete: Case 3 - Two Children (Result)}}
+  \centering
+  \textbf{After deleting 5:}
+  \vspace{0.5em}
+  
+  \begin{forest} bstdelete
+    [6
+      [3
+        [1]
+        [4]
+      ]
+      [7
+        [9]
+      ]
+    ]
+  \end{forest}
+  
+  \vspace{1em}
+  \small Replace 5 with successor 6, then delete original 6.
+\end{frame}
+
+% BST Operations Summary
+\begin{frame}{\textcolor{ACUPurple}{BST Operations Summary}}
+  \centering
+  \textbf{Binary Search Tree Operations:}
+  \vspace{1em}
+  
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \textbf{Insert:}
+      \begin{itemize}
+        \item Always as leaf
+        \item Compare and traverse
+        \item O(log n) average
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \textbf{Search:}
+      \begin{itemize}
+        \item Compare and traverse
+        \item O(log n) average
+        \item O(n) worst case
+      \end{itemize}
+    \end{column}
+  \end{columns}
+  
+  \vspace{1em}
+  \textbf{Delete:}
+  \begin{itemize}
+    \item Leaf: Remove directly
+    \item One child: Replace with child
+    \item Two children: Replace with successor
+  \end{itemize}
+\end{frame}
+
+\end{document}
