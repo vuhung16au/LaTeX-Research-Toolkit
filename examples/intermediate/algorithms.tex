@@ -1,0 +1,121 @@
+\documentclass[12pt]{article}
+\usepackage[ruled,vlined]{algorithm2e}
+
+\title{Algorithm Package Demonstrations}
+\author{LaTeX Research Toolkit}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+This document demonstrates the use of three different LaTeX packages for typesetting algorithms:
+\begin{itemize}
+    \item \texttt{algorithm2e} - Modern, flexible algorithm package
+    \item \texttt{algorithm} - Traditional algorithm package with \texttt{algorithmic} environment
+    \item \texttt{pseudocode} - Simple pseudocode package
+\end{itemize}
+
+All examples use the bubble sort algorithm to show the differences in syntax and formatting.
+
+\section{Algorithm2e Package}
+
+The \texttt{algorithm2e} package provides a modern, flexible way to typeset algorithms with various styling options.
+
+\begin{algorithm}[H]
+\SetAlgoLined
+\KwIn{A : list of sortable items}
+\KwOut{Sorted list A}
+\BlankLine
+n := length(A)\;
+\Repeat{not swapped}{
+    swapped := false\;
+    \For{i := 0 to n - 2}{
+        \If{A[i] > A[i+1]}{
+            swap(A[i], A[i+1])\;
+            swapped := true\;
+        }
+    }
+    n := n - 1\;
+}
+\caption{Bubble Sort using Algorithm2e}
+\end{algorithm}
+
+\section{Algorithm Package with Algorithmic Environment}
+
+The \texttt{algorithm} package with \texttt{algorithmic} environment provides a more traditional approach to algorithm typesetting.
+
+% Note: This section would require separate compilation due to package conflicts
+% The algorithm package conflicts with algorithm2e when loaded together
+% Here's the syntax that would be used:
+
+\textbf{Algorithm Package Syntax:}
+\begin{verbatim}
+\begin{algorithm}
+\caption{Bubble Sort using Algorithm Package}
+\begin{algorithmic}[1]
+\REQUIRE A : list of sortable items
+\ENSURE Sorted list A
+\STATE $n \gets \text{length}(A)$
+\REPEAT
+    \STATE $\text{swapped} \gets \text{false}$
+    \FOR{$i = 0$ to $n - 2$}
+        \IF{$A[i] > A[i+1]$}
+            \STATE $\text{swap}(A[i], A[i+1])$
+            \STATE $\text{swapped} \gets \text{true}$
+        \ENDIF
+    \ENDFOR
+    \STATE $n \gets n - 1$
+\UNTIL{not swapped}
+\end{algorithmic}
+\end{algorithm}
+\end{verbatim}
+
+\section{Pseudocode Package}
+
+The \texttt{pseudocode} package provides a simple way to typeset pseudocode with a clean, readable format.
+
+% Note: This section would also require separate compilation due to package conflicts
+% Here's the syntax that would be used:
+
+\textbf{Pseudocode Package Syntax:}
+\begin{verbatim}
+\begin{algorithm}
+\caption{Bubble Sort using Pseudocode Package}
+\begin{pseudocode}{bubbleSort}{A}
+\PROCEDURE{bubbleSort}{A}
+    \COMMENT{A : list of sortable items}
+    \LOCAL{n, swapped, i}
+    \BEGIN
+        n \GETS \text{length}(A) \\
+        \REPEAT
+            \text{swapped} \GETS \text{false} \\
+            \FOR{i \GETS 0 \TO n-2}
+                \IF{A[i] > A[i+1]}
+                    \text{swap}(A[i], A[i+1]) \\
+                    \text{swapped} \GETS \text{true}
+                \ENDIF
+            \ENDFOR
+            n \GETS n - 1
+        \UNTIL{\text{not swapped}}
+    \END
+\end{pseudocode}
+\end{algorithm}
+\end{verbatim}
+
+\section{Comparison}
+
+Each package has its own strengths:
+
+\begin{itemize}
+    \item \textbf{Algorithm2e}: Most flexible, modern syntax, good for complex algorithms
+    \item \textbf{Algorithm + Algorithmic}: Traditional, widely supported, good for mathematical algorithms
+    \item \textbf{Pseudocode}: Simple, clean syntax, good for educational purposes
+\end{itemize}
+
+\section{Conclusion}
+
+All three packages can effectively typeset the bubble sort algorithm, but they differ in syntax, formatting options, and use cases. Choose the package that best fits your document's style and requirements.
+
+\end{document}
