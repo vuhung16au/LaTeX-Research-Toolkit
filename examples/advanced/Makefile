@@ -9,6 +9,7 @@ help:
 	@echo "  make pdf   - Compile all .tex files to .pdf"
 	@echo "  make gantt7 - Compile gantt-chart-7-days.pdf only"
 	@echo "  make math  - Compile mathematics.pdf only"
+	@echo "  make family - Compile family-tree.pdf only"
 	@echo "  make clean - Remove aux files and PDFs"
 
 pdf: $(PDFS)
@@ -16,6 +17,8 @@ pdf: $(PDFS)
 gantt7: gantt-chart-7-days.pdf
 
 math: mathematics.pdf
+
+family: family-tree.pdf
 
 %.pdf: %.tex
 	@echo "Compiling $< with latexmk (multiple passes)"

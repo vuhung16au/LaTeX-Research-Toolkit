@@ -1,0 +1,175 @@
+\documentclass[a4paper,10pt]{book}
+\usepackage[utf8]{inputenc}  % UTF-8 encoding
+\usepackage[T1]{fontenc}     % Better font encoding
+\usepackage[vietnamese]{babel} % Vietnamese language support
+\usepackage[left=0.5cm,right=0.4cm,top=0.1cm,bottom=0.3cm,includeheadfoot]{geometry} 
+\usepackage{tikz}
+\usepackage{color}
+\usetikzlibrary{positioning}
+\usetikzlibrary{calc}
+
+% ACU Color Scheme
+\definecolor{acupurple}{RGB}{60, 16, 83}
+\definecolor{acured}{RGB}{242, 18, 12}
+\definecolor{acublack}{RGB}{0, 0, 0}
+\definecolor{acuwhite}{RGB}{255, 255, 255}
+
+\begin{document}
+
+% Define styles with ACU colors
+\tikzset{
+    titel/.style={font=\fontsize{14}{18}\color{acupurple}\ttfamily, fill=acupurple!10, rectangle,draw,minimum height=10em,text width=6.5cm, },
+    female/.style={font=\fontsize{9}{10}\color{acupurple}\ttfamily, fill=acured!15, rounded corners=10pt, rectangle,draw,minimum height=4.8em,text width=4.5cm},
+    male/.style={font=\fontsize{9}{10}\color{acupurple}\ttfamily, fill=acupurple!15, rectangle,draw,minimum height=4.8em,text width=4.5cm, },
+    neutral/.style={draw=white!50,text width=4.5cm, minimum height=1.0cm}, %DREI unsichtbare Abst
+    neutral2/.style={draw=black!50,text width=2.6cm, minimum height=1em}, %Kind Elt Grosseltern
+    female2/.style={font=\fontsize{8}{10}\color{acupurple}\ttfamily, fill=acured!15, rounded corners=10pt, rectangle,draw,minimum height=3em,text width=4.5cm},
+    male2/.style={font=\fontsize{8}{10}\color{acupurple}\ttfamily, fill=acupurple!15, rectangle,draw,minimum height=3em,text width=4.5cm, },
+    block/.style={draw=white!50,text width=4.5cm, minimum height=1.7cm}, %DREI gro unsichtb
+    kopf/.style={draw=black!50,text width=3.8cm, minimum height=0.2cm}, %war 4.5
+    rechts/.style={draw=black!50,text width=0.01cm, minimum height=1em},
+    %unsichtbare kaesten oben und drei mal zwischendrin
+    siblingm/.style={font=\fontsize{9}{10}\color{acupurple}\ttfamily, fill=acupurple!20,  rectangle,draw, text width=3.4cm, minimum height=1em},
+    siblingf/.style={font=\fontsize{9}{10}\color{acupurple}\ttfamily, fill=acured!20, rounded corners=10pt, rectangle,draw, text width=3.4cm, minimum height=1em}
+}
+
+\begin{tikzpicture}[node distance=5pt and 0pt] %distance ist  zwischenraum untereinander
+
+% Title section
+\node (0) at (0, 0) [titel] {\section*{Family Tree} \textit{ACU Color Scheme}  \\ Vietnamese \& English Names};
+
+% Great-great-grandparents (Ur-Ur-Grosseltern)
+\node[male] (8) {8 Nguyễn Văn Minh\\ \textit{1890, Hà Nội}  \\ m. 1915 \\Hà Nội};
+
+\node[block,below =of 8] (invisible0) {\textcolor{green}{inv0}};
+\node [male,left=-3cm of invisible0] (4) {4 Nguyễn Văn Hùng\\1895-1970\\Hà Nội};  % Abstand UrGr-Grosselt
+
+\node[female,below =of invisible0] (9) {9 Trần Thị Lan\\1898-1975\\Hà Nội};
+
+\node[neutral,below =of 9] (invisible1) {\textcolor{white}{111}}; %unsichtbar, abstand halten und punkt fuer spaeter benutzen
+
+\node [male,below= of invisible1] (10) {10 Lê Văn Đức\\1900-1965\\Sài Gòn};
+\node[block,below =of 10] (invisible01) {\textcolor{white}{inv01}};
+\node [male,left=-3cm of invisible01] (5) {5 Lê Văn Thành\\1902-1968\\Sài Gòn};  % richtet sich an aus
+\node[female,below =of invisible01] (11) {11 Phạm Thị Mai\\1905-1970\\Sài Gòn};
+
+\node[neutral,below =of 11] (invisible2) {\textcolor{white}{222}}; %unsichtbar, abstand halten und punkt fuer spaeter benutzen
+
+\node [male,below= of invisible2] (12) {12 Hoàng Văn Nam\\1908-1975\\Huế};
+\node[block,below =of 12] (invisible02) {\textcolor{white}{inv02}};
+\node [male,left=-3cm of invisible02] (6) {6 Hoàng Văn Bình\\1910-1978\\Huế};  % richtet sich an aus
+\node[female,below =of invisible02] (13) {13 Võ Thị Hoa\\1912-1980\\Huế};
+
+\node[neutral,below =of 13] (invisible3){\textcolor{white}{333}}; %unsichtbar, abstand halten
+
+\node [male,below= of invisible3] (14) {14 Đặng Văn Long\\1915-1985\\Đà Nẵng};
+\node[block,below =of 14] (invisible03) {\textcolor{white}{inv03}};
+\node [male,left=-3cm of invisible03] (7) {7 Đặng Văn Sơn\\1918-1988\\Đà Nẵng};  % richtet sich an aus
+\node[female,below =of invisible03] (15) {15 Bùi Thị Nga\\1920-1990\\Đà Nẵng};
+
+% Great-grandparents (Ur-Grosseltern)
+\node (16) at ($ (8) + (8:5.2cm) $) [male2] {16 Nguyễn Văn An\\ \textit{1925, Hà Nội}  \\ m. 1950 \\Hà Nội};
+
+\node (17) at ($ (8) + (-8:5.2cm) $) [female2] {17 Trần Thị Bình\\ \textit{1928, Hà Nội}  \\ m. 1950 \\Hà Nội};
+
+\node (18) at ($ (9) + (8:5.2cm) $) [male2] {18 Lê Văn Cường\\ \textit{1930, Sài Gòn}  \\ m. 1955 \\Sài Gòn};
+
+\node (19) at ($ (9) + (-8:5.2cm) $) [female2] {19 Phạm Thị Dung\\ \textit{1932, Sài Gòn}  \\ m. 1955 \\Sài Gòn};
+
+\node (20) at ($ (10) + (8:5.2cm) $) [male2] {20 Hoàng Văn Em\\ \textit{1935, Huế}  \\ m. 1960 \\Huế};
+
+\node (21) at ($ (10) + (-8:5.2cm) $) [female2] {21 Võ Thị Phương\\ \textit{1938, Huế}  \\ m. 1960 \\Huế};
+
+\node (22) at ($ (11) + (8:5.2cm) $) [male2] {22 Đặng Văn Giang\\ \textit{1940, Đà Nẵng}  \\ m. 1965 \\Đà Nẵng};
+
+\node (23) at ($ (11) + (-8:5.2cm) $) [female2] {23 Bùi Thị Hương\\ \textit{1942, Đà Nẵng}  \\ m. 1965 \\Đà Nẵng};
+
+\node (24) at ($ (12) + (8:5.2cm) $) [male2] {24 Nguyễn Văn I\\ \textit{1945, Hà Nội}  \\ m. 1970 \\Hà Nội};
+
+\node (25) at ($ (12) + (-8:5.2cm) $) [female2] {25 Trần Thị Kim\\ \textit{1948, Hà Nội}  \\ m. 1970 \\Hà Nội};
+
+\node (26) at ($ (13) + (8:5.2cm) $) [male2] {26 Lê Văn Linh\\ \textit{1950, Sài Gòn}  \\ m. 1975 \\Sài Gòn};
+
+\node (27) at ($ (13) + (-8:5.2cm) $) [female2] {27 Phạm Thị Mỹ\\ \textit{1952, Sài Gòn}  \\ m. 1975 \\Sài Gòn};
+
+\node (28) at ($ (14) + (8:5.2cm) $) [male2] {28 Hoàng Văn Nam\\ \textit{1955, Huế}  \\ m. 1980 \\Huế};
+
+\node (29) at ($ (14) + (-8:5.2cm) $) [female2] {29 Võ Thị Oanh\\ \textit{1958, Huế}  \\ m. 1980 \\Huế};
+
+\node (30) at ($ (15) + (8:5.2cm) $) [male2] {30 Đặng Văn Phúc\\ \textit{1960, Đà Nẵng}  \\ m. 1985 \\Đà Nẵng};
+
+\node (31) at ($ (15) + (-8:5.2cm) $) [female2] {31 Bùi Thị Quỳnh\\ \textit{1962, Đà Nẵng}  \\ m. 1985 \\Đà Nẵng};
+
+% Grandparents (Grosseltern)
+\node [male,left=0.2cm of invisible1] (2) {2 Nguyễn Minh Tuấn\\1950-2020\\Hà Nội};  % richtet sich an aus 
+\node [female,left=0.2cm of invisible3] (3) {3 Trần Thị Vân\\1955-2022\\Hà Nội}; % richtet sich an aus
+
+% Children (Kinder)
+\node [siblingf,  left=5.85cm of invisible2] (1) {2 Nguyễn Minh An\\1990}; %liegt im Zentrum Abstand zwischen Kinder un Eltern
+\node [siblingm, above= of 1] (c) {1 Nguyễn Minh Bình\\1988}; % eins darueber
+\node [siblingm, below= of 1] (a) {3 Nguyễn Minh Cường\\1992}; % eins darunter
+\node [siblingm, below= of a] (b) {4 Nguyễn Minh Đức\\1995};
+\node [siblingf, below= of b] (d) {5 Nguyễn Minh Em\\1998};
+
+% Coordinate definitions for connections
+\coordinate[right=10pt of 3] (aux3);
+\coordinate[right=10pt of 4] (aux4); %Laenge des Rechtsstrichts und definition des namens
+\coordinate[right=10pt of 5] (aux5);
+\coordinate[right=10pt of 6] (aux6);
+\coordinate[right=10pt of 7] (aux7);
+
+\coordinate[right=10pt of 1] (aux1); % zweites Kind, referenzpunkt
+\coordinate[right=10pt of a] (auxa);
+\coordinate[right=10pt of b] (auxb);
+\coordinate[right=10pt of c] (auxc);
+\coordinate[right=10pt of d] (auxd);
+
+% Great-great-grandparents connections
+\draw [-] (16.west) -- (8.east);
+\draw [-] (17.west) -- (8.east);
+
+\draw [-] (18.west) -- (9.east);
+\draw [-] (19.west) -- (9.east);
+
+\draw [-] (20.west) -- (10.east);
+\draw [-] (21.west) -- (10.east);
+
+\draw [-] (22.west) -- (11.east);
+\draw [-] (23.west) -- (11.east);
+
+\draw [-] (24.west) -- (12.east);
+\draw [-] (25.west) -- (12.east);
+
+\draw [-] (26.west) -- (13.east);
+\draw [-] (27.west) -- (13.east);
+
+\draw [-] (28.west) -- (14.east);
+\draw [-] (29.west) -- (14.east);
+
+\draw [-] (30.west) -- (15.east);
+\draw [-] (31.west) -- (15.east);
+
+% Marriage connections
+\draw (8.west) -| (4.140); 	%Eheverbindung
+\draw (9.west) -| (4.220); 	%Eheverbindung
+\draw (10.west) -| (5.140); %Eheverbindung
+\draw (11.west) -| (5.220); %Eheverbindung
+\draw (12.west) -| (6.140);	%Eheverbindung
+\draw (13.west) -| (6.220);	%Eheverbindung
+\draw (14.west) -| (7.140); %Eheverbindung
+\draw (15.west) -| (7.220); %Eheverbindung
+\draw (4.west) -| (2.north);		%Eheverbindung
+\draw (5.west) -| (2.south);		%Eheverbindung
+\draw (6.west) -| (3.north);		%Eheverbindung
+\draw (7.west) -| (3.south);		%Eheverbindung
+\draw (2.west) -| (aux1) |- (3.west); 	%Eheverbindung
+
+% Children connections
+\draw (1) -- (aux1); %Kind 2 zentriert, ausgangspunkt, rechtsstrich am Kasten und ihre Bezeichnung
+\draw (a) -- (auxa); 	%Kind 3 rechtsstrich am Kasten und ihre Bezeichnung
+\draw (b) -- (auxb);	%Kind 4 rechtsstrich am Kasten und ihre Bezeichnung
+\draw (c) -- (auxc);	%Kind 1  rechtsstrich am Kasten und ihre Bezeichnung
+\draw (d) -- (auxd); 	%Kind 5 rechtsstrich am Kasten und ihre Bezeichnung
+
+\end{tikzpicture}
+\end{document}
