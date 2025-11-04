@@ -1,0 +1,161 @@
+\documentclass[tikz,border=0.1mm]{standalone}
+\usetikzlibrary{arrows,calc,patterns,angles,shadows,quotes}
+\usepackage{amsmath, amssymb}
+\usepackage[utf8]{vietnam}
+\usepackage{xcolor}
+
+% Define theme colors
+\definecolor{ThemePurple}{RGB}{60, 16, 83}      % #3C1053
+\definecolor{ThemeRed}{RGB}{242, 18, 12}       % #F2120C
+\definecolor{ThemePurpleRed}{RGB}{181, 24, 37} % #B51825
+\definecolor{WarmStone}{RGB}{145, 139, 131}    % #918B83
+\definecolor{DeepCharcoal}{RGB}{48, 44, 42}    % #302C2A
+\definecolor{SoftIvory}{RGB}{242, 239, 235}    % #F2EFEB
+
+\def\tacgia{Vu}
+\begin{document}
+\mathversion{bold}
+% Define trigonometric functions for plotting
+% These macros convert angles to radians for TikZ calculations
+\def\fsin(#1){sin(#1 r)}
+\def\fcos(#1){cos(#1 r)}
+\pgfmathsetmacro{\xmin}{-8.0}
+\pgfmathsetmacro{\xmax}{8.0}
+\pgfmathsetmacro{\ymin}{-4.5}
+\pgfmathsetmacro{\ymax}{4.5}
+\pgfmathsetmacro{\trucxmin}{-1}
+\pgfmathsetmacro{\trucxmax}{1}
+\pgfmathsetmacro{\trucymin}{-1}
+\pgfmathsetmacro{\trucymax}{1}
+\pgfmathsetmacro{\g}{pi/2}
+\pgfmathsetmacro{\hamxmin}{-0.5}
+\pgfmathsetmacro{\hamxmax}{6.5}
+
+% Animation loop: Demonstrate how sin(alpha) and cos(alpha) change as the angle rotates
+% This shows the relationship: cos(alpha) = sin(alpha + pi/2)
+% Creates 361 frames (0° to 360°) showing a complete rotation around the unit circle
+\foreach \m in {0,...,360}{
+% Base angle: alpha = 60 degrees (used as reference angle)
+\def\rgoc{60}
+% Total angle after rotation: alpha + rotation angle
+\pgfmathsetmacro{\rgocm}{int(\rgoc+\m)}
+\begin{tikzpicture}[join=round,cap=round, >=stealth,font=\footnotesize]
+\clip(\xmin,\ymin) rectangle (\xmax,\ymax);
+\fill[fill=SoftIvory] (\xmin,\ymin) rectangle (\xmax,\ymax);
+
+% Title - moved down to ensure visibility
+\node[DeepCharcoal,above,font=\large\bfseries,align=center] at (0,3.8) 
+    {Unit Circle: Understanding $\sin(\alpha)$ and $\cos(\alpha)$};
+    
+% Progress indicator - moved up to ensure visibility
+\node[WarmStone,below,font=\small] at (0,-3.8) 
+    {Rotation: $\m^\circ$ of $360^\circ$};
+
+% Unit circle visualization - scaled 3x for better visibility
+% This scope contains the main trigonometric circle with axes, grid, and geometric elements
+\begin{scope}[scale=3,font=\footnotesize,shift={(0,0)}]
+    % Light grid for reference
+    \draw[WarmStone!15,very thin] (-1,-1) grid[step=0.5] (1,1);
+    
+    % Axes
+    \draw[->,color=black,thick] (\trucxmin,0.) -- (\trucxmax,0.)
+        node[below,xshift=-4pt] {$x$};
+    \draw[->,color=black,thick] (0.,\trucymin) -- (0.,\trucymax)
+        node[below right] {$y$};
+    
+    % Unit circle with radius label
+    \draw[ThemeRed,thick] (0,0) circle (1cm);
+    \node[ThemeRed,above right,font=\tiny] at (0.7,0.7) {$r=1$};
+    
+    % Circle markers
+    \draw
+        [fill=ThemeRed](0,0)circle(0.5pt)node[shift={(-45:7pt)}] {$O$}
+        (1,0)node[shift={(-45:7pt)}] {$1$}
+        (-1,0)node[shift={(-135:7pt)}] {$-1$}
+        (0,1)node[shift={(45:7pt)}] {$1$}
+        (0,-1)node[shift={(-45:7pt)}] {$-1$};
+    
+    % Radius vector (defined first for triangle)
+    \draw[ultra thick,ThemeRed,->,rotate=\rgoc] (0,0) -- (1.0,0) coordinate(A);
+    
+    % Initial angle components (base angle alpha = 60°)
+    % These represent sin(alpha) and cos(alpha) before rotation
+    % Purple-red line: sin component (vertical projection)
+    \draw[ultra thick,ThemePurpleRed](0,0)--(0,0|-\rgoc:1cm);
+    % Purple line: cos component (horizontal projection)
+    \draw[ultra thick,ThemePurple] (0,0)--(\rgoc:1.0cm|-0,0);
+    % Dotted lines: projections from point on circle to axes
+    \draw[densely dotted,ThemePurpleRed](\rgoc:1.0cm)--(\rgoc:1.0cm-|0,0)coordinate(hsin);
+    \draw[densely dotted,ThemePurple](\rgoc:1.0cm)--(\rgoc:1.0cm|-0,0)coordinate(hcos);
+    
+    % Right triangle visualization: Shows the relationship between angle, sin, and cos
+    % The triangle has sides: opposite (sin), adjacent (cos), and hypotenuse (radius = 1)
+    \draw[fill=SoftIvory!80,draw=ThemePurple,very thin,opacity=0.3] (0,0) -- (A) -- (hsin) -- cycle;
+    
+    % Angle arc with label
+    \draw[thick,DeepCharcoal,->] (0.2cm,0) arc(0:\rgoc:0.2cm);
+    \path({0.5*\rgoc}:3pt) node[rotate=\rgoc,text=DeepCharcoal,font=\small]{$\alpha$};
+    
+    % Rotating scope: Rotate the entire trigonometric diagram by angle \m
+    % This creates the animation effect showing how sin/cos values change with rotation
+    % \m ranges from 0° to 360° to complete a full circle
+    \begin{scope}[rotate=\m]
+    % Rotated angle components: sin(alpha + m) and cos(alpha + m)
+    \draw[ultra thick,ThemePurpleRed](0,0)--(0,0|-\rgoc:1cm);
+    \draw[ultra thick,ThemePurple] (0,0)--(\rgoc:1.0cm|-0,0);
+    % Dotted lines: projections for the rotated angle
+    \draw[densely dotted,ThemePurpleRed](\rgoc:1.0cm)--(\rgoc:1.0cm-|0,0)coordinate(hcosm);
+    \draw[densely dotted,ThemePurple](\rgoc:1.0cm)--(\rgoc:1.0cm|-0,0)coordinate(hsinm) ;
+    % Moving radius vector (yellow): rotates around the circle
+    \draw[ultra thick,yellow,->,rotate=\rgoc] (0,0) -- (1.0,0);
+    \fill[draw=black,fill=ThemeRed]
+        (\rgoc:1.0cm) circle(0.5pt) (hcosm) circle(0.5pt) (hsinm) circle(0.5pt);
+    \end{scope}
+    
+    % Rotation arc
+    \draw[thick,WarmStone,->] (\rgoc:0.2cm) arc(\rgoc:\rgocm:0.2cm);
+    \path(0.75*\rgocm:8pt) node[text=WarmStone,font=\small]{\m$^\circ$};
+    
+    % Projections for rotated angle: Show sin(alpha+m) and cos(alpha+m) on axes
+    % These lines connect the rotated point to the x and y axes
+    \draw[densely dotted,ThemePurple](hcosm)--(hcosm-|0,0);
+    \draw[densely dotted,ThemePurpleRed](hsinm)--(hsinm|-0,0);
+    % Thick lines: The actual sin and cos values as lengths on the axes
+    \draw[ultra thick,ThemePurple](0,0)--(hcosm-|0,0);
+    \draw[ultra thick,ThemePurpleRed] (0,0)--(hsinm|-0,0);
+    \fill[draw=black,fill=ThemeRed](hcosm-|0,0) circle(0.5pt) (hsinm|-0,0) circle(0.5pt);
+    
+    % Label triangle sides - adjusted positions to avoid overlap
+    \node[ThemePurpleRed,left,font=\tiny] at ($(hsin)!0.5!(0,0|-\rgoc:1cm) + (-0.15,0)$) {opp};
+    \node[ThemePurple,below,font=\tiny] at ($(hcos)!0.5!(\rgoc:1.0cm|-0,0) + (0,-0.15)$) {adj};
+    \node[ThemeRed,above left,font=\tiny] at ($(A)!0.5!(0,0) + (0.1,0.1)$) {hyp=1};
+    
+    \end{scope}
+
+% Display calculated values for the rotated angle
+% Shows angle in degrees and radians, plus computed sin and cos values
+\node[DeepCharcoal,right,font=\normalsize] at (-7,-2.2)
+            {$\alpha+ \m^{\circ} = \rgocm^{\circ}  = \pgfmathparse{rad(\rgocm)} \pgfmathresult$ rad};
+\node[ThemePurple,right,font=\normalsize] at (-7,-2.7)
+            {$\sin \left( \alpha+ \m^{\circ}\right)     = \pgfmathsin{\rgocm}\pgfmathresult$};
+\node[ThemePurpleRed,right,font=\normalsize] at (-7,-3.2)
+            {$\cos \left( \alpha+ \m^{\circ}\right)   = \pgfmathcos{\rgocm}\pgfmathresult$};
+
+% Point labels
+\draw[fill=ThemeRed] (A) circle(1.5pt) node[shift={(\rgoc:7pt)},rotate=0,font=\small]{$A$}
+(hsin)circle(1.5pt) node[shift={(180:6pt)},font=\small]{$H$}
+(hcos)circle(1.5pt) node[shift={(-45:6pt)},font=\small]{$K$};
+
+% Legend - moved to middle-right edge of screen (no box, just items)
+\draw[ThemePurpleRed,ultra thick] (6.5,1.0) -- (6.8,1.0);
+\node[DeepCharcoal,right,font=\tiny] at (6.8,1.0) {$\sin$};
+\draw[ThemePurple,ultra thick] (6.5,0.6) -- (6.8,0.6);
+\node[DeepCharcoal,right,font=\tiny] at (6.8,0.6) {$\cos$};
+\draw[yellow,ultra thick] (6.5,0.2) -- (6.8,0.2);
+\node[DeepCharcoal,right,font=\tiny] at (6.8,0.2) {radius};
+
+% Author - moved to ensure visibility
+\node[DeepCharcoal,above right,font=\tiny] at (7.5,3.5){\tacgia};
+\end{tikzpicture}
+}
+\end{document}
