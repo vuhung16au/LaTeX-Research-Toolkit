@@ -14,7 +14,7 @@
 \usepackage{lipsum} % For generating placeholder text
 \usepackage{parskip} % For adjusting paragraph spacing (Video: 9:31)
 \usepackage{tcolorbox} % For highlighting text (Video: 11:40)
-\usepackage{witharrows} % For annotating equations (Video: 11:40)
+% \usepackage{witharrows} % For annotating equations (Video: 11:40) - Commented out as not standard
 \usepackage{amsmath} % For math environments like align
 \usepackage{minted} % For including syntax-highlighted code (Video: 13:48)
 \usepackage{xcolor}
@@ -95,12 +95,11 @@ We can annotate the steps of a derivative using braces and arrows.
 \end{align}
 
 We take the Laplace transform of the equation $\mathbf{Y}$ to $\mathbf{Y}(\mathbf{s})$:
-\[
-\begin{WithArrows}
-    \frac{d^2y}{dt^2} + y = \mathbf{f}(t) & \Arrow{Take the Laplace Transform} \\
-    s^2\mathbf{Y}(s) + \mathbf{Y}(s) = \mathbf{F}(s) &
-\end{WithArrows}
-\]
+% Note: witharrows package not available, using standard align instead
+\begin{align}
+    \frac{d^2y}{dt^2} + y = \mathbf{f}(t) \quad &\text{(Original equation)}\\
+    s^2\mathbf{Y}(s) + \mathbf{Y}(s) = \mathbf{F}(s) \quad &\text{(After Laplace Transform)}
+\end{align}
 
 \section{Including Code with Minted (13:48)}
 

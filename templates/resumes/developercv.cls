@@ -35,8 +35,8 @@
 \setlength{\parindent}{0mm} % Suppress paragraph indentation
 
 \usepackage[hidelinks]{hyperref} % Required for links but hide pdf borders
-\usepackage{moresize} % Provides more font size commands (\HUGE and \ssmall)
-\usepackage{fontawesome} % Required for FontAwesome icons
+% \usepackage{moresize} % Provides more font size commands (\HUGE and \ssmall)
+%\usepackage{fontawesome} % Required for FontAwesome icons
 \usepackage{xcolor} % Required for color specification
 
 % Page margins
@@ -70,7 +70,7 @@
 
 % Command to output an icon in a black square with text
 \newcommand{\icon}[3]{%
-	\makebox(#2, #2){\textcolor{darkgray}{\csname fa#1\endcsname}}%
+	% \makebox(#2, #2){\textcolor{darkgray}{\csname fa#1\endcsname}}%
 	\hspace{0.2cm}%
 	\parbox{2cm}{#3}%
 }

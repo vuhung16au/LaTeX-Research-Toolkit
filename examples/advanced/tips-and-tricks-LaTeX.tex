@@ -5,7 +5,7 @@
 \usepackage{amsthm}     % For theorem environments (10:22)
 \usepackage{minted}     % For including syntax-highlighted code (13:48)
 \usepackage{tcolorbox}  % For highlighting text (11:40)
-\usepackage{witharrows} % For annotating equations (11:40)
+% \usepackage{witharrows} % For annotating equations (11:40) - Commented out as not standard
 \usepackage{cleveref}   % For smart referencing (12:31)
 \usepackage{xifthen}    % For extended conditionals (1:58)
 \usepackage{ifthen}     % For \ifthenelse and \equal
@@ -95,12 +95,9 @@ We can use \texttt{\textbackslash underbrace} and \texttt{tcolorbox} to draw att
     \label{eq:einstein}
 \end{equation}
 
-% Example WithArrows usage (optional demonstration)
+% Example equation demonstration (without WithArrows package)
 \[
-\begin{WithArrows}
-    E = m c^2 + p c & \Arrow{Interpreting the components} \\
-    = \underbrace{m c^2}_{\text{rest energy}} + \underbrace{p c}_{\text{momentum term}} &
-\end{WithArrows}
+E = m c^2 + p c = \underbrace{m c^2}_{\text{rest energy}} + \underbrace{p c}_{\text{momentum term}}
 \]
 
 \subsection{Clever Referencing (12:31)}

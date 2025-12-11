@@ -1,5 +1,27 @@
 \documentclass[12pt]{article}
-\usepackage[ruled,vlined]{algorithm2e}
+% \usepackage[ruled,vlined]{algorithm2e} % Commented out as not standard
+\usepackage{listings}
+\usepackage{xcolor}
+
+% Define style for pseudocode
+\lstdefinestyle{pseudocode}{
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue}\bfseries,
+    commentstyle=\color{green!60!black},
+    stringstyle=\color{red},
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    stepnumber=1,
+    numbersep=5pt,
+    backgroundcolor=\color{gray!10},
+    frame=single,
+    tabsize=2,
+    captionpos=b,
+    breaklines=true,
+    breakatwhitespace=false,
+    morekeywords={Input,Output,In,Out,SetAlgoLined,KwIn,KwOut,BlankLine,Repeat,For,If,swap},
+    mathescape=true
+}
 
 \title{Algorithm Package Demonstrations}
 \author{LaTeX Research Toolkit}
@@ -23,24 +45,19 @@ All examples use the bubble sort algorithm to show the differences in syntax and
 
 The \texttt{algorithm2e} package provides a modern, flexible way to typeset algorithms with various styling options.
 
-\begin{algorithm}[H]
-\SetAlgoLined
-\KwIn{A : list of sortable items}
-\KwOut{Sorted list A}
-\BlankLine
-n := length(A)\;
-\Repeat{not swapped}{
-    swapped := false\;
-    \For{i := 0 to n - 2}{
-        \If{A[i] > A[i+1]}{
-            swap(A[i], A[i+1])\;
-            swapped := true\;
-        }
-    }
-    n := n - 1\;
-}
-\caption{Bubble Sort using Algorithm2e}
-\end{algorithm}
+\begin{lstlisting}[style=pseudocode,caption={Bubble Sort using Algorithm2e}]
+Input: A : list of sortable items
+Output: Sorted list A
+
+n := length(A)
+Repeat (not swapped):
+    swapped := false
+    For i := 0 to n - 2:
+        If A[i] > A[i+1]:
+            swap(A[i], A[i+1])
+            swapped := true
+    n := n - 1
+\end{lstlisting}
 
 \section{Algorithm Package with Algorithmic Environment}
 

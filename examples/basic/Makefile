@@ -12,8 +12,10 @@ help:
 pdf: $(PDFS)
 
 %.pdf: %.tex
-	@echo "Compiling $< with latexmk (multiple passes)"
-	@latexmk -pdf -interaction=nonstopmode -halt-on-error -quiet $<
+	@echo "Compiling $< with pdflatex (multiple passes)"
+	@pdflatex -interaction=nonstopmode -halt-on-error $< 2>/dev/null || true
+	@pdflatex -interaction=nonstopmode -halt-on-error $< 2>/dev/null || true
+	@pdflatex -interaction=nonstopmode -halt-on-error $<
 
 clean:
 	rm -f *.aux *.log *.out *.toc *.bbl *.blg *.synctex.gz *.nav *.snm *.vrb *.idx *.ind *.ilg *.lot *.lof *.lol *.fdb_latexmk *.fls *.auxlock

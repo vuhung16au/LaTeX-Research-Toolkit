@@ -10,12 +10,22 @@ A comprehensive LaTeX toolkit for academic research, papers, and theses. Feature
    cd LaTeX-Research-Toolkit
    ```
 
-2. **Choose a template**
+2. **Check dependencies**
+   ```bash
+   make check-deps    # Verify all required tools are installed
+   ```
+
+3. **Install missing dependencies (if needed)**
+   ```bash
+   make install-deps  # Show installation commands for your platform
+   ```
+
+4. **Choose a template**
    - Academic papers: `templates/academic-paper/`
    - Thesis: `templates/thesis/`
    - Presentations: `templates/presentation/`
 
-3. **Start learning**
+5. **Start learning**
    - Beginners: Start with `docs/getting-started/`
    - Examples: Check `examples/` folder
    - Practice: Try `exercises/` folder
@@ -147,6 +157,47 @@ Most directories include a `Makefile` with `help`, `pdf`, and `clean` targets.
 To see available targets in any folder, run:
 ```bash
 make help
+```
+
+## 💻 Cross-Platform Support
+
+The LaTeX Research Toolkit works on both **macOS** and **Ubuntu/Linux** with automatic platform detection and graceful fallbacks for missing tools.
+
+### Platform Setup
+
+#### macOS
+```bash
+# Install LaTeX
+brew install --cask mactex
+
+# Install optional tools for full functionality
+brew install imagemagick ffmpeg biber
+pip install Pygments  # For code highlighting with minted
+```
+
+#### Ubuntu/Debian
+```bash
+# Install LaTeX
+sudo apt update
+sudo apt install texlive-full
+
+# Install optional tools for full functionality
+sudo apt install imagemagick ffmpeg biber poppler-utils
+pip install Pygments  # For code highlighting with minted
+```
+
+### Platform-Aware Features
+
+- **Automatic detection**: The build system detects your platform and adjusts paths accordingly
+- **Optional features**: Tools like ImageMagick (for GIFs), FFmpeg (for MP4s), and Biber (for modern bibliographies) are optional - the build continues with warnings if they're missing
+- **Helpful messages**: Get clear installation instructions when tools are missing
+- **Fallback behavior**: Uses bibtex if biber is unavailable, skips animations if tools are missing
+
+### Check Your System
+
+```bash
+make check-deps     # See what's installed and what's missing
+make install-deps  # Get platform-specific installation commands
 ```
 
 ## 🌟 New Showcases

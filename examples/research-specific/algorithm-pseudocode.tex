@@ -1,8 +1,29 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath,amsfonts,amssymb}
-\usepackage{algorithm}
-\usepackage{algpseudocode}
+\usepackage{listings}
+\usepackage{xcolor}
+
+% Define style for pseudocode
+\lstdefinestyle{pseudocode}{
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue}\bfseries,
+    commentstyle=\color{green!60!black},
+    stringstyle=\color{red},
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    stepnumber=1,
+    numbersep=5pt,
+    backgroundcolor=\color{gray!10},
+    frame=single,
+    tabsize=2,
+    captionpos=b,
+    breaklines=true,
+    breakatwhitespace=false,
+    escapeinside={(*@}{@*)},
+    morekeywords={Input,Output,Initialize,For,To,Return,If,ElsIf,Else,EndIf,EndFor,Repeat,Until,State,Comment},
+    mathescape=true
+}
 
 \title{Algorithm Pseudocode in LaTeX}
 \author{Your Name}
@@ -15,111 +36,84 @@
 \section{Basic Algorithm}
 Here's a basic algorithm example:
 
-\begin{algorithm}
-\caption{Basic Algorithm}
-\label{alg:basic}
-\begin{algorithmic}[1]
-\Require Input data $x_1, x_2, \ldots, x_n$
-\Ensure Output result $y$
-\State Initialize $y = 0$
-\For{$i = 1$ to $n$}
-    \State $y = y + x_i$
-\EndFor
-\Return $y$
-\end{algorithmic}
-\end{algorithm}
+\begin{lstlisting}[style=pseudocode,caption={Basic Algorithm},label=alg:basic]
+Input: Input data $x_1, x_2, \ldots, x_n$
+Output: Output result $y$
+Initialize: $y = 0$
+For i = 1 to n:
+    $y = y + x_i$
+Return $y$
+\end{lstlisting}
 
 \section{Complex Algorithm}
 Here's a more complex algorithm with multiple steps:
 
-\begin{algorithm}
-\caption{Complex Algorithm}
-\label{alg:complex}
-\begin{algorithmic}[1]
-\Require Input matrix $A$, vector $b$, tolerance $\epsilon$
-\Ensure Solution vector $x$
-\State Initialize $x^{(0)} = 0$
-\State $k = 0$
-\Repeat
-    \State $k = k + 1$
-    \For{$i = 1$ to $n$}
-        \State $x_i^{(k)} = \frac{1}{a_{ii}}\left(b_i - \sum_{j=1}^{i-1} a_{ij}x_j^{(k)} - \sum_{j=i+1}^{n} a_{ij}x_j^{(k-1)}\right)$
-    \EndFor
-\Until{$\|x^{(k)} - x^{(k-1)}\| < \epsilon$}
-\Return $x^{(k)}$
-\end{algorithmic}
-\end{algorithm}
+\begin{lstlisting}[style=pseudocode,caption={Complex Algorithm},label=alg:complex]
+Input: Input matrix $A$, vector $b$, tolerance $\epsilon$
+Output: Solution vector $x$
+Initialize: $x^{(0)} = 0$
+$k = 0$
+Repeat:
+    $k = k + 1$
+    For i = 1 to n:
+        $x_i^{(k)} = \frac{1}{a_{ii}}(b_i - \sum_{j=1}^{i-1} a_{ij}x_j^{(k)} - \sum_{j=i+1}^{n} a_{ij}x_j^{(k-1)})$
+Until: $\|x^{(k)} - x^{(k-1)}\| < \epsilon$
+Return: $x^{(k)}$
+\end{lstlisting}
 
 \section{Algorithm with Comments}
 Here's an algorithm with detailed comments:
 
-\begin{algorithm}
-\caption{Algorithm with Comments}
-\label{alg:comments}
-\begin{algorithmic}[1]
-\Require Input data $D = \{d_1, d_2, \ldots, d_n\}$
-\Ensure Clustered data $C = \{c_1, c_2, \ldots, c_k\}$
-\State \Comment{Initialize centroids randomly}
-\State $c_1, c_2, \ldots, c_k = \text{random\_centroids}()$
-\State \Comment{Main clustering loop}
-\Repeat
-    \State \Comment{Assign each point to nearest centroid}
-    \For{$i = 1$ to $n$}
-        \State $j = \arg\min_{j} \|d_i - c_j\|^2$
-        \State Assign $d_i$ to cluster $j$
-    \EndFor
-    \State \Comment{Update centroids}
-    \For{$j = 1$ to $k$}
-        \State $c_j = \frac{1}{|C_j|} \sum_{d_i \in C_j} d_i$
-    \EndFor
-\Until{convergence}
-\Return $C$
-\end{algorithmic}
-\end{algorithm}
+\begin{lstlisting}[style=pseudocode,caption={Algorithm with Comments},label=alg:comments]
+Input: Input data $D = \{d_1, d_2, \ldots, d_n\}$
+Output: Clustered data $C = \{c_1, c_2, \ldots, c_k\}$
+Comment: Initialize centroids randomly
+$c_1, c_2, \ldots, c_k = \text{random\_centroids}()$
+Comment: Main clustering loop
+Repeat:
+    Comment: Assign each point to nearest centroid
+    For i = 1 to n:
+        $j = \arg\min_{j} \|d_i - c_j\|^2$
+        Assign $d_i$ to cluster $j$
+    Comment: Update centroids
+    For j = 1 to k:
+        $c_j = \frac{1}{|C_j|} \sum_{d_i \in C_j} d_i$
+Until: convergence
+Return: $C$
+\end{lstlisting}
 
 \section{Algorithm with Conditions}
 Here's an algorithm with conditional statements:
 
-\begin{algorithm}
-\caption{Conditional Algorithm}
-\label{alg:conditional}
-\begin{algorithmic}[1]
-\Require Input value $x$, threshold $t$
-\Ensure Processed value $y$
-\If{$x > t$}
-    \State $y = x^2$
-    \State \Comment{Apply square transformation}
-\ElsIf{$x > 0$}
-    \State $y = x$
-    \State \Comment{Keep original value}
-\Else
-    \State $y = 0$
-    \State \Comment{Set to zero for negative values}
-\EndIf
-\Return $y$
-\end{algorithmic}
-\end{algorithm}
+\begin{lstlisting}[style=pseudocode,caption={Conditional Algorithm},label=alg:conditional]
+Input: Input value $x$, threshold $t$
+Output: Processed value $y$
+If $x > t$:
+    $y = x^2$
+    Comment: Apply square transformation
+ElsIf $x > 0$:
+    $y = x$
+    Comment: Keep original value
+Else:
+    $y = 0$
+    Comment: Set to zero for negative values
+EndIf
+Return $y$
+\end{lstlisting}
 
 \section{Algorithm with Loops}
 Here's an algorithm with nested loops:
 
-\begin{algorithm}
-\caption{Nested Loop Algorithm}
-\label{alg:nested}
-\begin{algorithmic}[1]
-\Require Input matrix $A$ of size $n \times n$
-\Ensure Result matrix $B$ of size $n \times n$
-\For{$i = 1$ to $n$}
-    \For{$j = 1$ to $n$}
-        \State $B_{ij} = 0$
-        \For{$k = 1$ to $n$}
-            \State $B_{ij} = B_{ij} + A_{ik} \cdot A_{kj}$
-        \EndFor
-    \EndFor
-\EndFor
-\Return $B$
-\end{algorithmic}
-\end{algorithm}
+\begin{lstlisting}[style=pseudocode,caption={Nested Loop Algorithm},label=alg:nested]
+Input: Input matrix $A$ of size $n \times n$
+Output: Result matrix $B$ of size $n \times n$
+For i = 1 to n:
+    For j = 1 to n:
+        $B_{ij} = 0$
+        For k = 1 to n:
+            $B_{ij} = B_{ij} + A_{ik} \cdot A_{kj}$
+Return $B$
+\end{lstlisting}
 
 \section{Algorithm References}
 As shown in Algorithm~\ref{alg:basic}, the basic approach is straightforward.

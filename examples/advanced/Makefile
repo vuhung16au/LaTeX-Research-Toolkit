@@ -21,8 +21,10 @@ math: mathematics.pdf
 family: family-tree.pdf
 
 %.pdf: %.tex
-	@echo "Compiling $< with latexmk (multiple passes)"
-	@latexmk -pdf -interaction=nonstopmode -halt-on-error -shell-escape -quiet $<
+	@echo "Compiling $< with pdflatex (multiple passes)"
+	@pdflatex -interaction=nonstopmode -halt-on-error -shell-escape $< 2>/dev/null || true
+	@pdflatex -interaction=nonstopmode -halt-on-error -shell-escape $< 2>/dev/null || true
+	@pdflatex -interaction=nonstopmode -halt-on-error -shell-escape $<
 
 clean:
 	rm -f *.aux *.log *.out *.toc *.bbl *.blg *.synctex.gz *.nav *.snm *.vrb *.idx *.ind *.ilg *.lot *.lof *.lol *.fdb_latexmk *.fls *.auxlock

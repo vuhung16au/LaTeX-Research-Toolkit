@@ -1,5 +1,8 @@
 # Makefile for Deep Learning 101 Book
 
+# Include parent common configuration
+include ../../../../config/common.mk
+
 .PHONY: help pdf pdf-a4 pdf-a5 all clean
 
 # Default target
@@ -23,11 +26,26 @@ main-a4.pdf: main.tex chapters/*.tex
 	@echo "Pass 1: Initial compilation..."
 	@pdflatex -interaction=nonstopmode -halt-on-error -jobname=main-a4 "\def\papersize{a4paper}\input{main.tex}" > /dev/null || (cat main-a4.log && exit 1)
 	@echo "Pass 2: Processing bibliography..."
-	@biber main-a4 > /dev/null || true
+	@if [ -f main-a4.bcf ] && [ -n "$(HAS_BIBER)" ]; then \
+		biber main-a4 > /dev/null; \
+	elif [ -f main-a4.aux ]; then \
+		echo "  Biber not available, using bibtex instead..."; \
+		bibtex main-a4 > /dev/null || echo "  Warning: Bibliography processing failed"; \
+	else \
+		echo "  No bibliography file found"; \
+	fi
 	@echo "Pass 3: Processing glossary..."
-	@makeglossaries main-a4 > /dev/null || true
+	@if [ -f main-a4.glo ] && [ -n "$(HAS_MAKEGLOSSARIES)" ]; then \
+		makeglossaries main-a4 > /dev/null; \
+	else \
+		echo "  Glossary processing skipped (makeglossaries not available or no glossary)"; \
+	fi
 	@echo "Pass 4: Processing index..."
-	@makeindex main-a4 > /dev/null || true
+	@if [ -f main-a4.idx ]; then \
+		makeindex main-a4 > /dev/null || echo "  Warning: Index processing failed"; \
+	else \
+		echo "  No index file found"; \
+	fi
 	@echo "Pass 5: Resolving references..."
 	@pdflatex -interaction=nonstopmode -halt-on-error -jobname=main-a4 "\def\papersize{a4paper}\input{main.tex}" > /dev/null || (cat main-a4.log && exit 1)
 	@echo "Pass 6: Final compilation..."
@@ -42,11 +60,26 @@ main-a5.pdf: main.tex chapters/*.tex
 	@echo "Pass 1: Initial compilation..."
 	@pdflatex -interaction=nonstopmode -halt-on-error -jobname=main-a5 "\def\papersize{a5paper}\input{main.tex}" > /dev/null || (cat main-a5.log && exit 1)
 	@echo "Pass 2: Processing bibliography..."
-	@biber main-a5 > /dev/null || true
+	@if [ -f main-a5.bcf ] && [ -n "$(HAS_BIBER)" ]; then \
+		biber main-a5 > /dev/null; \
+	elif [ -f main-a5.aux ]; then \
+		echo "  Biber not available, using bibtex instead..."; \
+		bibtex main-a5 > /dev/null || echo "  Warning: Bibliography processing failed"; \
+	else \
+		echo "  No bibliography file found"; \
+	fi
 	@echo "Pass 3: Processing glossary..."
-	@makeglossaries main-a5 > /dev/null || true
+	@if [ -f main-a5.glo ] && [ -n "$(HAS_MAKEGLOSSARIES)" ]; then \
+		makeglossaries main-a5 > /dev/null; \
+	else \
+		echo "  Glossary processing skipped (makeglossaries not available or no glossary)"; \
+	fi
 	@echo "Pass 4: Processing index..."
-	@makeindex main-a5 > /dev/null || true
+	@if [ -f main-a5.idx ]; then \
+		makeindex main-a5 > /dev/null || echo "  Warning: Index processing failed"; \
+	else \
+		echo "  No index file found"; \
+	fi
 	@echo "Pass 5: Resolving references..."
 	@pdflatex -interaction=nonstopmode -halt-on-error -jobname=main-a5 "\def\papersize{a5paper}\input{main.tex}" > /dev/null || (cat main-a5.log && exit 1)
 	@echo "Pass 6: Final compilation..."

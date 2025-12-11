@@ -1,7 +1,7 @@
 \documentclass[a4paper,10pt]{book}
 \usepackage[utf8]{inputenc}  % UTF-8 encoding
 \usepackage[T1]{fontenc}     % Better font encoding
-\usepackage[vietnamese]{babel} % Vietnamese language support
+% \usepackage[vietnamese]{babel} % Vietnamese language support - Commented out as not standard
 \usepackage[left=0.5cm,right=0.4cm,top=0.1cm,bottom=0.3cm,includeheadfoot]{geometry} 
 \usepackage{tikz}
 \usepackage{color}
@@ -39,77 +39,77 @@
 \node (0) at (0, 0) [titel] {\section*{Family Tree} \textit{ACU Color Scheme}  \\ Vietnamese \& English Names};
 
 % Great-great-grandparents (Ur-Ur-Grosseltern)
-\node[male] (8) {8 Nguyễn Văn Minh\\ \textit{1890, Hà Nội}  \\ m. 1915 \\Hà Nội};
+\node[male] (8) {8 Nguyen Van Minh\\ \textit{1890, Ha Noi}  \\ m. 1915 \\Ha Noi};
 
 \node[block,below =of 8] (invisible0) {\textcolor{green}{inv0}};
-\node [male,left=-3cm of invisible0] (4) {4 Nguyễn Văn Hùng\\1895-1970\\Hà Nội};  % Abstand UrGr-Grosselt
+\node [male,left=-3cm of invisible0] (4) {4 Nguyen Van Hung\\1895-1970\\Ha Noi};  % Abstand UrGr-Grosselt
 
-\node[female,below =of invisible0] (9) {9 Trần Thị Lan\\1898-1975\\Hà Nội};
+\node[female,below =of invisible0] (9) {9 Tran Thi Lan\\1898-1975\\Ha Noi};
 
 \node[neutral,below =of 9] (invisible1) {\textcolor{white}{111}}; %unsichtbar, abstand halten und punkt fuer spaeter benutzen
 
-\node [male,below= of invisible1] (10) {10 Lê Văn Đức\\1900-1965\\Sài Gòn};
+\node [male,below= of invisible1] (10) {10 Le Van Duc\\1900-1965\\Sai Gon};
 \node[block,below =of 10] (invisible01) {\textcolor{white}{inv01}};
-\node [male,left=-3cm of invisible01] (5) {5 Lê Văn Thành\\1902-1968\\Sài Gòn};  % richtet sich an aus
-\node[female,below =of invisible01] (11) {11 Phạm Thị Mai\\1905-1970\\Sài Gòn};
+\node [male,left=-3cm of invisible01] (5) {5 Le Van Thanh\\1902-1968\\Sai Gon};  % richtet sich an aus
+\node[female,below =of invisible01] (11) {11 Pham Thi Mai\\1905-1970\\Sai Gon};
 
 \node[neutral,below =of 11] (invisible2) {\textcolor{white}{222}}; %unsichtbar, abstand halten und punkt fuer spaeter benutzen
 
-\node [male,below= of invisible2] (12) {12 Hoàng Văn Nam\\1908-1975\\Huế};
+\node [male,below= of invisible2] (12) {12 Hoang Van Nam\\1908-1975\\Hue};
 \node[block,below =of 12] (invisible02) {\textcolor{white}{inv02}};
-\node [male,left=-3cm of invisible02] (6) {6 Hoàng Văn Bình\\1910-1978\\Huế};  % richtet sich an aus
-\node[female,below =of invisible02] (13) {13 Võ Thị Hoa\\1912-1980\\Huế};
+\node [male,left=-3cm of invisible02] (6) {6 Hoang Van Binh\\1910-1978\\Hue};  % richtet sich an aus
+\node[female,below =of invisible02] (13) {13 Vo Thi Hoa\\1912-1980\\Hue};
 
 \node[neutral,below =of 13] (invisible3){\textcolor{white}{333}}; %unsichtbar, abstand halten
 
-\node [male,below= of invisible3] (14) {14 Đặng Văn Long\\1915-1985\\Đà Nẵng};
+\node [male,below= of invisible3] (14) {14 Dang Van Long\\1915-1985\\Da Nang};
 \node[block,below =of 14] (invisible03) {\textcolor{white}{inv03}};
-\node [male,left=-3cm of invisible03] (7) {7 Đặng Văn Sơn\\1918-1988\\Đà Nẵng};  % richtet sich an aus
-\node[female,below =of invisible03] (15) {15 Bùi Thị Nga\\1920-1990\\Đà Nẵng};
+\node [male,left=-3cm of invisible03] (7) {7 Dang Van Son\\1918-1988\\Da Nang};  % richtet sich an aus
+\node[female,below =of invisible03] (15) {15 Bui Thi Nga\\1920-1990\\Da Nang};
 
 % Great-grandparents (Ur-Grosseltern)
-\node (16) at ($ (8) + (8:5.2cm) $) [male2] {16 Nguyễn Văn An\\ \textit{1925, Hà Nội}  \\ m. 1950 \\Hà Nội};
+\node (16) at ($ (8) + (8:5.2cm) $) [male2] {16 Nguyen Van An\\ \textit{1925, Ha Noi}  \\ m. 1950 \\Ha Noi};
 
-\node (17) at ($ (8) + (-8:5.2cm) $) [female2] {17 Trần Thị Bình\\ \textit{1928, Hà Nội}  \\ m. 1950 \\Hà Nội};
+\node (17) at ($ (8) + (-8:5.2cm) $) [female2] {17 Tran Thi Binh\\ \textit{1928, Ha Noi}  \\ m. 1950 \\Ha Noi};
 
-\node (18) at ($ (9) + (8:5.2cm) $) [male2] {18 Lê Văn Cường\\ \textit{1930, Sài Gòn}  \\ m. 1955 \\Sài Gòn};
+\node (18) at ($ (9) + (8:5.2cm) $) [male2] {18 Le Van Cuong\\ \textit{1930, Sai Gon}  \\ m. 1955 \\Sai Gon};
 
-\node (19) at ($ (9) + (-8:5.2cm) $) [female2] {19 Phạm Thị Dung\\ \textit{1932, Sài Gòn}  \\ m. 1955 \\Sài Gòn};
+\node (19) at ($ (9) + (-8:5.2cm) $) [female2] {19 Pham Thi Dung\\ \textit{1932, Sai Gon}  \\ m. 1955 \\Sai Gon};
 
-\node (20) at ($ (10) + (8:5.2cm) $) [male2] {20 Hoàng Văn Em\\ \textit{1935, Huế}  \\ m. 1960 \\Huế};
+\node (20) at ($ (10) + (8:5.2cm) $) [male2] {20 Hoang Van Em\\ \textit{1935, Hue}  \\ m. 1960 \\Hue};
 
-\node (21) at ($ (10) + (-8:5.2cm) $) [female2] {21 Võ Thị Phương\\ \textit{1938, Huế}  \\ m. 1960 \\Huế};
+\node (21) at ($ (10) + (-8:5.2cm) $) [female2] {21 Vo Thi Phuong\\ \textit{1938, Hue}  \\ m. 1960 \\Hue};
 
-\node (22) at ($ (11) + (8:5.2cm) $) [male2] {22 Đặng Văn Giang\\ \textit{1940, Đà Nẵng}  \\ m. 1965 \\Đà Nẵng};
+\node (22) at ($ (11) + (8:5.2cm) $) [male2] {22 Dang Van Giang\\ \textit{1940, Da Nang}  \\ m. 1965 \\Da Nang};
 
-\node (23) at ($ (11) + (-8:5.2cm) $) [female2] {23 Bùi Thị Hương\\ \textit{1942, Đà Nẵng}  \\ m. 1965 \\Đà Nẵng};
+\node (23) at ($ (11) + (-8:5.2cm) $) [female2] {23 Bui Thi Huong\\ \textit{1942, Da Nang}  \\ m. 1965 \\Da Nang};
 
-\node (24) at ($ (12) + (8:5.2cm) $) [male2] {24 Nguyễn Văn I\\ \textit{1945, Hà Nội}  \\ m. 1970 \\Hà Nội};
+\node (24) at ($ (12) + (8:5.2cm) $) [male2] {24 Nguyen Van I\\ \textit{1945, Ha Noi}  \\ m. 1970 \\Ha Noi};
 
-\node (25) at ($ (12) + (-8:5.2cm) $) [female2] {25 Trần Thị Kim\\ \textit{1948, Hà Nội}  \\ m. 1970 \\Hà Nội};
+\node (25) at ($ (12) + (-8:5.2cm) $) [female2] {25 Tran Thi Kim\\ \textit{1948, Ha Noi}  \\ m. 1970 \\Ha Noi};
 
-\node (26) at ($ (13) + (8:5.2cm) $) [male2] {26 Lê Văn Linh\\ \textit{1950, Sài Gòn}  \\ m. 1975 \\Sài Gòn};
+\node (26) at ($ (13) + (8:5.2cm) $) [male2] {26 Le Van Linh\\ \textit{1950, Sai Gon}  \\ m. 1975 \\Sai Gon};
 
-\node (27) at ($ (13) + (-8:5.2cm) $) [female2] {27 Phạm Thị Mỹ\\ \textit{1952, Sài Gòn}  \\ m. 1975 \\Sài Gòn};
+\node (27) at ($ (13) + (-8:5.2cm) $) [female2] {27 Pham Thi My\\ \textit{1952, Sai Gon}  \\ m. 1975 \\Sai Gon};
 
-\node (28) at ($ (14) + (8:5.2cm) $) [male2] {28 Hoàng Văn Nam\\ \textit{1955, Huế}  \\ m. 1980 \\Huế};
+\node (28) at ($ (14) + (8:5.2cm) $) [male2] {28 Hoang Van Nam\\ \textit{1955, Hue}  \\ m. 1980 \\Hue};
 
-\node (29) at ($ (14) + (-8:5.2cm) $) [female2] {29 Võ Thị Oanh\\ \textit{1958, Huế}  \\ m. 1980 \\Huế};
+\node (29) at ($ (14) + (-8:5.2cm) $) [female2] {29 Vo Thi Oanh\\ \textit{1958, Hue}  \\ m. 1980 \\Hue};
 
-\node (30) at ($ (15) + (8:5.2cm) $) [male2] {30 Đặng Văn Phúc\\ \textit{1960, Đà Nẵng}  \\ m. 1985 \\Đà Nẵng};
+\node (30) at ($ (15) + (8:5.2cm) $) [male2] {30 Dang Van Phuc\\ \textit{1960, Da Nang}  \\ m. 1985 \\Da Nang};
 
-\node (31) at ($ (15) + (-8:5.2cm) $) [female2] {31 Bùi Thị Quỳnh\\ \textit{1962, Đà Nẵng}  \\ m. 1985 \\Đà Nẵng};
+\node (31) at ($ (15) + (-8:5.2cm) $) [female2] {31 Bui Thi Quynh\\ \textit{1962, Da Nang}  \\ m. 1985 \\Da Nang};
 
 % Grandparents (Grosseltern)
-\node [male,left=0.2cm of invisible1] (2) {2 Nguyễn Minh Tuấn\\1950-2020\\Hà Nội};  % richtet sich an aus 
-\node [female,left=0.2cm of invisible3] (3) {3 Trần Thị Vân\\1955-2022\\Hà Nội}; % richtet sich an aus
+\node [male,left=0.2cm of invisible1] (2) {2 Nguyen Minh Tuan\\1950-2020\\Ha Noi};  % richtet sich an aus 
+\node [female,left=0.2cm of invisible3] (3) {3 Tran Thi Van\\1955-2022\\Ha Noi}; % richtet sich an aus
 
 % Children (Kinder)
-\node [siblingf,  left=5.85cm of invisible2] (1) {2 Nguyễn Minh An\\1990}; %liegt im Zentrum Abstand zwischen Kinder un Eltern
-\node [siblingm, above= of 1] (c) {1 Nguyễn Minh Bình\\1988}; % eins darueber
-\node [siblingm, below= of 1] (a) {3 Nguyễn Minh Cường\\1992}; % eins darunter
-\node [siblingm, below= of a] (b) {4 Nguyễn Minh Đức\\1995};
-\node [siblingf, below= of b] (d) {5 Nguyễn Minh Em\\1998};
+\node [siblingf,  left=5.85cm of invisible2] (1) {2 Nguyen Minh An\\1990}; %liegt im Zentrum Abstand zwischen Kinder un Eltern
+\node [siblingm, above= of 1] (c) {1 Nguyen Minh Binh\\1988}; % eins darueber
+\node [siblingm, below= of 1] (a) {3 Nguyen Minh Cuong\\1992}; % eins darunter
+\node [siblingm, below= of a] (b) {4 Nguyen Minh Duc\\1995};
+\node [siblingf, below= of b] (d) {5 Nguyen Minh Em\\1998};
 
 % Coordinate definitions for connections
 \coordinate[right=10pt of 3] (aux3);

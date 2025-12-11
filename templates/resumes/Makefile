@@ -1,6 +1,6 @@
 .PHONY: help pdf clean
 
-TEXS := $(wildcard *.tex)
+TEXS := $(filter-out structure.tex developercv.cls resume.cls, $(wildcard *.tex))
 PDFS := $(TEXS:.tex=.pdf)
 
 help:
