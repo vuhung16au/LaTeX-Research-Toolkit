@@ -190,3 +190,10 @@ TODO/
 docs-privs/
 
 
+examples/intermediate/trio-visual.mp4
+
+.codacy/
+.cursor/
+
+.cursor/rules/codacy.mdc
+examples/advanced/book/Deep-Learning-101/test.tex

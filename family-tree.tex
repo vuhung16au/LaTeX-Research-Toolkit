@@ -1,0 +1,191 @@
+\documentclass[a4paper,10pt]{book}
+\usepackage[ngerman]{babel} % Deutsche Sprache
+\usepackage[utf8]{inputenc}  % Umlaute
+\usepackage[left=0.5cm,right=0.4cm,top=0.1cm,bottom=0.3cm,includeheadfoot]{geometry} 
+\usepackage{tikz}
+\usepackage{color}
+\usetikzlibrary{positioning}
+\usetikzlibrary{calc}
+\begin{document}
+\tikzset{
+titel/.style={font=\fontsize{14}{18}\color{black!100}\ttfamily, fill=yellow!20, rectangle,draw,minimum height=10em,text width=6.5cm, },
+female/.style={font=\fontsize{9}{10}\color{black!100}\ttfamily, fill=red!10, rounded corners=10pt, rectangle,draw,minimum height=4.8em,text width=4.5cm},
+male/.style={font=\fontsize{9}{10}\color{black!100}\ttfamily, fill=blue!20, rectangle,draw,minimum height=4.8em,text width=4.5cm, },
+neutral/.style={draw=white!50,text width=4.5cm, minimum height=1.0cm}, %DREI unsichtbare Abst
+neutral2/.style={draw=black!50,text width=2.6cm, minimum height=1em}, %Kind Elt Grosseltern
+female2/.style={font=\fontsize{8}{10}\color{black!100}\ttfamily, fill=red!10, rounded corners=10pt, rectangle,draw,minimum height=3em,text width=4.5cm},
+male2/.style={font=\fontsize{8}{10}\color{black!100}\ttfamily, fill=blue!20, rectangle,draw,minimum height=3em,text width=4.5cm, },
+block/.style={draw=white!50,text width=4.5cm, minimum height=1.7cm}, %DREI gro unsichtb
+kopf/.style={draw=black!50,text width=3.8cm, minimum height=0.2cm}, %war 4.5
+rechts/.style={draw=black!50,text width=0.01cm, minimum height=1em},
+%unsichtbare kaesten oben und drei mal zwischendrin
+siblingm/.style={font=\fontsize{9}{10}\color{black!100}\ttfamily, fill=blue!20,  rectangle,draw, text width=3.4cm, minimum height=1em},
+siblingf/.style={font=\fontsize{9}{10}\color{black!100}\ttfamily, fill=red!20, rounded corners=10pt, rectangle,draw, text width=3.4cm, minimum height=1em}}
+\begin{tikzpicture}[node distance=5pt and 0pt] %distance ist  zwischenraum untereinander
+
+% hier kommen die Ur Ur Grosseltern und dazwischen das Kind Ur Grosseltern
+\node[male] (8) {8 Nachnahme, Name\\ \textit{Geburt, Ort}  \\ verh \\Ort};
+
+\node[block,below =of 8] (invisible0) {\textcolor{green}{inv0}};
+\node [male,left=-3cm of invisible0] (4) {4\\1\\2\\3};  % Abstand UrGr-Grosselt
+%unsichtbar, abstand halten und punkt fuer spaeter benutzen
+
+
+\node (0) at ($ (4) + (178:7.2cm) $) [titel] {\section*{Vorfahren} \textit{Weitere Infos}  \\ Infos};
+
+\node[female,below =of invisible0] (9) {9\\1\\2\\3};
+
+\node[neutral,below =of 9] (invisible1) {\textcolor{white}{111}}; %unsichtbar, abstand halten und punkt fuer spaeter benutzen
+
+\node [male,below= of invisible1] (10) {10\\1\\2\\3};
+\node[block,below =of 10] (invisible01) {\textcolor{white}{inv01}};
+\node [male,left=-3cm of invisible01] (5) {5\\1\\2\\3};  % richtet sich an aus
+\node[female,below =of invisible01] (11) {11\\1\\2\\3};
+
+\node[neutral,below =of 11] (invisible2) {\textcolor{white}{222}}; %unsichtbar, abstand halten und punkt fuer spaeter benutzen
+
+\node [male,below= of invisible2] (12) {12\\1\\2\\3};
+\node[block,below =of 12] (invisible02) {\textcolor{white}{inv02}};
+\node [male,left=-3cm of invisible02] (6) {6\\1\\2\\3};  % richtet sich an aus
+\node[female,below =of invisible02] (13) {13\\1\\2\\3};
+
+\node[neutral,below =of 13] (invisible3){\textcolor{white}{333}}; %unsichtbar, abstand halten
+
+\node [male,below= of invisible3] (14) {14\\1\\2\\3};
+\node[block,below =of 14] (invisible03) {\textcolor{white}{inv03}};
+\node [male,left=-3cm of invisible03] (7) {7\\1\\2\\3};  % richtet sich an aus
+\node[female,below =of invisible03] (15) {15\\1\\2\\3};
+
+\node (16) at ($ (8) + (8:5.2cm) $) [male2] {16 Nachnahme, Name\\ \textit{Geburt, Ort}  \\ verh \\Ort};
+
+\node (17) at ($ (8) + (-8:5.2cm) $) [female2] {17 Nachnahme, Name\\ \textit{Geburt, Ort}  \\ verh \\Ort};
+
+\node (18) at ($ (9) + (8:5.2cm) $) [male2] {18 Nachnahme, Name\\ \textit{Geburt, Ort}  \\ verh \\Ort};
+
+\node (19) at ($ (9) + (-8:5.2cm) $) [female2] {19 Nachnahme, Name\\ \textit{Geburt, Ort}  \\ verh \\Ort};
+
+\node (20) at ($ (10) + (8:5.2cm) $) [male2] {20 Nachnahme, Name\\ \textit{Geburt, Ort}  \\ verh \\Ort};
+
+\node (21) at ($ (10) + (-8:5.2cm) $) [female2] {21 Nachnahme, Name\\ \textit{Geburt, Ort}  \\ verh \\Ort};
+
+\node (22) at ($ (11) + (8:5.2cm) $) [male2] {22 Nachnahme, Name\\ \textit{Geburt, Ort}  \\ verh \\Ort};
+
+\node (23) at ($ (11) + (-8:5.2cm) $) [female2] {23 Nachnahme, Name\\ \textit{Geburt, Ort}  \\ verh \\Ort};
+
+\node (24) at ($ (12) + (8:5.2cm) $) [male2] {24 Nachnahme, Name\\ \textit{Geburt, Ort}  \\ verh \\Ort};
+
+\node (25) at ($ (12) + (-8:5.2cm) $) [female2] {25 Nachnahme, Name\\ \textit{Geburt, Ort}  \\ verh \\Ort};
+
+\node (26) at ($ (13) + (8:5.2cm) $) [male2] {26 Nachnahme, Name\\ \textit{Geburt, Ort}  \\ verh \\Ort};
+
+\node (27) at ($ (13) + (-8:5.2cm) $) [female2] {27 Nachnahme, Name\\ \textit{Geburt, Ort}  \\ verh \\Ort};
+
+\node (28) at ($ (14) + (8:5.2cm) $) [male2] {28 Nachnahme, Name\\ \textit{Geburt, Ort}  \\ verh \\Ort};
+
+\node (29) at ($ (14) + (-8:5.2cm) $) [female2] {29 Nachnahme, Name\\ \textit{Geburt, Ort}  \\ verh \\Ort};
+
+\node (30) at ($ (15) + (8:5.2cm) $) [male2] {30 Nachnahme, Name\\ \textit{Geburt, Ort}  \\ verh \\Ort};
+
+\node (31) at ($ (15) + (-8:5.2cm) $) [female2] {31 Nachnahme, Name\\ \textit{Geburt, Ort}  \\ verh \\Ort};
+
+%hier kommen die Grosseltern, Abstand zwischen Grosseltern und Eltern
+\node [male,left=0.2cm of invisible1] (2) {2\\1\\2\\3};  % richtet sich an aus 
+\node [female,left=0.2cm of invisible3] (3) {3\\1\\2\\3}; % richtet sich an aus
+
+%hier kommen die Kinder. Achtung, Reihenfolge beachten
+\node [siblingf,  left=5.85cm of invisible2] (1) {2 Kind\\1}; %liegt im Zentrum Abstand zwischen Kinder un Eltern
+\node [siblingm, above= of 1] (c) {1 Kind\\1}; % eins darueber
+%\node [female, above= of c] (h) {0 Kind\\1\\2\\3}; % eins darueber
+%\node [female, above= of h] (i) {00 Kind\\1\\2\\3}; % eins darueber
+%\node [female, above= of i] (j) {000 Kind\\1\\2\\3}; % eins darueber
+%\node [female, above= of j] (k) {0000 Kind\\1\\2\\3}; % eins darueber
+\node [siblingm, below= of 1] (a) {3 Kind\\1}; % eins darunter
+\node [siblingm, below= of a] (b) {4 Kind\\1};
+\node [siblingf, below= of b] (d) {5 Kind\\1};
+%\node [female, below= of d] (e) {6 Kind\\1\\2\\3}; %fehlt strich
+%\node [female, below= of e] (f) {7 Kind\\1\\2\\3}; %fehlt strich
+%\node [female, below= of f] (g) {8 Kind\\1\\2\\3}; %fehlt strich
+
+% die laenge der kleinen rechtsstriche am Kasten und ihre Bezeichnung?
+\coordinate[right=10pt of 3] (aux3);
+\coordinate[right=10pt of 4] (aux4); %Laenge des Rechtsstrichts und definition des namens
+\coordinate[right=10pt of 5] (aux5);
+\coordinate[right=10pt of 6] (aux6);
+\coordinate[right=10pt of 7] (aux7);
+
+\coordinate[right=10pt of 1] (aux1); % zweites Kind, referenzpunkt
+\coordinate[right=10pt of a] (auxa);
+\coordinate[right=10pt of b] (auxb);
+\coordinate[right=10pt of c] (auxc);
+
+\coordinate[right=10pt of d] (auxd);
+%\coordinate[right=12pt of e] (auxe); 
+%\coordinate[right=12pt of f] (auxf);
+%\coordinate[right=12pt of g] (auxg);
+%\coordinate[right=12pt of h] (auxh);
+%\coordinate[right=12pt of i] (auxi);
+%\coordinate[right=12pt of j] (auxj);
+%\coordinate[right=12pt of k] (auxk);
+
+%Ururgrosseltern Strich, schraegt zu ihren Kindern
+\draw [-] (16.west) -- (8.east);
+\draw [-] (17.west) -- (8.east);
+
+\draw [-] (18.west) -- (9.east);
+\draw [-] (19.west) -- (9.east);
+
+\draw [-] (20.west) -- (10.east);
+\draw [-] (21.west) -- (10.east);
+
+\draw [-] (22.west) -- (11.east);
+\draw [-] (23.west) -- (11.east);
+
+\draw [-] (24.west) -- (12.east);
+\draw [-] (25.west) -- (12.east);
+
+\draw [-] (26.west) -- (13.east);
+\draw [-] (27.west) -- (13.east);
+
+\draw [-] (28.west) -- (14.east);
+\draw [-] (29.west) -- (14.east);
+
+\draw [-] (30.west) -- (15.east);
+\draw [-] (31.west) -- (15.east);
+
+% die Eheverbindungen
+\draw (8.west) -| (4.140); 	%Eheverbindung
+\draw (9.west) -| (4.220); 	%Eheverbindung
+%rechtsstrich am Kasten und ihre Bezeichnung
+\draw (10.west) -| (5.140); %Eheverbindung
+\draw (11.west) -| (5.220); %Eheverbindung
+%rechtsstrich am Kasten und ihre Bezeichnung
+\draw (12.west) -| (6.140);	%Eheverbindung
+\draw (13.west) -| (6.220);	%Eheverbindung
+%rechtsstrich am Kasten und ihre Bezeichnung
+\draw (14.west) -| (7.140); %Eheverbindung
+\draw (15.west) -| (7.220); %Eheverbindung
+%rechtsstrich am Kasten und ihre Bezeichnung
+\draw (4.west) -| (2.north);		%Eheverbindung
+\draw (5.west) -| (2.south);		%Eheverbindung
+\draw (6.west) -| (3.north);		%Eheverbindung
+\draw (7.west) -| (3.south);		%Eheverbindung
+%\draw (2.west) -| (aux1) |- (3.west); 	%Eheverbindung
+\draw (2.west) -| (aux1) |- (3.west); 	%Eheverbindung
+
+\draw (1) -- (aux1); %Kind 2 zentriert, ausgangspunkt, rechtsstrich am Kasten und ihre Bezeichnung
+\draw (a) -- (auxa); 	%Kind 3 rechtsstrich am Kasten und ihre Bezeichnung
+\draw (b) -- (auxb);	%Kind 4 rechtsstrich am Kasten und ihre Bezeichnung
+\draw (c) -- (auxc);	%Kind 1  rechtsstrich am Kasten und ihre Bezeichnung
+\draw (d) -- (auxd); 	%Kind 5 rechtsstrich am Kasten und ihre Bezeichnung
+%\draw (e) -- (auxe);	%Kind 6 rechtsstrich am Kasten und ihre Bezeichnung
+%\draw (f) -- (auxf);	%Kind 7  rechtsstrich am Kasten und ihre Bezeichnung
+%\draw (g) -- (auxg);	%Kind 8  rechtsstrich am Kasten und ihre Bezeichnung
+%\draw (h) -- (auxh);	%Kind 9  rechtsstrich am Kasten und ihre Bezeichnung
+%\draw (i) -- (auxi);	%Kind 10  rechtsstrich am Kasten und ihre Bezeichnung
+%\draw (j) -- (auxj);	%Kind 11  rechtsstrich am Kasten und ihre Bezeichnung
+%\draw (k) -- (auxk);	%Kind 12  rechtsstrich am Kasten und ihre Bezeichnung
+
+%\draw (auxc) -- (auxg); %linie vom ueberstehenden Kind g zu d
+
+\end{tikzpicture}
+\end{document}
